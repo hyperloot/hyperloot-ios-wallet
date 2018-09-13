@@ -1,0 +1,87 @@
+PODS:
+  - Alamofire (4.7.3)
+  - AlamofireObjectMapper (5.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.3)
+  - BigInt (3.1.0):
+    - SipHash (~> 1.2)
+  - CryptoSwift (0.10.0)
+  - JSONRPCKit (3.0.0):
+    - Result (~> 3.2.0)
+  - KeychainSwift (11.0.0)
+  - ObjectMapper (3.3.0)
+  - Result (3.2.4)
+  - SAMKeychain (1.5.3)
+  - SipHash (1.2.2)
+  - SwiftLint (0.26.0)
+  - TrezorCrypto (0.0.6)
+  - TrustCore (0.0.7):
+    - BigInt
+    - TrezorCrypto
+  - TrustKeystore (0.4.1):
+    - BigInt
+    - CryptoSwift
+    - TrezorCrypto
+    - TrustCore
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AlamofireObjectMapper (= 5.1)
+  - BigInt (~> 3.0)
+  - CryptoSwift (~> 0.10.0)
+  - JSONRPCKit (from `https://github.com/bricklife/JSONRPCKit.git`)
+  - KeychainSwift
+  - SAMKeychain
+  - SwiftLint
+  - TrustCore (~> 0.0.7)
+  - TrustKeystore (from `https://github.com/TrustWallet/trust-keystore`, commit `b338faf76d62efa570bd03088ebceac4e10314da`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - BigInt
+    - CryptoSwift
+    - KeychainSwift
+    - ObjectMapper
+    - Result
+    - SAMKeychain
+    - SipHash
+    - SwiftLint
+    - TrezorCrypto
+    - TrustCore
+
+EXTERNAL SOURCES:
+  JSONRPCKit:
+    :git: https://github.com/bricklife/JSONRPCKit.git
+  TrustKeystore:
+    :commit: b338faf76d62efa570bd03088ebceac4e10314da
+    :git: https://github.com/TrustWallet/trust-keystore
+
+CHECKOUT OPTIONS:
+  JSONRPCKit:
+    :commit: e1ae67de59067ebb677ad0024b3dc6789f31f193
+    :git: https://github.com/bricklife/JSONRPCKit.git
+  TrustKeystore:
+    :commit: b338faf76d62efa570bd03088ebceac4e10314da
+    :git: https://github.com/TrustWallet/trust-keystore
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
+  CryptoSwift: 6c778d69282bed3b4e975ff97a79d074f20bb011
+  JSONRPCKit: 35aecfdf923a8e2053cef8e46d68ed3da66296c8
+  KeychainSwift: bea6bd9f98af7b8d7ca4aa79fe105c00fab532db
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
+  SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
+  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
+  TrezorCrypto: bea2dab002f9a5fe885df004694b9ece52dc088b
+  TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
+  TrustKeystore: fdd5936098af80b9478122bbd3a89477a5389298
+
+PODFILE CHECKSUM: ae705315609a208ac2d1d05b7f555042732e5504
+
+COCOAPODS: 1.5.3
