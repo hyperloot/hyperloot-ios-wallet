@@ -11,7 +11,8 @@ import Foundation
 class Hyperloot {
     
     fileprivate lazy var walletManager = WalletManager()
-    
+    fileprivate lazy var userManager = UserManager()
+
 }
 
 extension Hyperloot: HyperlootTokensManaging {
