@@ -18,6 +18,11 @@
 		F44D7263214A29A100C651C6 /* HyperlootWalletManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7262214A29A100C651C6 /* HyperlootWalletManaging.swift */; };
 		F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */; };
 		F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7267214A2C6D00C651C6 /* WalletManager.swift */; };
+		F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC08214B8D8600A43A47 /* WalletKeyStore.swift */; };
+		F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC0B214B931F00A43A47 /* HyperlootWallet.swift */; };
+		F48CEC0F214DD2B400A43A47 /* Dictionary+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */; };
+		F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC102150C7D100A43A47 /* HyperlootUser.swift */; };
+		F48CEC132150CF2D00A43A47 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC122150CF2D00A43A47 /* UserManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,11 @@
 		F44D7262214A29A100C651C6 /* HyperlootWalletManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootWalletManaging.swift; sourceTree = "<group>"; };
 		F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTokensManaging.swift; sourceTree = "<group>"; };
 		F44D7267214A2C6D00C651C6 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
+		F48CEC08214B8D8600A43A47 /* WalletKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletKeyStore.swift; sourceTree = "<group>"; };
+		F48CEC0B214B931F00A43A47 /* HyperlootWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootWallet.swift; sourceTree = "<group>"; };
+		F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+JSON.swift"; sourceTree = "<group>"; };
+		F48CEC102150C7D100A43A47 /* HyperlootUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootUser.swift; sourceTree = "<group>"; };
+		F48CEC122150CF2D00A43A47 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +142,8 @@
 		F44D725E214A282E00C651C6 /* Hyperloot */ = {
 			isa = PBXGroup;
 			children = (
+				F48CEC0A214B931600A43A47 /* Models */,
+				F48CEC0D214DD2A800A43A47 /* Extensions */,
 				F44D7266214A2C5800C651C6 /* Wallet */,
 				F44D7261214A298B00C651C6 /* Interfaces */,
 				F44D725F214A292300C651C6 /* Hyperloot.swift */,
@@ -152,8 +164,27 @@
 			isa = PBXGroup;
 			children = (
 				F44D7267214A2C6D00C651C6 /* WalletManager.swift */,
+				F48CEC08214B8D8600A43A47 /* WalletKeyStore.swift */,
+				F48CEC122150CF2D00A43A47 /* UserManager.swift */,
 			);
 			path = Wallet;
+			sourceTree = "<group>";
+		};
+		F48CEC0A214B931600A43A47 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC0B214B931F00A43A47 /* HyperlootWallet.swift */,
+				F48CEC102150C7D100A43A47 /* HyperlootUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F48CEC0D214DD2A800A43A47 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,11 +353,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48CEC0F214DD2B400A43A47 /* Dictionary+JSON.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
 				F44D72412146EC4000C651C6 /* ViewController.swift in Sources */,
 				F44D7263214A29A100C651C6 /* HyperlootWalletManaging.swift in Sources */,
 				F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */,
+				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
+				F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */,
 				F44D7260214A292300C651C6 /* Hyperloot.swift in Sources */,
+				F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */,
+				F48CEC132150CF2D00A43A47 /* UserManager.swift in Sources */,
 				F44D723F2146EC4000C651C6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
