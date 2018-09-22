@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E552204F9D6FB5D03B25A858 /* Pods_CommonPods_HyperlootWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D833A387F7F56AF9A708ED /* Pods_CommonPods_HyperlootWallet.framework */; };
 		F44D723F2146EC4000C651C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D723E2146EC4000C651C6 /* AppDelegate.swift */; };
-		F44D72412146EC4000C651C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D72402146EC4000C651C6 /* ViewController.swift */; };
+		F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D72402146EC4000C651C6 /* SplashViewController.swift */; };
 		F44D72442146EC4000C651C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44D72422146EC4000C651C6 /* Main.storyboard */; };
 		F44D72462146EC4200C651C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44D72452146EC4200C651C6 /* Assets.xcassets */; };
 		F44D72492146EC4200C651C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44D72472146EC4200C651C6 /* LaunchScreen.storyboard */; };
@@ -23,6 +23,12 @@
 		F48CEC0F214DD2B400A43A47 /* Dictionary+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */; };
 		F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC102150C7D100A43A47 /* HyperlootUser.swift */; };
 		F48CEC132150CF2D00A43A47 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC122150CF2D00A43A47 /* UserManager.swift */; };
+		F48CEC1A2150DD5D00A43A47 /* LoginFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F48CEC192150DD5D00A43A47 /* LoginFlow.storyboard */; };
+		F48CEC1D2150DDAB00A43A47 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC1C2150DDAB00A43A47 /* SignUpViewController.swift */; };
+		F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC1F2150DE6400A43A47 /* LoginFlowMainViewController.swift */; };
+		F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC222150DFBF00A43A47 /* ScreenRoutes.swift */; };
+		F48CEC262150E02B00A43A47 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC252150E02B00A43A47 /* Screens.swift */; };
+		F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +47,7 @@
 		EE7FA6B138B5466D6184111E /* Pods-CommonPods-HyperlootWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-HyperlootWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-HyperlootWallet/Pods-CommonPods-HyperlootWallet.release.xcconfig"; sourceTree = "<group>"; };
 		F44D723B2146EC4000C651C6 /* HyperlootWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperlootWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44D723E2146EC4000C651C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F44D72402146EC4000C651C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F44D72402146EC4000C651C6 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		F44D72432146EC4000C651C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F44D72452146EC4200C651C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F44D72482146EC4200C651C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +64,12 @@
 		F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+JSON.swift"; sourceTree = "<group>"; };
 		F48CEC102150C7D100A43A47 /* HyperlootUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootUser.swift; sourceTree = "<group>"; };
 		F48CEC122150CF2D00A43A47 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		F48CEC192150DD5D00A43A47 /* LoginFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginFlow.storyboard; sourceTree = "<group>"; };
+		F48CEC1C2150DDAB00A43A47 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F48CEC1F2150DE6400A43A47 /* LoginFlowMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowMainViewController.swift; sourceTree = "<group>"; };
+		F48CEC222150DFBF00A43A47 /* ScreenRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRoutes.swift; sourceTree = "<group>"; };
+		F48CEC252150E02B00A43A47 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
+		F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +131,9 @@
 		F44D723D2146EC4000C651C6 /* HyperlootWallet */ = {
 			isa = PBXGroup;
 			children = (
+				F48CEC282152C5F000A43A47 /* UI */,
 				F44D725E214A282E00C651C6 /* Hyperloot */,
 				F44D723E2146EC4000C651C6 /* AppDelegate.swift */,
-				F44D72402146EC4000C651C6 /* ViewController.swift */,
-				F44D72422146EC4000C651C6 /* Main.storyboard */,
 				F44D72452146EC4200C651C6 /* Assets.xcassets */,
 				F44D72472146EC4200C651C6 /* LaunchScreen.storyboard */,
 				F44D724A2146EC4200C651C6 /* Info.plist */,
@@ -185,6 +196,77 @@
 				F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F48CEC142150DD1100A43A47 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC212150DFB000A43A47 /* Common */,
+				F48CEC272152C47700A43A47 /* CreateWallet */,
+				F48CEC1E2150DE5300A43A47 /* LoginFlowMain */,
+				F48CEC1B2150DD8B00A43A47 /* SignUp */,
+				F48CEC172150DD2F00A43A47 /* Splash */,
+				F44D72422146EC4000C651C6 /* Main.storyboard */,
+				F48CEC192150DD5D00A43A47 /* LoginFlow.storyboard */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F48CEC172150DD2F00A43A47 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				F44D72402146EC4000C651C6 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		F48CEC1B2150DD8B00A43A47 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC1C2150DDAB00A43A47 /* SignUpViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		F48CEC1E2150DE5300A43A47 /* LoginFlowMain */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC1F2150DE6400A43A47 /* LoginFlowMainViewController.swift */,
+			);
+			path = LoginFlowMain;
+			sourceTree = "<group>";
+		};
+		F48CEC212150DFB000A43A47 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC222150DFBF00A43A47 /* ScreenRoutes.swift */,
+				F48CEC252150E02B00A43A47 /* Screens.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F48CEC272152C47700A43A47 /* CreateWallet */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CreateWallet;
+			sourceTree = "<group>";
+		};
+		F48CEC282152C5F000A43A47 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC292152C5F800A43A47 /* Components */,
+				F48CEC142150DD1100A43A47 /* Screens */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F48CEC292152C5F800A43A47 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48CEC1A2150DD5D00A43A47 /* LoginFlow.storyboard in Resources */,
 				F44D72492146EC4200C651C6 /* LaunchScreen.storyboard in Resources */,
 				F44D72462146EC4200C651C6 /* Assets.xcassets in Resources */,
 				F44D72442146EC4000C651C6 /* Main.storyboard in Resources */,
@@ -355,10 +438,15 @@
 			files = (
 				F48CEC0F214DD2B400A43A47 /* Dictionary+JSON.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
-				F44D72412146EC4000C651C6 /* ViewController.swift in Sources */,
+				F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */,
+				F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */,
 				F44D7263214A29A100C651C6 /* HyperlootWalletManaging.swift in Sources */,
 				F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */,
+				F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */,
+				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
 				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
+				F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */,
+				F48CEC1D2150DDAB00A43A47 /* SignUpViewController.swift in Sources */,
 				F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */,
 				F44D7260214A292300C651C6 /* Hyperloot.swift in Sources */,
 				F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */,
