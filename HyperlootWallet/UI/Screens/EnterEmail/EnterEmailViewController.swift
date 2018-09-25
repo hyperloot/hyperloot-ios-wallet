@@ -23,7 +23,7 @@ class EnterEmailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == ScreenRoutes.showEnterPasswordScreen {
+        if segue.isEqualTo(route: .showEnterPasswordScreen) {
             guard let viewController = segue.destination as? EnterPasswordViewController,
                 let user = viewModel.user else {
                 return
@@ -56,7 +56,7 @@ class EnterEmailViewController: UIViewController {
             }
             
             if userType != nil && error == nil {
-                strongSelf.performSegue(withIdentifier: ScreenRoutes.showEnterPasswordScreen, sender: strongSelf)
+                strongSelf.performSegue(route: .showEnterPasswordScreen)
             }
         }
         

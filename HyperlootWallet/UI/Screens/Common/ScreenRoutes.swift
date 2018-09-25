@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct ScreenRoutes {
-    static let startLoginFlow = "start_login_flow"
-    static let showEnterPasswordScreen = "show_enter_password_screen"
+enum ScreenRoute: String {
+    case startLoginFlow = "start_login_flow"
+    case showEnterPasswordScreen = "show_enter_password_screen"
+    case showEnterWalletKeysScreen = "show_enter_wallet_keys_screen"
+    case showImportOrCreateScreen = "show_import_or_create_screen"
 }

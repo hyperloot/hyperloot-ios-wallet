@@ -9,6 +9,6 @@
 import Foundation
 
 protocol HyperlootWalletManaging {
-    func createWallet()
+    func createWallet(email: String, password: String, completion: @escaping ([String]?, Error?) -> Void)
     func importWallet()
 }

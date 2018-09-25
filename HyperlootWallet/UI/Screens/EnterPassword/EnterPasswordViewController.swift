@@ -37,6 +37,14 @@ class EnterPasswordViewController: UIViewController {
         nextButton.isEnabled = presentation.isNextButtonEnabled
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.isEqualTo(route: .showEnterWalletKeysScreen) {
+            
+        } else if segue.isEqualTo(route: .showImportOrCreateScreen) {
+            
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func didChangePasswordField(_ textField: UITextField) {
@@ -50,7 +58,13 @@ class EnterPasswordViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed() {
-        
+        viewModel.proceedToTheNextStep { [weak self] (route) in
+            guard let route = route else {
+                return
+            }
+            
+            self?.performSegue(route: route)
+        }
     }
 }
 

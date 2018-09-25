@@ -357,7 +357,6 @@
                                 </state>
                                 <connections>
                                     <action selector="nextButtonPressed" destination="feC-He-QRK" eventType="touchUpInside" id="Of4-HX-uG0"/>
-                                    <segue destination="rWD-b6-Lrj" kind="show" id="CaR-gG-EqJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4p-uc-TS8">
@@ -442,6 +441,7 @@
                         <outlet property="errorView" destination="EkC-qZ-SAm" id="CYX-iL-kWS"/>
                         <outlet property="nextButton" destination="Fo2-WW-13W" id="61Y-8g-PI0"/>
                         <outlet property="passwordTextField" destination="70y-dd-gop" id="lB5-2e-jXp"/>
+                        <segue destination="rWD-b6-Lrj" kind="show" identifier="show_enter_wallet_keys_screen" id="b83-5I-vNC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcg-cF-6gO" userLabel="First Responder" sceneMemberID="firstResponder"/>

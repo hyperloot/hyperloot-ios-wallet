@@ -25,6 +25,7 @@
 		F48765EF215A027E003825FE /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765EE215A027E003825FE /* EnterPasswordViewController.swift */; };
 		F48765F1215A039E003825FE /* EnterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765F0215A039E003825FE /* EnterPasswordViewModel.swift */; };
 		F48765F4215A06EC003825FE /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765F3215A06EC003825FE /* StringHelper.swift */; };
+		F48765F7215A1980003825FE /* UIViewController+ScreenRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765F6215A1980003825FE /* UIViewController+ScreenRoutes.swift */; };
 		F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC08214B8D8600A43A47 /* WalletKeyStore.swift */; };
 		F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC0B214B931F00A43A47 /* HyperlootWallet.swift */; };
 		F48CEC0F214DD2B400A43A47 /* Dictionary+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */; };
@@ -72,6 +73,7 @@
 		F48765EE215A027E003825FE /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
 		F48765F0215A039E003825FE /* EnterPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewModel.swift; sourceTree = "<group>"; };
 		F48765F3215A06EC003825FE /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		F48765F6215A1980003825FE /* UIViewController+ScreenRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ScreenRoutes.swift"; sourceTree = "<group>"; };
 		F48CEC08214B8D8600A43A47 /* WalletKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletKeyStore.swift; sourceTree = "<group>"; };
 		F48CEC0B214B931F00A43A47 /* HyperlootWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootWallet.swift; sourceTree = "<group>"; };
 		F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+JSON.swift"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		F44D723D2146EC4000C651C6 /* HyperlootWallet */ = {
 			isa = PBXGroup;
 			children = (
+				F48765F5215A196A003825FE /* Extensions */,
 				F48765F2215A06E2003825FE /* Helpers */,
 				F48765E12158AE90003825FE /* Models */,
 				F48CEC282152C5F000A43A47 /* UI */,
@@ -227,6 +230,14 @@
 				F48765F3215A06EC003825FE /* StringHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F48765F5215A196A003825FE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F48765F6215A1980003825FE /* UIViewController+ScreenRoutes.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F48CEC0A214B931600A43A47 /* Models */ = {
@@ -473,6 +484,7 @@
 				F48765E32158AE9F003825FE /* UserRegistration.swift in Sources */,
 				F48CEC0F214DD2B400A43A47 /* Dictionary+JSON.swift in Sources */,
 				F48765F4215A06EC003825FE /* StringHelper.swift in Sources */,
+				F48765F7215A1980003825FE /* UIViewController+ScreenRoutes.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
 				F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */,
 				F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */,

@@ -10,6 +10,8 @@ import Foundation
 
 class EnterPasswordViewModel {
     
+    typealias NextStepCompletion = (ScreenRoute?) -> Void
+    
     struct Presentation {
         let isConfirmPasswordHidden: Bool
         let isErrorViewHidden: Bool
@@ -20,6 +22,8 @@ class EnterPasswordViewModel {
     
     private var password: String?
     private var confirmPassword: String?
+    
+    public private(set) var registeredUser: UserRegistration?
     
     public private(set) lazy var presentation: Presentation = self.buildPresentation()
     
@@ -33,11 +37,13 @@ class EnterPasswordViewModel {
             return Presentation(isConfirmPasswordHidden: userType == .existing,
                                 isErrorViewHidden: hideErrorView,
                                 isNextButtonEnabled: isNextButtonEnabled(userType: userType))
-        case .emailAndPassword(_, _, _), // All other cases are not supported
+        case .emailAndPassword(_, _),
              .createWallet(_, _, _),
              .importWalletWithPrivateKey(_, _, _),
              .importWalletWithPhrase(_, _, _),
              .importWalletWithKeystore(_, _, _):
+            
+            // All other cases are not supported
             return Presentation(isConfirmPasswordHidden: true, isErrorViewHidden: false, isNextButtonEnabled: false)
         }
     }
@@ -75,5 +81,51 @@ class EnterPasswordViewModel {
     public func updatePresentation() {
         let shouldHideErrorView = doPasswordMatch()
         presentation = self.buildPresentation(hideErrorView: shouldHideErrorView)
+    }
+    
+    public func proceedToTheNextStep(completion: @escaping NextStepCompletion) {
+        switch user {
+        case .email(let email, userType: let userType):
+            switch userType {
+            case .new:
+                createNewAccount(email: email, completion: completion)
+            case .existing:
+                proceedWithExistingUser(email: email, completion: completion)
+            }
+            
+        case .emailAndPassword(_, _),
+             .createWallet(_, _, _),
+             .importWalletWithPrivateKey(_, _, _),
+             .importWalletWithPhrase(_, _, _),
+             .importWalletWithKeystore(_, _, _):
+            
+            // All other cases are not supported
+            completion(nil)
+        }
+    }
+    
+    private func proceedWithExistingUser(email: String, completion: @escaping NextStepCompletion) {
+        guard let password = password else {
+            return
+        }
+        
+        registeredUser = .emailAndPassword(email: email, password: password)
+        completion(.showImportOrCreateScreen)
+    }
+    
+    private func createNewAccount(email: String, completion: @escaping NextStepCompletion) {
+        guard doPasswordMatch(), let password = password else {
+            return
+        }
+        
+        Hyperloot.shared.createWallet(email: email, password: password) { [weak self] (words, error) in
+            guard let words = words else {
+                completion(nil)
+                return
+            }
+            
+            self?.registeredUser = .createWallet(email: email, password: password, mnemonicPhrase: words)
+            completion(.showEnterWalletKeysScreen)
+        }
     }
 }
