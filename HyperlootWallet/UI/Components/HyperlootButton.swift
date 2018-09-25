@@ -2,7 +2,7 @@
 //  HyperlootButton.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 9/19/18.
+//  Created by Valery Vaskabovich on 9/19/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
@@ -21,6 +21,7 @@ class HyperlootButton: UIButton {
         layer.masksToBounds = true
         
         setTitleColor(UIColor.black, for: .normal)
+        setTitleColor(UIColor.lightGray, for: .disabled)
         titleLabel?.font = UIFont.systemFont(ofSize: 24.0)
     }
 }

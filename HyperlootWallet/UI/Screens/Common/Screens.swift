@@ -2,7 +2,7 @@
 //  Screens.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 9/18/18.
+//  Created by Valery Vaskabovich on 9/18/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

@@ -18,36 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJ4-fh-etk">
-                                <rect key="frame" x="10" y="590" width="355" height="57"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="Ari-NW-5OY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frK-g4-aIg" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
-                                <rect key="frame" x="10" y="513" width="355" height="57"/>
+                                <rect key="frame" x="10" y="590" width="355" height="57"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="wdD-fY-Udf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Register">
+                                <state key="normal" title="Dive in">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="DSy-em-3ew" kind="show" id="5Mk-oz-3M9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="Fo7-E3-Av6" firstAttribute="trailing" secondItem="frK-g4-aIg" secondAttribute="trailing" constant="10" id="8ew-ML-CXP"/>
-                            <constraint firstItem="eJ4-fh-etk" firstAttribute="leading" secondItem="Fo7-E3-Av6" secondAttribute="leading" constant="10" id="DcD-Kk-Qzg"/>
-                            <constraint firstItem="eJ4-fh-etk" firstAttribute="top" secondItem="frK-g4-aIg" secondAttribute="bottom" constant="20" id="GHc-Xz-xzt"/>
-                            <constraint firstItem="Fo7-E3-Av6" firstAttribute="trailing" secondItem="eJ4-fh-etk" secondAttribute="trailing" constant="10" id="liL-tE-PKz"/>
+                            <constraint firstItem="Fo7-E3-Av6" firstAttribute="bottom" secondItem="frK-g4-aIg" secondAttribute="bottom" constant="20" id="eBZ-di-Fh7"/>
                             <constraint firstItem="frK-g4-aIg" firstAttribute="leading" secondItem="Fo7-E3-Av6" secondAttribute="leading" constant="10" id="nol-Kp-Fmu"/>
-                            <constraint firstItem="Fo7-E3-Av6" firstAttribute="bottom" secondItem="eJ4-fh-etk" secondAttribute="bottom" constant="20" id="yVj-Vd-8KX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fo7-E3-Av6"/>
                     </view>
@@ -70,7 +60,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="DSy-em-3ew" kind="relationship" relationship="rootViewController" id="QNJ-Xz-paf"/>
+                        <segue destination="Y7S-EW-0P4" kind="relationship" relationship="rootViewController" id="qkI-mU-Lbx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xah-iw-wK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,17 +151,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sP6-KY-eIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="261.60000000000002" y="288.30584707646182"/>
+            <point key="canvasLocation" x="622" y="329"/>
         </scene>
-        <!--View Controller-->
+        <!--Enter Email View Controller-->
         <scene sceneID="Xoe-Ft-D9q">
             <objects>
-                <viewController id="DSy-em-3ew" sceneMemberID="viewController">
+                <viewController id="DSy-em-3ew" customClass="EnterEmailViewController" customModule="HyperlootWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q9W-X8-ctz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n6k-zt-twK" userLabel="ErrorView">
+                            <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n6k-zt-twK" userLabel="ErrorView" customClass="RegistrationErrorView" customModule="HyperlootWallet" customModuleProvider="target">
                                 <rect key="frame" x="10" y="291" width="355" height="95"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looks like email you've entered is not valid – please do it again" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8y-lV-lNi">
@@ -193,6 +183,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="textLabel" destination="y8y-lV-lNi" id="Ffv-RK-hWr"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="sxn-zx-Q8t" userLabel="TextInputContainer">
                                 <rect key="frame" x="10" y="230.5" width="355" height="81"/>
@@ -208,6 +201,11 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
+                                        <connections>
+                                            <action selector="textFieldDidChange:" destination="DSy-em-3ew" eventType="editingChanged" id="HrO-fq-D2o"/>
+                                            <action selector="textFieldDidChange:" destination="DSy-em-3ew" eventType="valueChanged" id="WpI-dN-MCM"/>
+                                            <outlet property="delegate" destination="DSy-em-3ew" id="Czq-fV-W02"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -266,10 +264,15 @@
                         <viewLayoutGuide key="safeArea" id="Ecy-xy-lAN"/>
                     </view>
                     <navigationItem key="navigationItem" id="qXj-jh-gtZ"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="fi5-Yz-1vI" id="rf6-zE-5ue"/>
+                        <outlet property="errorView" destination="n6k-zt-twK" id="xWT-ca-SSk"/>
+                        <outlet property="nextButton" destination="puo-QR-9uc" id="Nmt-2q-Fha"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2o-Dg-XWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1343.2" y="289.20539730134936"/>
+            <point key="canvasLocation" x="210" y="-437"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6Eq-4O-FCB">
@@ -279,7 +282,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EkC-qZ-SAm" userLabel="ErrorView">
+                            <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EkC-qZ-SAm" userLabel="ErrorView" customClass="RegistrationErrorView" customModule="HyperlootWallet" customModuleProvider="target">
                                 <rect key="frame" x="10" y="418" width="355" height="67.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passwords don't match" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pw-O8-Wle">
@@ -301,6 +304,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="textLabel" destination="7pw-O8-Wle" id="22a-vc-NjE"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="KUq-it-6yM" userLabel="TextInputContainer">
                                 <rect key="frame" x="10" y="357" width="355" height="81"/>
@@ -422,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcg-cF-6gO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-591" y="289"/>
+            <point key="canvasLocation" x="1078" y="-437"/>
         </scene>
     </scenes>
 </document>
