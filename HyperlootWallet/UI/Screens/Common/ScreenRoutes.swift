@@ -10,4 +10,5 @@ import Foundation
 
 struct ScreenRoutes {
     static let startLoginFlow = "start_login_flow"
+    static let showEnterPasswordScreen = "show_enter_password_screen"
 }

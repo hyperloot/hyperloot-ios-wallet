@@ -19,40 +19,57 @@ class EnterEmailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        resetErrorView(animated: false)
-        updateNextButtonState()
+        updateUIState()
     }
     
-    func updateNextButtonState() {
-        let isValid = viewModel.isValid(email: emailTextField.text)
-        nextButton.isEnabled = isValid
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == ScreenRoutes.showEnterPasswordScreen {
+            guard let viewController = segue.destination as? EnterPasswordViewController,
+                let user = viewModel.user else {
+                return
+            }
+            
+            viewController.input = EnterPasswordViewController.Input(user: user)
+        }
     }
     
-    func resetErrorView(animated: Bool) {
-        errorView.setVisible(false, animated: animated)
+    // MARK: - Updating UI state
+    
+    func updateUIState() {
+        let presentation = viewModel.presentation
+        nextButton.isEnabled = presentation.nextButtonEnabled
+        errorView.setVisible(presentation.errorViewVisible, animated: true)
     }
     
-    func updateErrorViewState(animated: Bool) {
-        let isValid = viewModel.isValid(email: emailTextField.text)
-        errorView.setVisible(!isValid, animated: animated)
-    }
+    
+    // MARK: - Actions
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
-        updateNextButtonState()
-        resetErrorView(animated: true)
+        viewModel.textDidChange(textField.text)
+        updateUIState()
     }
     
     @IBAction func nextButtonPressed() {
-    
+        viewModel.verify(email: emailTextField.text) { [weak self] (userType, error) in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            if userType != nil && error == nil {
+                strongSelf.performSegue(withIdentifier: ScreenRoutes.showEnterPasswordScreen, sender: strongSelf)
+            }
+        }
+        
     }
 }
 
 extension EnterEmailViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        updateNextButtonState()
-        updateErrorViewState(animated: true)
         textField.resignFirstResponder()
+        
+        viewModel.textFieldDidReturn(textField.text)
+        updateUIState()
         
         return true
     }

@@ -200,7 +200,7 @@
                                         <rect key="frame" x="10" y="42" width="335" height="29"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                                         <connections>
                                             <action selector="textFieldDidChange:" destination="DSy-em-3ew" eventType="editingChanged" id="HrO-fq-D2o"/>
                                             <action selector="textFieldDidChange:" destination="DSy-em-3ew" eventType="valueChanged" id="WpI-dN-MCM"/>
@@ -234,7 +234,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="feC-He-QRK" kind="show" id="uCj-TC-ZaL"/>
+                                    <action selector="nextButtonPressed" destination="DSy-em-3ew" eventType="touchUpInside" id="gz1-Ui-fz5"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's start with your email" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aL-wc-A1f">
@@ -268,16 +268,17 @@
                         <outlet property="emailTextField" destination="fi5-Yz-1vI" id="rf6-zE-5ue"/>
                         <outlet property="errorView" destination="n6k-zt-twK" id="xWT-ca-SSk"/>
                         <outlet property="nextButton" destination="puo-QR-9uc" id="Nmt-2q-Fha"/>
+                        <segue destination="feC-He-QRK" kind="show" identifier="show_enter_password_screen" id="siX-wG-UGy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2o-Dg-XWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="210" y="-437"/>
         </scene>
-        <!--View Controller-->
+        <!--Enter Password View Controller-->
         <scene sceneID="6Eq-4O-FCB">
             <objects>
-                <viewController id="feC-He-QRK" sceneMemberID="viewController">
+                <viewController id="feC-He-QRK" customClass="EnterPasswordViewController" customModule="HyperlootWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rRY-SR-ULm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -322,6 +323,11 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <connections>
+                                            <action selector="didChangeConfirmPasswordField:" destination="feC-He-QRK" eventType="valueChanged" id="Ahp-d1-3Mz"/>
+                                            <action selector="didChangeConfirmPasswordField:" destination="feC-He-QRK" eventType="editingChanged" id="pKT-Jp-VZF"/>
+                                            <outlet property="delegate" destination="feC-He-QRK" id="aq4-wt-PQo"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -350,6 +356,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="nextButtonPressed" destination="feC-He-QRK" eventType="touchUpInside" id="Of4-HX-uG0"/>
                                     <segue destination="rWD-b6-Lrj" kind="show" id="CaR-gG-EqJ"/>
                                 </connections>
                             </button>
@@ -380,6 +387,11 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <connections>
+                                            <action selector="didChangePasswordField:" destination="feC-He-QRK" eventType="valueChanged" id="HEI-9J-ftn"/>
+                                            <action selector="didChangePasswordField:" destination="feC-He-QRK" eventType="editingChanged" id="WZu-su-OYs"/>
+                                            <outlet property="delegate" destination="feC-He-QRK" id="Xc6-hQ-eZd"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -425,6 +437,12 @@
                         <viewLayoutGuide key="safeArea" id="dSd-oP-NmS"/>
                     </view>
                     <navigationItem key="navigationItem" id="WFd-Fb-ab8"/>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="9ed-UJ-vnH" id="Qlh-hN-BUC"/>
+                        <outlet property="errorView" destination="EkC-qZ-SAm" id="CYX-iL-kWS"/>
+                        <outlet property="nextButton" destination="Fo2-WW-13W" id="61Y-8g-PI0"/>
+                        <outlet property="passwordTextField" destination="70y-dd-gop" id="lB5-2e-jXp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcg-cF-6gO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

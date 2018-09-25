@@ -10,15 +10,33 @@ import Foundation
 
 class EnterEmailViewModel {
     
-    public func isValid(email: String?) -> Bool {
+    struct Presentation {
+        let nextButtonEnabled: Bool
+        let errorViewVisible: Bool
+    }
+    
+    public private(set) var user: UserRegistration? = nil
+    
+    public private(set) var presentation: Presentation = Presentation(nextButtonEnabled: false, errorViewVisible: false)
+    
+    public func verify(email: String?, completion: @escaping (UserRegistration.UserType?, Error?) -> Void) {
         guard let email = email else {
-            return false
+            completion(nil, NSError(domain: "com.hyperloot.wallet", code: -1, userInfo: nil))
+            return
         }
         
-        // Reference : http://www.regular-expressions.info/email.html
-        let emailRegex = "[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:(?=[a-zA-Z0-9-]{1,63}\\.)[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+(?=[a-zA-Z0-9-]{1,4}\\z)[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?"
-        
-        let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return predicate.evaluate(with: email)
+        // TODO: make an API call to Hyperloot backend
+        let userType: UserRegistration.UserType = .new
+        user = .email(email, userType: userType)
+        completion(userType, nil)
+    }
+    
+    public func textDidChange(_ text: String?) {
+        self.presentation = Presentation(nextButtonEnabled: EmailValidator.isValid(email: text), errorViewVisible: false)
+    }
+    
+    public func textFieldDidReturn(_ text: String?) {
+        let emailIsValid = EmailValidator.isValid(email: text)
+        self.presentation = Presentation(nextButtonEnabled: emailIsValid, errorViewVisible: !emailIsValid)
     }
 }
