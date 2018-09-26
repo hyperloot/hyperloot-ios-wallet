@@ -11,7 +11,7 @@ import UIKit
 class EnterPasswordViewController: UIViewController {
     
     struct Input {
-        let user: UserRegistration
+        let user: UserRegistrationFlow
     }
     
     var input: Input!
@@ -39,7 +39,12 @@ class EnterPasswordViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.isEqualTo(route: .showEnterWalletKeysScreen) {
+            guard let viewController = segue.destination as? EnterWalletKeysViewController,
+                let user = viewModel.registeredUser else {
+                    return
+            }
             
+            viewController.input = EnterWalletKeysViewController.Input(user: user)
         } else if segue.isEqualTo(route: .showImportOrCreateScreen) {
             
         }

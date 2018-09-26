@@ -15,18 +15,18 @@ class EnterEmailViewModel {
         let errorViewVisible: Bool
     }
     
-    public private(set) var user: UserRegistration? = nil
+    public private(set) var user: UserRegistrationFlow? = nil
     
     public private(set) var presentation: Presentation = Presentation(nextButtonEnabled: false, errorViewVisible: false)
     
-    public func verify(email: String?, completion: @escaping (UserRegistration.UserType?, Error?) -> Void) {
+    public func verify(email: String?, completion: @escaping (UserRegistrationFlow.UserType?, Error?) -> Void) {
         guard let email = email else {
             completion(nil, NSError(domain: "com.hyperloot.wallet", code: -1, userInfo: nil))
             return
         }
         
         // TODO: make an API call to Hyperloot backend
-        let userType: UserRegistration.UserType = .new
+        let userType: UserRegistrationFlow.UserType = .new
         user = .email(email, userType: userType)
         completion(userType, nil)
     }

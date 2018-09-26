@@ -8,15 +8,21 @@
 
 import Foundation
 
-enum UserRegistration {
+enum UserRegistrationFlow {
+    
     enum UserType {
         case new
         case existing
     }
+    
+    enum ImportType {
+        case mnemonicPhrase
+        case privateKey
+        case keystoreJSON
+    }
+    
     case email(String, userType: UserType)
     case emailAndPassword(email: String, password: String)
     case createWallet(email: String, password: String, mnemonicPhrase: [String])
-    case importWalletWithPrivateKey(email: String, password: String, privateKey: String)
-    case importWalletWithPhrase(email: String, password: String, phrase: String)
-    case importWalletWithKeystore(email: String, password: String, keystoreJSON: String)
+    case importWallet(email: String, password: String, importType: ImportType)
 }

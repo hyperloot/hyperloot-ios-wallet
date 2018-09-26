@@ -2,7 +2,7 @@
 //  UIViewController+ScreenRoutes.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 9/25/18.
+//  Created by Valery Vaskabovich on 9/25/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

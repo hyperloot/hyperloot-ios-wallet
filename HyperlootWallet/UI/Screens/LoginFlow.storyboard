@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="-1342" y="-436"/>
         </scene>
-        <!--View Controller-->
+        <!--Enter Wallet Keys View Controller-->
         <scene sceneID="RQT-jA-eW0">
             <objects>
-                <viewController id="rWD-b6-Lrj" sceneMemberID="viewController">
+                <viewController id="rWD-b6-Lrj" customClass="EnterWalletKeysViewController" customModule="HyperlootWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZOt-0I-WdN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,6 +148,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3iF-6a-jKq"/>
                     </view>
+                    <connections>
+                        <outlet property="actionButton" destination="c73-2t-i4t" id="Ady-Xh-frV"/>
+                        <outlet property="hintTextLabel" destination="Y2h-kI-odH" id="hmf-0C-8Ow"/>
+                        <outlet property="titleLabel" destination="z9n-IZ-Gtb" id="yPC-28-Ewg"/>
+                        <outlet property="walletKeyTypeLabel" destination="fdw-b6-Bbr" id="72D-xj-qjt"/>
+                        <outlet property="walletKeyValueTextView" destination="Zxe-lq-Qml" id="Pjn-sC-33q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sP6-KY-eIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

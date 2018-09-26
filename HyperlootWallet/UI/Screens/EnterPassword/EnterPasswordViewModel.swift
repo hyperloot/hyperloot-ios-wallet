@@ -18,16 +18,16 @@ class EnterPasswordViewModel {
         let isNextButtonEnabled: Bool
     }
     
-    private var user: UserRegistration
+    private var user: UserRegistrationFlow
     
     private var password: String?
     private var confirmPassword: String?
     
-    public private(set) var registeredUser: UserRegistration?
+    public private(set) var registeredUser: UserRegistrationFlow?
     
     public private(set) lazy var presentation: Presentation = self.buildPresentation()
     
-    init(user: UserRegistration) {
+    init(user: UserRegistrationFlow) {
         self.user = user
     }
     
@@ -39,26 +39,24 @@ class EnterPasswordViewModel {
                                 isNextButtonEnabled: isNextButtonEnabled(userType: userType))
         case .emailAndPassword(_, _),
              .createWallet(_, _, _),
-             .importWalletWithPrivateKey(_, _, _),
-             .importWalletWithPhrase(_, _, _),
-             .importWalletWithKeystore(_, _, _):
+             .importWallet(email: _, password: _, importType: _):
             
             // All other cases are not supported
             return Presentation(isConfirmPasswordHidden: true, isErrorViewHidden: false, isNextButtonEnabled: false)
         }
     }
     
-    private func isNextButtonEnabled(userType: UserRegistration.UserType) -> Bool {
+    private func isNextButtonEnabled(userType: UserRegistrationFlow.UserType) -> Bool {
         switch userType {
         case .new:
-            return doPasswordMatch()
+            return doPasswordsMatch()
         case .existing:
             let isPasswordEmpty = password?.isEmpty ?? true
             return isPasswordEmpty == false
         }
     }
     
-    private func doPasswordMatch() -> Bool {
+    private func doPasswordsMatch() -> Bool {
         guard let password = password, let confirmPassword = confirmPassword else {
             return false
         }
@@ -79,7 +77,7 @@ class EnterPasswordViewModel {
     }
     
     public func updatePresentation() {
-        let shouldHideErrorView = doPasswordMatch()
+        let shouldHideErrorView = doPasswordsMatch()
         presentation = self.buildPresentation(hideErrorView: shouldHideErrorView)
     }
     
@@ -95,9 +93,7 @@ class EnterPasswordViewModel {
             
         case .emailAndPassword(_, _),
              .createWallet(_, _, _),
-             .importWalletWithPrivateKey(_, _, _),
-             .importWalletWithPhrase(_, _, _),
-             .importWalletWithKeystore(_, _, _):
+             .importWallet(email: _, password: _, importType: _):
             
             // All other cases are not supported
             completion(nil)
@@ -114,11 +110,11 @@ class EnterPasswordViewModel {
     }
     
     private func createNewAccount(email: String, completion: @escaping NextStepCompletion) {
-        guard doPasswordMatch(), let password = password else {
+        guard doPasswordsMatch(), let password = password else {
             return
         }
         
-        Hyperloot.shared.createWallet(email: email, password: password) { [weak self] (words, error) in
+        Hyperloot.shared.createWallet(email: email, password: password) { [weak self] (_, words, error) in
             guard let words = words else {
                 completion(nil)
                 return
