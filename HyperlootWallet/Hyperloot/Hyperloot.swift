@@ -12,7 +12,8 @@ class Hyperloot {
     
     fileprivate lazy var walletManager = WalletManager()
     fileprivate lazy var userManager = UserManager()
-
+    
+    public static let shared = Hyperloot()
 }
 
 extension Hyperloot: HyperlootTokensManaging {
@@ -28,9 +29,17 @@ extension Hyperloot: HyperlootTokensManaging {
 
 extension Hyperloot: HyperlootWalletManaging {
     
-    func createWallet() {
-        
+    func createWallet(email: String, password: String, completion: @escaping (_ address: String?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void) {
+        walletManager.createWallet(email: email, password: password) { [weak self] (info, error) in
+            
+            if let info = info {
+                self?.userManager.createUser(withEmail: email, walletAddress: info.address)
+            }
+            
+            completion(info?.address.eip55String, info?.mnemonicPhraseWords, error)
+        }
     }
+    
     
     func importWallet() {
         

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E552204F9D6FB5D03B25A858 /* Pods_CommonPods_HyperlootWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D833A387F7F56AF9A708ED /* Pods_CommonPods_HyperlootWallet.framework */; };
 		F44D723F2146EC4000C651C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D723E2146EC4000C651C6 /* AppDelegate.swift */; };
-		F44D72412146EC4000C651C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D72402146EC4000C651C6 /* ViewController.swift */; };
+		F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D72402146EC4000C651C6 /* SplashViewController.swift */; };
 		F44D72442146EC4000C651C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44D72422146EC4000C651C6 /* Main.storyboard */; };
 		F44D72462146EC4200C651C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44D72452146EC4200C651C6 /* Assets.xcassets */; };
 		F44D72492146EC4200C651C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44D72472146EC4200C651C6 /* LaunchScreen.storyboard */; };
@@ -18,11 +18,26 @@
 		F44D7263214A29A100C651C6 /* HyperlootWalletManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7262214A29A100C651C6 /* HyperlootWalletManaging.swift */; };
 		F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */; };
 		F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7267214A2C6D00C651C6 /* WalletManager.swift */; };
+		F48765E32158AE9F003825FE /* UserRegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */; };
+		F48765E62158B4F3003825FE /* EnterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E52158B4F3003825FE /* EnterEmailViewController.swift */; };
+		F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E7215951FF003825FE /* EnterEmailViewModel.swift */; };
+		F48765EA215952B3003825FE /* RegistrationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E9215952B3003825FE /* RegistrationErrorView.swift */; };
+		F48765EF215A027E003825FE /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765EE215A027E003825FE /* EnterPasswordViewController.swift */; };
+		F48765F1215A039E003825FE /* EnterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765F0215A039E003825FE /* EnterPasswordViewModel.swift */; };
+		F48765F4215A06EC003825FE /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765F3215A06EC003825FE /* StringHelper.swift */; };
+		F48765F7215A1980003825FE /* UIViewController+ScreenRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765F6215A1980003825FE /* UIViewController+ScreenRoutes.swift */; };
+		F48765FA215A1CB0003825FE /* EnterWalletKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765F9215A1CB0003825FE /* EnterWalletKeysViewController.swift */; };
+		F48765FC215A1CBA003825FE /* EnterWalletKeysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765FB215A1CBA003825FE /* EnterWalletKeysViewModel.swift */; };
 		F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC08214B8D8600A43A47 /* WalletKeyStore.swift */; };
 		F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC0B214B931F00A43A47 /* HyperlootWallet.swift */; };
 		F48CEC0F214DD2B400A43A47 /* Dictionary+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */; };
 		F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC102150C7D100A43A47 /* HyperlootUser.swift */; };
 		F48CEC132150CF2D00A43A47 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC122150CF2D00A43A47 /* UserManager.swift */; };
+		F48CEC1A2150DD5D00A43A47 /* LoginFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F48CEC192150DD5D00A43A47 /* LoginFlow.storyboard */; };
+		F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC1F2150DE6400A43A47 /* LoginFlowMainViewController.swift */; };
+		F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC222150DFBF00A43A47 /* ScreenRoutes.swift */; };
+		F48CEC262150E02B00A43A47 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC252150E02B00A43A47 /* Screens.swift */; };
+		F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +56,7 @@
 		EE7FA6B138B5466D6184111E /* Pods-CommonPods-HyperlootWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-HyperlootWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-HyperlootWallet/Pods-CommonPods-HyperlootWallet.release.xcconfig"; sourceTree = "<group>"; };
 		F44D723B2146EC4000C651C6 /* HyperlootWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperlootWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44D723E2146EC4000C651C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F44D72402146EC4000C651C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F44D72402146EC4000C651C6 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		F44D72432146EC4000C651C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F44D72452146EC4200C651C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F44D72482146EC4200C651C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,11 +68,26 @@
 		F44D7262214A29A100C651C6 /* HyperlootWalletManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootWalletManaging.swift; sourceTree = "<group>"; };
 		F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTokensManaging.swift; sourceTree = "<group>"; };
 		F44D7267214A2C6D00C651C6 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
+		F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationFlow.swift; sourceTree = "<group>"; };
+		F48765E52158B4F3003825FE /* EnterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewController.swift; sourceTree = "<group>"; };
+		F48765E7215951FF003825FE /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
+		F48765E9215952B3003825FE /* RegistrationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationErrorView.swift; sourceTree = "<group>"; };
+		F48765EE215A027E003825FE /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
+		F48765F0215A039E003825FE /* EnterPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewModel.swift; sourceTree = "<group>"; };
+		F48765F3215A06EC003825FE /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		F48765F6215A1980003825FE /* UIViewController+ScreenRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ScreenRoutes.swift"; sourceTree = "<group>"; };
+		F48765F9215A1CB0003825FE /* EnterWalletKeysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWalletKeysViewController.swift; sourceTree = "<group>"; };
+		F48765FB215A1CBA003825FE /* EnterWalletKeysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWalletKeysViewModel.swift; sourceTree = "<group>"; };
 		F48CEC08214B8D8600A43A47 /* WalletKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletKeyStore.swift; sourceTree = "<group>"; };
 		F48CEC0B214B931F00A43A47 /* HyperlootWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootWallet.swift; sourceTree = "<group>"; };
 		F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+JSON.swift"; sourceTree = "<group>"; };
 		F48CEC102150C7D100A43A47 /* HyperlootUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootUser.swift; sourceTree = "<group>"; };
 		F48CEC122150CF2D00A43A47 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		F48CEC192150DD5D00A43A47 /* LoginFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginFlow.storyboard; sourceTree = "<group>"; };
+		F48CEC1F2150DE6400A43A47 /* LoginFlowMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowMainViewController.swift; sourceTree = "<group>"; };
+		F48CEC222150DFBF00A43A47 /* ScreenRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRoutes.swift; sourceTree = "<group>"; };
+		F48CEC252150E02B00A43A47 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
+		F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +149,12 @@
 		F44D723D2146EC4000C651C6 /* HyperlootWallet */ = {
 			isa = PBXGroup;
 			children = (
+				F48765F5215A196A003825FE /* Extensions */,
+				F48765F2215A06E2003825FE /* Helpers */,
+				F48765E12158AE90003825FE /* Models */,
+				F48CEC282152C5F000A43A47 /* UI */,
 				F44D725E214A282E00C651C6 /* Hyperloot */,
 				F44D723E2146EC4000C651C6 /* AppDelegate.swift */,
-				F44D72402146EC4000C651C6 /* ViewController.swift */,
-				F44D72422146EC4000C651C6 /* Main.storyboard */,
 				F44D72452146EC4200C651C6 /* Assets.xcassets */,
 				F44D72472146EC4200C651C6 /* LaunchScreen.storyboard */,
 				F44D724A2146EC4200C651C6 /* Info.plist */,
@@ -170,6 +202,57 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
+		F48765E12158AE90003825FE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F48765E42158B4E2003825FE /* EnterEmail */ = {
+			isa = PBXGroup;
+			children = (
+				F48765E52158B4F3003825FE /* EnterEmailViewController.swift */,
+				F48765E7215951FF003825FE /* EnterEmailViewModel.swift */,
+			);
+			path = EnterEmail;
+			sourceTree = "<group>";
+		};
+		F48765ED215A026F003825FE /* EnterPassword */ = {
+			isa = PBXGroup;
+			children = (
+				F48765EE215A027E003825FE /* EnterPasswordViewController.swift */,
+				F48765F0215A039E003825FE /* EnterPasswordViewModel.swift */,
+			);
+			path = EnterPassword;
+			sourceTree = "<group>";
+		};
+		F48765F2215A06E2003825FE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F48765F3215A06EC003825FE /* StringHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F48765F5215A196A003825FE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F48765F6215A1980003825FE /* UIViewController+ScreenRoutes.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F48765F8215A1C9D003825FE /* EnterWalletKeys */ = {
+			isa = PBXGroup;
+			children = (
+				F48765F9215A1CB0003825FE /* EnterWalletKeysViewController.swift */,
+				F48765FB215A1CBA003825FE /* EnterWalletKeysViewModel.swift */,
+			);
+			path = EnterWalletKeys;
+			sourceTree = "<group>";
+		};
 		F48CEC0A214B931600A43A47 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +268,64 @@
 				F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F48CEC142150DD1100A43A47 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F48765F8215A1C9D003825FE /* EnterWalletKeys */,
+				F48765ED215A026F003825FE /* EnterPassword */,
+				F48765E42158B4E2003825FE /* EnterEmail */,
+				F48CEC212150DFB000A43A47 /* Common */,
+				F48CEC1E2150DE5300A43A47 /* LoginFlowMain */,
+				F48CEC172150DD2F00A43A47 /* Splash */,
+				F44D72422146EC4000C651C6 /* Main.storyboard */,
+				F48CEC192150DD5D00A43A47 /* LoginFlow.storyboard */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F48CEC172150DD2F00A43A47 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				F44D72402146EC4000C651C6 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		F48CEC1E2150DE5300A43A47 /* LoginFlowMain */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC1F2150DE6400A43A47 /* LoginFlowMainViewController.swift */,
+			);
+			path = LoginFlowMain;
+			sourceTree = "<group>";
+		};
+		F48CEC212150DFB000A43A47 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC222150DFBF00A43A47 /* ScreenRoutes.swift */,
+				F48CEC252150E02B00A43A47 /* Screens.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F48CEC282152C5F000A43A47 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC292152C5F800A43A47 /* Components */,
+				F48CEC142150DD1100A43A47 /* Screens */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F48CEC292152C5F800A43A47 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */,
+				F48765E9215952B3003825FE /* RegistrationErrorView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +411,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48CEC1A2150DD5D00A43A47 /* LoginFlow.storyboard in Resources */,
 				F44D72492146EC4200C651C6 /* LaunchScreen.storyboard in Resources */,
 				F44D72462146EC4200C651C6 /* Assets.xcassets in Resources */,
 				F44D72442146EC4000C651C6 /* Main.storyboard in Resources */,
@@ -353,15 +495,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48765E32158AE9F003825FE /* UserRegistrationFlow.swift in Sources */,
 				F48CEC0F214DD2B400A43A47 /* Dictionary+JSON.swift in Sources */,
+				F48765F4215A06EC003825FE /* StringHelper.swift in Sources */,
+				F48765F7215A1980003825FE /* UIViewController+ScreenRoutes.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
-				F44D72412146EC4000C651C6 /* ViewController.swift in Sources */,
+				F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */,
+				F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */,
+				F48765EA215952B3003825FE /* RegistrationErrorView.swift in Sources */,
 				F44D7263214A29A100C651C6 /* HyperlootWalletManaging.swift in Sources */,
 				F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */,
+				F48765EF215A027E003825FE /* EnterPasswordViewController.swift in Sources */,
+				F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */,
+				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
 				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
+				F48765F1215A039E003825FE /* EnterPasswordViewModel.swift in Sources */,
+				F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */,
+				F48765FA215A1CB0003825FE /* EnterWalletKeysViewController.swift in Sources */,
+				F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */,
 				F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */,
 				F44D7260214A292300C651C6 /* Hyperloot.swift in Sources */,
 				F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */,
+				F48765FC215A1CBA003825FE /* EnterWalletKeysViewModel.swift in Sources */,
+				F48765E62158B4F3003825FE /* EnterEmailViewController.swift in Sources */,
 				F48CEC132150CF2D00A43A47 /* UserManager.swift in Sources */,
 				F44D723F2146EC4000C651C6 /* AppDelegate.swift in Sources */,
 			);
