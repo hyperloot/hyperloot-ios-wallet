@@ -9,6 +9,8 @@
 import UIKit
 
 class SplashViewController: UIViewController {
+    
+    lazy var viewModel = SplashViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +19,13 @@ class SplashViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        if viewModel.hasWallets() {
+            performSegue(route: .showWallet)
+        } else {
+            performSegue(route: .startLoginFlow)
+        }
         
-        let viewController = UIStoryboard.init(name: Storyboards.loginFlow, bundle: nil).instantiateInitialViewController()
-        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
 }
 
