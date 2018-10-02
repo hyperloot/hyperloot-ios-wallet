@@ -13,6 +13,10 @@ import TrustKeystore
 class WalletManager {
     
     fileprivate lazy var walletKeyStore = WalletKeyStore()
+    
+    func wallet(byAddress address: Address) -> HyperlootWallet? {
+        return walletKeyStore.wallet(byAddress: address)
+    }
         
     func createWallet(email: String, password: String, completion: @escaping ((address: Address, mnemonicPhraseWords: [String])?, Error?) -> Void) {
         

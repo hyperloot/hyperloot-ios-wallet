@@ -7,16 +7,18 @@ abstract_target 'CommonPods' do
   target 'HyperlootWallet' do
     use_frameworks!
 
-    pod 'BigInt', '~> 3.0'
+    pod 'BigInt', '3.1.0'
     pod 'JSONRPCKit', :git=> 'https://github.com/bricklife/JSONRPCKit.git'
     pod 'KeychainSwift'
     pod 'SwiftLint'
-    pod 'CryptoSwift', '~> 0.10.0'
-    pod 'TrustCore', '~> 0.0.7'
+    pod 'CryptoSwift', '0.10.0'
+    pod 'TrustCore', '0.0.7'
     pod 'TrustKeystore', :git=>'https://github.com/TrustWallet/trust-keystore', :commit=>'b338faf76d62efa570bd03088ebceac4e10314da'
     pod 'SAMKeychain'
-    pod 'Alamofire', '~> 4.7'
+    pod 'Alamofire', '4.7.3'
     pod 'AlamofireObjectMapper', '5.1'
+    pod 'AlamofireImage', '3.4'
+    pod 'MBProgressHUD', '1.1.0'
 
   end
 

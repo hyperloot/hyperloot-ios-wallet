@@ -40,4 +40,8 @@ class EnterWalletKeysViewController: UIViewController {
         actionButton.isEnabled = presentation.actionButton.enabled
         actionButton.setTitle(presentation.actionButton.title, for: .normal)
     }
+    
+    @IBAction func actionButtonPressed() {
+        performSegue(route: .showWalletAfterLoginFlow)
+    }
 }

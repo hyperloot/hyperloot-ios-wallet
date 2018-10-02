@@ -21,7 +21,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="xP7-jo-zl8" kind="custom" identifier="start_login_flow" animates="NO" id="rLN-f6-tHX"/>
+                        <segue destination="xP7-jo-zl8" kind="custom" identifier="start_login_flow" customClass="ReplaceRootSegue" customModule="HyperlootWallet" customModuleProvider="target" animates="NO" id="rLN-f6-tHX"/>
+                        <segue destination="BQH-PD-uHL" kind="custom" identifier="show_wallet" customClass="ReplaceRootSegue" customModule="HyperlootWallet" customModuleProvider="target" id="4Cu-ny-ija"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -34,6 +35,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5j-GN-cO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="688" y="-75"/>
+        </scene>
+        <!--Wallet-->
+        <scene sceneID="jyZ-92-YQV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wallet" id="BQH-PD-uHL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RhA-KV-rSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="688" y="117"/>
         </scene>
     </scenes>
 </document>

@@ -29,6 +29,14 @@ extension Hyperloot: HyperlootTokensManaging {
 
 extension Hyperloot: HyperlootWalletManaging {
     
+    func currentWallet() -> HyperlootWallet? {
+        guard let user = userManager.user else {
+            return nil
+        }
+        
+        return walletManager.wallet(byAddress: user.walletAddress)
+    }
+    
     func createWallet(email: String, password: String, completion: @escaping (_ address: String?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void) {
         walletManager.createWallet(email: email, password: password) { [weak self] (info, error) in
             

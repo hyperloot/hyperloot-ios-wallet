@@ -117,6 +117,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="actionButtonPressed" destination="rWD-b6-Lrj" eventType="touchUpInside" id="5kG-as-UDz"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9n-IZ-Gtb">
                                 <rect key="frame" x="42.5" y="104" width="290.5" height="39"/>
@@ -154,11 +157,20 @@
                         <outlet property="titleLabel" destination="z9n-IZ-Gtb" id="yPC-28-Ewg"/>
                         <outlet property="walletKeyTypeLabel" destination="fdw-b6-Bbr" id="72D-xj-qjt"/>
                         <outlet property="walletKeyValueTextView" destination="Zxe-lq-Qml" id="Pjn-sC-33q"/>
+                        <segue destination="vP7-Ee-rmw" kind="custom" identifier="show_wallet_after_login" customClass="ReplaceRootSegue" customModule="HyperlootWallet" customModuleProvider="target" id="iNM-Sy-6Gl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sP6-KY-eIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="622" y="329"/>
+        </scene>
+        <!--Wallet-->
+        <scene sceneID="cBb-9v-ggh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wallet" id="vP7-Ee-rmw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ofH-gf-woA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="621" y="789"/>
         </scene>
         <!--Enter Email View Controller-->
         <scene sceneID="Xoe-Ft-D9q">
@@ -374,7 +386,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHG-zV-P5U">
                                 <rect key="frame" x="20" y="164.5" width="335" height="81.5"/>
-                                <string key="text">We don't store passwords, private keys and other private information on our servers. Please don't forget the password - there's no way to restore it.</string>
+                                <string key="text">We do not store any passwords or related data. Make sure to keep a back-up and remember your password. We won't be able to restore it.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
