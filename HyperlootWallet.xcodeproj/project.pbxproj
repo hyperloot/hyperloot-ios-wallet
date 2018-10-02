@@ -21,6 +21,10 @@
 		F466FCDD215DFCDC00092CC4 /* ReplaceRootSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCDC215DFCDC00092CC4 /* ReplaceRootSegue.swift */; };
 		F466FCDF215DFE6B00092CC4 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F466FCDE215DFE6B00092CC4 /* Wallet.storyboard */; };
 		F466FCE1215DFFE900092CC4 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCE0215DFFE900092CC4 /* SplashViewModel.swift */; };
+		F466FCE921617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCE821617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift */; };
+		F466FCED2163349C00092CC4 /* DashboardTokenInfoSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCEC2163349C00092CC4 /* DashboardTokenInfoSectionView.swift */; };
+		F466FCEF216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F466FCEE216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib */; };
+		F466FCF12163354200092CC4 /* DashboardTokenInfoSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F466FCF02163354200092CC4 /* DashboardTokenInfoSectionView.xib */; };
 		F48765E32158AE9F003825FE /* UserRegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */; };
 		F48765E62158B4F3003825FE /* EnterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E52158B4F3003825FE /* EnterEmailViewController.swift */; };
 		F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E7215951FF003825FE /* EnterEmailViewModel.swift */; };
@@ -74,6 +78,10 @@
 		F466FCDC215DFCDC00092CC4 /* ReplaceRootSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceRootSegue.swift; sourceTree = "<group>"; };
 		F466FCDE215DFE6B00092CC4 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		F466FCE0215DFFE900092CC4 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		F466FCE821617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTokenItemInfoTableCell.swift; sourceTree = "<group>"; };
+		F466FCEC2163349C00092CC4 /* DashboardTokenInfoSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTokenInfoSectionView.swift; sourceTree = "<group>"; };
+		F466FCEE216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTokenItemInfoTableCell.xib; sourceTree = "<group>"; };
+		F466FCF02163354200092CC4 /* DashboardTokenInfoSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTokenInfoSectionView.xib; sourceTree = "<group>"; };
 		F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationFlow.swift; sourceTree = "<group>"; };
 		F48765E52158B4F3003825FE /* EnterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewController.swift; sourceTree = "<group>"; };
 		F48765E7215951FF003825FE /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
@@ -333,6 +341,10 @@
 			children = (
 				F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */,
 				F48765E9215952B3003825FE /* RegistrationErrorView.swift */,
+				F466FCEC2163349C00092CC4 /* DashboardTokenInfoSectionView.swift */,
+				F466FCF02163354200092CC4 /* DashboardTokenInfoSectionView.xib */,
+				F466FCE821617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift */,
+				F466FCEE216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -420,8 +432,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F466FCEF216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib in Resources */,
 				F48CEC1A2150DD5D00A43A47 /* LoginFlow.storyboard in Resources */,
 				F466FCDF215DFE6B00092CC4 /* Wallet.storyboard in Resources */,
+				F466FCF12163354200092CC4 /* DashboardTokenInfoSectionView.xib in Resources */,
 				F44D72492146EC4200C651C6 /* LaunchScreen.storyboard in Resources */,
 				F44D72462146EC4200C651C6 /* Assets.xcassets in Resources */,
 				F44D72442146EC4000C651C6 /* Main.storyboard in Resources */,
@@ -521,10 +535,12 @@
 				F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */,
 				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
 				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
+				F466FCED2163349C00092CC4 /* DashboardTokenInfoSectionView.swift in Sources */,
 				F48765F1215A039E003825FE /* EnterPasswordViewModel.swift in Sources */,
 				F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */,
 				F48765FA215A1CB0003825FE /* EnterWalletKeysViewController.swift in Sources */,
 				F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */,
+				F466FCE921617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift in Sources */,
 				F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */,
 				F44D7260214A292300C651C6 /* Hyperloot.swift in Sources */,
 				F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */,
