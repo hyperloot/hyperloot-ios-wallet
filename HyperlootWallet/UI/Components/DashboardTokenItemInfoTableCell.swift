@@ -2,12 +2,12 @@
 //  DashboardTokenItemInfoTableCell.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 9/30/18.
+//  Created by Valery Vaskabovich on 9/30/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
 import UIKit
-import Alamofire
+import AlamofireImage
 
 typealias DashboardTokenItemInfoPresentation = DashboardTokenItemInfoTableCell.Presentation
 
@@ -31,6 +31,12 @@ class DashboardTokenItemInfoTableCell: UITableViewCell {
     }
 
     func update(presentation: DashboardTokenItemInfoPresentation) {
-        
+        itemImageView.af_cancelImageRequest()
+        if let imageURL = URL(string: presentation.itemImageURL) {
+            itemImageView.af_setImage(withURL: imageURL)
+        }
+        itemNameLabel.text = presentation.itemName
+        itemDescriptionLabel.text = presentation.itemShortDescription
+        itemPriceLabel.attributedText = presentation.itemPrice
     }
 }

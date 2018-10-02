@@ -66,6 +66,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="separatorView" destination="B7L-eZ-t07" id="K02-ZM-dsh"/>
                 <outlet property="tokenSymbolLabel" destination="y7X-nP-lC6" id="LFP-qt-fy6"/>
                 <outlet property="tokenValueLabel" destination="IXl-oh-NVJ" id="HGg-Vb-WR7"/>
             </connections>

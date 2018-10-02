@@ -30,7 +30,7 @@
         <!--Hyperloot Wallet-->
         <scene sceneID="wi4-zY-mUt">
             <objects>
-                <viewController id="NX3-fP-3MR" sceneMemberID="viewController">
+                <viewController id="NX3-fP-3MR" customClass="WalletDashboardViewController" customModule="HyperlootWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mHU-BS-tWR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,6 +82,10 @@
                         <viewLayoutGuide key="safeArea" id="om2-Hy-Vzh"/>
                     </view>
                     <navigationItem key="navigationItem" title="Hyperloot Wallet" id="DVq-Sl-7fy"/>
+                    <connections>
+                        <outlet property="balanceLabel" destination="nhT-af-9fg" id="9Fg-0v-ESW"/>
+                        <outlet property="tableView" destination="0Mu-0H-Gfa" id="Foe-Zc-n4M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Az-0H-KDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

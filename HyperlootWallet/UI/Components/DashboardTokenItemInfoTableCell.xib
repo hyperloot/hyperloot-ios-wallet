@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="token_721_cell" id="ves-Kh-wIo" customClass="DashboardTokenItemInfoTableCell" customModule="HyperlootWallet" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ves-Kh-wIo" customClass="DashboardTokenItemInfoTableCell" customModule="HyperlootWallet" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ves-Kh-wIo" id="pS8-RS-0V7">
@@ -31,7 +31,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Item name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf1-Og-0FR">
                                 <rect key="frame" x="0.0" y="0.0" width="275" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="y2F-vB-LPp"/>
+                                    <constraint firstAttribute="height" constant="24" placeholder="YES" id="y2F-vB-LPp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -40,7 +40,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Brief description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIL-ow-gSK">
                                 <rect key="frame" x="0.0" y="24" width="275" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="9Lk-Mm-I49"/>
+                                    <constraint firstAttribute="height" constant="16" placeholder="YES" id="9Lk-Mm-I49"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="deviceRGB"/>
@@ -49,7 +49,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="$1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ion-nW-A7k">
                                 <rect key="frame" x="0.0" y="50" width="275" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="Q19-zK-8MI"/>
+                                    <constraint firstAttribute="height" constant="24" placeholder="YES" id="Q19-zK-8MI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -92,6 +92,12 @@
                     <constraint firstItem="j3u-Db-2jV" firstAttribute="leading" secondItem="BgU-Gy-TnX" secondAttribute="trailing" constant="20" id="yeY-jJ-MY4"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="itemDescriptionLabel" destination="BIL-ow-gSK" id="8q7-Eq-Q7g"/>
+                <outlet property="itemImageView" destination="BgU-Gy-TnX" id="l7Q-g2-DF3"/>
+                <outlet property="itemNameLabel" destination="cf1-Og-0FR" id="Zou-yu-HCJ"/>
+                <outlet property="itemPriceLabel" destination="ion-nW-A7k" id="uD1-Bf-I8W"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="104"/>
         </tableViewCell>
     </objects>
