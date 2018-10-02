@@ -47,7 +47,10 @@ class WalletDashboardViewModel {
                     return DashboardTokenItemInfoPresentation(itemImageURL: attributes.imageURL,
                                                               itemName: attributes.name,
                                                               itemShortDescription: attributes.description,
-                                                              itemPrice: NSAttributedString(string: "$10"))
+                                                              itemPrice: BalanceFormatter.format(balance: "$10",
+                                                                                                 fontHeight: 20.0,
+                                                                                                 change: .up(value: "2.0"),
+                                                                                                 changeFontHeight: 15.0))
                     
                 }
                 return nil
@@ -79,7 +82,7 @@ class WalletDashboardViewModel {
     // MARK: - Data Source
     
     public var balance: NSAttributedString {
-        return NSAttributedString(string: "$3000")
+        return BalanceFormatter.format(balance: "$3000", fontHeight: 34.0, change: .down(value: "20.0"), changeFontHeight: 20.0)
     }
     
     public func numberOfTokens() -> Int {

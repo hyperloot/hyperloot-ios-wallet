@@ -6,6 +6,7 @@
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 class EmailValidator {
@@ -22,4 +23,43 @@ class EmailValidator {
         return predicate.evaluate(with: email)
     }
     
+}
+
+class BalanceFormatter {
+
+    enum Change {
+        case down(value: String)
+        case up(value: String)
+        
+        func toAttributedString(font: UIFont) -> NSAttributedString {
+            let string: String
+            let color: UIColor
+            switch self {
+            case .down(value: let value):
+                string = "↓\(value)"
+                color = UIColor(red: 174.0 / 255.0, green: 53.0 / 255.0, blue: 53.0 / 255.0, alpha: 1.0)
+            case .up(value: let value):
+                string = "↑\(value)"
+                color = UIColor(red: 31.0 / 255.0, green: 157.0 / 255.0, blue: 57.0 / 255.0, alpha: 1.0)
+            }
+            
+            return NSAttributedString(string: string, attributes: [
+                .font: font,
+                .foregroundColor: color
+                ])
+        }
+    }
+    
+    public static func format(balance: String, fontHeight: CGFloat, change: Change, changeFontHeight: CGFloat) -> NSAttributedString {
+        let mainFont = UIFont.boldSystemFont(ofSize: fontHeight)
+        let changeFont = UIFont.systemFont(ofSize: changeFontHeight)
+        
+        let attributedString = NSMutableAttributedString(string: "\(balance) ", attributes: [
+            .font: mainFont,
+            .foregroundColor: UIColor.black
+            ])
+        attributedString.append(change.toAttributedString(font: changeFont))
+        
+        return attributedString
+    }
 }
