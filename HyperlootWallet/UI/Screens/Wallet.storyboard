@@ -139,7 +139,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="177" height="80"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                                    <state key="normal" title="Receive payment">
+                                                                    <state key="normal" title="Receive">
                                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
                                                                 </button>
@@ -147,7 +147,7 @@
                                                                     <rect key="frame" x="178" y="0.0" width="177" height="80"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                                    <state key="normal" title="Send payment">
+                                                                    <state key="normal" title="Send">
                                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
                                                                 </button>
