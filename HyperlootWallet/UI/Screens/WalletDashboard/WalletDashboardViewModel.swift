@@ -11,13 +11,15 @@ import Foundation
 class WalletDashboardViewModel {
     
     struct DataSourceSection {
-        let sectionId: String
+        let contractAddress: String
         let presentation: DashboardTokenInfoSectionPresentation
         let items: [DashboardTokenItemInfoPresentation]
     }
     
     private var dataSource: [DataSourceSection] = []
     private var tokens: [HyperlootToken] = []
+    
+    public private(set) var selectedToken: HyperlootToken?
     
     func loadWallet(completion: () -> Void) {
         
@@ -35,6 +37,12 @@ class WalletDashboardViewModel {
         buildDataSource(tokens: tokens)
         
         completion()
+    }
+    
+    // If the user taps on section (token info) then the app shows transactions history
+    func didSelectTokenInfoToShowTransactions(at index: Int) {
+        let section = dataSource[index]
+        selectedToken = tokens.filter { $0.contractAddress == section.contractAddress }.first
     }
     
     private func buildDataSource(tokens: [HyperlootToken]) {
@@ -60,7 +68,7 @@ class WalletDashboardViewModel {
         tokens.forEach { (token) in
             let address = token.contractAddress
             
-            if (dataSource.filter { $0.sectionId == address }.first) == nil {
+            if (dataSource.filter { $0.contractAddress == address }.first) == nil {
                 let items: [DashboardTokenItemInfoPresentation]
                 var shouldHideSeparator: Bool
                 
@@ -72,7 +80,7 @@ class WalletDashboardViewModel {
                     shouldHideSeparator = true
                     items = erc721Items(address: address)
                 }
-                dataSource.append(DataSourceSection(sectionId: address,
+                dataSource.append(DataSourceSection(contractAddress: address,
                                                     presentation: DashboardTokenInfoSectionPresentation(tokenSymbol: token.symbol, tokenValue: "$1000", hideSeparator: shouldHideSeparator),
                                                     items: items))
             }

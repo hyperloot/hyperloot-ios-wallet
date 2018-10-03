@@ -44,6 +44,25 @@ class WalletDashboardViewController: UIViewController {
     private func updateBalance() {
         balanceLabel.attributedText = viewModel.balance
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.isEqualTo(route: .showTransactions) {
+            guard let viewController = segue.destination as? TokenTransactionsViewController,
+                let token = viewModel.selectedToken else {
+                return
+            }
+            
+            viewController.input = TokenTransactionsViewController.Input(token: token)
+        }
+    }
+}
+
+extension WalletDashboardViewController: DashboardTokenInfoSectionDelegate {
+    func didTapOnTokenInfoSection(view: DashboardTokenInfoSectionView) {
+        let section = view.tag
+        viewModel.didSelectTokenInfoToShowTransactions(at: section)
+        performSegue(route: .showTransactions)
+    }
 }
 
 extension WalletDashboardViewController: UITableViewDelegate {
@@ -69,6 +88,8 @@ extension WalletDashboardViewController: UITableViewDataSource {
         }
         
         view.update(presentation: viewModel.presentationForToken(at: section))
+        view.tag = section
+        view.delegate = self
         return view
     }
     
