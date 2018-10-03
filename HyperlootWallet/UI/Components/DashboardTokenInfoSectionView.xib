@@ -40,6 +40,7 @@
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="IXl-oh-NVJ" firstAttribute="top" secondItem="lCm-5i-PWT" secondAttribute="top" constant="12" id="DQ6-Zb-aD0"/>
                         <constraint firstItem="y7X-nP-lC6" firstAttribute="centerY" secondItem="lCm-5i-PWT" secondAttribute="centerY" id="E7W-US-dnj"/>

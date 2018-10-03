@@ -26,6 +26,29 @@ class EmailValidator {
 }
 
 class BalanceFormatter {
+    
+    enum TransactionAmount {
+        case positive(value: String)
+        case negative(value: String)
+        
+        func toAttributedString(font: UIFont) -> NSAttributedString {
+            let string: String
+            let color: UIColor
+            switch self {
+            case .negative(value: let value):
+                string = "- \(value)"
+                color = UIColor(red: 174.0 / 255.0, green: 53.0 / 255.0, blue: 53.0 / 255.0, alpha: 1.0)
+            case .positive(value: let value):
+                string = "+ \(value)"
+                color = UIColor(red: 31.0 / 255.0, green: 157.0 / 255.0, blue: 57.0 / 255.0, alpha: 1.0)
+            }
+            
+            return NSAttributedString(string: string, attributes: [
+                .font: font,
+                .foregroundColor: color
+                ])
+        }
+    }
 
     enum Change {
         case down(value: String)
