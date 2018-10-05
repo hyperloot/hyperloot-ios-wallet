@@ -2,7 +2,7 @@
 //  TokenInfoViewController.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 10/3/18.
+//  Created by Valery Vaskabovich on 10/3/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
@@ -38,6 +38,8 @@ class TokenInfoViewController: UIViewController {
     func configureNavigationItem() {
         self.title = "Item Details"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send item", style: .plain, target: self, action: #selector(sendButtonPressed))
+        
+        configureBackButtonWithNoText()
     }
 
     func updateUI() {

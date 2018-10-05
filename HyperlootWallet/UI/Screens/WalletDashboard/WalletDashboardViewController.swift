@@ -18,7 +18,7 @@ class WalletDashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureNavigationBar()
+        configureBackButtonWithNoText()
         configureTableView()
     }
     
@@ -31,9 +31,6 @@ class WalletDashboardViewController: UIViewController {
         }
     }
     
-    private func configureNavigationBar() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
 
     private func configureTableView() {
         tableView.delegate = self
