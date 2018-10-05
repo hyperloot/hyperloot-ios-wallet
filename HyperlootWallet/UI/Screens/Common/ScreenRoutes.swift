@@ -18,4 +18,6 @@ enum ScreenRoute: String {
     case showWalletAfterLoginFlow = "show_wallet_after_login"
     case showTransactions = "show_transactions"
     case showItemDetails = "show_item_details"
+    
+    case sendToken = "send_token"
 }
