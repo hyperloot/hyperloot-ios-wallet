@@ -26,6 +26,7 @@ class TokenTransactionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureBackButtonWithNoText()
         configureUI()
         
         viewModel.load { [weak self] in

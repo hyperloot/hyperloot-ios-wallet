@@ -12,6 +12,10 @@ extension UIViewController {
     func performSegue(route: ScreenRoute, sender: Any? = self) {
         performSegue(withIdentifier: route.rawValue, sender: sender)
     }
+    
+    func configureBackButtonWithNoText() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
 }
 
 extension UIStoryboardSegue {
