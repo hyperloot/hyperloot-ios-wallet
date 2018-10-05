@@ -18,6 +18,7 @@ class WalletDashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureNavigationBar()
         configureTableView()
     }
     
@@ -28,6 +29,10 @@ class WalletDashboardViewController: UIViewController {
             self?.updateBalance()
             self?.tableView.reloadData()
         }
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     private func configureTableView() {
