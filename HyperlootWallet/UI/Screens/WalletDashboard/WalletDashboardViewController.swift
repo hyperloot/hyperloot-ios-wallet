@@ -18,6 +18,7 @@ class WalletDashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureNavigationBar()
         configureTableView()
     }
     
@@ -28,6 +29,10 @@ class WalletDashboardViewController: UIViewController {
             self?.updateBalance()
             self?.tableView.reloadData()
         }
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     private func configureTableView() {
@@ -53,6 +58,14 @@ class WalletDashboardViewController: UIViewController {
             }
             
             viewController.input = TokenTransactionsViewController.Input(token: token)
+        } else if segue.isEqualTo(route: .showItemDetails) {
+            guard let viewController = segue.destination as? TokenInfoViewController,
+                let token = viewModel.selectedToken,
+                case .erc721(tokenId: _, attributes: let attributes) = token.type else {
+                return
+            }
+            
+            viewController.input = TokenInfoViewController.Input(token: token, attributes: attributes)
         }
     }
 }
@@ -60,7 +73,7 @@ class WalletDashboardViewController: UIViewController {
 extension WalletDashboardViewController: DashboardTokenInfoSectionDelegate {
     func didTapOnTokenInfoSection(view: DashboardTokenInfoSectionView) {
         let section = view.tag
-        viewModel.didSelectTokenInfoToShowTransactions(at: section)
+        viewModel.didSelectTokenToShowTransactions(at: section)
         performSegue(route: .showTransactions)
     }
 }
@@ -69,17 +82,20 @@ extension WalletDashboardViewController: UITableViewDelegate {
  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        viewModel.didSelectTokenToShowDetails(at: indexPath.row, section: indexPath.section)
+        performSegue(route: .showItemDetails)
     }
 }
 
 extension WalletDashboardViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfTokens()
+        return viewModel.numberOfSections()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfItemsForToken(at: section)
+        return viewModel.numberOfTokensInSection(at: section)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

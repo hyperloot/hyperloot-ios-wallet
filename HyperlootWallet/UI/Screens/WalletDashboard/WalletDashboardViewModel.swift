@@ -10,13 +10,13 @@ import Foundation
 
 class WalletDashboardViewModel {
     
-    struct DataSourceSection {
+    struct TokensTree {
         let contractAddress: String
-        let presentation: DashboardTokenInfoSectionPresentation
-        let items: [DashboardTokenItemInfoPresentation]
+        let rootToken: HyperlootToken
+        let tokens: [HyperlootToken]
     }
     
-    private var dataSource: [DataSourceSection] = []
+    private var tokensTree: [TokensTree] = []
     private var tokens: [HyperlootToken] = []
     
     public private(set) var selectedToken: HyperlootToken?
@@ -40,51 +40,43 @@ class WalletDashboardViewModel {
     }
     
     // If the user taps on section (token info) then the app shows transactions history
-    func didSelectTokenInfoToShowTransactions(at index: Int) {
-        let section = dataSource[index]
-        selectedToken = tokens.filter { $0.contractAddress == section.contractAddress }.first
+    func didSelectTokenToShowTransactions(at index: Int) {
+        let contract = tokensTree[index]
+        selectedToken = contract.rootToken
+    }
+    
+    func didSelectTokenToShowDetails(at index: Int, section: Int) {
+        let contract = tokensTree[section]
+        selectedToken = contract.tokens[index]
     }
     
     private func buildDataSource(tokens: [HyperlootToken]) {
         
-        dataSource.removeAll()
-
-        func erc721Items(address: String) -> [DashboardTokenItemInfoPresentation] {
-            return tokens.filter { $0.contractAddress == address }.compactMap { (t) in
-                if case .erc721(tokenId: _, attributes: let attributes) = t.type {
-                    return DashboardTokenItemInfoPresentation(itemImageURL: attributes.imageURL,
-                                                              itemName: attributes.name,
-                                                              itemShortDescription: attributes.description,
-                                                              itemPrice: BalanceFormatter.format(balance: "$10",
-                                                                                                 fontHeight: 20.0,
-                                                                                                 change: .up(value: "2.0"),
-                                                                                                 changeFontHeight: 15.0))
-                    
-                }
-                return nil
-            }
-        }
-
+        tokensTree.removeAll()
+        
         tokens.forEach { (token) in
-            let address = token.contractAddress
-            
-            if (dataSource.filter { $0.contractAddress == address }.first) == nil {
-                let items: [DashboardTokenItemInfoPresentation]
-                var shouldHideSeparator: Bool
-                
-                switch token.type {
-                case .erc20:
-                    shouldHideSeparator = false
-                    items = []
-                case .erc721(tokenId: _, attributes: _):
-                    shouldHideSeparator = true
-                    items = erc721Items(address: address)
-                }
-                dataSource.append(DataSourceSection(contractAddress: address,
-                                                    presentation: DashboardTokenInfoSectionPresentation(tokenSymbol: token.symbol, tokenValue: "$1000", hideSeparator: shouldHideSeparator),
-                                                    items: items))
+            let contractAddress = token.contractAddress
+            guard (tokensTree.contains { (tree) in return contractAddress == tree.contractAddress }) == false else {
+                return
             }
+            
+            
+            var filteredTokens: [HyperlootToken] = []
+            if isERC721(token: token) {
+                filteredTokens = tokens.filter { $0.contractAddress == contractAddress }
+            }
+            
+            tokensTree.append(TokensTree(contractAddress: contractAddress, rootToken: token, tokens: filteredTokens))
         }
+    }
+    
+    private func isERC721(token: HyperlootToken) -> Bool {
+        var isERC721: Bool = false
+        if case .erc721(tokenId: _, attributes: _) = token.type {
+            isERC721 = true
+        }
+        
+        return isERC721
     }
     
     // MARK: - Data Source
@@ -93,19 +85,32 @@ class WalletDashboardViewModel {
         return BalanceFormatter.format(balance: "$3000", fontHeight: 34.0, change: .down(value: "20.0"), changeFontHeight: 20.0)
     }
     
-    public func numberOfTokens() -> Int {
-        return dataSource.count
+    public func numberOfSections() -> Int {
+        return tokensTree.count
     }
     
-    public func numberOfItemsForToken(at index: Int) -> Int {
-        return dataSource[index].items.count
+    public func numberOfTokensInSection(at index: Int) -> Int {
+        return tokensTree[index].tokens.count
     }
 
     public func presentationForToken(at index: Int) -> DashboardTokenInfoSectionPresentation {
-        return dataSource[index].presentation
+        let token = tokensTree[index].rootToken
+        return DashboardTokenInfoSectionPresentation(tokenSymbol: token.symbol,
+                                                     tokenValue: "$1000",
+                                                     hideSeparator: isERC721(token: token))
     }
     
     public func presentationForItem(at index: Int, section: Int) -> DashboardTokenItemInfoPresentation? {
-        return dataSource[section].items[index]
+        let token = tokensTree[section].tokens[index]
+        guard case .erc721(tokenId: _, attributes: let attributes) = token.type else {
+            return nil
+        }
+        return DashboardTokenItemInfoPresentation(itemImageURL: attributes.imageURL,
+                                                  itemName: attributes.name,
+                                                  itemShortDescription: attributes.description,
+                                                  itemPrice: BalanceFormatter.format(balance: "$10",
+                                                                                     fontHeight: 20.0,
+                                                                                     change: .up(value: "2.0"),
+                                                                                     changeFontHeight: 15.0))
     }
 }

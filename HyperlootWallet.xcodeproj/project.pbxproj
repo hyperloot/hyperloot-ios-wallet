@@ -34,6 +34,8 @@
 		F466FD0721649EFE00092CC4 /* TokenTransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD0621649EFE00092CC4 /* TokenTransactionsViewModel.swift */; };
 		F466FD092164A4D200092CC4 /* TransactionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD082164A4D200092CC4 /* TransactionTableCell.swift */; };
 		F466FD0B2164A68300092CC4 /* HyperlootTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD0A2164A68300092CC4 /* HyperlootTransaction.swift */; };
+		F466FD0E2165EE6A00092CC4 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD0D2165EE6A00092CC4 /* TokenInfoViewController.swift */; };
+		F466FD102165EE7400092CC4 /* TokenInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD0F2165EE7400092CC4 /* TokenInfoViewModel.swift */; };
 		F48765E32158AE9F003825FE /* UserRegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */; };
 		F48765E62158B4F3003825FE /* EnterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E52158B4F3003825FE /* EnterEmailViewController.swift */; };
 		F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E7215951FF003825FE /* EnterEmailViewModel.swift */; };
@@ -100,6 +102,8 @@
 		F466FD0621649EFE00092CC4 /* TokenTransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenTransactionsViewModel.swift; sourceTree = "<group>"; };
 		F466FD082164A4D200092CC4 /* TransactionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableCell.swift; sourceTree = "<group>"; };
 		F466FD0A2164A68300092CC4 /* HyperlootTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTransaction.swift; sourceTree = "<group>"; };
+		F466FD0D2165EE6A00092CC4 /* TokenInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfoViewController.swift; sourceTree = "<group>"; };
+		F466FD0F2165EE7400092CC4 /* TokenInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfoViewModel.swift; sourceTree = "<group>"; };
 		F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationFlow.swift; sourceTree = "<group>"; };
 		F48765E52158B4F3003825FE /* EnterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewController.swift; sourceTree = "<group>"; };
 		F48765E7215951FF003825FE /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
@@ -252,6 +256,23 @@
 			path = TokenTransactions;
 			sourceTree = "<group>";
 		};
+		F466FD0C2165EE5600092CC4 /* TokenInfo */ = {
+			isa = PBXGroup;
+			children = (
+				F466FD112165EEAD00092CC4 /* Views */,
+				F466FD0D2165EE6A00092CC4 /* TokenInfoViewController.swift */,
+				F466FD0F2165EE7400092CC4 /* TokenInfoViewModel.swift */,
+			);
+			path = TokenInfo;
+			sourceTree = "<group>";
+		};
+		F466FD112165EEAD00092CC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F48765E12158AE90003825FE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +349,7 @@
 		F48CEC142150DD1100A43A47 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F466FD0C2165EE5600092CC4 /* TokenInfo */,
 				F466FD0321649ED800092CC4 /* TokenTransactions */,
 				F466FCF221633CC800092CC4 /* WalletDashboard */,
 				F48765F8215A1C9D003825FE /* EnterWalletKeys */,
@@ -578,6 +600,7 @@
 				F466FD092164A4D200092CC4 /* TransactionTableCell.swift in Sources */,
 				F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */,
 				F48765EA215952B3003825FE /* RegistrationErrorView.swift in Sources */,
+				F466FD102165EE7400092CC4 /* TokenInfoViewModel.swift in Sources */,
 				F466FD00216348BE00092CC4 /* Bundle+Nib.swift in Sources */,
 				F466FCF421633CDF00092CC4 /* WalletDashboardViewController.swift in Sources */,
 				F466FCDD215DFCDC00092CC4 /* ReplaceRootSegue.swift in Sources */,
@@ -586,6 +609,7 @@
 				F48765EF215A027E003825FE /* EnterPasswordViewController.swift in Sources */,
 				F466FD0521649EF400092CC4 /* TokenTransactionsViewController.swift in Sources */,
 				F466FCE1215DFFE900092CC4 /* SplashViewModel.swift in Sources */,
+				F466FD0E2165EE6A00092CC4 /* TokenInfoViewController.swift in Sources */,
 				F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */,
 				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
 				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
