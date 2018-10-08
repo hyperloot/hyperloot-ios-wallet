@@ -43,6 +43,7 @@
 		F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD1C2167347300092CC4 /* SendViewModel.swift */; };
 		F466FD20216734C600092CC4 /* SendTokenItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD1F216734C600092CC4 /* SendTokenItemDetailsView.swift */; };
 		F466FD222167357400092CC4 /* SendTokenDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD212167357400092CC4 /* SendTokenDetailsView.swift */; };
+		F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */; };
 		F48765E32158AE9F003825FE /* UserRegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */; };
 		F48765E62158B4F3003825FE /* EnterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E52158B4F3003825FE /* EnterEmailViewController.swift */; };
 		F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E7215951FF003825FE /* EnterEmailViewModel.swift */; };
@@ -118,6 +119,7 @@
 		F466FD1C2167347300092CC4 /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
 		F466FD1F216734C600092CC4 /* SendTokenItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenItemDetailsView.swift; sourceTree = "<group>"; };
 		F466FD212167357400092CC4 /* SendTokenDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenDetailsView.swift; sourceTree = "<group>"; };
+		F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionSpeedView.swift; sourceTree = "<group>"; };
 		F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationFlow.swift; sourceTree = "<group>"; };
 		F48765E52158B4F3003825FE /* EnterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewController.swift; sourceTree = "<group>"; };
 		F48765E7215951FF003825FE /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			children = (
 				F466FD1F216734C600092CC4 /* SendTokenItemDetailsView.swift */,
 				F466FD212167357400092CC4 /* SendTokenDetailsView.swift */,
+				F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				F48765F4215A06EC003825FE /* StringHelper.swift in Sources */,
 				F48765F7215A1980003825FE /* UIViewController+ScreenRoutes.swift in Sources */,
 				F466FD1621669EB100092CC4 /* ReceiveViewController.swift in Sources */,
+				F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
 				F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */,
 				F466FD0721649EFE00092CC4 /* TokenTransactionsViewModel.swift in Sources */,
