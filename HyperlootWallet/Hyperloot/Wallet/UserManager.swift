@@ -26,8 +26,8 @@ class UserManager {
         user = loadUser(from: userFilePath)
     }
     
-    public func createUser(withEmail email: String, walletAddress: Address) {
-        let user = HyperlootUser(email: email, walletAddress: walletAddress)
+    public func createUser(withEmail email: String, nickname: HyperlootNickname, walletAddress: Address) {
+        let user = HyperlootUser(email: email, nickname: nickname, walletAddress: walletAddress)
         save(user: user, to: userFilePath)
         
         self.user = user

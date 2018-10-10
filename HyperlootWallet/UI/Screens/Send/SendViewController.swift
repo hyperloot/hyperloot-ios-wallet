@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QRCodeReaderViewController
 
 class SendViewController: UIViewController {
     
@@ -38,5 +39,23 @@ class SendViewController: UIViewController {
         case .tokenItem(presentation: let presentation):
             tokenItemDetailsView.update(presentation: presentation)
         }
+    }
+    
+    @IBAction func scanQRCodeButtonPressed() {
+        let controller = QRCodeReaderViewController(cancelButtonTitle: "Cancel")
+        controller.delegate = self
+        self.navigationController?.present(controller, animated: true, completion: nil)
+    }
+}
+
+extension SendViewController: QRCodeReaderDelegate {
+    func readerDidCancel(_ reader: QRCodeReaderViewController!) {
+        reader.stopScanning()
+        reader.dismiss(animated: true, completion: nil)
+    }
+    
+    func reader(_ reader: QRCodeReaderViewController!, didScanResult result: String!) {
+        reader.stopScanning()
+        reader.dismiss(animated: true, completion: nil)
     }
 }

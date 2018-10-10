@@ -26,7 +26,7 @@ class EnterEmailViewModel {
         }
         
         // TODO: make an API call to Hyperloot backend
-        let userType: UserRegistrationFlow.UserType = .new
+        let userType: UserRegistrationFlow.UserType = .new(nickname: HyperlootNickname(name: "Destroyer", identifier: 1))
         user = .email(email, userType: userType)
         completion(userType, nil)
     }

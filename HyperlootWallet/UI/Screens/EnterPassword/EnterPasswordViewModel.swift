@@ -85,8 +85,8 @@ class EnterPasswordViewModel {
         switch user {
         case .email(let email, userType: let userType):
             switch userType {
-            case .new:
-                createNewAccount(email: email, completion: completion)
+            case .new(nickname: let nickname):
+                createNewAccount(email: email, nickname: nickname, completion: completion)
             case .existing:
                 proceedWithExistingUser(email: email, completion: completion)
             }
@@ -109,12 +109,12 @@ class EnterPasswordViewModel {
         completion(.showImportOrCreateScreen)
     }
     
-    private func createNewAccount(email: String, completion: @escaping NextStepCompletion) {
+    private func createNewAccount(email: String, nickname: HyperlootNickname, completion: @escaping NextStepCompletion) {
         guard doPasswordsMatch(), let password = password else {
             return
         }
         
-        Hyperloot.shared.createWallet(email: email, password: password) { [weak self] (_, words, error) in
+        Hyperloot.shared.createWallet(email: email, nickname: nickname, password: password) { [weak self] (_, words, error) in
             guard let words = words else {
                 completion(nil)
                 return
