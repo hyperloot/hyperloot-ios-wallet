@@ -33,7 +33,7 @@ class SendViewController: UIViewController {
         let presentation = viewModel.presentation
         tokenDetailsView.isHidden = presentation.hideRegularTokenDetails
         tokenItemDetailsView.isHidden = presentation.hideTokenItemDetails
-        switch presentation.tokenInfoType {
+        switch presentation.tokenPresentationType {
         case .regularToken(presentation: let presentation):
             tokenDetailsView.update(presentation: presentation)
         case .tokenItem(presentation: let presentation):
@@ -46,16 +46,26 @@ class SendViewController: UIViewController {
         controller.delegate = self
         self.navigationController?.present(controller, animated: true, completion: nil)
     }
+    
+    @IBAction func sendButtonPressed() {
+        // TODO: perform transaction
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension SendViewController: QRCodeReaderDelegate {
-    func readerDidCancel(_ reader: QRCodeReaderViewController!) {
+    
+    private func dismissQRCode(reader: QRCodeReaderViewController!) {
         reader.stopScanning()
         reader.dismiss(animated: true, completion: nil)
     }
     
+    func readerDidCancel(_ reader: QRCodeReaderViewController!) {
+        dismissQRCode(reader: reader)
+    }
+    
     func reader(_ reader: QRCodeReaderViewController!, didScanResult result: String!) {
-        reader.stopScanning()
-        reader.dismiss(animated: true, completion: nil)
+        // TODO: pass value to view model and update text field
+        dismissQRCode(reader: reader)
     }
 }

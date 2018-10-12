@@ -1051,6 +1051,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="copyWalletAddressButtonPressed" destination="3yd-0g-wLC" eventType="touchUpInside" id="hPn-T1-HGH"/>
+                                                            <action selector="sendButtonPressed" destination="Mug-vy-teu" eventType="touchUpInside" id="KZY-wt-T8l"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

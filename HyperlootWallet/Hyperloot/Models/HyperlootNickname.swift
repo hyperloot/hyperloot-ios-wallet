@@ -12,6 +12,10 @@ struct HyperlootNickname {
     let name: String
     let identifier: Int
     
+    var description: String {
+        return "\(name)#\(identifier)"
+    }
+    
     public static func ==(lhs: HyperlootNickname, rhs: HyperlootNickname) -> Bool {
         return lhs.name == rhs.name && lhs.identifier == rhs.identifier
     }
