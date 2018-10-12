@@ -11,8 +11,19 @@ import Foundation
 enum UserRegistrationFlow {
     
     enum UserType {
-        case new
+        case new(nickname: HyperlootNickname)
         case existing
+        
+        public static func ==(lhs: UserType, rhs: UserType) -> Bool {
+            switch (lhs, rhs) {
+            case (.existing, .existing):
+                return true
+            case (.new(nickname: let nicknameLhs), .new(nickname: let nicknameRhs)):
+                return nicknameLhs == nicknameRhs
+            default:
+                return false
+            }
+        }
     }
     
     enum ImportType {

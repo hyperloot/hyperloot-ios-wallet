@@ -42,6 +42,15 @@ class TokenTransactionsViewController: UIViewController {
         self.balanceInCryptoLabel.text = presentation.balanceInCrypto
         self.walletAddressLabel.text = presentation.walletAddress
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.isEqualTo(route: .sendToken) {
+            guard let viewController = segue.destination as? SendViewController else {
+                return
+            }
+            viewController.input = SendViewController.Input(token: viewModel.token)
+        }
+    }
 }
 
 extension TokenTransactionsViewController: UITableViewDelegate {

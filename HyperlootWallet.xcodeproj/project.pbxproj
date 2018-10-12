@@ -39,6 +39,12 @@
 		F466FD1321669DEB00092CC4 /* QRCodeImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD1221669DEB00092CC4 /* QRCodeImageGenerator.swift */; };
 		F466FD1621669EB100092CC4 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD1521669EB100092CC4 /* ReceiveViewController.swift */; };
 		F466FD1821669EBB00092CC4 /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD1721669EBB00092CC4 /* ReceiveViewModel.swift */; };
+		F466FD1B2167346500092CC4 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD1A2167346500092CC4 /* SendViewController.swift */; };
+		F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD1C2167347300092CC4 /* SendViewModel.swift */; };
+		F466FD20216734C600092CC4 /* SendTokenItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD1F216734C600092CC4 /* SendTokenItemDetailsView.swift */; };
+		F466FD222167357400092CC4 /* SendTokenDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD212167357400092CC4 /* SendTokenDetailsView.swift */; };
+		F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */; };
+		F475DB8D216C6A5900B157BC /* HyperlootNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */; };
 		F48765E32158AE9F003825FE /* UserRegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */; };
 		F48765E62158B4F3003825FE /* EnterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E52158B4F3003825FE /* EnterEmailViewController.swift */; };
 		F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48765E7215951FF003825FE /* EnterEmailViewModel.swift */; };
@@ -73,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		7BB71749000FBA9E3F48A9EC /* Pods-CommonPods-HyperlootWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-HyperlootWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-HyperlootWallet/Pods-CommonPods-HyperlootWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		97E92B5CB48BB0618E939E0B /* Pods-CommonPods-HyperlootWallet.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-HyperlootWallet.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-HyperlootWallet/Pods-CommonPods-HyperlootWallet.appstore.xcconfig"; sourceTree = "<group>"; };
 		E0D833A387F7F56AF9A708ED /* Pods_CommonPods_HyperlootWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_HyperlootWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7FA6B138B5466D6184111E /* Pods-CommonPods-HyperlootWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-HyperlootWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-HyperlootWallet/Pods-CommonPods-HyperlootWallet.release.xcconfig"; sourceTree = "<group>"; };
 		F44D723B2146EC4000C651C6 /* HyperlootWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperlootWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +117,12 @@
 		F466FD1221669DEB00092CC4 /* QRCodeImageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeImageGenerator.swift; sourceTree = "<group>"; };
 		F466FD1521669EB100092CC4 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		F466FD1721669EBB00092CC4 /* ReceiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewModel.swift; sourceTree = "<group>"; };
+		F466FD1A2167346500092CC4 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
+		F466FD1C2167347300092CC4 /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
+		F466FD1F216734C600092CC4 /* SendTokenItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenItemDetailsView.swift; sourceTree = "<group>"; };
+		F466FD212167357400092CC4 /* SendTokenDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenDetailsView.swift; sourceTree = "<group>"; };
+		F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionSpeedView.swift; sourceTree = "<group>"; };
+		F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootNickname.swift; sourceTree = "<group>"; };
 		F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationFlow.swift; sourceTree = "<group>"; };
 		F48765E52158B4F3003825FE /* EnterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewController.swift; sourceTree = "<group>"; };
 		F48765E7215951FF003825FE /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
@@ -156,6 +169,7 @@
 			children = (
 				7BB71749000FBA9E3F48A9EC /* Pods-CommonPods-HyperlootWallet.debug.xcconfig */,
 				EE7FA6B138B5466D6184111E /* Pods-CommonPods-HyperlootWallet.release.xcconfig */,
+				97E92B5CB48BB0618E939E0B /* Pods-CommonPods-HyperlootWallet.appstore.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -288,6 +302,26 @@
 			path = Receive;
 			sourceTree = "<group>";
 		};
+		F466FD192167345600092CC4 /* Send */ = {
+			isa = PBXGroup;
+			children = (
+				F466FD1E2167348A00092CC4 /* Views */,
+				F466FD1A2167346500092CC4 /* SendViewController.swift */,
+				F466FD1C2167347300092CC4 /* SendViewModel.swift */,
+			);
+			path = Send;
+			sourceTree = "<group>";
+		};
+		F466FD1E2167348A00092CC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F466FD1F216734C600092CC4 /* SendTokenItemDetailsView.swift */,
+				F466FD212167357400092CC4 /* SendTokenDetailsView.swift */,
+				F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F48765E12158AE90003825FE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +384,7 @@
 				F48CEC102150C7D100A43A47 /* HyperlootUser.swift */,
 				F466FCF721633E2300092CC4 /* HyperlootToken.swift */,
 				F466FD0A2164A68300092CC4 /* HyperlootTransaction.swift */,
+				F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,6 +400,7 @@
 		F48CEC142150DD1100A43A47 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F466FD192167345600092CC4 /* Send */,
 				F466FD1421669E9F00092CC4 /* Receive */,
 				F466FD0C2165EE5600092CC4 /* TokenInfo */,
 				F466FD0321649ED800092CC4 /* TokenTransactions */,
@@ -550,6 +586,7 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReaderViewController/QRCodeReaderViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
@@ -568,6 +605,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReaderViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMKeychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
@@ -610,9 +648,11 @@
 				F48765F4215A06EC003825FE /* StringHelper.swift in Sources */,
 				F48765F7215A1980003825FE /* UIViewController+ScreenRoutes.swift in Sources */,
 				F466FD1621669EB100092CC4 /* ReceiveViewController.swift in Sources */,
+				F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
 				F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */,
 				F466FD0721649EFE00092CC4 /* TokenTransactionsViewModel.swift in Sources */,
+				F466FD1B2167346500092CC4 /* SendViewController.swift in Sources */,
 				F466FD0B2164A68300092CC4 /* HyperlootTransaction.swift in Sources */,
 				F466FD1821669EBB00092CC4 /* ReceiveViewModel.swift in Sources */,
 				F466FCF621633D1900092CC4 /* WalletDashboardViewModel.swift in Sources */,
@@ -633,18 +673,22 @@
 				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
 				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
 				F466FCED2163349C00092CC4 /* DashboardTokenInfoSectionView.swift in Sources */,
+				F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */,
 				F466FD1321669DEB00092CC4 /* QRCodeImageGenerator.swift in Sources */,
 				F48765F1215A039E003825FE /* EnterPasswordViewModel.swift in Sources */,
 				F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */,
 				F48765FA215A1CB0003825FE /* EnterWalletKeysViewController.swift in Sources */,
 				F466FD022163497400092CC4 /* UIView+Extensions.swift in Sources */,
 				F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */,
+				F475DB8D216C6A5900B157BC /* HyperlootNickname.swift in Sources */,
 				F466FCF821633E2300092CC4 /* HyperlootToken.swift in Sources */,
 				F466FCE921617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift in Sources */,
 				F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */,
 				F44D7260214A292300C651C6 /* Hyperloot.swift in Sources */,
 				F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */,
+				F466FD222167357400092CC4 /* SendTokenDetailsView.swift in Sources */,
 				F48765FC215A1CBA003825FE /* EnterWalletKeysViewModel.swift in Sources */,
+				F466FD20216734C600092CC4 /* SendTokenItemDetailsView.swift in Sources */,
 				F48765E62158B4F3003825FE /* EnterEmailViewController.swift in Sources */,
 				F48CEC132150CF2D00A43A47 /* UserManager.swift in Sources */,
 				F44D723F2146EC4000C651C6 /* AppDelegate.swift in Sources */,
@@ -808,16 +852,18 @@
 			baseConfigurationReference = 7BB71749000FBA9E3F48A9EC /* Pods-CommonPods-HyperlootWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = T2K4Q7V76Y;
 				INFOPLIST_FILE = HyperlootWallet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyperloot.HyperlootWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyperloot.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "99428b7f-8d60-4ca7-987c-948e9e16fcbd";
+				PROVISIONING_PROFILE_SPECIFIER = "Hyperloot Wallet Dev";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -828,16 +874,19 @@
 			baseConfigurationReference = EE7FA6B138B5466D6184111E /* Pods-CommonPods-HyperlootWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = T2K4Q7V76Y;
 				INFOPLIST_FILE = HyperlootWallet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyperloot.HyperlootWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyperloot.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "99428b7f-8d60-4ca7-987c-948e9e16fcbd";
+				PROVISIONING_PROFILE_SPECIFIER = "Hyperloot Wallet Dev";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -883,6 +932,103 @@
 			};
 			name = Release;
 		};
+		F475DB8E216D4AF600B157BC /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AppStore;
+		};
+		F475DB8F216D4AF600B157BC /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97E92B5CB48BB0618E939E0B /* Pods-CommonPods-HyperlootWallet.appstore.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = T2K4Q7V76Y;
+				INFOPLIST_FILE = HyperlootWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyperloot.wallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "156dfed9-45ea-49f4-94ff-5311956bf07d";
+				PROVISIONING_PROFILE_SPECIFIER = "Hyperloot Wallet AppStore";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = AppStore;
+		};
+		F475DB90216D4AF600B157BC /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HyperlootWalletTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyperloot.HyperlootWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperlootWallet.app/HyperlootWallet";
+			};
+			name = AppStore;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -891,6 +1037,7 @@
 			buildConfigurations = (
 				F44D72562146EC4300C651C6 /* Debug */,
 				F44D72572146EC4300C651C6 /* Release */,
+				F475DB8E216D4AF600B157BC /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -900,6 +1047,7 @@
 			buildConfigurations = (
 				F44D72592146EC4300C651C6 /* Debug */,
 				F44D725A2146EC4300C651C6 /* Release */,
+				F475DB8F216D4AF600B157BC /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -909,6 +1057,7 @@
 			buildConfigurations = (
 				F44D725C2146EC4300C651C6 /* Debug */,
 				F44D725D2146EC4300C651C6 /* Release */,
+				F475DB90216D4AF600B157BC /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

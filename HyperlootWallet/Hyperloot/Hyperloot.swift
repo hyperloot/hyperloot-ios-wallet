@@ -37,11 +37,11 @@ extension Hyperloot: HyperlootWalletManaging {
         return walletManager.wallet(byAddress: user.walletAddress)
     }
     
-    func createWallet(email: String, password: String, completion: @escaping (_ address: String?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void) {
+    func createWallet(email: String, nickname: HyperlootNickname, password: String, completion: @escaping (_ address: String?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void) {
         walletManager.createWallet(email: email, password: password) { [weak self] (info, error) in
             
             if let info = info {
-                self?.userManager.createUser(withEmail: email, walletAddress: info.address)
+                self?.userManager.createUser(withEmail: email, nickname: nickname, walletAddress: info.address)
             }
             
             completion(info?.address.eip55String, info?.mnemonicPhraseWords, error)

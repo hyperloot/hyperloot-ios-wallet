@@ -54,8 +54,16 @@ class TokenInfoViewController: UIViewController {
         itemPriceLabel.attributedText = presentation.itemPrice
         itemDescriptionLabel.text = presentation.itemDescription
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.isEqualTo(route: .sendToken) {
+            guard let viewController = segue.destination as? SendViewController else {
+                return
+            }
+            viewController.input = SendViewController.Input(token: viewModel.token)
+        }
+    }
     @IBAction func sendButtonPressed() {
-        
+        performSegue(route: .sendToken)
     }
 }
