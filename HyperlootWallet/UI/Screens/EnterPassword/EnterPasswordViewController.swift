@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class EnterPasswordViewController: UIViewController {
     
@@ -16,17 +17,26 @@ class EnterPasswordViewController: UIViewController {
     
     var input: Input!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var errorView: RegistrationErrorView!
     @IBOutlet weak var nextButton: HyperlootButton!
     
     lazy var viewModel = EnterPasswordViewModel(user: input.user)
+    lazy var formController = FormController(scrollView: self.scrollView)
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         updateUIState()
+        formController.willShowForm()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        formController.willHideForm()
     }
     
     func updateUIState() {
@@ -63,7 +73,12 @@ class EnterPasswordViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed() {
-        viewModel.proceedToTheNextStep { [weak self] (route) in
+        
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        viewModel.proceedToTheNextStep { [weak self, weak hud] (route) in
+            hud?.hide(animated: true)
+            
             guard let route = route else {
                 return
             }

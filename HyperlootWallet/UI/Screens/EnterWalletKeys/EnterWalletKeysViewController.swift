@@ -16,6 +16,7 @@ class EnterWalletKeysViewController: UIViewController {
     
     var input: Input!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hintTextLabel: UILabel!
     @IBOutlet weak var walletKeyTypeLabel: UILabel!
@@ -24,10 +25,19 @@ class EnterWalletKeysViewController: UIViewController {
     
     lazy var viewModel = EnterWalletKeysViewModel(user: self.input.user)
     
+    lazy var formController = FormController(scrollView: self.scrollView)
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         updateUI()
+        formController.willShowForm()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        formController.willHideForm()
     }
     
     func updateUI() {

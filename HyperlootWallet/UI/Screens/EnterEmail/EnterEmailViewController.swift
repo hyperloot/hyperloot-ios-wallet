@@ -10,16 +10,26 @@ import UIKit
 
 class EnterEmailViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorView: RegistrationErrorView!
     @IBOutlet weak var nextButton: UIButton!
+    
+    lazy var formController = FormController(scrollView: scrollView)
     
     lazy var viewModel = EnterEmailViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
+        formController.willShowForm()
         updateUIState()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        formController.willHideForm()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

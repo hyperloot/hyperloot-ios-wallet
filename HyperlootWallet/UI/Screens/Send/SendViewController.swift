@@ -19,7 +19,10 @@ class SendViewController: UIViewController {
     
     lazy var viewModel = SendViewModel(token: self.input.token)
     
+    lazy var formController = FormController(scrollView: self.scrollView)
+    
     // Sections
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tokenItemDetailsView: SendTokenItemDetailsView! // ERC-721
     @IBOutlet weak var tokenDetailsView: SendTokenDetailsView! // ERC-20
 
@@ -27,6 +30,18 @@ class SendViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        formController.willShowForm()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        formController.willHideForm()
     }
     
     func configureUI() {
