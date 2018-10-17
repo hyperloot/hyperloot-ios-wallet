@@ -591,7 +591,7 @@
                                                         <rect key="frame" x="10" y="42" width="335" height="29"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" textContentType="nickname"/>
                                                         <connections>
                                                             <action selector="textFieldDidChange:" destination="e9a-Nb-Zt7" eventType="valueChanged" id="Bmo-Za-u3r"/>
                                                             <action selector="textFieldDidChange:" destination="e9a-Nb-Zt7" eventType="editingChanged" id="LbR-99-S8f"/>
