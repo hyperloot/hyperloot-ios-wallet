@@ -66,6 +66,8 @@
 		F48CEC262150E02B00A43A47 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC252150E02B00A43A47 /* Screens.swift */; };
 		F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */; };
 		F4CB7CE92175ADA7006B6217 /* FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB7CE82175ADA7006B6217 /* FormController.swift */; };
+		F4CB7CEC21770BFC006B6217 /* EnterNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB7CEB21770BFC006B6217 /* EnterNicknameViewController.swift */; };
+		F4CB7CEE21770C2A006B6217 /* EnterNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB7CED21770C29006B6217 /* EnterNicknameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +147,8 @@
 		F48CEC252150E02B00A43A47 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
 		F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootButton.swift; sourceTree = "<group>"; };
 		F4CB7CE82175ADA7006B6217 /* FormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
+		F4CB7CEB21770BFC006B6217 /* EnterNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewController.swift; sourceTree = "<group>"; };
+		F4CB7CED21770C29006B6217 /* EnterNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +413,7 @@
 				F466FCF221633CC800092CC4 /* WalletDashboard */,
 				F48765F8215A1C9D003825FE /* EnterWalletKeys */,
 				F48765ED215A026F003825FE /* EnterPassword */,
+				F4CB7CEA21770BDC006B6217 /* EnterNickname */,
 				F48765E42158B4E2003825FE /* EnterEmail */,
 				F48CEC212150DFB000A43A47 /* Common */,
 				F48CEC1E2150DE5300A43A47 /* LoginFlowMain */,
@@ -468,6 +473,15 @@
 				F4CB7CE82175ADA7006B6217 /* FormController.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F4CB7CEA21770BDC006B6217 /* EnterNickname */ = {
+			isa = PBXGroup;
+			children = (
+				F4CB7CEB21770BFC006B6217 /* EnterNicknameViewController.swift */,
+				F4CB7CED21770C29006B6217 /* EnterNicknameViewModel.swift */,
+			);
+			path = EnterNickname;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -651,6 +665,7 @@
 				F48765F4215A06EC003825FE /* StringHelper.swift in Sources */,
 				F48765F7215A1980003825FE /* UIViewController+ScreenRoutes.swift in Sources */,
 				F466FD1621669EB100092CC4 /* ReceiveViewController.swift in Sources */,
+				F4CB7CEC21770BFC006B6217 /* EnterNicknameViewController.swift in Sources */,
 				F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
 				F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */,
@@ -676,6 +691,7 @@
 				F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */,
 				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
 				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
+				F4CB7CEE21770C2A006B6217 /* EnterNicknameViewModel.swift in Sources */,
 				F466FCED2163349C00092CC4 /* DashboardTokenInfoSectionView.swift in Sources */,
 				F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */,
 				F466FD1321669DEB00092CC4 /* QRCodeImageGenerator.swift in Sources */,

@@ -26,11 +26,25 @@ class UserManager {
         user = loadUser(from: userFilePath)
     }
     
-    public func createUser(withEmail email: String, nickname: HyperlootNickname, walletAddress: Address) {
-        let user = HyperlootUser(email: email, nickname: nickname, walletAddress: walletAddress)
+    func login(email: String, password: String, completion: @escaping (HyperlootUser?, Error?) -> Void) {
+        // TODO: make an API call to Hyperloot backend: /login
+        guard let address = Address(string: "0xa809d363a66c576a2a814cdbfefc107c600a55f0") else {
+            completion(nil, nil)
+            return
+        }
+        let user = HyperlootUser(email: email, nickname: HyperlootNickname(name: email, identifier: 1), walletAddress: address)
+        save(user: user, to: userFilePath)
+        self.user = user
+        completion(user, nil)
+    }
+    
+    public func createUser(withEmail email: String, nickname: String, walletAddress: Address, completion: @escaping (HyperlootUser?, Error?) -> Void) {
+        // TODO: make API call to Hyperloot backend: /signup
+        let user = HyperlootUser(email: email, nickname: HyperlootNickname(name: nickname, identifier: 1), walletAddress: walletAddress)
         save(user: user, to: userFilePath)
         
         self.user = user
+        completion(user, nil)
     }
     
     // MARK: - Private

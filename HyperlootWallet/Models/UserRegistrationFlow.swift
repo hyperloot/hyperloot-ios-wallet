@@ -10,30 +10,22 @@ import Foundation
 
 enum UserRegistrationFlow {
     
-    enum UserType {
-        case new(nickname: HyperlootNickname)
-        case existing
-        
-        public static func ==(lhs: UserType, rhs: UserType) -> Bool {
-            switch (lhs, rhs) {
-            case (.existing, .existing):
-                return true
-            case (.new(nickname: let nicknameLhs), .new(nickname: let nicknameRhs)):
-                return nicknameLhs == nicknameRhs
-            default:
-                return false
-            }
-        }
-    }
-    
     enum ImportType {
         case mnemonicPhrase
         case privateKey
         case keystoreJSON
     }
     
-    case email(String, userType: UserType)
-    case emailAndPassword(email: String, password: String)
-    case createWallet(email: String, password: String, mnemonicPhrase: [String])
-    case importWallet(email: String, password: String, importType: ImportType)
+    // Entry point
+    case enterEmail
+    
+    // New users: Email -> Nickname -> Password -> Create wallet
+    case signUpEnterNickname(email: String)
+    case signUpConfirmPassword(email: String, nickname: String)
+    case createWallet(user: HyperlootUser, password: String, mnemonicPhrase: [String])
+    
+    // Existing users: Email -> Password -> Import wallet
+    case signInEnterPassword(email: String)
+    case chooseImportOptions(user: HyperlootUser, password: String)
+    case importWallet(user: HyperlootUser, password: String, importType: ImportType)
 }
