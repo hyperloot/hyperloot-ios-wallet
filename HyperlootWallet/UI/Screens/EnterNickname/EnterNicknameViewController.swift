@@ -1,27 +1,32 @@
 //
-//  EnterEmailViewController.swift
+//  EnterNicknameViewController.swift
 //  HyperlootWallet
 //
-//  Created by Valery Vaskabovich on 9/23/18.
+//  Created by valery_vaskabovich on 10/16/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
 import UIKit
 
-class EnterEmailViewController: UIViewController {
+class EnterNicknameViewController: UIViewController {
+    
+    struct Input {
+        let user: UserRegistrationFlow
+    }
+    
+    var input: Input!
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var errorView: RegistrationErrorView!
+    @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
     lazy var formController = FormController(scrollView: scrollView)
     
-    lazy var viewModel = EnterEmailViewModel()
+    lazy var viewModel = EnterNicknameViewModel(user: self.input.user)
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         formController.willShowForm()
         updateUIState()
     }
@@ -33,58 +38,37 @@ class EnterEmailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let user = viewModel.user else {
-            return
-        }
-        
         if segue.isEqualTo(route: .showEnterPasswordScreen) {
-            guard let viewController = segue.destination as? EnterPasswordViewController else {
-                return
+            guard let viewController = segue.destination as? EnterPasswordViewController,
+                let user = viewModel.registrationUser else {
+                    return
             }
             
             viewController.input = EnterPasswordViewController.Input(user: user)
-            
-        } else if segue.isEqualTo(route: .showEnterNicknameScreen) {
-            guard let viewController = segue.destination as? EnterNicknameViewController else {
-                return
-            }
-            
-            viewController.input = EnterNicknameViewController.Input(user: user)
         }
     }
     
     // MARK: - Updating UI state
-    
     func updateUIState() {
         let presentation = viewModel.presentation
         nextButton.isEnabled = presentation.nextButtonEnabled
-        errorView.setVisible(presentation.errorViewVisible, animated: true)
     }
     
     
     // MARK: - Actions
-    
     @IBAction func textFieldDidChange(_ textField: UITextField) {
         viewModel.textDidChange(textField.text)
         updateUIState()
     }
     
     @IBAction func nextButtonPressed() {
-        viewModel.verify(email: emailTextField.text) { [weak self] (user, error) in
-            guard let strongSelf = self else {
-                return
-            }
-            
-            if let nextScreen = self?.viewModel.nextScreen(), error == nil {
-                strongSelf.performSegue(route: nextScreen)
-            }
-        }
-        
+        nicknameTextField.resignFirstResponder()
+        performSegue(route: .showEnterPasswordScreen)
     }
 }
 
-extension EnterEmailViewController: UITextFieldDelegate {
-    
+extension EnterNicknameViewController: UITextFieldDelegate {
+        
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         

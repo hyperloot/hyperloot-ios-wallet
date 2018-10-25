@@ -12,6 +12,7 @@ protocol HyperlootWalletManaging {
     
     func currentWallet() -> HyperlootWallet?
     
-    func createWallet(email: String, nickname: HyperlootNickname, password: String, completion: @escaping (_ address: String?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void)
+    func login(email: String, password: String, completion: @escaping (HyperlootUser?, Error?) -> Void)
+    func createWallet(email: String, nickname: String, password: String, completion: @escaping (_ user: HyperlootUser?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void)
     func importWallet()
 }

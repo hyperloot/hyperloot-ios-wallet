@@ -32,25 +32,36 @@ class EnterPasswordViewModel {
     }
     
     private func buildPresentation(hideErrorView: Bool = true) -> Presentation {
+        
+        var newUser: Bool? = nil
         switch user {
-        case .email(_, userType: let userType):
-            return Presentation(isConfirmPasswordHidden: userType == .existing,
-                                isErrorViewHidden: hideErrorView,
-                                isNextButtonEnabled: isNextButtonEnabled(userType: userType))
-        case .emailAndPassword(_, _),
+        case .signInEnterPassword(email: _):
+            newUser = false
+        case .signUpConfirmPassword(email: _, nickname: _):
+            newUser = true
+        case .enterEmail, .signUpEnterNickname(_),
              .createWallet(_, _, _),
-             .importWallet(email: _, password: _, importType: _):
-            
-            // All other cases are not supported
-            return Presentation(isConfirmPasswordHidden: true, isErrorViewHidden: false, isNextButtonEnabled: false)
+             .importWallet(_, _, _),
+             .chooseImportOptions(_, _):
+            newUser = nil
         }
+        
+        guard let isNewUser = newUser else {
+            // Error state, not supported
+            return Presentation(isConfirmPasswordHidden: true,
+                                isErrorViewHidden: false,
+                                isNextButtonEnabled: false)
+        }
+        
+        return Presentation(isConfirmPasswordHidden: isNewUser == false,
+                            isErrorViewHidden: hideErrorView,
+                            isNextButtonEnabled: isNextButtonEnabled(isNewUser: isNewUser))
     }
     
-    private func isNextButtonEnabled(userType: UserRegistrationFlow.UserType) -> Bool {
-        switch userType {
-        case .new:
+    private func isNextButtonEnabled(isNewUser: Bool) -> Bool {
+        if isNewUser {
             return doPasswordsMatch()
-        case .existing:
+        } else {
             let isPasswordEmpty = password?.isEmpty ?? true
             return isPasswordEmpty == false
         }
@@ -82,18 +93,16 @@ class EnterPasswordViewModel {
     }
     
     public func proceedToTheNextStep(completion: @escaping NextStepCompletion) {
+        
         switch user {
-        case .email(let email, userType: let userType):
-            switch userType {
-            case .new(nickname: let nickname):
-                createNewAccount(email: email, nickname: nickname, completion: completion)
-            case .existing:
-                proceedWithExistingUser(email: email, completion: completion)
-            }
-            
-        case .emailAndPassword(_, _),
+        case .signInEnterPassword(email: let email):
+            proceedWithExistingUser(email: email, completion: completion)
+        case .signUpConfirmPassword(email: let email, nickname: let nickname):
+            createNewAccount(email: email, nickname: nickname, completion: completion)
+        case .enterEmail, .signUpEnterNickname(_),
              .createWallet(_, _, _),
-             .importWallet(email: _, password: _, importType: _):
+             .importWallet(_, _, _),
+             .chooseImportOptions(_, _):
             
             // All other cases are not supported
             completion(nil)
@@ -105,22 +114,28 @@ class EnterPasswordViewModel {
             return
         }
         
-        registeredUser = .emailAndPassword(email: email, password: password)
-        completion(.showImportOrCreateScreen)
+        Hyperloot.shared.login(email: email, password: password) { [weak self] (user, error) in
+            var nextScreen: ScreenRoute? = nil
+            if let user = user {
+                self?.registeredUser = .chooseImportOptions(user: user, password: password)
+                nextScreen = .showImportOrCreateScreen
+            }
+            completion(nextScreen)
+        }
     }
     
-    private func createNewAccount(email: String, nickname: HyperlootNickname, completion: @escaping NextStepCompletion) {
+    private func createNewAccount(email: String, nickname: String, completion: @escaping NextStepCompletion) {
         guard doPasswordsMatch(), let password = password else {
             return
         }
         
-        Hyperloot.shared.createWallet(email: email, nickname: nickname, password: password) { [weak self] (_, words, error) in
-            guard let words = words else {
+        Hyperloot.shared.createWallet(email: email, nickname: nickname, password: password) { [weak self] (user, words, error) in
+            guard let user = user, let words = words else {
                 completion(nil)
                 return
             }
             
-            self?.registeredUser = .createWallet(email: email, password: password, mnemonicPhrase: words)
+            self?.registeredUser = .createWallet(user: user, password: password, mnemonicPhrase: words)
             completion(.showEnterWalletKeysScreen)
         }
     }
