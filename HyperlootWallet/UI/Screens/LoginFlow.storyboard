@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jsX-oh-Mrc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jsX-oh-Mrc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -230,7 +230,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n6k-zt-twK" userLabel="ErrorView" customClass="RegistrationErrorView" customModule="HyperlootWallet" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="227" width="355" height="95"/>
+                                                <rect key="frame" x="10" y="227.5" width="355" height="95"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looks like email you've entered is not valid – please do it again" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8y-lV-lNi">
                                                         <rect key="frame" x="10" y="30" width="335" height="55"/>
@@ -256,7 +256,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="sxn-zx-Q8t" userLabel="TextInputContainer">
-                                                <rect key="frame" x="10" y="166" width="355" height="81"/>
+                                                <rect key="frame" x="10" y="166.5" width="355" height="81"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYv-Yl-1pn">
                                                         <rect key="frame" x="10" y="10" width="44" height="22"/>
@@ -345,8 +345,8 @@
                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="WSP-iD-RKY" firstAttribute="leading" secondItem="q9W-X8-ctz" secondAttribute="leading" id="0hY-Ec-qFn"/>
-                            <constraint firstAttribute="bottom" secondItem="WSP-iD-RKY" secondAttribute="bottom" id="1U1-zQ-Zri"/>
                             <constraint firstAttribute="trailing" secondItem="WSP-iD-RKY" secondAttribute="trailing" id="AWY-Ly-7M4"/>
+                            <constraint firstItem="WSP-iD-RKY" firstAttribute="bottom" secondItem="Ecy-xy-lAN" secondAttribute="bottom" id="OIe-8f-Zlv"/>
                             <constraint firstItem="WSP-iD-RKY" firstAttribute="top" secondItem="Ecy-xy-lAN" secondAttribute="top" id="l6u-7k-vJf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ecy-xy-lAN"/>
@@ -462,7 +462,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHG-zV-P5U">
-                                                <rect key="frame" x="20" y="101" width="335" height="81.5"/>
+                                                <rect key="frame" x="20" y="100.5" width="335" height="81.5"/>
                                                 <string key="text">We do not store any passwords or related data. Make sure to keep a back-up and remember your password. We won't be able to restore it.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -579,7 +579,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="JnN-u9-hwy" userLabel="TextInputContainer">
-                                                <rect key="frame" x="10" y="128" width="355" height="81"/>
+                                                <rect key="frame" x="10" y="128.5" width="355" height="81"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0Z-9c-3o2">
                                                         <rect key="frame" x="10" y="10" width="81" height="22"/>
@@ -665,8 +665,8 @@
                         <constraints>
                             <constraint firstItem="BgU-Ce-3GB" firstAttribute="leading" secondItem="B2Z-eE-PBN" secondAttribute="leading" id="Srx-dD-5go"/>
                             <constraint firstItem="BgU-Ce-3GB" firstAttribute="top" secondItem="bsd-8R-grN" secondAttribute="top" id="aoW-vj-4Es"/>
+                            <constraint firstItem="BgU-Ce-3GB" firstAttribute="bottom" secondItem="bsd-8R-grN" secondAttribute="bottom" id="cq2-eL-FJz"/>
                             <constraint firstAttribute="trailing" secondItem="BgU-Ce-3GB" secondAttribute="trailing" id="gTm-J8-01t"/>
-                            <constraint firstAttribute="bottom" secondItem="BgU-Ce-3GB" secondAttribute="bottom" id="xm7-oe-gmz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bsd-8R-grN"/>
                     </view>
