@@ -68,6 +68,7 @@
 		F4CB7CE92175ADA7006B6217 /* FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB7CE82175ADA7006B6217 /* FormController.swift */; };
 		F4CB7CEC21770BFC006B6217 /* EnterNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB7CEB21770BFC006B6217 /* EnterNicknameViewController.swift */; };
 		F4CB7CEE21770C2A006B6217 /* EnterNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB7CED21770C29006B6217 /* EnterNicknameViewModel.swift */; };
+		F4CB7CF0217716FA006B6217 /* WeakRefObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB7CEF217716FA006B6217 /* WeakRefObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		F4CB7CE82175ADA7006B6217 /* FormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
 		F4CB7CEB21770BFC006B6217 /* EnterNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewController.swift; sourceTree = "<group>"; };
 		F4CB7CED21770C29006B6217 /* EnterNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewModel.swift; sourceTree = "<group>"; };
+		F4CB7CEF217716FA006B6217 /* WeakRefObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +361,7 @@
 			children = (
 				F48765F3215A06EC003825FE /* StringHelper.swift */,
 				F466FD1221669DEB00092CC4 /* QRCodeImageGenerator.swift */,
+				F4CB7CEF217716FA006B6217 /* WeakRefObject.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */,
 				F466FD222167357400092CC4 /* SendTokenDetailsView.swift in Sources */,
 				F48765FC215A1CBA003825FE /* EnterWalletKeysViewModel.swift in Sources */,
+				F4CB7CF0217716FA006B6217 /* WeakRefObject.swift in Sources */,
 				F466FD20216734C600092CC4 /* SendTokenItemDetailsView.swift in Sources */,
 				F48765E62158B4F3003825FE /* EnterEmailViewController.swift in Sources */,
 				F48CEC132150CF2D00A43A47 /* UserManager.swift in Sources */,

@@ -9,18 +9,28 @@
 import Foundation
 import UIKit
 
-class FormController {
+class FormController: NSObject {
     
     private weak var scrollView: UIScrollView?
     
+    fileprivate var activeTextField: UITextField?
+    private lazy var weakTextFields = WeakRefArray<UITextField>()
+    
+    public weak var textFieldDelegate: UITextFieldDelegate?
+    
     init(scrollView: UIScrollView) {
-        self.scrollView = scrollView
+        super.init()
         
+        self.scrollView = scrollView
         configureScrollView()
     }
     
     deinit {
         unsubscribeFromNotifications()
+    }
+    
+    public func register(textFields: [UITextField]) {
+        textFields.forEach { $0.delegate = self; self.weakTextFields.add($0) }
     }
     
     private func configureScrollView() {
@@ -53,13 +63,46 @@ class FormController {
         }
         
         let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrameValue.cgRectValue.height, right: 0.0)
-        scrollView?.contentInset = contentInsets
-        scrollView?.scrollIndicatorInsets = contentInsets
+        update(contentInsets: contentInsets)
+        
+        scrollToActiveTextField()
     }
     
     @objc
     private func willHideKeyboard(notification: Notification) {
-        scrollView?.contentInset = UIEdgeInsets.zero
-        scrollView?.scrollIndicatorInsets = UIEdgeInsets.zero
+        update(contentInsets: UIEdgeInsets.zero)
+    }
+    
+    private func update(contentInsets: UIEdgeInsets) {
+        scrollView?.contentInset = contentInsets
+        scrollView?.scrollIndicatorInsets = contentInsets
+    }
+}
+
+extension FormController: UITextFieldDelegate {
+    
+    fileprivate func scrollToActiveTextField() {
+        guard let scrollView = scrollView,
+            let textField = activeTextField else {
+            return
+        }
+        
+        var frame = textField.convert(textField.bounds, to: scrollView)
+        frame.origin.y -= 180.0
+        scrollView.setContentOffset(CGPoint(x: 0.0, y: frame.origin.y), animated: true)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        activeTextField = textField
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrollToActiveTextField()
+    }
+        
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let shouldReturn = textFieldDelegate?.textFieldShouldReturn?(textField) ?? true
+        return shouldReturn
     }
 }

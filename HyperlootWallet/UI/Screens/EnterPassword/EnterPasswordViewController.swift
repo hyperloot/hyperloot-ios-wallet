@@ -26,6 +26,12 @@ class EnterPasswordViewController: UIViewController {
     lazy var viewModel = EnterPasswordViewModel(user: input.user)
     lazy var formController = FormController(scrollView: self.scrollView)
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureFormController()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -37,6 +43,11 @@ class EnterPasswordViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         formController.willHideForm()
+    }
+    
+    func configureFormController() {
+        formController.textFieldDelegate = self
+        formController.register(textFields: [passwordTextField, confirmPasswordTextField])
     }
     
     func updateUIState() {
