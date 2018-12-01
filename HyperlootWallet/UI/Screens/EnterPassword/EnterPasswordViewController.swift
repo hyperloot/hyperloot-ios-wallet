@@ -85,10 +85,10 @@ class EnterPasswordViewController: UIViewController {
     
     @IBAction func nextButtonPressed() {
         
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        showActivityIndicator()
         
-        viewModel.proceedToTheNextStep { [weak self, weak hud] (route) in
-            hud?.hide(animated: true)
+        viewModel.proceedToTheNextStep { [weak self] (route) in
+            self?.hideActivityIndicator()
             
             guard let route = route else {
                 return

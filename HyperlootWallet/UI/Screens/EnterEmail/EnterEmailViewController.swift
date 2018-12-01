@@ -70,16 +70,18 @@ class EnterEmailViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed() {
+        showActivityIndicator()
         viewModel.verify(email: emailTextField.text) { [weak self] (user, error) in
             guard let strongSelf = self else {
                 return
             }
             
+            strongSelf.hideActivityIndicator()
+            
             if let nextScreen = self?.viewModel.nextScreen(), error == nil {
                 strongSelf.performSegue(route: nextScreen)
             }
         }
-        
     }
 }
 

@@ -10,8 +10,9 @@ import Foundation
 
 class Hyperloot {
     
+    fileprivate let api = HyperlootAPI(environment: .testNet)
     fileprivate lazy var walletManager = WalletManager()
-    fileprivate lazy var userManager = UserManager()
+    fileprivate lazy var userManager = UserManager(api: self.api)
     
     public static let shared = Hyperloot()
 }
@@ -35,6 +36,10 @@ extension Hyperloot: HyperlootWalletManaging {
         }
         
         return walletManager.wallet(byAddress: user.walletAddress)
+    }
+    
+    func canRegister(email: String, completion: @escaping (Bool) -> Void) {
+        userManager.canRegister(email: email, completion: completion)
     }
     
     func login(email: String, password: String, completion: @escaping (HyperlootUser?, Error?) -> Void) {

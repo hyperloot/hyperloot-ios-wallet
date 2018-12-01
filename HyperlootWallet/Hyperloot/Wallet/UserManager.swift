@@ -21,9 +21,17 @@ class UserManager {
     } ()
     
     public private(set) var user: HyperlootUser?
+    private var api: HyperlootAPI
     
-    public init() {
-        user = loadUser(from: userFilePath)
+    public init(api: HyperlootAPI) {
+        self.api = api
+        user = loadUser(from: self.userFilePath)
+    }
+    
+    func canRegister(email: String, completion: @escaping (Bool) -> Void) {
+        api.canRegister(email: email) { (result, _) in
+            completion(result ?? false)
+        }
     }
     
     func login(email: String, password: String, completion: @escaping (HyperlootUser?, Error?) -> Void) {

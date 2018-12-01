@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E552204F9D6FB5D03B25A858 /* Pods_CommonPods_HyperlootWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D833A387F7F56AF9A708ED /* Pods_CommonPods_HyperlootWallet.framework */; };
+		F434317A21B11EAC00FA9F6E /* HyperlootAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434317921B11EAC00FA9F6E /* HyperlootAPI.swift */; };
+		F434317C21B1296700FA9F6E /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434317B21B1296700FA9F6E /* HTTPService.swift */; };
+		F434318621B2E9C500FA9F6E /* CanRegisterEmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */; };
+		F434318821B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434318721B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift */; };
 		F44D723F2146EC4000C651C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D723E2146EC4000C651C6 /* AppDelegate.swift */; };
 		F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D72402146EC4000C651C6 /* SplashViewController.swift */; };
 		F44D72442146EC4000C651C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44D72422146EC4000C651C6 /* Main.storyboard */; };
@@ -86,6 +90,10 @@
 		97E92B5CB48BB0618E939E0B /* Pods-CommonPods-HyperlootWallet.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-HyperlootWallet.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-HyperlootWallet/Pods-CommonPods-HyperlootWallet.appstore.xcconfig"; sourceTree = "<group>"; };
 		E0D833A387F7F56AF9A708ED /* Pods_CommonPods_HyperlootWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_HyperlootWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7FA6B138B5466D6184111E /* Pods-CommonPods-HyperlootWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-HyperlootWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-HyperlootWallet/Pods-CommonPods-HyperlootWallet.release.xcconfig"; sourceTree = "<group>"; };
+		F434317921B11EAC00FA9F6E /* HyperlootAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootAPI.swift; sourceTree = "<group>"; };
+		F434317B21B1296700FA9F6E /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
+		F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanRegisterEmailResponse.swift; sourceTree = "<group>"; };
+		F434318721B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		F44D723B2146EC4000C651C6 /* HyperlootWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperlootWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44D723E2146EC4000C651C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F44D72402146EC4000C651C6 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +198,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F434317521B11E7F00FA9F6E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F434317621B11E8D00FA9F6E /* HyperlootAPI */,
+				F434317B21B1296700FA9F6E /* HTTPService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F434317621B11E8D00FA9F6E /* HyperlootAPI */ = {
+			isa = PBXGroup;
+			children = (
+				F434318421B2E9A900FA9F6E /* Models */,
+				F434317921B11EAC00FA9F6E /* HyperlootAPI.swift */,
+			);
+			path = HyperlootAPI;
+			sourceTree = "<group>";
+		};
+		F434318421B2E9A900FA9F6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F44D72322146EC4000C651C6 = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +272,7 @@
 		F44D725E214A282E00C651C6 /* Hyperloot */ = {
 			isa = PBXGroup;
 			children = (
+				F434317521B11E7F00FA9F6E /* Network */,
 				F48CEC0A214B931600A43A47 /* Models */,
 				F48CEC0D214DD2A800A43A47 /* Extensions */,
 				F44D7266214A2C5800C651C6 /* Wallet */,
@@ -373,6 +408,7 @@
 				F466FCDC215DFCDC00092CC4 /* ReplaceRootSegue.swift */,
 				F466FCFF216348BE00092CC4 /* Bundle+Nib.swift */,
 				F466FD012163497400092CC4 /* UIView+Extensions.swift */,
+				F434318721B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -668,6 +704,7 @@
 				F48765F4215A06EC003825FE /* StringHelper.swift in Sources */,
 				F48765F7215A1980003825FE /* UIViewController+ScreenRoutes.swift in Sources */,
 				F466FD1621669EB100092CC4 /* ReceiveViewController.swift in Sources */,
+				F434317C21B1296700FA9F6E /* HTTPService.swift in Sources */,
 				F4CB7CEC21770BFC006B6217 /* EnterNicknameViewController.swift in Sources */,
 				F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
@@ -680,6 +717,7 @@
 				F466FCF621633D1900092CC4 /* WalletDashboardViewModel.swift in Sources */,
 				F466FD092164A4D200092CC4 /* TransactionTableCell.swift in Sources */,
 				F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */,
+				F434318821B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift in Sources */,
 				F48765EA215952B3003825FE /* RegistrationErrorView.swift in Sources */,
 				F466FD102165EE7400092CC4 /* TokenInfoViewModel.swift in Sources */,
 				F466FD00216348BE00092CC4 /* Bundle+Nib.swift in Sources */,
@@ -701,9 +739,11 @@
 				F48765F1215A039E003825FE /* EnterPasswordViewModel.swift in Sources */,
 				F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */,
 				F48765FA215A1CB0003825FE /* EnterWalletKeysViewController.swift in Sources */,
+				F434318621B2E9C500FA9F6E /* CanRegisterEmailResponse.swift in Sources */,
 				F466FD022163497400092CC4 /* UIView+Extensions.swift in Sources */,
 				F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */,
 				F475DB8D216C6A5900B157BC /* HyperlootNickname.swift in Sources */,
+				F434317A21B11EAC00FA9F6E /* HyperlootAPI.swift in Sources */,
 				F466FCF821633E2300092CC4 /* HyperlootToken.swift in Sources */,
 				F466FCE921617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift in Sources */,
 				F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */,
