@@ -58,11 +58,16 @@ class FormController: NSObject {
     @objc
     private func willShowKeyboard(notification: Notification) {
         guard let userInfo = notification.userInfo,
-            let keyboardFrameValue = userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue else {
+            let keyboardFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
                 return
         }
         
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrameValue.cgRectValue.height, right: 0.0)
+        var safeAreaBottomInset: CGFloat = 0.0
+        if #available(iOS 11, *) {
+            safeAreaBottomInset = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0
+        }
+        
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrameValue.cgRectValue.height - safeAreaBottomInset, right: 0.0)
         update(contentInsets: contentInsets)
         
         scrollToActiveTextField()
