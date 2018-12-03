@@ -2,7 +2,7 @@
 //  UIViewController+ActivityIndicator.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 12/1/18.
+//  Created by Valery Vaskabovich on 12/1/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

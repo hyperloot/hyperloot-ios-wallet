@@ -55,7 +55,7 @@ extension Hyperloot: HyperlootWalletManaging {
         walletManager.createWallet(email: email, password: password) { [weak self] (info, error) in
             
             if let info = info {
-                self?.userManager.createUser(withEmail: email, nickname: nickname, walletAddress: info.address) { (user, error) in
+                self?.userManager.createUser(withEmail: email, password: password, nickname: nickname, walletAddress: info.address) { (user, error) in
                     if error == nil {
                         completion(user, info.mnemonicPhraseWords, nil)
                     } else {

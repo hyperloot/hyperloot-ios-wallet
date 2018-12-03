@@ -1,5 +1,5 @@
 //
-//  CanRegisterEmailResponse.swift
+//  SignupResponse.swift
 //  HyperlootWallet
 //
 //  Created by Valery Vaskabovich on 12/1/18.
@@ -9,12 +9,12 @@
 import Foundation
 import ObjectMapper
 
-struct CanRegisterEmailResponse: ImmutableMappable {
+struct SignupResponse: ImmutableMappable {
     let email: String
-    let isAvailable: Bool
+    let userId: String
     
     init(map: Map) throws {
         email = try map.value("email")
-        isAvailable = try map.value("isAvailable")
+        userId = try map.value("id")
     }
 }

@@ -12,6 +12,8 @@
 		F434317C21B1296700FA9F6E /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434317B21B1296700FA9F6E /* HTTPService.swift */; };
 		F434318621B2E9C500FA9F6E /* CanRegisterEmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */; };
 		F434318821B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434318721B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift */; };
+		F434318A21B35AB700FA9F6E /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434318921B35AB700FA9F6E /* LoginResponse.swift */; };
+		F434318C21B3608700FA9F6E /* SignupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434318B21B3608700FA9F6E /* SignupResponse.swift */; };
 		F44D723F2146EC4000C651C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D723E2146EC4000C651C6 /* AppDelegate.swift */; };
 		F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D72402146EC4000C651C6 /* SplashViewController.swift */; };
 		F44D72442146EC4000C651C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44D72422146EC4000C651C6 /* Main.storyboard */; };
@@ -94,6 +96,8 @@
 		F434317B21B1296700FA9F6E /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanRegisterEmailResponse.swift; sourceTree = "<group>"; };
 		F434318721B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		F434318921B35AB700FA9F6E /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		F434318B21B3608700FA9F6E /* SignupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponse.swift; sourceTree = "<group>"; };
 		F44D723B2146EC4000C651C6 /* HyperlootWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperlootWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44D723E2146EC4000C651C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F44D72402146EC4000C651C6 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */,
+				F434318921B35AB700FA9F6E /* LoginResponse.swift */,
+				F434318B21B3608700FA9F6E /* SignupResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -722,6 +728,7 @@
 				F466FD102165EE7400092CC4 /* TokenInfoViewModel.swift in Sources */,
 				F466FD00216348BE00092CC4 /* Bundle+Nib.swift in Sources */,
 				F466FCF421633CDF00092CC4 /* WalletDashboardViewController.swift in Sources */,
+				F434318C21B3608700FA9F6E /* SignupResponse.swift in Sources */,
 				F466FCDD215DFCDC00092CC4 /* ReplaceRootSegue.swift in Sources */,
 				F44D7263214A29A100C651C6 /* HyperlootWalletManaging.swift in Sources */,
 				F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */,
@@ -735,6 +742,7 @@
 				F4CB7CEE21770C2A006B6217 /* EnterNicknameViewModel.swift in Sources */,
 				F466FCED2163349C00092CC4 /* DashboardTokenInfoSectionView.swift in Sources */,
 				F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */,
+				F434318A21B35AB700FA9F6E /* LoginResponse.swift in Sources */,
 				F466FD1321669DEB00092CC4 /* QRCodeImageGenerator.swift in Sources */,
 				F48765F1215A039E003825FE /* EnterPasswordViewModel.swift in Sources */,
 				F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */,

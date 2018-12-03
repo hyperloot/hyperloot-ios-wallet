@@ -18,9 +18,29 @@ class EnterWalletKeysViewModel {
         let actionButton: (title: String, enabled: Bool)
     }
     
+    enum PresentationSetting {
+        case none
+        case createWallet(mnemonicPhrase: [String])
+        case importWallet(importType: UserRegistrationFlow.ImportType)
+    }
+    
     let user: UserRegistrationFlow
     
     var walletKey: String?
+    
+    var presentationSetting: PresentationSetting {
+        switch user {
+        case .createWallet(user: _, password: _, mnemonicPhrase: let words):
+            return .createWallet(mnemonicPhrase: words)
+        case .importWallet(user: _, password: _, importType: let importType):
+            return .importWallet(importType: importType)
+        case .enterEmail, .signUpEnterNickname,
+             .signUpConfirmPassword, .signInEnterPassword,
+             .chooseImportOptions:
+            // Unsupported
+            return .none
+        }
+    }
     
     init(user: UserRegistrationFlow) {
         self.user = user
@@ -34,13 +54,17 @@ class EnterWalletKeysViewModel {
                             actionButton: (title: actionButtonTitle, enabled: isActionButtonEnabled))
     }
     
-    // MARK: - Presentation
+    // MARK: - API calls
+    public func createWallet(completion: @escaping () -> Void) {
+        
+    }
     
+    // MARK: - Presentation
     private var screenTitle: String {
-        switch user {
-        case .createWallet(user: _, password: _, mnemonicPhrase: _):
+        switch presentationSetting {
+        case .createWallet:
             return "Create a new wallet"
-        case .importWallet(user: _, password: _, importType: let importType):
+        case .importWallet(importType: let importType):
             switch importType {
             case .privateKey:
                 return "Please enter the private key for your wallet"
@@ -49,33 +73,27 @@ class EnterWalletKeysViewModel {
             case .keystoreJSON:
                 return "Please enter the Keystore JSON for your wallet"
             }
-        case .enterEmail, .signUpEnterNickname(email: _),
-             .signUpConfirmPassword(email: _, nickname: _), .signInEnterPassword(email: _),
-             .chooseImportOptions(_, _):
-            // Unsupported
+        case .none:
             return ""
         }
     }
     
     private var hintText: String? {
-        switch user {
-        case .createWallet(user: _, password: _, mnemonicPhrase: _):
+        switch presentationSetting {
+        case .createWallet:
             return "Please save this activation phrase to access your wallet"
-        case .importWallet(user: _, password: _, importType: _):
+        case .importWallet:
             return nil
-        case .enterEmail, .signUpEnterNickname(email: _),
-             .signUpConfirmPassword(email: _, nickname: _), .signInEnterPassword(email: _),
-             .chooseImportOptions(_, _):
-            // Unsupported
+        case .none:
             return ""
         }
     }
     
     private var walletKeyTypeName: String {
-        switch user {
-        case .createWallet(user: _, password: _, mnemonicPhrase: _):
+        switch presentationSetting {
+        case .createWallet:
             return "Activation phrase"
-        case .importWallet(user: _, password: _, importType: let importType):
+        case .importWallet(importType: let importType):
             switch importType {
             case .privateKey:
                 return "Private key"
@@ -84,66 +102,51 @@ class EnterWalletKeysViewModel {
             case .keystoreJSON:
                 return "Keystore JSON"
             }
-        case .enterEmail, .signUpEnterNickname(email: _),
-             .signUpConfirmPassword(email: _, nickname: _), .signInEnterPassword(email: _),
-             .chooseImportOptions(_, _):
-            // Unsupported
+        case .none:
             return ""
         }
     }
     
     private var defaultWalletKey: String {
-        switch user {
-        case .createWallet(user: _, password: _, mnemonicPhrase: let words):
+        switch presentationSetting {
+        case .createWallet(mnemonicPhrase: let words):
             return words.joined(separator: " ")
-        case .importWallet(user: _, password: _, importType: _):
+        case .importWallet:
             return ""
-        case .enterEmail, .signUpEnterNickname(email: _),
-             .signUpConfirmPassword(email: _, nickname: _), .signInEnterPassword(email: _),
-             .chooseImportOptions(_, _):
-            // Unsupported
+        case .none:
             return ""
         }
     }
     
     private var isWalletKeyEditable: Bool {
-        switch user {
-        case .createWallet(user: _, password: _, mnemonicPhrase: _):
+        switch presentationSetting {
+        case .createWallet:
             return false
-        case .importWallet(user: _, password: _, importType: _):
+        case .importWallet:
             return true
-        case .enterEmail, .signUpEnterNickname(email: _),
-             .signUpConfirmPassword(email: _, nickname: _), .signInEnterPassword(email: _),
-             .chooseImportOptions(_, _):
-            // Unsupported
+        case .none:
             return false
         }
     }
     
     private var actionButtonTitle: String {
-        switch user {
-        case .createWallet(user: _, password: _, mnemonicPhrase: _):
+        switch presentationSetting {
+        case .createWallet:
             return "Done"
-        case .importWallet(user: _, password: _, importType: _):
+        case .importWallet:
             return "Import"
-        case .enterEmail, .signUpEnterNickname(email: _),
-             .signUpConfirmPassword(email: _, nickname: _), .signInEnterPassword(email: _),
-             .chooseImportOptions(_, _):
-            // Unsupported
+        case .none:
             return ""
         }
     }
     
     private var isActionButtonEnabled: Bool {
-        switch user {
-        case .createWallet(user: _, password: _, mnemonicPhrase: _):
+        switch presentationSetting {
+        case .createWallet:
             return true
-        case .importWallet(user: _, password: _, importType: _):
+        case .importWallet:
             return walletKey?.isEmpty == false
-        case .enterEmail, .signUpEnterNickname(email: _),
-             .signUpConfirmPassword(email: _, nickname: _), .signInEnterPassword(email: _),
-             .chooseImportOptions(_, _):
-            // Unsupported
+        case .none:
             return false
         }
     }
