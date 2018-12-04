@@ -9,7 +9,7 @@ import Alamofire
 class HyperlootAPI: HTTPService {
     
     enum Environment: String {
-        case testNet = "https://api-testnet.hyperloot.net"
+        case testNet = "https://qa-api-testnet-hyperloot.herokuapp.com"
     }
     
     required public init(environment: Environment) {

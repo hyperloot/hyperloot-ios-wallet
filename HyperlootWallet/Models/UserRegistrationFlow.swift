@@ -22,7 +22,7 @@ enum UserRegistrationFlow {
     // New users: Email -> Nickname -> Password -> Create wallet
     case signUpEnterNickname(email: String)
     case signUpConfirmPassword(email: String, nickname: String)
-    case createWallet(user: HyperlootUser, password: String, mnemonicPhrase: [String])
+    case createWallet(email: String, password: String, nickname: String, address: String, mnemonicPhrase: [String])
     
     // Existing users: Email -> Password -> Import wallet
     case signInEnterPassword(email: String)

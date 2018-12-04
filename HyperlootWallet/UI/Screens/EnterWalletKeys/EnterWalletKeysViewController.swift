@@ -52,6 +52,12 @@ class EnterWalletKeysViewController: UIViewController {
     }
     
     @IBAction func actionButtonPressed() {
-        performSegue(route: .showWalletAfterLoginFlow)
+        showActivityIndicator()
+        viewModel.performAction { [weak self] (result) in
+            self?.hideActivityIndicator()
+            if result {
+                self?.performSegue(route: .showWalletAfterLoginFlow)
+            }
+        }
     }
 }

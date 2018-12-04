@@ -46,28 +46,19 @@ extension Hyperloot: HyperlootWalletManaging {
         userManager.login(email: email, password: password, completion: completion)
     }
     
-    func createWallet(email: String, nickname: String, password: String, completion: @escaping (_ user: HyperlootUser?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void) {
-        
-        let errorCallback = { (error: Error?) in
-            completion(nil, nil, error)
-        }
-        
-        walletManager.createWallet(email: email, password: password) { [weak self] (info, error) in
-            
+    func signup(email: String, password: String, nickname: String, walletAddress: String, completion: @escaping (_ user: HyperlootUser?, _ error: Error?) -> Void) {
+        userManager.createUser(withEmail: email, password: password, nickname: nickname, walletAddress: walletAddress, completion: completion)
+    }
+    
+    func createWallet(email: String, password: String, completion: @escaping (_ address: String?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void) {
+        walletManager.createWallet(email: email, password: password) { (info, error) in
             if let info = info {
-                self?.userManager.createUser(withEmail: email, password: password, nickname: nickname, walletAddress: info.address) { (user, error) in
-                    if error == nil {
-                        completion(user, info.mnemonicPhraseWords, nil)
-                    } else {
-                        errorCallback(error)
-                    }
-                }
+                completion(info.address.description, info.mnemonicPhraseWords, nil)
             } else {
-                errorCallback(error)
+                completion(nil, nil, error)
             }
         }
     }
-    
     
     func importWallet() {
         

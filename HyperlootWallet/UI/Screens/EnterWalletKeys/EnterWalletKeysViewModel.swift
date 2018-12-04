@@ -30,7 +30,7 @@ class EnterWalletKeysViewModel {
     
     var presentationSetting: PresentationSetting {
         switch user {
-        case .createWallet(user: _, password: _, mnemonicPhrase: let words):
+        case .createWallet(email: _, password: _, nickname: _, address: _, mnemonicPhrase: let words):
             return .createWallet(mnemonicPhrase: words)
         case .importWallet(user: _, password: _, importType: let importType):
             return .importWallet(importType: importType)
@@ -54,9 +54,29 @@ class EnterWalletKeysViewModel {
                             actionButton: (title: actionButtonTitle, enabled: isActionButtonEnabled))
     }
     
+    public func performAction(completion: @escaping (Bool) -> Void) {
+        switch user {
+        case .createWallet(email: let email, password: let password, nickname: let nickname, address: let address, mnemonicPhrase: _):
+            createWallet(email: email, password: password, nickname: nickname, walletAddress: address, completion: completion)
+        case .importWallet(user: _, password: _, importType: _):
+            break
+        case .enterEmail, .signUpEnterNickname,
+             .signUpConfirmPassword, .signInEnterPassword,
+             .chooseImportOptions:
+            // Unsupported
+            break
+        }
+    }
+    
     // MARK: - API calls
-    public func createWallet(completion: @escaping () -> Void) {
-        
+    public func createWallet(email: String, password: String, nickname: String, walletAddress: String, completion: @escaping (Bool) -> Void) {
+        Hyperloot.shared.signup(email: email, password: password, nickname: nickname, walletAddress: walletAddress) { (user, error) in
+            if user != nil, error == nil {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
     }
     
     // MARK: - Presentation

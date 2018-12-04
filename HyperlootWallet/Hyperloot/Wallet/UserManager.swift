@@ -45,8 +45,8 @@ class UserManager {
         })
     }
     
-    public func createUser(withEmail email: String, password: String, nickname: String, walletAddress: Address, completion: @escaping (HyperlootUser?, Error?) -> Void) {
-        api.signup(email: email, password: password, nickname: nickname, walletAddress: walletAddress.description) { [weak self] (signup: SignupResponse?, error) in
+    public func createUser(withEmail email: String, password: String, nickname: String, walletAddress: String, completion: @escaping (HyperlootUser?, Error?) -> Void) {
+        api.signup(email: email, password: password, nickname: nickname, walletAddress: walletAddress) { [weak self] (signup: SignupResponse?, error) in
             guard let signup = signup, signup.userId.isEmpty == false else {
                 completion(nil, error)
                 return
