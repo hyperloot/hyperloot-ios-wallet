@@ -11,6 +11,7 @@ import Foundation
 class Hyperloot {
     
     fileprivate let api = HyperlootAPI(environment: .testNet)
+    fileprivate let blockscout = Blockscout(environment: .ropsten)
     fileprivate lazy var walletManager = WalletManager()
     fileprivate lazy var userManager = UserManager(api: self.api)
     
@@ -20,7 +21,10 @@ class Hyperloot {
 extension Hyperloot: HyperlootTokensManaging {
     
     func getTokens() {
-        
+        guard let address = userManager.user?.walletAddress.description else { return }
+        blockscout.getTokenList(address: "0xeadb31649e9f4d2ca155444d60144fcbf8b9190f") { (response, error) in
+            print("\(response), \(error)")
+        }
     }
     
     func getBalance() {

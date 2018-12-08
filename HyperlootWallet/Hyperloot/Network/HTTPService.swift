@@ -19,6 +19,8 @@ extension Request: Cancelable {}
 
 class HTTPService {
     
+    typealias ResponseValidation = (_ responseObject: Any?) -> Error?
+    
     let sessionManager: SessionManager
     let host: URL
     
@@ -33,11 +35,47 @@ class HTTPService {
                                          parameters: Parameters? = nil,
                                          encoding: ParameterEncoding = URLEncoding.default,
                                          headers: HTTPHeaders? = nil,
-                                         completion: @escaping (T?, Error?) -> Void) -> DataRequest {
-        
-        let url: URL = host.appendingPathComponent(path)
-        return sessionManager.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers).responseObject(keyPath: keyPath, completionHandler: { (response: DataResponse<T>) in
-            completion(response.result.value, response.result.error)
+                                         validation: ResponseValidation? = nil,
+                                         objectCompletion: @escaping (T?, Error?) -> Void) -> DataRequest {
+        return request(path, method: method, parameters: parameters, encoding: encoding, headers: headers, validation: validation).responseObject(keyPath: keyPath, completionHandler: { (response: DataResponse<T>) in
+            objectCompletion(response.result.value, response.result.error)
         })
+    }
+    
+    public func request<T: BaseMappable>(_ path: String,
+                                         keyPath: String? = nil,
+                                         method: HTTPMethod = .get,
+                                         parameters: Parameters? = nil,
+                                         encoding: ParameterEncoding = URLEncoding.default,
+                                         headers: HTTPHeaders? = nil,
+                                         validation: ResponseValidation? = nil,
+                                         arrayCompletion: @escaping ([T]?, Error?) -> Void) -> DataRequest {
+        return request(path, method: method, parameters: parameters, encoding: encoding, headers: headers, validation: validation).responseArray(keyPath: keyPath, completionHandler: { (response: DataResponse<[T]>) in
+            arrayCompletion(response.result.value, response.result.error)
+        })
+    }
+    
+    // MARK: - Private
+    private func request(_ path: String,
+                         method: HTTPMethod = .get,
+                         parameters: Parameters? = nil,
+                         encoding: ParameterEncoding = URLEncoding.default,
+                         headers: HTTPHeaders? = nil,
+                         validation: ResponseValidation? = nil) -> DataRequest {
+        let url: URL = host.appendingPathComponent(path)
+        return sessionManager.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers).validate({ (request, response, data) -> Request.ValidationResult in
+            return self.validate(request: request, response: response, data: data, responseValidation: validation)
+        })
+    }
+    
+    private func validate(request: URLRequest?, response: HTTPURLResponse, data: Data?, responseValidation: ResponseValidation?) -> Request.ValidationResult {
+        let jsonResponseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
+        let result = jsonResponseSerializer.serializeResponse(request, response, data, nil)
+        
+        if let error = responseValidation?(result.value) {
+            return .failure(error)
+        }
+        
+        return .success
     }
 }
