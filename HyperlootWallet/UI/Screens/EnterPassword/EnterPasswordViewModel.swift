@@ -133,7 +133,7 @@ class EnterPasswordViewModel {
             return
         }
         
-        Hyperloot.shared.createWallet(email: email, password: password) { [weak self] (address, words, error) in
+        Hyperloot.shared.createWallet(password: password) { [weak self] (address, words, error) in
             guard let address = address, let words = words else {
                 completion(nil)
                 return

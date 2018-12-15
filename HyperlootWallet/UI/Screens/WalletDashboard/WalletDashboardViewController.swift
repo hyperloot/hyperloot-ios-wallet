@@ -25,7 +25,9 @@ class WalletDashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        showActivityIndicator()
         viewModel.loadWallet { [weak self] in
+            self?.hideActivityIndicator()
             self?.updateBalance()
             self?.tableView.reloadData()
         }

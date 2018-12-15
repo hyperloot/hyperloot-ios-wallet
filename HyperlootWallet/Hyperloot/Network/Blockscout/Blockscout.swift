@@ -87,4 +87,10 @@ class Blockscout: HTTPService {
         let model = RequestModel(module: .account, action: .tokenList, parameters: ["address": address])
         return request(requestModel: model, completion: completion)
     }
+    
+    @discardableResult
+    func getToken(contractAddress: String, completion: @escaping (BlockscoutGetTokenResponse?, Error?) -> Void) -> Cancelable {
+        let model = RequestModel(module: .token, action: .tokenDetails, parameters: ["contractaddress": contractAddress])
+        return request(requestModel: model, completion: completion)
+    }
 }

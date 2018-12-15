@@ -11,6 +11,10 @@ import TrustCore
 
 struct HyperlootToken {
     
+    struct Constants {
+        static let ethereumContract = "0x0"
+    }
+    
     struct Attributes {
         let description: String
         let name: String
@@ -18,15 +22,22 @@ struct HyperlootToken {
     }
     
     enum TokenType {
-        case erc20
+        case erc20(amount: String)
         case erc721(tokenId: String, attributes: Attributes)
     }
     
-    let cataloged: Bool
     let contractAddress: String
     let name: String
     let symbol: String
     let decimals: Int
-    let totalSupply: Int
+    let totalSupply: String
     let type: TokenType
+    
+    static func ether(amount: String) -> HyperlootToken {
+        return HyperlootToken(contractAddress: Constants.ethereumContract, name: "Ethereum", symbol: "ETH", decimals: 18, totalSupply: "0", type: .erc20(amount: amount))
+    }
+    
+    static func hlt(amount: String) -> HyperlootToken {
+        return HyperlootToken(contractAddress: "0x0", name: "Hyperloot", symbol: "HLT", decimals: 18, totalSupply: "0", type: .erc20(amount: amount))
+    }
 }

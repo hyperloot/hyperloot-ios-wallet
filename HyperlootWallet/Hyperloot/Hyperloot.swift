@@ -11,24 +11,27 @@ import Foundation
 class Hyperloot {
     
     fileprivate let api = HyperlootAPI(environment: .testNet)
-    fileprivate let blockscout = Blockscout(environment: .ropsten)
     fileprivate lazy var walletManager = WalletManager()
     fileprivate lazy var userManager = UserManager(api: self.api)
+    fileprivate let tokenManager = TokenManager(environment: .ropsten)
     
     public static let shared = Hyperloot()
+    
+    var user: HyperlootUser? {
+        return userManager.user
+    }
 }
 
 extension Hyperloot: HyperlootTokensManaging {
     
-    func getTokens() {
+    func getTokens(completion: @escaping ([HyperlootToken]) -> Void) {
         guard let address = userManager.user?.walletAddress.description else { return }
-        blockscout.getTokenList(address: "0xeadb31649e9f4d2ca155444d60144fcbf8b9190f") { (response, error) in
-            print("\(response), \(error)")
-        }
+        tokenManager.getTokens(address: address, completion: completion)
     }
     
-    func getBalance() {
-        
+    func getBalance(completion: @escaping (HyperlootToken) -> Void) {
+        guard let address = userManager.user?.walletAddress.description else { return }
+        tokenManager.getBalance(address: address, completion: completion)
     }
 }
 
@@ -54,8 +57,8 @@ extension Hyperloot: HyperlootWalletManaging {
         userManager.createUser(withEmail: email, password: password, nickname: nickname, walletAddress: walletAddress, completion: completion)
     }
     
-    func createWallet(email: String, password: String, completion: @escaping (_ address: String?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void) {
-        walletManager.createWallet(email: email, password: password) { (info, error) in
+    func createWallet(password: String, completion: @escaping (_ address: String?, _ mnemonicPhraseWords: [String]?, _ error: Error?) -> Void) {
+        walletManager.createWallet(password: password) { (info, error) in
             if let info = info {
                 completion(info.address.description, info.mnemonicPhraseWords, nil)
             } else {

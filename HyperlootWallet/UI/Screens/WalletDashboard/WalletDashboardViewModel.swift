@@ -19,24 +19,33 @@ class WalletDashboardViewModel {
     private var tokensTree: [TokensTree] = []
     private var tokens: [HyperlootToken] = []
     
+    private var isLoadingWallet: Bool = false
+    
     public private(set) var selectedToken: HyperlootToken?
     
-    func loadWallet(completion: () -> Void) {
+    func loadWallet(completion: @escaping () -> Void) {
+
+        guard isLoadingWallet == false else { return }
         
-        func hlq3Token(tokenId: String, attributes: HyperlootToken.Attributes) -> HyperlootToken {
-            return HyperlootToken(cataloged: true, contractAddress: "0x4321", name: "Hyperloot Q3", symbol: "HLQ3", decimals: 0, totalSupply: 3, type: .erc721(tokenId: tokenId, attributes: attributes))
+        isLoadingWallet = true
+        
+        var allTokens: [HyperlootToken] = []
+
+        Hyperloot.shared.getBalance { [weak self] (token) in
+            
+            allTokens.append(token)
+            
+            Hyperloot.shared.getTokens { (tokens) in
+                guard let strongSelf = self else { return }
+                allTokens.append(contentsOf: tokens)
+                strongSelf.tokens = allTokens
+                
+                strongSelf.buildDataSource(tokens: allTokens)
+                completion()
+                
+                strongSelf.isLoadingWallet = false
+            }
         }
-        
-        // TODO: use API to get tokens
-        tokens = [ HyperlootToken(cataloged: false, contractAddress: "0x12345", name: "Hyperloot Token", symbol: "HLT", decimals: 0, totalSupply: 100000, type: .erc20),
-                   HyperlootToken(cataloged: false, contractAddress: "0x12", name: "Ethereum", symbol: "ETH", decimals: 10, totalSupply: 100000, type: .erc20),
-                   hlq3Token(tokenId: "1", attributes: HyperlootToken.Attributes(description: "This is a rocket launcher", name: "Rocket Launcher", imageURL: "")),
-                   hlq3Token(tokenId: "2", attributes: HyperlootToken.Attributes(description: "This is a plasma", name: "Plasma Gun", imageURL: "")),
-                   HyperlootToken(cataloged: false, contractAddress: "0x9932", name: "Coin", symbol: "COIN", decimals: 0, totalSupply: 100000, type: .erc20)]
-        
-        buildDataSource(tokens: tokens)
-        
-        completion()
     }
     
     // If the user taps on section (token info) then the app shows transactions history
@@ -82,7 +91,11 @@ class WalletDashboardViewModel {
     // MARK: - Data Source
     
     public var balance: NSAttributedString {
-        return BalanceFormatter.format(balance: "$3000", fontHeight: 34.0, change: .down(value: "20.0"), changeFontHeight: 20.0)
+        guard let user = Hyperloot.shared.user else {
+            return NSAttributedString(string: "")
+        }
+        return NSAttributedString(string: "\(user.nickname.name)#\(user.nickname.identifier)")
+//        return BalanceFormatter.format(balance: "$3000", fontHeight: 34.0, change: .down(value: "20.0"), changeFontHeight: 20.0)
     }
     
     public func numberOfSections() -> Int {
@@ -95,8 +108,15 @@ class WalletDashboardViewModel {
 
     public func presentationForToken(at index: Int) -> DashboardTokenInfoSectionPresentation {
         let token = tokensTree[index].rootToken
-        return DashboardTokenInfoSectionPresentation(tokenSymbol: token.symbol,
-                                                     tokenValue: "$1000",
+        var value: String = ""
+        switch token.type {
+        case .erc20(amount: let amount):
+            value = amount
+        case .erc721:
+            value = "" // need value from market cap
+        }
+        return DashboardTokenInfoSectionPresentation(tokenSymbol: "\(token.name) (\(token.symbol))",
+                                                     tokenValue: value,
                                                      hideSeparator: isERC721(token: token))
     }
     
