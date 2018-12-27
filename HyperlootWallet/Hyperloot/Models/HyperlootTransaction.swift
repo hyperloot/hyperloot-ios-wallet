@@ -8,6 +8,17 @@
 
 import Foundation
 
+enum HyperlootTransactionType {
+    case transactions
+    case tokens(contractAddress: String)
+}
+
+enum HyperlootTransactionValue {
+    case ether(value: String)
+    case token(value: String, decimals: Int, symbol: String)
+    case uniqueToken(tokenId: String)
+}
+
 struct HyperlootTransaction {
 
     enum Status: Int {
@@ -21,5 +32,5 @@ struct HyperlootTransaction {
     let from: String
     let to: String
     let status: Status
-    let value: String
+    let value: HyperlootTransactionValue
 }

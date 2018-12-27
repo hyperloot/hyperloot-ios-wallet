@@ -72,7 +72,7 @@ class WalletDashboardViewModel {
             
             var filteredTokens: [HyperlootToken] = []
             if isERC721(token: token) {
-                filteredTokens = tokens.filter { $0.contractAddress == contractAddress }
+                filteredTokens = tokens.filter { $0.contractAddress == contractAddress && hasTokenID(token: $0) }
             }
             
             tokensTree.append(TokensTree(contractAddress: contractAddress, rootToken: token, tokens: filteredTokens))
@@ -81,11 +81,19 @@ class WalletDashboardViewModel {
     
     private func isERC721(token: HyperlootToken) -> Bool {
         var isERC721: Bool = false
-        if case .erc721(tokenId: _, attributes: _) = token.type {
+        if case .erc721 = token.type {
             isERC721 = true
         }
         
         return isERC721
+    }
+    
+    private func hasTokenID(token: HyperlootToken) -> Bool {
+        if case .erc721(tokenId: let tokenId, totalCount: _, attributes: _) = token.type {
+            return tokenId != HyperlootToken.Constants.noTokenId
+        }
+    
+        return false
     }
     
     // MARK: - Data Source
@@ -107,30 +115,30 @@ class WalletDashboardViewModel {
     }
 
     public func presentationForToken(at index: Int) -> DashboardTokenInfoSectionPresentation {
-        let token = tokensTree[index].rootToken
+        let currentTokensTree = tokensTree[index]
+        let token = currentTokensTree.rootToken
         var value: String = ""
         switch token.type {
         case .erc20(amount: let amount):
-            value = amount
-        case .erc721:
-            value = "" // need value from market cap
+            value = TokenFormatter.erc20Value(formattedValue: amount, symbol: token.symbol)
+        case .erc721(tokenId: _, totalCount: let totalCount, attributes: _):
+            value = TokenFormatter.erc721Total(count: totalCount)
         }
-        return DashboardTokenInfoSectionPresentation(tokenSymbol: "\(token.name) (\(token.symbol))",
+        let shouldHideSeparator = isERC721(token: token) && currentTokensTree.tokens.isEmpty == false
+        return DashboardTokenInfoSectionPresentation(tokenSymbol: TokenFormatter.tokenDisplay(name: token.name, symbol: token.symbol),
                                                      tokenValue: value,
-                                                     hideSeparator: isERC721(token: token))
+                                                     hideSeparator: shouldHideSeparator)
     }
     
     public func presentationForItem(at index: Int, section: Int) -> DashboardTokenItemInfoPresentation? {
         let token = tokensTree[section].tokens[index]
-        guard case .erc721(tokenId: _, attributes: let attributes) = token.type else {
+        guard isERC721(token: token), hasTokenID(token: token),
+            case .erc721(tokenId: let tokenId, totalCount: _, attributes: let attributes) = token.type else {
             return nil
         }
         return DashboardTokenItemInfoPresentation(itemImageURL: attributes.imageURL,
                                                   itemName: attributes.name,
                                                   itemShortDescription: attributes.description,
-                                                  itemPrice: BalanceFormatter.format(balance: "$10",
-                                                                                     fontHeight: 20.0,
-                                                                                     change: .up(value: "2.0"),
-                                                                                     changeFontHeight: 15.0))
+                                                  itemPrice: NSAttributedString(string: tokenId))
     }
 }

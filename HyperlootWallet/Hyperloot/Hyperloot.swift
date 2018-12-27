@@ -33,6 +33,11 @@ extension Hyperloot: HyperlootTokensManaging {
         guard let address = userManager.user?.walletAddress.description else { return }
         tokenManager.getBalance(address: address, completion: completion)
     }
+    
+    func getTransactions(type: HyperlootTransactionType, page: Int, completion: @escaping ([HyperlootTransaction]) -> Void) {
+        guard let address = userManager.user?.walletAddress.description else { return }
+        tokenManager.getTransactions(address: address, page: page, transactionType: type, completion: completion)
+    }
 }
 
 extension Hyperloot: HyperlootWalletManaging {

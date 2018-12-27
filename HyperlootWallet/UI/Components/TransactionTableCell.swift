@@ -15,6 +15,7 @@ class TransactionTableCell: UITableViewCell {
     struct Presentation {
         let date: String
         let tokenValue: BalanceFormatter.TransactionAmount
+        let showTransactionValueSign: Bool
         let transactionHash: String
     }
 
@@ -24,7 +25,8 @@ class TransactionTableCell: UITableViewCell {
     
     public func update(presentation: TransactionCellPresentation) {
         dateLabel.text = presentation.date
-        valueLabel.attributedText = presentation.tokenValue.toAttributedString(font: UIFont.boldSystemFont(ofSize: 20.0))
+        valueLabel.attributedText = presentation.tokenValue.toAttributedString(font: UIFont.boldSystemFont(ofSize: 20.0),
+                                                                               showSign: presentation.showTransactionValueSign)
         transactionHashLabel.text = presentation.transactionHash
     }
 }

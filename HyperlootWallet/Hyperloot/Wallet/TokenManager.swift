@@ -11,10 +11,6 @@ import BigInt
 
 class TokenManager {
     
-    struct Constants {
-        static let ethereumDecimals = 18
-    }
-    
     let blockscout: Blockscout
     
     lazy var tokensInfoOperationQueue: OperationQueue = {
@@ -43,12 +39,41 @@ class TokenManager {
         blockscout.balance(address: address) { [weak self] (response, error) in
             guard let balance = response?.balance,
                 let amount = BigInt(balance),
-                let stringValue = self?.formatter.string(from: amount, decimals: Constants.ethereumDecimals) else {
+                let stringValue = self?.formatter.string(from: amount, decimals: TokenConstants.Ethereum.ethereumDecimals) else {
                 completion(HyperlootToken.ether(amount: "0"))
                 return
             }
             
             completion(HyperlootToken.ether(amount: stringValue))
+        }
+    }
+        
+    func getTransactions(address: String, page: Int, transactionType: HyperlootTransactionType, completion: @escaping ([HyperlootTransaction]) -> Void) {
+        switch transactionType {
+        case .transactions:
+            blockscout.transactions(address: address, page: page) { [weak self] (response, error) in
+                self?.processTransactions(response: response, completion: completion)
+            }
+        case .tokens(contractAddress: let contractAddress):
+            blockscout.tokenTransfers(address: address, contractAddress: contractAddress, page: page) { [weak self] (response, error) in
+                self?.processTransactions(response: response, completion: completion)
+            }
+        }
+    }
+    
+    private func processTransactions(response: BlockscoutTransactionListResponse?, completion: @escaping ([HyperlootTransaction]) -> Void) {
+        guard let transactions = response?.transactions else {
+            completion([])
+            return
+        }
+        
+        var hyperlootTransactions: [HyperlootTransaction] = []
+        transactions.forEach { (transaction) in
+            guard let tx = HyperlootTransactionsTransformer.transaction(from: transaction) else { return }
+            hyperlootTransactions.append(tx)
+        }
+        DispatchQueue.main.async {
+            completion(hyperlootTransactions)
         }
     }
     

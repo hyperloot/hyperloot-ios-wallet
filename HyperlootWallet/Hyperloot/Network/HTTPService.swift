@@ -76,6 +76,11 @@ class HTTPService {
             return .failure(error)
         }
         
+        if let data = data {
+            let string = String(data: data, encoding: .utf8)
+            print(string)
+        }
+        
         return .success
     }
 }

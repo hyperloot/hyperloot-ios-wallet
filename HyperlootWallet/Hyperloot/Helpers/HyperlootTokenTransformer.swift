@@ -9,6 +9,14 @@
 import Foundation
 import BigInt
 
+struct TokenConstants {
+    struct Ethereum {
+        static let ethereumDecimals = 18
+        static let ethereumContract = "0x0"
+        static let ethereumSymbol = "ETH"
+    }
+}
+
 class HyperlootTokenTransformer {
     
     static func token(from contractable: TokenContractable, balance: String) -> HyperlootToken? {
@@ -23,7 +31,7 @@ class HyperlootTokenTransformer {
                 tokenType = .erc20(amount: amountString)
             }
         case "ERC-721":
-            tokenType = .erc721(tokenId: balance, attributes: HyperlootToken.Attributes(description: "", name: "", imageURL: ""))
+            tokenType = .erc721(tokenId: HyperlootToken.Constants.noTokenId, totalCount: Int(balance) ?? 0, attributes: HyperlootToken.Attributes(description: "", name: "", imageURL: ""))
         default:
             break
         }

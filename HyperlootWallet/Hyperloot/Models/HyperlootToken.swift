@@ -12,9 +12,9 @@ import TrustCore
 struct HyperlootToken {
     
     struct Constants {
-        static let ethereumContract = "0x0"
+        static let noTokenId = "noTokenId"
     }
-    
+        
     struct Attributes {
         let description: String
         let name: String
@@ -23,7 +23,7 @@ struct HyperlootToken {
     
     enum TokenType {
         case erc20(amount: String)
-        case erc721(tokenId: String, attributes: Attributes)
+        case erc721(tokenId: String, totalCount: Int, attributes: Attributes)
     }
     
     let contractAddress: String
@@ -34,10 +34,21 @@ struct HyperlootToken {
     let type: TokenType
     
     static func ether(amount: String) -> HyperlootToken {
-        return HyperlootToken(contractAddress: Constants.ethereumContract, name: "Ethereum", symbol: "ETH", decimals: 18, totalSupply: "0", type: .erc20(amount: amount))
+        return HyperlootToken(contractAddress: TokenConstants.Ethereum.ethereumContract,
+                              name: "Ethereum",
+                              symbol: TokenConstants.Ethereum.ethereumSymbol,
+                              decimals: TokenConstants.Ethereum.ethereumDecimals,
+                              totalSupply: "0",
+                              type: .erc20(amount: amount))
     }
     
     static func hlt(amount: String) -> HyperlootToken {
-        return HyperlootToken(contractAddress: "0x0", name: "Hyperloot", symbol: "HLT", decimals: 18, totalSupply: "0", type: .erc20(amount: amount))
+        // TODO: fill the information
+        return HyperlootToken(contractAddress: "0x0",
+                              name: "Hyperloot",
+                              symbol: "HLT",
+                              decimals: 18,
+                              totalSupply: "0",
+                              type: .erc20(amount: amount))
     }
 }

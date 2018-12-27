@@ -60,7 +60,7 @@ class WalletDashboardViewController: UIViewController {
         } else if segue.isEqualTo(route: .showItemDetails) {
             guard let viewController = segue.destination as? TokenInfoViewController,
                 let token = viewModel.selectedToken,
-                case .erc721(tokenId: _, attributes: let attributes) = token.type else {
+            case .erc721(tokenId: _, totalCount: _, attributes: let attributes) = token.type else {
                 return
             }
             

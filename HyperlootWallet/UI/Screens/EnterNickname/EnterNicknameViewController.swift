@@ -63,7 +63,10 @@ class EnterNicknameViewController: UIViewController {
     
     @IBAction func nextButtonPressed() {
         nicknameTextField.resignFirstResponder()
-        performSegue(route: .showEnterPasswordScreen)
+        viewModel.textFieldDidReturn(nicknameTextField.text)
+        if viewModel.registrationUser != nil {
+            performSegue(route: .showEnterPasswordScreen)
+        }
     }
 }
 

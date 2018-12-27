@@ -17,7 +17,7 @@ class Blockscout: HTTPService {
         case ropsten = "https://blockscout.com/eth/ropsten/api"
     }
     
-    typealias RequestParameters = [String: String]
+    typealias RequestParameters = [String: Any]
     
     struct RequestModel {
         
@@ -42,7 +42,7 @@ class Blockscout: HTTPService {
         let parameters: RequestParameters
         
         func requestParameters() -> RequestParameters {
-            var dict = ["module": module.rawValue, "action": action.rawValue]
+            var dict: RequestParameters = ["module": module.rawValue, "action": action.rawValue]
             dict.merge(with: parameters)
             return dict
         }
@@ -93,4 +93,38 @@ class Blockscout: HTTPService {
         let model = RequestModel(module: .token, action: .tokenDetails, parameters: ["contractaddress": contractAddress])
         return request(requestModel: model, completion: completion)
     }
+
+    
+    /// This API call returns all transactions for the account (not tokens)
+    ///
+    /// - Parameters:
+    ///   - address: Account address
+    ///   - page: Page number for transactions
+    ///   - completion: Completion
+    /// - Returns: Cancelable operation
+    @discardableResult
+    func transactions(address: String, page: Int = 0, completion: @escaping (BlockscoutTransactionListResponse?, Error?) -> Void) -> Cancelable {
+        let model = RequestModel(module: .account, action: .transactionsList, parameters: ["address": address, "page": page])
+        return request(requestModel: model, completion: completion)
+    }
+    
+    
+    /// This API call returns all token transfers (rather than ether) for the account or for the account with contract address
+    ///
+    /// - Parameters:
+    ///   - address: Account address
+    ///   - contractAddress: Contract address (optional) to get token transfers
+    ///   - page: Page number for transactions
+    ///   - completion: Completion block
+    /// - Returns: Cancelable operation
+    @discardableResult
+    func tokenTransfers(address: String, contractAddress: String? = nil, page: Int = 0, completion: @escaping (BlockscoutTransactionListResponse?, Error?) -> Void) -> Cancelable {
+        var parameters: RequestParameters = ["address": address, "page": page]
+        if let contractAddress = contractAddress {
+            parameters["contractaddress"] = contractAddress
+        }
+        let model = RequestModel(module: .account, action: .tokenTransactions, parameters: parameters)
+        return request(requestModel: model, completion: completion)
+    }
+
 }
