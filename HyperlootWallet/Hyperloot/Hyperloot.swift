@@ -13,7 +13,7 @@ class Hyperloot {
     fileprivate let api = HyperlootAPI(environment: .testNet)
     fileprivate lazy var walletManager = WalletManager()
     fileprivate lazy var userManager = UserManager(api: self.api)
-    fileprivate let tokenManager = TokenManager(environment: .ropsten)
+    fileprivate let tokenManager = TokenInventoryManager(environment: .ropsten)
     
     public static let shared = Hyperloot()
     
@@ -25,17 +25,17 @@ class Hyperloot {
 extension Hyperloot: HyperlootTokensManaging {
     
     func getTokens(completion: @escaping ([HyperlootToken]) -> Void) {
-        guard let address = userManager.user?.walletAddress.description else { return }
+        guard let address = currentWallet()?.addressString else { return }
         tokenManager.getTokens(address: address, completion: completion)
     }
     
     func getBalance(completion: @escaping (HyperlootToken) -> Void) {
-        guard let address = userManager.user?.walletAddress.description else { return }
+        guard let address = currentWallet()?.addressString else { return }
         tokenManager.getBalance(address: address, completion: completion)
     }
     
     func getTransactions(type: HyperlootTransactionType, page: Int, completion: @escaping ([HyperlootTransaction]) -> Void) {
-        guard let address = userManager.user?.walletAddress.description else { return }
+        guard let address = currentWallet()?.addressString else { return }
         tokenManager.getTransactions(address: address, page: page, transactionType: type, completion: completion)
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import BigInt
 
-class TokenManager {
+class TokenInventoryManager {
     
     let blockscout: Blockscout
     
@@ -25,8 +25,25 @@ class TokenManager {
         return formatter
     } ()
     
+    lazy var inventory = UserTokenInventoryStorage()
+    
     required init(environment: Blockscout.Environment) {
         self.blockscout = Blockscout(environment: environment)
+    }
+    
+    func updateInventory(address: String) {
+        
+        inventory.loadInventory { [weak self] (loaded) in
+            guard loaded == true else {
+                return
+            }
+            
+            self?.getBalance(address: address) { (token) in
+                self?.getTokens(address: address, completion: { (tokens) in
+                    
+                })
+            }
+        }
     }
     
     func getTokens(address: String, completion: @escaping ([HyperlootToken]) -> Void) {

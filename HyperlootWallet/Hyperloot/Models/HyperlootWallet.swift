@@ -28,3 +28,9 @@ struct HyperlootWallet {
         }
     }
 }
+
+extension HyperlootWallet {
+    var addressString: String {
+        return address.description
+    }
+}

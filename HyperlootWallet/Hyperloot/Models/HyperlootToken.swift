@@ -15,7 +15,7 @@ struct HyperlootToken {
         static let noTokenId = "noTokenId"
     }
         
-    struct Attributes {
+    struct Attributes: Codable {
         let description: String
         let name: String
         let imageURL: String

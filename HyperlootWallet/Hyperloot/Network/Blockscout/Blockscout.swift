@@ -104,7 +104,7 @@ class Blockscout: HTTPService {
     /// - Returns: Cancelable operation
     @discardableResult
     func transactions(address: String, page: Int = 0, completion: @escaping (BlockscoutTransactionListResponse?, Error?) -> Void) -> Cancelable {
-        let model = RequestModel(module: .account, action: .transactionsList, parameters: ["address": address, "page": page])
+        let model = RequestModel(module: .account, action: .transactionsList, parameters: ["address": address, "page": page, "sort": "desc"])
         return request(requestModel: model, completion: completion)
     }
     
@@ -119,7 +119,7 @@ class Blockscout: HTTPService {
     /// - Returns: Cancelable operation
     @discardableResult
     func tokenTransfers(address: String, contractAddress: String? = nil, page: Int = 0, completion: @escaping (BlockscoutTransactionListResponse?, Error?) -> Void) -> Cancelable {
-        var parameters: RequestParameters = ["address": address, "page": page]
+        var parameters: RequestParameters = ["address": address, "page": page, "sort": "desc"]
         if let contractAddress = contractAddress {
             parameters["contractaddress"] = contractAddress
         }
