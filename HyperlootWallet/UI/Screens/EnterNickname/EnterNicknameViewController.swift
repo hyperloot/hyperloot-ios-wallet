@@ -2,7 +2,7 @@
 //  EnterNicknameViewController.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 10/16/18.
+//  Created by Valery Vaskabovich on 10/16/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
@@ -63,7 +63,10 @@ class EnterNicknameViewController: UIViewController {
     
     @IBAction func nextButtonPressed() {
         nicknameTextField.resignFirstResponder()
-        performSegue(route: .showEnterPasswordScreen)
+        viewModel.textFieldDidReturn(nicknameTextField.text)
+        if viewModel.registrationUser != nil {
+            performSegue(route: .showEnterPasswordScreen)
+        }
     }
 }
 

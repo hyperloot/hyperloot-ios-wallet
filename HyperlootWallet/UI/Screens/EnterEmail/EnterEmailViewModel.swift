@@ -25,14 +25,15 @@ class EnterEmailViewModel {
             return
         }
         
-        // TODO: make an API call to Hyperloot backend
-        let isNewUser = true
-        if isNewUser {
-            user = .signUpEnterNickname(email: email)
-        } else {
-            user = .signInEnterPassword(email: email)
+        Hyperloot.shared.canRegister(email: email) { [weak self] (isNewUser) in
+            guard let strongSelf = self else { return }
+            if isNewUser {
+                strongSelf.user = .signUpEnterNickname(email: email)
+            } else {
+                strongSelf.user = .signInEnterPassword(email: email)
+            }
+            completion(strongSelf.user, nil)
         }
-        completion(user, nil)
     }
     
     public func nextScreen() -> ScreenRoute? {

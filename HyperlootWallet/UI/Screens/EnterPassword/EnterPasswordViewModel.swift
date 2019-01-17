@@ -31,22 +31,25 @@ class EnterPasswordViewModel {
         self.user = user
     }
     
-    private func buildPresentation(hideErrorView: Bool = true) -> Presentation {
-        
+    private var isNewUser: Bool? {
         var newUser: Bool? = nil
         switch user {
-        case .signInEnterPassword(email: _):
+        case .signInEnterPassword:
             newUser = false
-        case .signUpConfirmPassword(email: _, nickname: _):
+        case .signUpConfirmPassword:
             newUser = true
-        case .enterEmail, .signUpEnterNickname(_),
-             .createWallet(_, _, _),
-             .importWallet(_, _, _),
-             .chooseImportOptions(_, _):
+        case .enterEmail, .signUpEnterNickname,
+             .createWallet,
+             .importWallet,
+             .chooseImportOptions:
             newUser = nil
         }
+        return newUser
+    }
+    
+    private func buildPresentation(hideErrorView: Bool = true) -> Presentation {
         
-        guard let isNewUser = newUser else {
+        guard let isNewUser = isNewUser else {
             // Error state, not supported
             return Presentation(isConfirmPasswordHidden: true,
                                 isErrorViewHidden: false,
@@ -88,7 +91,8 @@ class EnterPasswordViewModel {
     }
     
     public func updatePresentation() {
-        let shouldHideErrorView = doPasswordsMatch()
+        let isNewUser = self.isNewUser ?? false
+        let shouldHideErrorView = (isNewUser) ? doPasswordsMatch() : true
         presentation = self.buildPresentation(hideErrorView: shouldHideErrorView)
     }
     
@@ -99,10 +103,10 @@ class EnterPasswordViewModel {
             proceedWithExistingUser(email: email, completion: completion)
         case .signUpConfirmPassword(email: let email, nickname: let nickname):
             createNewAccount(email: email, nickname: nickname, completion: completion)
-        case .enterEmail, .signUpEnterNickname(_),
-             .createWallet(_, _, _),
-             .importWallet(_, _, _),
-             .chooseImportOptions(_, _):
+        case .enterEmail, .signUpEnterNickname,
+             .createWallet,
+             .importWallet,
+             .chooseImportOptions:
             
             // All other cases are not supported
             completion(nil)
@@ -129,13 +133,13 @@ class EnterPasswordViewModel {
             return
         }
         
-        Hyperloot.shared.createWallet(email: email, nickname: nickname, password: password) { [weak self] (user, words, error) in
-            guard let user = user, let words = words else {
+        Hyperloot.shared.createWallet(password: password) { [weak self] (address, words, error) in
+            guard let address = address, let words = words else {
                 completion(nil)
                 return
             }
             
-            self?.registeredUser = .createWallet(user: user, password: password, mnemonicPhrase: words)
+            self?.registeredUser = .createWallet(email: email, password: password, nickname: nickname, address: address, mnemonicPhrase: words)
             completion(.showEnterWalletKeysScreen)
         }
     }

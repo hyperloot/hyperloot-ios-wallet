@@ -20,6 +20,7 @@ class EnterPasswordViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordContainerView: UIView!
     @IBOutlet weak var errorView: RegistrationErrorView!
     @IBOutlet weak var nextButton: HyperlootButton!
     
@@ -53,7 +54,7 @@ class EnterPasswordViewController: UIViewController {
     func updateUIState() {
         let presentation = viewModel.presentation
         
-        confirmPasswordTextField.isHidden = presentation.isConfirmPasswordHidden
+        confirmPasswordContainerView.isHidden = presentation.isConfirmPasswordHidden
         errorView.isHidden = presentation.isErrorViewHidden
         nextButton.isEnabled = presentation.isNextButtonEnabled
     }
@@ -85,10 +86,10 @@ class EnterPasswordViewController: UIViewController {
     
     @IBAction func nextButtonPressed() {
         
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        showActivityIndicator()
         
-        viewModel.proceedToTheNextStep { [weak self, weak hud] (route) in
-            hud?.hide(animated: true)
+        viewModel.proceedToTheNextStep { [weak self] (route) in
+            self?.hideActivityIndicator()
             
             guard let route = route else {
                 return

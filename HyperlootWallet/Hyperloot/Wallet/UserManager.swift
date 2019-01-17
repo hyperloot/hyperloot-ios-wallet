@@ -21,30 +21,54 @@ class UserManager {
     } ()
     
     public private(set) var user: HyperlootUser?
+    private var api: HyperlootAPI
     
-    public init() {
-        user = loadUser(from: userFilePath)
+    public init(api: HyperlootAPI) {
+        self.api = api
+        user = loadUser(from: self.userFilePath)
+    }
+    
+    func canRegister(email: String, completion: @escaping (Bool) -> Void) {
+        api.canRegister(email: email) { (result, _) in
+            completion(result ?? false)
+        }
     }
     
     func login(email: String, password: String, completion: @escaping (HyperlootUser?, Error?) -> Void) {
-        // TODO: make an API call to Hyperloot backend: /login
-        guard let address = Address(string: "0xa809d363a66c576a2a814cdbfefc107c600a55f0") else {
-            completion(nil, nil)
-            return
-        }
-        let user = HyperlootUser(email: email, nickname: HyperlootNickname(name: email, identifier: 1), walletAddress: address)
-        save(user: user, to: userFilePath)
-        self.user = user
-        completion(user, nil)
+        api.login(email: email, password: password, completion: { [weak self] (login: LoginResponse?, error) in
+            guard let user = self?.createUserFrom(loginResponse: login) else {
+                completion(nil, error)
+                return
+            }
+            
+            completion(user, nil)
+        })
     }
     
-    public func createUser(withEmail email: String, nickname: String, walletAddress: Address, completion: @escaping (HyperlootUser?, Error?) -> Void) {
-        // TODO: make API call to Hyperloot backend: /signup
-        let user = HyperlootUser(email: email, nickname: HyperlootNickname(name: nickname, identifier: 1), walletAddress: walletAddress)
-        save(user: user, to: userFilePath)
+    public func createUser(withEmail email: String, password: String, nickname: String, walletAddress: String, completion: @escaping (HyperlootUser?, Error?) -> Void) {
+        api.signup(email: email, password: password, nickname: nickname, walletAddress: walletAddress) { [weak self] (signup: SignupResponse?, error) in
+            guard let signup = signup, signup.userId.isEmpty == false else {
+                completion(nil, error)
+                return
+            }
+            
+            self?.login(email: signup.email, password: password, completion: completion)
+        }
+    }
+    
+    private func createUserFrom(loginResponse: LoginResponse?) -> HyperlootUser? {
+        guard let login = loginResponse,
+            let address = Address(string: login.walletAddress) else {
+                return nil
+        }
         
+        let user = HyperlootUser(email: login.email,
+                                 nickname: HyperlootNickname(name: login.nickname.nickname, identifier: login.nickname.identifier),
+                                 walletAddress: address)
+        save(user: user, to: userFilePath)
         self.user = user
-        completion(user, nil)
+        
+        return user
     }
     
     // MARK: - Private

@@ -18,7 +18,7 @@ class WalletManager {
         return walletKeyStore.wallet(byAddress: address)
     }
         
-    func createWallet(email: String, password: String, completion: @escaping ((address: Address, mnemonicPhraseWords: [String])?, Error?) -> Void) {
+    func createWallet(password: String, completion: @escaping ((address: Address, mnemonicPhraseWords: [String])?, Error?) -> Void) {
         
         // Create account
         walletKeyStore.createAccount(with: password) { [weak self] (result) in

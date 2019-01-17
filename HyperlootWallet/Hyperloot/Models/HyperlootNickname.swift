@@ -2,7 +2,7 @@
 //  HyperlootNickname.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 10/8/18.
+//  Created by Valery Vaskabovich on 10/8/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

@@ -552,6 +552,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WFd-Fb-ab8"/>
                     <connections>
+                        <outlet property="confirmPasswordContainerView" destination="KUq-it-6yM" id="ioL-Rz-Qcz"/>
                         <outlet property="confirmPasswordTextField" destination="9ed-UJ-vnH" id="Qlh-hN-BUC"/>
                         <outlet property="errorView" destination="EkC-qZ-SAm" id="CYX-iL-kWS"/>
                         <outlet property="nextButton" destination="Fo2-WW-13W" id="61Y-8g-PI0"/>
