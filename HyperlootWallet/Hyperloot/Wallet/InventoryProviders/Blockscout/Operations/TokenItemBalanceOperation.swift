@@ -1,5 +1,5 @@
 //
-//  InventoryUpdateOperation.swift
+//  TokenItemBalanceOperation.swift
 //  HyperlootWallet
 //
 //  Created by valery_vaskabovich on 12/29/18.
@@ -8,46 +8,59 @@
 
 import Foundation
 
-class GetNewTransactionsOperation: HyperlootOperation {
+class TokenItemBalanceOperation: HyperlootOperation {
     
     typealias Completion = ([HyperlootTransaction]) -> Void
     
-    let token: HyperlootToken
+    struct Constants {
+        static let maxTransactionsPerPage = 500
+    }
+    
+    let contractAddress: String
     let walletAddress: String
-    let lastProcessedTimeInterval: TimeInterval
+    let storage: UserTokenInventoryStorage
     
     weak var blockscout: Blockscout?
-    var completion: Completion
     
-    required init(token: HyperlootToken, walletAddress: String, blockscout: Blockscout, lastProcessedTimeInterval: TimeInterval, completion: @escaping Completion) {
-        self.token = token
+    var lastProcessedTimestamp: TimeInterval
+    
+    required init(contractAddress: String, walletAddress: String, blockscout: Blockscout, storage: UserTokenInventoryStorage) {
+        self.contractAddress = contractAddress
         self.walletAddress = walletAddress
-        self.lastProcessedTimeInterval = lastProcessedTimeInterval
+        self.storage = storage
         self.blockscout = blockscout
-        self.completion = completion
+        
+        self.lastProcessedTimestamp = storage.lastProcessedTimestamp(contractAddress: contractAddress)
     }
     
     override func main() {
         guard let blockscout = blockscout else { return }
         
-        guard token.isERC721() else {
-            completion([])
-            return
+        run()
+        
+        guard let token = storage.findToken(byAddress: contractAddress),
+            token.isERC721() else {
+                done()
+                return
         }
         
-        run()
         getTransfers(page: 0, transactions: [], blockscout: blockscout) { [weak self] (transactions) in
-            guard let strongSelf = self, strongSelf.isCancelled == false else { return }
+            guard let strongSelf = self, strongSelf.isCancelled == false else {
+                return
+            }
             
             DispatchQueue.main.async {
-                strongSelf.completion(transactions)
+                strongSelf.storage.updateTokenizedItems(contractAddress: strongSelf.contractAddress,
+                                                        walletAddress: strongSelf.walletAddress,
+                                                        transactions: transactions)
                 strongSelf.done()
             }
         }
     }
     
     func getTransfers(page: Int, transactions: [HyperlootTransaction], blockscout: Blockscout, completion: @escaping Completion) {
-        blockscout.tokenTransfers(address: walletAddress, contractAddress: token.contractAddress, page: page, completion: { [weak self] (response, error) in
+        print("Getting transfers for page: \(page)")
+        blockscout.tokenTransfers(address: walletAddress, contractAddress: contractAddress, pagination: (page: page, offset: Constants.maxTransactionsPerPage), completion: { [weak self] (response, error) in
             guard let strongSelf = self else { return }
             guard let txs = response?.transactions, error == nil else {
                 completion(transactions)
@@ -55,18 +68,23 @@ class GetNewTransactionsOperation: HyperlootOperation {
             }
             
             var updatedTransactions = transactions
-            var shouldContinue = true
+            var shouldContinue = txs.count >= Constants.maxTransactionsPerPage
+            
             txs.forEach { (blockscoutTx) in
                 guard let tx = HyperlootTransactionsTransformer.transaction(from: blockscoutTx) else {
                     return
                 }
                 
-                guard tx.timestamp > strongSelf.lastProcessedTimeInterval else {
+                guard tx.timestamp > strongSelf.lastProcessedTimestamp else {
                     shouldContinue = false
                     return
                 }
                 
                 updatedTransactions.append(tx)
+            }
+            
+            if let lastTx = updatedTransactions.first {
+                strongSelf.lastProcessedTimestamp = lastTx.timestamp
             }
             
             if shouldContinue {

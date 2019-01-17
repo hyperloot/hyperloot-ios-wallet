@@ -87,6 +87,7 @@ extension HyperlootToken: Codable {
         try container.encode(name, forKey: .name)
         try container.encode(symbol, forKey: .symbol)
         try container.encode(totalSupply, forKey: .totalSupply)
+        try container.encode(decimals, forKey: .decimals)
         try container.encode(type, forKey: .type)
     }
 }

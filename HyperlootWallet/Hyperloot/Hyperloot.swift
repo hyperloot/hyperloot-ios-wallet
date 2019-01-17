@@ -24,14 +24,9 @@ class Hyperloot {
 
 extension Hyperloot: HyperlootTokensManaging {
     
-    func getTokens(completion: @escaping ([HyperlootToken]) -> Void) {
+    func updateInventory(completion: @escaping ([HyperlootToken]) -> Void) {
         guard let address = currentWallet()?.addressString else { return }
-        tokenManager.getTokens(address: address, completion: completion)
-    }
-    
-    func getBalance(completion: @escaping (HyperlootToken) -> Void) {
-        guard let address = currentWallet()?.addressString else { return }
-        tokenManager.getBalance(address: address, completion: completion)
+        tokenManager.updateInventory(address: address, completion: completion)
     }
     
     func getTransactions(type: HyperlootTransactionType, page: Int, completion: @escaping ([HyperlootTransaction]) -> Void) {

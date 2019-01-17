@@ -30,21 +30,15 @@ class WalletDashboardViewModel {
         isLoadingWallet = true
         
         var allTokens: [HyperlootToken] = []
-
-        Hyperloot.shared.getBalance { [weak self] (token) in
+        Hyperloot.shared.updateInventory { [weak self] (tokens) in
+            guard let strongSelf = self else { return }
+            allTokens.append(contentsOf: tokens)
+            strongSelf.tokens = allTokens
             
-            allTokens.append(token)
+            strongSelf.buildDataSource(tokens: allTokens)
+            completion()
             
-            Hyperloot.shared.getTokens { (tokens) in
-                guard let strongSelf = self else { return }
-                allTokens.append(contentsOf: tokens)
-                strongSelf.tokens = allTokens
-                
-                strongSelf.buildDataSource(tokens: allTokens)
-                completion()
-                
-                strongSelf.isLoadingWallet = false
-            }
+            strongSelf.isLoadingWallet = false
         }
     }
     
@@ -70,12 +64,16 @@ class WalletDashboardViewModel {
             }
             
             
+            var shouldShowTokenOnDashboard = true
             var filteredTokens: [HyperlootToken] = []
             if token.isERC721() {
                 filteredTokens = tokens.filter { $0.contractAddress == contractAddress && hasTokenID(token: $0) }
+                shouldShowTokenOnDashboard = filteredTokens.isEmpty == false
             }
-            
-            tokensTree.append(TokensTree(contractAddress: contractAddress, rootToken: token, tokens: filteredTokens))
+
+            if shouldShowTokenOnDashboard {
+                tokensTree.append(TokensTree(contractAddress: contractAddress, rootToken: token, tokens: filteredTokens))
+            }
         }
     }
     
@@ -130,6 +128,6 @@ class WalletDashboardViewModel {
         return DashboardTokenItemInfoPresentation(itemImageURL: attributes.imageURL,
                                                   itemName: attributes.name,
                                                   itemShortDescription: attributes.description,
-                                                  itemPrice: NSAttributedString(string: tokenId))
+                                                  itemPrice: NSAttributedString(string: TokenFormatter.erc721Value(tokenId: tokenId)))
     }
 }

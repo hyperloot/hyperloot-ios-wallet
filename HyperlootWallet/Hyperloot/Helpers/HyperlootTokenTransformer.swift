@@ -45,4 +45,40 @@ class HyperlootTokenTransformer {
                               totalSupply: contractable.totalSupply ?? "",
                               type: hyperlootTokenType)
     }
+    
+    static func token(from token: HyperlootToken, balance: String) -> HyperlootToken {
+        let type: HyperlootToken.TokenType
+        switch token.type {
+        case .erc20(amount: let prevAmount):
+            if let amount = BigInt(balance) {
+                let amountString = EtherNumberFormatter.full.string(from: amount, decimals: token.decimals)
+                type = .erc20(amount: amountString)
+            } else {
+                type = .erc20(amount: prevAmount)
+            }
+        case .erc721(tokenId: let tokenId, totalCount: _, attributes: let attributes):
+            type = .erc721(tokenId: tokenId, totalCount: Int(balance) ?? 0, attributes: attributes)
+        }
+        
+        return HyperlootToken(contractAddress: token.contractAddress,
+                              name: token.name,
+                              symbol: token.symbol,
+                              decimals: token.decimals,
+                              totalSupply: token.totalSupply,
+                              type: type)
+    }
+    
+    static func tokenizedItem(from token: HyperlootToken, tokenId: String, attributes: HyperlootToken.Attributes) -> HyperlootToken? {
+        guard token.isERC721(),
+            case .erc721(tokenId: _, totalCount: let totalCount, attributes: _) = token.type else {
+            return nil
+        }
+        
+        return HyperlootToken(contractAddress: token.contractAddress,
+                              name: token.name,
+                              symbol: token.symbol,
+                              decimals: token.decimals,
+                              totalSupply: token.totalSupply,
+                              type: .erc721(tokenId: tokenId, totalCount: totalCount, attributes: attributes))
+    }
 }

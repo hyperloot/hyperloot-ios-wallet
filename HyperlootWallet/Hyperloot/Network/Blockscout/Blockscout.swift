@@ -94,7 +94,10 @@ class Blockscout: HTTPService {
         return request(requestModel: model, completion: completion)
     }
 
-    
+    enum TransactionsSortOptions: String {
+        case ascending = "asc"
+        case descending = "desc"
+    }
     /// This API call returns all transactions for the account (not tokens)
     ///
     /// - Parameters:
@@ -103,8 +106,13 @@ class Blockscout: HTTPService {
     ///   - completion: Completion
     /// - Returns: Cancelable operation
     @discardableResult
-    func transactions(address: String, page: Int = 0, completion: @escaping (BlockscoutTransactionListResponse?, Error?) -> Void) -> Cancelable {
-        let model = RequestModel(module: .account, action: .transactionsList, parameters: ["address": address, "page": page, "sort": "desc"])
+    func transactions(address: String, pagination: (page: Int, offset: Int)? = nil, sort: TransactionsSortOptions = .descending, completion: @escaping (BlockscoutTransactionListResponse?, Error?) -> Void) -> Cancelable {
+        var parameters: RequestParameters = ["address": address, "sort": sort.rawValue]
+        if let pagination = pagination {
+            parameters["page"] = pagination.page
+            parameters["offset"] = pagination.offset
+        }
+        let model = RequestModel(module: .account, action: .transactionsList, parameters: parameters)
         return request(requestModel: model, completion: completion)
     }
     
@@ -118,10 +126,14 @@ class Blockscout: HTTPService {
     ///   - completion: Completion block
     /// - Returns: Cancelable operation
     @discardableResult
-    func tokenTransfers(address: String, contractAddress: String? = nil, page: Int = 0, completion: @escaping (BlockscoutTransactionListResponse?, Error?) -> Void) -> Cancelable {
-        var parameters: RequestParameters = ["address": address, "page": page, "sort": "desc"]
+    func tokenTransfers(address: String, contractAddress: String? = nil, pagination: (page: Int, offset: Int)? = nil, sort: TransactionsSortOptions = .descending, completion: @escaping (BlockscoutTransactionListResponse?, Error?) -> Void) -> Cancelable {
+        var parameters: RequestParameters = ["address": address, "sort": sort.rawValue]
         if let contractAddress = contractAddress {
             parameters["contractaddress"] = contractAddress
+        }
+        if let pagination = pagination {
+            parameters["page"] = pagination.page
+            parameters["offset"] = pagination.offset
         }
         let model = RequestModel(module: .account, action: .tokenTransactions, parameters: parameters)
         return request(requestModel: model, completion: completion)
