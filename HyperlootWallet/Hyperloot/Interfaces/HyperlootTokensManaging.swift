@@ -9,7 +9,6 @@
 import Foundation
 
 protocol HyperlootTokensManaging {
-    func getTokens(completion: @escaping ([HyperlootToken]) -> Void)
-    func getBalance(completion: @escaping (HyperlootToken) -> Void)
+    func updateInventory(completion: @escaping ([HyperlootToken]) -> Void)
     func getTransactions(type: HyperlootTransactionType, page: Int, completion: @escaping ([HyperlootTransaction]) -> Void)
 }

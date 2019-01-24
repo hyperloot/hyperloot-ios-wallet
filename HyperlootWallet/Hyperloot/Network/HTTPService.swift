@@ -64,6 +64,7 @@ class HTTPService {
                          validation: ResponseValidation? = nil) -> DataRequest {
         let url: URL = host.appendingPathComponent(path)
         return sessionManager.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers).validate({ (request, response, data) -> Request.ValidationResult in
+            print("URL Request: \(String(describing:request?.url?.absoluteString)), parameters: \(String(describing:parameters))")
             return self.validate(request: request, response: response, data: data, responseValidation: validation)
         })
     }
@@ -77,8 +78,8 @@ class HTTPService {
         }
         
         if let data = data {
-            let string = String(data: data, encoding: .utf8)
-            print(string)
+            let obj = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            print(String(describing:obj))
         }
         
         return .success

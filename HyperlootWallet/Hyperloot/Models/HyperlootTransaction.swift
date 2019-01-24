@@ -21,7 +21,7 @@ enum HyperlootTransactionValue {
 
 struct HyperlootTransaction {
 
-    enum Status: Int {
+    enum Status: Int, Codable {
         case error = 0
         case success = 1
     }

@@ -89,7 +89,7 @@ class TokenTransactionsViewModel {
     }
     
     private var walletAddress: String {
-        return Hyperloot.shared.currentWallet()?.address.eip55String ?? ""
+        return Hyperloot.shared.currentWallet()?.addressString ?? ""
     }
     
     private var balanceInCurrency: String {

@@ -30,21 +30,15 @@ class WalletDashboardViewModel {
         isLoadingWallet = true
         
         var allTokens: [HyperlootToken] = []
-
-        Hyperloot.shared.getBalance { [weak self] (token) in
+        Hyperloot.shared.updateInventory { [weak self] (tokens) in
+            guard let strongSelf = self else { return }
+            allTokens.append(contentsOf: tokens)
+            strongSelf.tokens = allTokens
             
-            allTokens.append(token)
+            strongSelf.buildDataSource(tokens: allTokens)
+            completion()
             
-            Hyperloot.shared.getTokens { (tokens) in
-                guard let strongSelf = self else { return }
-                allTokens.append(contentsOf: tokens)
-                strongSelf.tokens = allTokens
-                
-                strongSelf.buildDataSource(tokens: allTokens)
-                completion()
-                
-                strongSelf.isLoadingWallet = false
-            }
+            strongSelf.isLoadingWallet = false
         }
     }
     
@@ -70,22 +64,17 @@ class WalletDashboardViewModel {
             }
             
             
+            var shouldShowTokenOnDashboard = true
             var filteredTokens: [HyperlootToken] = []
-            if isERC721(token: token) {
+            if token.isERC721() {
                 filteredTokens = tokens.filter { $0.contractAddress == contractAddress && hasTokenID(token: $0) }
+                shouldShowTokenOnDashboard = filteredTokens.isEmpty == false
             }
-            
-            tokensTree.append(TokensTree(contractAddress: contractAddress, rootToken: token, tokens: filteredTokens))
+
+            if shouldShowTokenOnDashboard {
+                tokensTree.append(TokensTree(contractAddress: contractAddress, rootToken: token, tokens: filteredTokens))
+            }
         }
-    }
-    
-    private func isERC721(token: HyperlootToken) -> Bool {
-        var isERC721: Bool = false
-        if case .erc721 = token.type {
-            isERC721 = true
-        }
-        
-        return isERC721
     }
     
     private func hasTokenID(token: HyperlootToken) -> Bool {
@@ -124,7 +113,7 @@ class WalletDashboardViewModel {
         case .erc721(tokenId: _, totalCount: let totalCount, attributes: _):
             value = TokenFormatter.erc721Total(count: totalCount)
         }
-        let shouldHideSeparator = isERC721(token: token) && currentTokensTree.tokens.isEmpty == false
+        let shouldHideSeparator = token.isERC721() && currentTokensTree.tokens.isEmpty == false
         return DashboardTokenInfoSectionPresentation(tokenSymbol: TokenFormatter.tokenDisplay(name: token.name, symbol: token.symbol),
                                                      tokenValue: value,
                                                      hideSeparator: shouldHideSeparator)
@@ -132,13 +121,13 @@ class WalletDashboardViewModel {
     
     public func presentationForItem(at index: Int, section: Int) -> DashboardTokenItemInfoPresentation? {
         let token = tokensTree[section].tokens[index]
-        guard isERC721(token: token), hasTokenID(token: token),
+        guard token.isERC721(), hasTokenID(token: token),
             case .erc721(tokenId: let tokenId, totalCount: _, attributes: let attributes) = token.type else {
             return nil
         }
         return DashboardTokenItemInfoPresentation(itemImageURL: attributes.imageURL,
                                                   itemName: attributes.name,
                                                   itemShortDescription: attributes.description,
-                                                  itemPrice: NSAttributedString(string: tokenId))
+                                                  itemPrice: NSAttributedString(string: TokenFormatter.erc721Value(tokenId: tokenId)))
     }
 }
