@@ -18,18 +18,12 @@ class TokenInventoryManager {
         queue.maxConcurrentOperationCount = 1
         return queue
     } ()
-    
-    lazy var formatter: EtherNumberFormatter = {
-        let formatter = EtherNumberFormatter.full
-        formatter.maximumFractionDigits = 4
-        return formatter
-    } ()
-    
+        
     lazy var inventory = UserTokenInventoryStorage()
     var blockscoutProvider: BlockscoutInventoryProvider?
     
-    required init(environment: Blockscout.Environment) {
-        self.blockscout = Blockscout(environment: environment)
+    required init(config: HyperlootConfig) {
+        self.blockscout = Blockscout(environment: config.blockscout)
     }
     
     func updateInventory(address: String, completion: @escaping ([HyperlootToken]) -> Void) {

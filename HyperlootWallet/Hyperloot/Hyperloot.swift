@@ -10,10 +10,12 @@ import Foundation
 
 class Hyperloot {
     
-    fileprivate let api = HyperlootAPI(environment: .testNet)
+    private let currentConfig: HyperlootConfig = HyperlootConfig.current(for: .testnet)
+    
+    fileprivate lazy var api = HyperlootAPI(config: currentConfig)
     fileprivate lazy var walletManager = WalletManager()
     fileprivate lazy var userManager = UserManager(api: self.api)
-    fileprivate let tokenManager = TokenInventoryManager(environment: .ropsten)
+    fileprivate lazy var tokenManager = TokenInventoryManager(config: currentConfig)
     
     public static let shared = Hyperloot()
     
