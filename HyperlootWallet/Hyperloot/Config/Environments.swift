@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Blockchain: Int, CaseIterable {
+enum Blockchain: Int, CaseIterable, Codable {
     case mainnet = 1
     case ropsten = 3
     case rinkeby = 4

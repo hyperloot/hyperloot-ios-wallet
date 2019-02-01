@@ -48,8 +48,18 @@ class Blockscout: HTTPService {
         }
     }
     
+    let environment: Environment
+    
+    var blockchain: Blockchain {
+        switch environment {
+        case .mainnet: return .mainnet
+        case .ropsten: return .ropsten
+        }
+    }
+    
     required init(environment: Environment) {
         let host = URL(string: environment.rawValue)!
+        self.environment = environment
         super.init(host: host)
     }
     

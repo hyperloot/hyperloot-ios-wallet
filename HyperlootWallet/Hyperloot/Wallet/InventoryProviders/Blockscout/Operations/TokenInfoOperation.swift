@@ -25,10 +25,10 @@ class TokenInfoOperation: HyperlootOperation {
     }
     
     private func token(from response: BlockscoutGetTokenResponse?) -> HyperlootToken? {
-        guard let tokenResponse = response?.token else {
+        guard let tokenResponse = response?.token, let blockscout = blockscout else {
             return nil
         }
-        return HyperlootTokenTransformer.token(from: tokenResponse, balance: balance)
+        return HyperlootTokenTransformer.token(from: tokenResponse, balance: balance, blockchain: blockscout.blockchain)
     }
     
     override func main() {
@@ -38,7 +38,7 @@ class TokenInfoOperation: HyperlootOperation {
         
         run()
         if let storedToken = storage.findToken(byAddress: contractAddress) {
-            let token = HyperlootTokenTransformer.token(from: storedToken, balance: balance)
+            let token = HyperlootTokenTransformer.token(from: storedToken, balance: balance, blockchain: blockscout.blockchain)
             storage.replace(token: token) { [weak self] in
                 self?.done()
             }

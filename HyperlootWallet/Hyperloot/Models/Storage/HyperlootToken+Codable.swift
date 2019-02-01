@@ -67,6 +67,7 @@ extension HyperlootToken: Codable {
         case decimals
         case totalSupply
         case type
+        case blockchain
     }
     
     init(from decoder: Decoder) throws {
@@ -78,6 +79,7 @@ extension HyperlootToken: Codable {
         decimals = try container.decode(Int.self, forKey: .decimals)
         totalSupply = try container.decode(String.self, forKey: .totalSupply)
         type = try container.decode(TokenType.self, forKey: .type)
+        blockchain = try container.decode(Blockchain.self, forKey: .blockchain)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -89,5 +91,6 @@ extension HyperlootToken: Codable {
         try container.encode(totalSupply, forKey: .totalSupply)
         try container.encode(decimals, forKey: .decimals)
         try container.encode(type, forKey: .type)
+        try container.encode(blockchain, forKey: .blockchain)
     }
 }

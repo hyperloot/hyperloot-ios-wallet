@@ -32,23 +32,26 @@ struct HyperlootToken {
     let decimals: Int
     let totalSupply: String
     let type: TokenType
+    let blockchain: Blockchain
     
-    static func ether(amount: String) -> HyperlootToken {
+    static func ether(amount: String, blockchain: Blockchain) -> HyperlootToken {
         return HyperlootToken(contractAddress: TokenConstants.Ethereum.ethereumContract,
                               name: "Ethereum",
                               symbol: TokenConstants.Ethereum.ethereumSymbol,
                               decimals: TokenConstants.Ethereum.ethereumDecimals,
                               totalSupply: "0",
-                              type: .erc20(amount: amount))
+                              type: .erc20(amount: amount),
+                              blockchain: blockchain)
     }
     
-    static func hlt(amount: String) -> HyperlootToken {
+    static func hlt(amount: String, blockchain: Blockchain) -> HyperlootToken {
         // TODO: fill the information
         return HyperlootToken(contractAddress: "0x0",
                               name: "Hyperloot",
                               symbol: "HLT",
                               decimals: 18,
                               totalSupply: "0",
-                              type: .erc20(amount: amount))
+                              type: .erc20(amount: amount),
+                              blockchain: blockchain)
     }
 }
