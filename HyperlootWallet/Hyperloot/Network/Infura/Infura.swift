@@ -51,10 +51,12 @@ class Infura: HTTPService {
     
     enum JSONRPCRequest: String {
         case getTransactionCount = "eth_getTransactionCount"
+        case estimateGas = "eth_estimateGas"
+        case gasPrice = "eth_gasPrice"
     }
     
-    func request<T>(request jsonrpcRequest: JSONRPCRequest, parameters: [String: Any] = [:], completion: @escaping (T?, Error?) -> Void) -> DataRequest where T : BaseMappable {
-        return request(jsonrpcRequest.rawValue, keyPath: nil, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil, validation: { [weak self] (object) -> Error? in
+    func request<T>(request jsonrpcRequest: JSONRPCRequest, parameters: [Any] = [], completion: @escaping (T?, Error?) -> Void) -> DataRequest where T : BaseMappable {
+        return request(jsonrpcRequest.rawValue, keyPath: nil, method: .get, parameters: ["params": parameters], encoding: URLEncoding.default, headers: nil, validation: { [weak self] (object) -> Error? in
             return self?.validate(object: object)
         }, objectCompletion: completion)
     }
@@ -69,6 +71,17 @@ class Infura: HTTPService {
     
     @discardableResult
     func getTransactionCount(address: String, blockNumber: BlockNumber, completion: @escaping (EthGetTransactionCountResponse?, Error?) -> Void) -> Cancelable {
-        return request(request: .getTransactionCount, parameters: ["params": [address, blockNumber.rawValue]], completion: completion)
+        return request(request: .getTransactionCount, parameters: [address, blockNumber.rawValue], completion: completion)
+    }
+    
+    @discardableResult
+    func estimateGas(from: String, to: String, gasLimit: String?, gasPrice: String?, value: String?, data: String?, completion: @escaping (EthEstimateGasResponse?, Error?) -> Void) -> Cancelable {
+        let params: [String] = [from, to, gasLimit, gasPrice, value, data].compactMap { $0 }
+        return request(request: .estimateGas, parameters: params, completion: completion)
+    }
+    
+    @discardableResult
+    func gasPrice(completion: @escaping (EthGasPriceResponse?, Error?) -> Void) -> Cancelable {
+        return request(request: .gasPrice, completion: completion)
     }
 }

@@ -3,6 +3,13 @@
 import BigInt
 import Foundation
 
+public enum EthereumUnit: Int64 {
+    case wei = 1
+    case kwei = 1_000
+    case gwei = 1_000_000_000
+    case ether = 1_000_000_000_000_000_000
+}
+
 final class EtherNumberFormatter {
     /// Formatter that preserves full precision.
     static let full = EtherNumberFormatter()
@@ -83,6 +90,18 @@ final class EtherNumberFormatter {
         }
         return "\(integerString).\(fractionalString)"
     }
+    
+    /// Converts a string to a `BigInt`.
+    ///
+    /// - Parameters:
+    ///   - string: string to convert
+    ///   - units: units to use
+    /// - Returns: `BigInt` represenation.
+    func number(from string: String, units: EthereumUnit = .ether) -> BigInt? {
+        let decimals = Int(log10(Double(units.rawValue)))
+        return number(from: string, decimals: decimals)
+    }
+    
     /// Formats a `BigInt` to a Decimal.
     ///
     /// - Parameters:

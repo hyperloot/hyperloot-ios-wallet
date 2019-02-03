@@ -50,6 +50,8 @@ class HyperlootTokenTransformer {
     static func token(from token: HyperlootToken, balance: String, blockchain: Blockchain) -> HyperlootToken {
         let type: HyperlootToken.TokenType
         switch token.type {
+        case .ether(amount: let prevAmount):
+            fallthrough
         case .erc20(amount: let prevAmount):
             if let amount = BigInt(balance) {
                 let amountString = EtherNumberFormatter.full.string(from: amount, decimals: token.decimals)

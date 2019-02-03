@@ -46,6 +46,8 @@ extension HyperlootToken.TokenType: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
+        case .ether(amount: let amount):
+            fallthrough
         case .erc20(amount: let amount):
             try container.encode(CodingConstants.erc20TokenType, forKey: .tokenType)
             try container.encode(amount, forKey: .erc20Amount)

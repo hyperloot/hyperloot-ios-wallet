@@ -22,6 +22,7 @@ struct HyperlootToken {
     }
     
     enum TokenType {
+        case ether(amount: String)
         case erc20(amount: String)
         case erc721(tokenId: String, totalCount: Int, attributes: Attributes)
     }
@@ -40,7 +41,7 @@ struct HyperlootToken {
                               symbol: TokenConstants.Ethereum.ethereumSymbol,
                               decimals: TokenConstants.Ethereum.ethereumDecimals,
                               totalSupply: "0",
-                              type: .erc20(amount: amount),
+                              type: .ether(amount: amount),
                               blockchain: blockchain)
     }
     

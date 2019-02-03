@@ -34,15 +34,6 @@ extension HyperlootUser: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(email, forKey: .email)
         try container.encode(nickname, forKey: .nickname)
-        try container.encode(walletAddress.description.drop0x(), forKey: .walletAddress)
-    }
-}
-
-private extension String {
-    func drop0x() -> String {
-        if hasPrefix("0x") {
-            return String(dropFirst(2))
-        }
-        return self
+        try container.encode(walletAddress.description.remove0x(), forKey: .walletAddress)
     }
 }

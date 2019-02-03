@@ -11,9 +11,9 @@ import ObjectMapper
 
 struct EthGetTransactionCountResponse: ImmutableMappable {
     
-    let result: String?
+    let numberOfTransactions: String?
 
     init(map: Map) throws {
-        result = try? map.value("result")
+        numberOfTransactions = try? map.value("result")
     }
 }

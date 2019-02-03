@@ -108,6 +108,8 @@ class WalletDashboardViewModel {
         let token = currentTokensTree.rootToken
         var value: String = ""
         switch token.type {
+        case .ether(amount: let amount):
+            fallthrough
         case .erc20(amount: let amount):
             value = TokenFormatter.erc20Value(formattedValue: amount, symbol: token.symbol)
         case .erc721(tokenId: _, totalCount: let totalCount, attributes: _):

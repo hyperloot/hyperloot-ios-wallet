@@ -52,6 +52,8 @@ class SendViewModel {
         var tokenPresentationType: Presentation.TokenPresentationType
         
         switch token.type {
+        case .ether:
+            fallthrough
         case .erc20:
             hideRegularTokenDetails = false
             tokenPresentationType = .regularToken(presentation: SendTokenDetailsPresentation(tokenSymbol: token.symbol,

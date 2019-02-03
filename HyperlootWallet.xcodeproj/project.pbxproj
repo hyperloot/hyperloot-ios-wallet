@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E552204F9D6FB5D03B25A858 /* Pods_CommonPods_HyperlootWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D833A387F7F56AF9A708ED /* Pods_CommonPods_HyperlootWallet.framework */; };
 		F414AC2D21F9B12C0022864B /* ERC721Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414AC2C21F9B12C0022864B /* ERC721Encoder.swift */; };
+		F433F775220604A9005FA276 /* EthEstimateGasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F774220604A9005FA276 /* EthEstimateGasResponse.swift */; };
+		F433F77722066D57005FA276 /* EthGasPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F77622066D57005FA276 /* EthGasPriceResponse.swift */; };
+		F433F77922066ECD005FA276 /* HexFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F77822066ECD005FA276 /* HexFormatter.swift */; };
 		F434317A21B11EAC00FA9F6E /* HyperlootAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434317921B11EAC00FA9F6E /* HyperlootAPI.swift */; };
 		F434317C21B1296700FA9F6E /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434317B21B1296700FA9F6E /* HTTPService.swift */; };
 		F434318621B2E9C500FA9F6E /* CanRegisterEmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */; };
@@ -84,6 +87,9 @@
 		F48CEC262150E02B00A43A47 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC252150E02B00A43A47 /* Screens.swift */; };
 		F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */; };
 		F499FDB921CDA08400AEBE9E /* TokenFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F499FDB821CDA08400AEBE9E /* TokenFormatter.swift */; };
+		F4A011D3220431D200A19AF0 /* TokenItemSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A011D2220431D200A19AF0 /* TokenItemSender.swift */; };
+		F4A011D5220431E400A19AF0 /* GasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A011D4220431E400A19AF0 /* GasStation.swift */; };
+		F4A011D72204321C00A19AF0 /* NonceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A011D62204321C00A19AF0 /* NonceProvider.swift */; };
 		F4BA240D21C25920005F68A5 /* OperationQueue+Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA240C21C25920005F68A5 /* OperationQueue+Completion.swift */; };
 		F4BA241121C38F4B005F68A5 /* EtherNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA240F21C38F4B005F68A5 /* EtherNumberFormatter.swift */; };
 		F4BA241221C38F4B005F68A5 /* HyperlootOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA241021C38F4B005F68A5 /* HyperlootOperation.swift */; };
@@ -127,6 +133,9 @@
 		E0D833A387F7F56AF9A708ED /* Pods_CommonPods_HyperlootWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_HyperlootWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7FA6B138B5466D6184111E /* Pods-CommonPods-HyperlootWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-HyperlootWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-HyperlootWallet/Pods-CommonPods-HyperlootWallet.release.xcconfig"; sourceTree = "<group>"; };
 		F414AC2C21F9B12C0022864B /* ERC721Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ERC721Encoder.swift; sourceTree = "<group>"; };
+		F433F774220604A9005FA276 /* EthEstimateGasResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthEstimateGasResponse.swift; sourceTree = "<group>"; };
+		F433F77622066D57005FA276 /* EthGasPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthGasPriceResponse.swift; sourceTree = "<group>"; };
+		F433F77822066ECD005FA276 /* HexFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexFormatter.swift; sourceTree = "<group>"; };
 		F434317921B11EAC00FA9F6E /* HyperlootAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootAPI.swift; sourceTree = "<group>"; };
 		F434317B21B1296700FA9F6E /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanRegisterEmailResponse.swift; sourceTree = "<group>"; };
@@ -206,6 +215,9 @@
 		F48CEC252150E02B00A43A47 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
 		F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootButton.swift; sourceTree = "<group>"; };
 		F499FDB821CDA08400AEBE9E /* TokenFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFormatter.swift; sourceTree = "<group>"; };
+		F4A011D2220431D200A19AF0 /* TokenItemSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenItemSender.swift; sourceTree = "<group>"; };
+		F4A011D4220431E400A19AF0 /* GasStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStation.swift; sourceTree = "<group>"; };
+		F4A011D62204321C00A19AF0 /* NonceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonceProvider.swift; sourceTree = "<group>"; };
 		F4BA240C21C25920005F68A5 /* OperationQueue+Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+Completion.swift"; sourceTree = "<group>"; };
 		F4BA240F21C38F4B005F68A5 /* EtherNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtherNumberFormatter.swift; sourceTree = "<group>"; };
 		F4BA241021C38F4B005F68A5 /* HyperlootOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperlootOperation.swift; sourceTree = "<group>"; };
@@ -416,6 +428,7 @@
 		F44D7266214A2C5800C651C6 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				F4A011D1220431B200A19AF0 /* Send */,
 				F434D61E21EC666E00572288 /* InventoryProviders */,
 				F44D7267214A2C6D00C651C6 /* WalletManager.swift */,
 				F48CEC08214B8D8600A43A47 /* WalletKeyStore.swift */,
@@ -598,6 +611,7 @@
 				F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */,
 				F4BA240C21C25920005F68A5 /* OperationQueue+Completion.swift */,
 				F4828ADE21D87B47006CEDD0 /* HyperlootToken+Helpers.swift */,
+				F433F77822066ECD005FA276 /* HexFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -675,6 +689,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		F4A011D1220431B200A19AF0 /* Send */ = {
+			isa = PBXGroup;
+			children = (
+				F4A011D2220431D200A19AF0 /* TokenItemSender.swift */,
+				F4A011D4220431E400A19AF0 /* GasStation.swift */,
+				F4A011D62204321C00A19AF0 /* NonceProvider.swift */,
+			);
+			path = Send;
+			sourceTree = "<group>";
+		};
 		F4BA240E21C38F4B005F68A5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,8 +724,10 @@
 		F4BF330821FDB98C0039B8B5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F4BF330921FDB9990039B8B5 /* EthGetTransactionCountResponse.swift */,
 				F4BF330B21FDBA1A0039B8B5 /* InfuraBaseResponse.swift */,
+				F4BF330921FDB9990039B8B5 /* EthGetTransactionCountResponse.swift */,
+				F433F774220604A9005FA276 /* EthEstimateGasResponse.swift */,
+				F433F77622066D57005FA276 /* EthGasPriceResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -922,6 +948,7 @@
 				F466FD1621669EB100092CC4 /* ReceiveViewController.swift in Sources */,
 				F4EEDD0F21B7AD0C00C80A79 /* Dictionary+Merge.swift in Sources */,
 				F434317C21B1296700FA9F6E /* HTTPService.swift in Sources */,
+				F433F77722066D57005FA276 /* EthGasPriceResponse.swift in Sources */,
 				F4EEDD1821B82C9400C80A79 /* BlockscoutBalanceResponse.swift in Sources */,
 				F434D62621EC674600572288 /* OpenSeaInventoryProvider.swift in Sources */,
 				F4CB7CEC21770BFC006B6217 /* EnterNicknameViewController.swift in Sources */,
@@ -929,6 +956,7 @@
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
 				F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */,
 				F4BF330C21FDBA1A0039B8B5 /* InfuraBaseResponse.swift in Sources */,
+				F4A011D5220431E400A19AF0 /* GasStation.swift in Sources */,
 				F466FD0721649EFE00092CC4 /* TokenTransactionsViewModel.swift in Sources */,
 				F4CB7CE92175ADA7006B6217 /* FormController.swift in Sources */,
 				F466FD1B2167346500092CC4 /* SendViewController.swift in Sources */,
@@ -952,6 +980,7 @@
 				F48765EF215A027E003825FE /* EnterPasswordViewController.swift in Sources */,
 				F466FD0521649EF400092CC4 /* TokenTransactionsViewController.swift in Sources */,
 				F466FCE1215DFFE900092CC4 /* SplashViewModel.swift in Sources */,
+				F4A011D3220431D200A19AF0 /* TokenItemSender.swift in Sources */,
 				F466FD0E2165EE6A00092CC4 /* TokenInfoViewController.swift in Sources */,
 				F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */,
 				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
@@ -962,6 +991,7 @@
 				F4EEDD1421B7B5B200C80A79 /* BlockscoutBaseResponse.swift in Sources */,
 				F466FCED2163349C00092CC4 /* DashboardTokenInfoSectionView.swift in Sources */,
 				F4EEDD1B21B8B85600C80A79 /* StringToIntTransformer.swift in Sources */,
+				F433F77922066ECD005FA276 /* HexFormatter.swift in Sources */,
 				F4828AD521D60077006CEDD0 /* HyperlootTransaction+Codable.swift in Sources */,
 				F4BF330621FDB0630039B8B5 /* HyperlootConfig+App.swift in Sources */,
 				F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */,
@@ -981,10 +1011,12 @@
 				F434318621B2E9C500FA9F6E /* CanRegisterEmailResponse.swift in Sources */,
 				F4828ADF21D87B47006CEDD0 /* HyperlootToken+Helpers.swift in Sources */,
 				F466FD022163497400092CC4 /* UIView+Extensions.swift in Sources */,
+				F433F775220604A9005FA276 /* EthEstimateGasResponse.swift in Sources */,
 				F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */,
 				F475DB8D216C6A5900B157BC /* HyperlootNickname.swift in Sources */,
 				F434317A21B11EAC00FA9F6E /* HyperlootAPI.swift in Sources */,
 				F466FCF821633E2300092CC4 /* HyperlootToken.swift in Sources */,
+				F4A011D72204321C00A19AF0 /* NonceProvider.swift in Sources */,
 				F466FCE921617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift in Sources */,
 				F4BA241221C38F4B005F68A5 /* HyperlootOperation.swift in Sources */,
 				F43BB94A21C569B7005A97B3 /* BlockscoutTransactionResponse.swift in Sources */,
