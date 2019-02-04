@@ -16,5 +16,3 @@ struct EthGasPriceResponse: ImmutableMappable {
         gasPrice = try? map.value("result")
     }
 }
-
-

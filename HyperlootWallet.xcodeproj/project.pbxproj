@@ -12,6 +12,8 @@
 		F433F775220604A9005FA276 /* EthEstimateGasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F774220604A9005FA276 /* EthEstimateGasResponse.swift */; };
 		F433F77722066D57005FA276 /* EthGasPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F77622066D57005FA276 /* EthGasPriceResponse.swift */; };
 		F433F77922066ECD005FA276 /* HexFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F77822066ECD005FA276 /* HexFormatter.swift */; };
+		F433F77B22081A02005FA276 /* HyperlootTransactionSigning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F77A22081A02005FA276 /* HyperlootTransactionSigning.swift */; };
+		F433F77D22081DBD005FA276 /* EthSendRawTransactionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F77C22081DBD005FA276 /* EthSendRawTransactionResponse.swift */; };
 		F434317A21B11EAC00FA9F6E /* HyperlootAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434317921B11EAC00FA9F6E /* HyperlootAPI.swift */; };
 		F434317C21B1296700FA9F6E /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434317B21B1296700FA9F6E /* HTTPService.swift */; };
 		F434318621B2E9C500FA9F6E /* CanRegisterEmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */; };
@@ -136,6 +138,8 @@
 		F433F774220604A9005FA276 /* EthEstimateGasResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthEstimateGasResponse.swift; sourceTree = "<group>"; };
 		F433F77622066D57005FA276 /* EthGasPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthGasPriceResponse.swift; sourceTree = "<group>"; };
 		F433F77822066ECD005FA276 /* HexFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexFormatter.swift; sourceTree = "<group>"; };
+		F433F77A22081A02005FA276 /* HyperlootTransactionSigning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTransactionSigning.swift; sourceTree = "<group>"; };
+		F433F77C22081DBD005FA276 /* EthSendRawTransactionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthSendRawTransactionResponse.swift; sourceTree = "<group>"; };
 		F434317921B11EAC00FA9F6E /* HyperlootAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootAPI.swift; sourceTree = "<group>"; };
 		F434317B21B1296700FA9F6E /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		F434318521B2E9C500FA9F6E /* CanRegisterEmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanRegisterEmailResponse.swift; sourceTree = "<group>"; };
@@ -421,6 +425,7 @@
 			children = (
 				F44D7262214A29A100C651C6 /* HyperlootWalletManaging.swift */,
 				F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */,
+				F433F77A22081A02005FA276 /* HyperlootTransactionSigning.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -728,6 +733,7 @@
 				F4BF330921FDB9990039B8B5 /* EthGetTransactionCountResponse.swift */,
 				F433F774220604A9005FA276 /* EthEstimateGasResponse.swift */,
 				F433F77622066D57005FA276 /* EthGasPriceResponse.swift */,
+				F433F77C22081DBD005FA276 /* EthSendRawTransactionResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -970,6 +976,7 @@
 				F48765EA215952B3003825FE /* RegistrationErrorView.swift in Sources */,
 				F466FD102165EE7400092CC4 /* TokenInfoViewModel.swift in Sources */,
 				F466FD00216348BE00092CC4 /* Bundle+Nib.swift in Sources */,
+				F433F77B22081A02005FA276 /* HyperlootTransactionSigning.swift in Sources */,
 				F4BA240D21C25920005F68A5 /* OperationQueue+Completion.swift in Sources */,
 				F466FCF421633CDF00092CC4 /* WalletDashboardViewController.swift in Sources */,
 				F434318C21B3608700FA9F6E /* SignupResponse.swift in Sources */,
@@ -992,6 +999,7 @@
 				F466FCED2163349C00092CC4 /* DashboardTokenInfoSectionView.swift in Sources */,
 				F4EEDD1B21B8B85600C80A79 /* StringToIntTransformer.swift in Sources */,
 				F433F77922066ECD005FA276 /* HexFormatter.swift in Sources */,
+				F433F77D22081DBD005FA276 /* EthSendRawTransactionResponse.swift in Sources */,
 				F4828AD521D60077006CEDD0 /* HyperlootTransaction+Codable.swift in Sources */,
 				F4BF330621FDB0630039B8B5 /* HyperlootConfig+App.swift in Sources */,
 				F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */,

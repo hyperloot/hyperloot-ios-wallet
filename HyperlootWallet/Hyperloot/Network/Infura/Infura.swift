@@ -53,6 +53,7 @@ class Infura: HTTPService {
         case getTransactionCount = "eth_getTransactionCount"
         case estimateGas = "eth_estimateGas"
         case gasPrice = "eth_gasPrice"
+        case sendRawTransaction = "eth_sendRawTransaction"
     }
     
     func request<T>(request jsonrpcRequest: JSONRPCRequest, parameters: [Any] = [], completion: @escaping (T?, Error?) -> Void) -> DataRequest where T : BaseMappable {
@@ -83,5 +84,11 @@ class Infura: HTTPService {
     @discardableResult
     func gasPrice(completion: @escaping (EthGasPriceResponse?, Error?) -> Void) -> Cancelable {
         return request(request: .gasPrice, completion: completion)
+    }
+    
+    @discardableResult
+    func sendRawTransaction(signedTransactionDataInHex: String, completion: @escaping (EthSendRawTransactionResponse?, Error?) -> Void) -> Cancelable {
+        let params: [String] = [signedTransactionDataInHex]
+        return request(request: .sendRawTransaction, parameters: params, completion: completion)
     }
 }

@@ -12,8 +12,9 @@ class Hyperloot {
     
     private let currentConfig: HyperlootConfig = HyperlootConfig.current(for: .testnet)
     
-    fileprivate lazy var api = HyperlootAPI(config: currentConfig)
     fileprivate lazy var walletManager = WalletManager()
+    
+    fileprivate lazy var api = HyperlootAPI(config: currentConfig)
     fileprivate lazy var userManager = UserManager(api: self.api)
     fileprivate lazy var tokenManager = TokenInventoryManager(config: currentConfig)
     

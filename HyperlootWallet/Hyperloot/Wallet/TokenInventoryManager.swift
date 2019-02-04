@@ -8,10 +8,13 @@
 
 import Foundation
 import BigInt
+import TrustCore
+import Result
 
 class TokenInventoryManager {
     
     let blockscout: Blockscout
+    let config: HyperlootConfig
     
     lazy var tokensInfoOperationQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -22,8 +25,11 @@ class TokenInventoryManager {
     lazy var inventory = UserTokenInventoryStorage()
     var blockscoutProvider: BlockscoutInventoryProvider?
     
+    private var tokenSenders: [String: TokenItemSender] = [:]
+    
     required init(config: HyperlootConfig) {
         self.blockscout = Blockscout(environment: config.blockscout)
+        self.config = config
     }
     
     func updateInventory(address: String, completion: @escaping ([HyperlootToken]) -> Void) {
@@ -34,6 +40,25 @@ class TokenInventoryManager {
                 completion(tokens)
                 self?.blockscoutProvider = nil
             }
+        }
+    }
+    
+    func send(token: HyperlootToken, from: String, to: String, transactionSigner: HyperlootTransactionSigning, completion: @escaping (Result<HyperlootTransaction, SendError>) -> Void) {
+        guard let from = Address(string: from), let to = Address(string: to) else { return }
+        
+        func add(_ tokenSender: TokenItemSender) {
+            tokenSenders[tokenSender.uniqueIdentifier] = tokenSender
+        }
+        
+        func remove(_ tokenSender: TokenItemSender) {
+            tokenSenders.removeValue(forKey: tokenSender.uniqueIdentifier)
+        }
+        
+        let tokenSender = TokenItemSender(from: from, to: to, token: token, config: config, transactionSigner: transactionSigner)
+        add(tokenSender)
+        tokenSender.send { (result) in
+            completion(result)
+            remove(tokenSender)
         }
     }
     
