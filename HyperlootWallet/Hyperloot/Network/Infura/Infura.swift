@@ -50,6 +50,7 @@ class Infura: HTTPService {
     }
     
     enum JSONRPCRequest: String {
+        case getBalance = "eth_getBalance"
         case getTransactionCount = "eth_getTransactionCount"
         case estimateGas = "eth_estimateGas"
         case gasPrice = "eth_gasPrice"
@@ -68,6 +69,11 @@ class Infura: HTTPService {
         case latest = "latest"
         case earliest = "earliest"
         case pending = "pending"
+    }
+    
+    @discardableResult
+    func getBalance(address: String, blockNumber: BlockNumber, completion: @escaping (EthGetBalanceResponse?, Error?) -> Void) -> Cancelable {
+        return request(request: .getBalance, parameters: [address, blockNumber.rawValue], completion: completion)
     }
     
     @discardableResult

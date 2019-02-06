@@ -25,7 +25,7 @@ class TokenInventoryManager {
     lazy var inventory = UserTokenInventoryStorage()
     var blockscoutProvider: BlockscoutInventoryProvider?
     
-    private var tokenSenders: [String: TokenItemSender] = [:]
+    private var tokenSenders: [String: HyperlootTokenItemSender] = [:]
     
     required init(config: HyperlootConfig) {
         self.blockscout = Blockscout(environment: config.blockscout)
@@ -43,18 +43,18 @@ class TokenInventoryManager {
         }
     }
     
-    func send(token: HyperlootToken, from: String, to: String, transactionSigner: HyperlootTransactionSigning, completion: @escaping (Result<HyperlootTransaction, SendError>) -> Void) {
+    func send(token: HyperlootToken, from: String, to: String, value: HyperlootTokenItemSender.SendingValue, transactionSigner: HyperlootTransactionSigning, completion: @escaping (Result<HyperlootTransaction, HyperlootTransactionSendError>) -> Void) {
         guard let from = Address(string: from), let to = Address(string: to) else { return }
         
-        func add(_ tokenSender: TokenItemSender) {
+        func add(_ tokenSender: HyperlootTokenItemSender) {
             tokenSenders[tokenSender.uniqueIdentifier] = tokenSender
         }
         
-        func remove(_ tokenSender: TokenItemSender) {
+        func remove(_ tokenSender: HyperlootTokenItemSender) {
             tokenSenders.removeValue(forKey: tokenSender.uniqueIdentifier)
         }
         
-        let tokenSender = TokenItemSender(from: from, to: to, token: token, config: config, transactionSigner: transactionSigner)
+        let tokenSender = HyperlootTokenItemSender(from: from, to: to, token: token, sendingValue: value, config: config, transactionSigner: transactionSigner)
         add(tokenSender)
         tokenSender.send { (result) in
             completion(result)
