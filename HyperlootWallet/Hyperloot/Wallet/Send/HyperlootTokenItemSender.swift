@@ -59,6 +59,43 @@ class HyperlootTokenItemSender {
         self.transactionSender = HyperlootTransactionSender(infura: self.infura, transactionSigner: transactionSigner)
     }
     
+    public func send(completion: @escaping (Result<HyperlootTransaction, HyperlootTransactionSendError>) -> Void) {
+        var currentNonce: BigInt? = nil
+        var gasInfo: GasStation.Gas? = nil
+        
+        let group = DispatchGroup()
+        
+        group.enter()
+        nonceProvider.getNonce { (nonce, error) in
+            currentNonce = nonce
+            group.leave()
+        }
+        
+        group.enter()
+        getGasInfo { (gas) in
+            gasInfo = gas
+            group.leave()
+        }
+        
+        group.notify(queue: DispatchQueue.main) { [weak self] in
+            guard let nonce = currentNonce, let gas = gasInfo else {
+                completion(.failure(.invalidNonceOrGasInfo))
+                return
+            }
+            
+            self?.validate(gas: gas) { [weak self] (error) in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                self?.send(withGas: gas, nonce: nonce, completion: completion)
+            }
+        }
+    }
+    
+    // MARK: - Private
+    
     private func value(gas: GasStation.Gas) -> BigInt {
         switch sendingValue {
         case .ether(amount: let amount):
@@ -116,41 +153,6 @@ class HyperlootTokenItemSender {
                 error = (etherValue + totalGasCost > balance) ? .insufficientBalance : nil
             }
             completion(error)
-        }
-    }
-    
-    func send(completion: @escaping (Result<HyperlootTransaction, HyperlootTransactionSendError>) -> Void) {
-        var currentNonce: BigInt? = nil
-        var gasInfo: GasStation.Gas? = nil
-        
-        let group = DispatchGroup()
-        
-        group.enter()
-        nonceProvider.getNonce { (nonce, error) in
-            currentNonce = nonce
-            group.leave()
-        }
-        
-        group.enter()
-        getGasInfo { (gas) in
-            gasInfo = gas
-            group.leave()
-        }
-        
-        group.notify(queue: DispatchQueue.main) { [weak self] in
-            guard let nonce = currentNonce, let gas = gasInfo else {
-                completion(.failure(.invalidNonceOrGasInfo))
-                return
-            }
-            
-            self?.validate(gas: gas) { [weak self] (error) in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                self?.send(withGas: gas, nonce: nonce, completion: completion)
-            }
         }
     }
     
