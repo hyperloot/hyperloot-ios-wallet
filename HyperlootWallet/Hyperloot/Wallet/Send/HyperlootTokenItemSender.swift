@@ -178,12 +178,12 @@ class HyperlootTokenItemSender {
     
     private func pending(transactionHash: String) -> HyperlootTransaction {
         let value: HyperlootTransactionValue
-        switch token.type {
+        switch sendingValue {
         case .ether(amount: let amount):
             value = .ether(value: amount)
         case .erc20(amount: let amount):
             value = .token(value: amount, decimals: token.decimals, symbol: token.symbol)
-        case .erc721(tokenId: let tokenId, totalCount: _, attributes: _):
+        case .erc721(tokenId: let tokenId):
             value = .uniqueToken(tokenId: tokenId)
         }
         
