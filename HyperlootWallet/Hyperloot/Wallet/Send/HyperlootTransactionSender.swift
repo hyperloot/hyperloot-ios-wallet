@@ -37,6 +37,10 @@ class HyperlootTransactionSender {
         var sendTransaction = TrustCore.Transaction(gasPrice: transaction.gasPrice,
                                                     gasLimit: UInt64(transaction.gasLimit.magnitude),
                                                     to: transaction.to)
+        sendTransaction.nonce = UInt64(transaction.nonce.magnitude)
+        sendTransaction.amount = transaction.value
+        sendTransaction.payload = transaction.data
+        
         sendTransaction.sign(chainID: transaction.chainId) { (hash) -> Data in
             guard let transactionSigner = transactionSigner else { return Data() }
             return transactionSigner.signTransaction(hash: hash, from: transaction.from)

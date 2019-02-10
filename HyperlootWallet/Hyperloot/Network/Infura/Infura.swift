@@ -28,9 +28,12 @@ class Infura: HTTPService {
         }
     }
     
+    let blockchain: Blockchain
+    
     init(environment: Blockchain, apiKey: String) {
         let infuraEnv = Infura.Environment(blockchain: environment)
         let hostString = infuraEnv.rawValue.appending(apiKey)
+        self.blockchain = environment
         super.init(host: URL(string: hostString)!)
     }
     
@@ -45,8 +48,11 @@ class Infura: HTTPService {
             response.result != nil, response.chainId != nil else {
                 return infuraError(message: "Response is not valid")
         }
+        if let errorMessage = response.error?.message {
+            return infuraError(message: errorMessage)
+        }
         
-        return infuraError(message: "There was an error during fetching data from Ethereum blockchain")
+        return nil
     }
     
     enum JSONRPCRequest: String {
@@ -58,7 +64,11 @@ class Infura: HTTPService {
     }
     
     func request<T>(request jsonrpcRequest: JSONRPCRequest, parameters: [Any] = [], completion: @escaping (T?, Error?) -> Void) -> DataRequest where T : BaseMappable {
-        return request(jsonrpcRequest.rawValue, keyPath: nil, method: .get, parameters: ["params": parameters], encoding: URLEncoding.default, headers: nil, validation: { [weak self] (object) -> Error? in
+        let jsonRPCRequestParams: [String: Any] = ["jsonrpc": "2.0",
+                                                   "method": jsonrpcRequest.rawValue,
+                                                   "params": parameters,
+                                                   "id": blockchain.rawValue]
+        return request("", keyPath: nil, method: .post, parameters: jsonRPCRequestParams, encoding: JSONEncoding.default, headers: nil, validation: { [weak self] (object) -> Error? in
             return self?.validate(object: object)
         }, objectCompletion: completion)
     }
@@ -83,8 +93,14 @@ class Infura: HTTPService {
     
     @discardableResult
     func estimateGas(from: String, to: String, gasLimit: String?, gasPrice: String?, value: String?, data: String?, completion: @escaping (EthEstimateGasResponse?, Error?) -> Void) -> Cancelable {
-        let params: [String] = [from, to, gasLimit, gasPrice, value, data].compactMap { $0 }
-        return request(request: .estimateGas, parameters: params, completion: completion)
+        var params: [String: String] = ["from": from,
+                                        "to": to]
+        if let gasLimit = gasLimit { params["gasLimit"] = gasLimit }
+        if let gasPrice = gasPrice { params["gasPrice"] = gasPrice }
+        if let value = value { params["value"] = value }
+        if let data = data { params["data"] = data }
+
+        return request(request: .estimateGas, parameters: [params], completion: completion)
     }
     
     @discardableResult

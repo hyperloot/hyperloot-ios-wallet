@@ -62,7 +62,7 @@ class HTTPService {
                          encoding: ParameterEncoding = URLEncoding.default,
                          headers: HTTPHeaders? = nil,
                          validation: ResponseValidation? = nil) -> DataRequest {
-        let url: URL = host.appendingPathComponent(path)
+        let url: URL = (path.isEmpty == false) ? host.appendingPathComponent(path) : host
         return sessionManager.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers).validate({ (request, response, data) -> Request.ValidationResult in
             print("URL Request: \(String(describing:request?.url?.absoluteString)), parameters: \(String(describing:parameters))")
             return self.validate(request: request, response: response, data: data, responseValidation: validation)

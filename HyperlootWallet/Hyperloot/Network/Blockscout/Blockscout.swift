@@ -15,6 +15,7 @@ class Blockscout: HTTPService {
     enum Environment: String {
         case mainnet = "https://blockscout.com/eth/mainnet/api"
         case ropsten = "https://blockscout.com/eth/ropsten/api"
+        case rinkeby = "https://blockscout.com/eth/rinkeby/api"
     }
     
     typealias RequestParameters = [String: Any]
@@ -54,6 +55,7 @@ class Blockscout: HTTPService {
         switch environment {
         case .mainnet: return .mainnet
         case .ropsten: return .ropsten
+        case .rinkeby: return .rinkeby
         }
     }
     
