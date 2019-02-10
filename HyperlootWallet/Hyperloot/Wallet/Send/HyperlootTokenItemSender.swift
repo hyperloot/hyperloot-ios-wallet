@@ -127,10 +127,19 @@ class HyperlootTokenItemSender {
         }
     }
     
+    private var transactionTo: Address {
+        switch sendingValue {
+        case .ether:
+            return self.to
+        case .erc20, .erc721:
+            return Address(string: token.contractAddress) ?? self.to
+        }
+    }
+    
     private func getGasInfo(completion: @escaping (GasStation.Gas) -> Void) {
         let calculatedGas = gasStation.calculatedGas(token: token)
         let approximateValue = value(gas: calculatedGas)
-        gasStation.gas(from: self.from, to: self.to, value: approximateValue, data: self.data, token: self.token) { (gas) in
+        gasStation.gas(from: self.from, to: transactionTo, value: approximateValue, data: self.data, token: self.token) { (gas) in
             completion(gas)
         }
     }
@@ -158,7 +167,7 @@ class HyperlootTokenItemSender {
     
     private func send(withGas gas: GasStation.Gas, nonce: BigInt, completion: @escaping (Result<HyperlootTransaction, HyperlootTransactionSendError>) -> Void) {
         let transaction = HyperlootTransactionSender.Transaction(from: from,
-                                                                 to: to,
+                                                                 to: transactionTo,
                                                                  value: value(gas: gas),
                                                                  data: data,
                                                                  gasLimit: gas.limit,
