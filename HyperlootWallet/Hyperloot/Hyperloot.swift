@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Result
 
 class Hyperloot {
     
@@ -35,6 +36,31 @@ extension Hyperloot: HyperlootTokensManaging {
     func getTransactions(type: HyperlootTransactionType, page: Int, completion: @escaping ([HyperlootTransaction]) -> Void) {
         guard let address = currentWallet()?.addressString else { return }
         tokenManager.getTransactions(address: address, page: page, transactionType: type, completion: completion)
+    }
+    
+    func send(token: HyperlootToken, to: String, amount: HyperlootSendAmount, completion: @escaping (Result<HyperlootTransaction, HyperlootTransactionSendError>) -> Void) {
+        guard let address = currentWallet()?.addressString else { return }
+
+        let sendingValue: HyperlootTokenItemSender.SendingValue
+        switch token.type {
+        case .ether:
+            guard case .amount(let etherAmount) = amount,
+                let amountInWei = EtherNumberFormatter.full.number(from: etherAmount, units: .ether) else {
+                completion(.failure(.validationFailed))
+                return
+            }
+            sendingValue = .ether(amount: amountInWei.description)
+        case .erc20:
+            guard case .amount(let tokensAmount) = amount,
+                let amountInWei = EtherNumberFormatter.full.number(from: tokensAmount, decimals: token.decimals) else {
+                completion(.failure(.validationFailed))
+                return
+            }
+            sendingValue = .erc20(amount: amountInWei.description)
+        case .erc721(let tokenId, _, _):
+            sendingValue = .erc721(tokenId: tokenId)
+        }
+        tokenManager.send(token: token, from: address, to: to, value: sendingValue, transactionSigner: walletManager, completion: completion)
     }
 }
 

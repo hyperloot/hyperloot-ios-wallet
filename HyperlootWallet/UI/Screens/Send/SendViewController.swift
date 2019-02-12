@@ -21,6 +21,8 @@ class SendViewController: UIViewController {
     
     lazy var formController = FormController(scrollView: self.scrollView)
     
+    @IBOutlet weak var toAddressTextField: UITextField!
+    
     // Sections
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tokenItemDetailsView: SendTokenItemDetailsView! // ERC-721
@@ -64,7 +66,14 @@ class SendViewController: UIViewController {
     
     @IBAction func sendButtonPressed() {
         // TODO: perform transaction
-        self.navigationController?.popViewController(animated: true)
+        guard let to = toAddressTextField.text, to.isEmpty == false else { return }
+        let amount = tokenDetailsView.amountTextField.text
+        
+        showActivityIndicator()
+        viewModel.send(to: to, amount: amount) { [weak self] in
+            self?.hideActivityIndicator()
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
