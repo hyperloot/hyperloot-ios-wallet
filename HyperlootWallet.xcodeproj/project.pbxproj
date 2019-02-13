@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E552204F9D6FB5D03B25A858 /* Pods_CommonPods_HyperlootWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D833A387F7F56AF9A708ED /* Pods_CommonPods_HyperlootWallet.framework */; };
 		F414AC2D21F9B12C0022864B /* ERC721Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414AC2C21F9B12C0022864B /* ERC721Encoder.swift */; };
+		F42196242213F1C500036048 /* OpenSea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42196232213F1C500036048 /* OpenSea.swift */; };
 		F433F775220604A9005FA276 /* EthEstimateGasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F774220604A9005FA276 /* EthEstimateGasResponse.swift */; };
 		F433F77722066D57005FA276 /* EthGasPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F77622066D57005FA276 /* EthGasPriceResponse.swift */; };
 		F433F77922066ECD005FA276 /* HexFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F77822066ECD005FA276 /* HexFormatter.swift */; };
@@ -138,6 +139,7 @@
 		E0D833A387F7F56AF9A708ED /* Pods_CommonPods_HyperlootWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_HyperlootWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7FA6B138B5466D6184111E /* Pods-CommonPods-HyperlootWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-HyperlootWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-HyperlootWallet/Pods-CommonPods-HyperlootWallet.release.xcconfig"; sourceTree = "<group>"; };
 		F414AC2C21F9B12C0022864B /* ERC721Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ERC721Encoder.swift; sourceTree = "<group>"; };
+		F42196232213F1C500036048 /* OpenSea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSea.swift; sourceTree = "<group>"; };
 		F433F774220604A9005FA276 /* EthEstimateGasResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthEstimateGasResponse.swift; sourceTree = "<group>"; };
 		F433F77622066D57005FA276 /* EthGasPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthGasPriceResponse.swift; sourceTree = "<group>"; };
 		F433F77822066ECD005FA276 /* HexFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexFormatter.swift; sourceTree = "<group>"; };
@@ -300,9 +302,18 @@
 			path = TrustCore;
 			sourceTree = "<group>";
 		};
+		F42196222213F1B800036048 /* OpenSea */ = {
+			isa = PBXGroup;
+			children = (
+				F42196232213F1C500036048 /* OpenSea.swift */,
+			);
+			path = OpenSea;
+			sourceTree = "<group>";
+		};
 		F434317521B11E7F00FA9F6E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F42196222213F1B800036048 /* OpenSea */,
 				F459C34821FD90A7006A0D72 /* Infura */,
 				F468E71A21B65E880031423F /* Blockscout */,
 				F434317621B11E8D00FA9F6E /* HyperlootAPI */,
@@ -981,6 +992,7 @@
 				F466FCF621633D1900092CC4 /* WalletDashboardViewModel.swift in Sources */,
 				F466FD092164A4D200092CC4 /* TransactionTableCell.swift in Sources */,
 				F434D62021EC668500572288 /* TokenInventoryProviding.swift in Sources */,
+				F42196242213F1C500036048 /* OpenSea.swift in Sources */,
 				F44D72412146EC4000C651C6 /* SplashViewController.swift in Sources */,
 				F434318821B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift in Sources */,
 				F48765EA215952B3003825FE /* RegistrationErrorView.swift in Sources */,

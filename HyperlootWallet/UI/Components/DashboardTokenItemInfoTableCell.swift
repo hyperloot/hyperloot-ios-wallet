@@ -2,7 +2,6 @@
 //  DashboardTokenItemInfoTableCell.swift
 //  HyperlootWallet
 //
-//  Created by Valery Vaskabovich on 9/30/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

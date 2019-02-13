@@ -2,7 +2,6 @@
 //  HyperlootWalletTests.swift
 //  HyperlootWalletTests
 //
-//  Created by Valery Vaskabovich on 9/10/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

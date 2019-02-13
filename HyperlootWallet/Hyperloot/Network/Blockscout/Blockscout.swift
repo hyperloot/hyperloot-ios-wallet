@@ -2,7 +2,6 @@
 //  Blockscout.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 12/3/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

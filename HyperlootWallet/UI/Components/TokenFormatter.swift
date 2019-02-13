@@ -2,7 +2,6 @@
 //  TokenFormatter.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 12/21/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

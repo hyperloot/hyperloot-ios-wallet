@@ -2,7 +2,6 @@
 //  WalletKeyStore.swift
 //  HyperlootWallet
 //
-//  Created by Valery Vaskabovich on 9/13/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

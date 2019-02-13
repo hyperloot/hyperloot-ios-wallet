@@ -2,7 +2,6 @@
 //  TokenTransactionsViewModel.swift
 //  HyperlootWallet
 //
-//  Created by Valery Vaskabovich on 10/2/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
