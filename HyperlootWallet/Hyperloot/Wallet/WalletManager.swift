@@ -40,5 +40,10 @@ class WalletManager {
             }
         }
     }
-    
+}
+
+extension WalletManager: HyperlootTransactionSigning {
+    func signTransaction(hash: Data, from address: Address) -> Data {
+        return walletKeyStore.signTransaction(hash: hash, from: address)
+    }
 }

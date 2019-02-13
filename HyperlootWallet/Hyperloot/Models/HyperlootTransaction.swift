@@ -24,6 +24,7 @@ struct HyperlootTransaction {
     enum Status: Int, Codable {
         case error = 0
         case success = 1
+        case pending = 2
     }
     
     let transactionHash: String

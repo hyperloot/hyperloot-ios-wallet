@@ -55,11 +55,11 @@ class BlockscoutInventoryProvider: TokenInventoryProviding {
             guard let balance = response?.balance,
                 let amount = BigInt(balance),
                 let stringValue = self?.formatter.string(from: amount, decimals: TokenConstants.Ethereum.ethereumDecimals) else {
-                    completion(HyperlootToken.ether(amount: "0"))
+                    completion(HyperlootToken.ether(amount: "0", blockchain: blockscout.blockchain))
                     return
             }
             
-            let token = HyperlootToken.ether(amount: stringValue)
+            let token = HyperlootToken.ether(amount: stringValue, blockchain: blockscout.blockchain)
             self?.storage.replace(token: token) {
                 completion(token)
             }

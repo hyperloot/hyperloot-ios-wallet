@@ -19,7 +19,7 @@ struct TokenConstants {
 
 class HyperlootTokenTransformer {
     
-    static func token(from contractable: TokenContractable, balance: String) -> HyperlootToken? {
+    static func token(from contractable: TokenContractable, balance: String, blockchain: Blockchain) -> HyperlootToken? {
         guard let type = contractable.type else { return nil }
         
         var tokenType: HyperlootToken.TokenType? = nil
@@ -43,12 +43,15 @@ class HyperlootTokenTransformer {
                               symbol: contractable.symbol ?? "",
                               decimals: contractable.decimals ?? 0,
                               totalSupply: contractable.totalSupply ?? "",
-                              type: hyperlootTokenType)
+                              type: hyperlootTokenType,
+                              blockchain: blockchain)
     }
     
-    static func token(from token: HyperlootToken, balance: String) -> HyperlootToken {
+    static func token(from token: HyperlootToken, balance: String, blockchain: Blockchain) -> HyperlootToken {
         let type: HyperlootToken.TokenType
         switch token.type {
+        case .ether(amount: let prevAmount):
+            fallthrough
         case .erc20(amount: let prevAmount):
             if let amount = BigInt(balance) {
                 let amountString = EtherNumberFormatter.full.string(from: amount, decimals: token.decimals)
@@ -65,7 +68,8 @@ class HyperlootTokenTransformer {
                               symbol: token.symbol,
                               decimals: token.decimals,
                               totalSupply: token.totalSupply,
-                              type: type)
+                              type: type,
+                              blockchain: blockchain)
     }
     
     static func tokenizedItem(from token: HyperlootToken, tokenId: String, attributes: HyperlootToken.Attributes) -> HyperlootToken? {
@@ -79,6 +83,7 @@ class HyperlootTokenTransformer {
                               symbol: token.symbol,
                               decimals: token.decimals,
                               totalSupply: token.totalSupply,
-                              type: .erc721(tokenId: tokenId, totalCount: totalCount, attributes: attributes))
+                              type: .erc721(tokenId: tokenId, totalCount: totalCount, attributes: attributes),
+                              blockchain: token.blockchain)
     }
 }

@@ -46,12 +46,33 @@ class SendViewModel {
         self.transactionInput = TransactionInput(tokenInfo: nil, nickname: nil, addressTo: nil, speed: .regular)
     }
     
+    public func send(to: String, amount: String?, completion: @escaping () -> Void) {
+        let amountToSend: HyperlootSendAmount
+        if token.isERC721() {
+            amountToSend = .uniqueToken
+        } else {
+            amountToSend = .amount(amount ?? "")
+        }
+        Hyperloot.shared.send(token: token, to: to, amount: amountToSend) { (result) in
+            switch result {
+            case .success(let transaction):
+                print(transaction)
+            case .failure(let error):
+                print(error)
+            }
+            
+            completion()
+        }
+    }
+    
     private func tokenPresentationInfo() -> (hideRegularTokenDetails: Bool, hideTokenItemDetails: Bool, tokenPresentationType: Presentation.TokenPresentationType) {
         var hideRegularTokenDetails = true
         var hideTokenItemDetails = true
         var tokenPresentationType: Presentation.TokenPresentationType
         
         switch token.type {
+        case .ether:
+            fallthrough
         case .erc20:
             hideRegularTokenDetails = false
             tokenPresentationType = .regularToken(presentation: SendTokenDetailsPresentation(tokenSymbol: token.symbol,

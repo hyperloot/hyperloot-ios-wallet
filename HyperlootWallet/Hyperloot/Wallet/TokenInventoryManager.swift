@@ -8,28 +8,28 @@
 
 import Foundation
 import BigInt
+import TrustCore
+import Result
 
 class TokenInventoryManager {
     
     let blockscout: Blockscout
+    let config: HyperlootConfig
     
     lazy var tokensInfoOperationQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
         return queue
     } ()
-    
-    lazy var formatter: EtherNumberFormatter = {
-        let formatter = EtherNumberFormatter.full
-        formatter.maximumFractionDigits = 4
-        return formatter
-    } ()
-    
+        
     lazy var inventory = UserTokenInventoryStorage()
     var blockscoutProvider: BlockscoutInventoryProvider?
     
-    required init(environment: Blockscout.Environment) {
-        self.blockscout = Blockscout(environment: environment)
+    private var tokenSenders: [String: HyperlootTokenItemSender] = [:]
+    
+    required init(config: HyperlootConfig) {
+        self.blockscout = Blockscout(environment: config.blockscout)
+        self.config = config
     }
     
     func updateInventory(address: String, completion: @escaping ([HyperlootToken]) -> Void) {
@@ -40,6 +40,25 @@ class TokenInventoryManager {
                 completion(tokens)
                 self?.blockscoutProvider = nil
             }
+        }
+    }
+    
+    func send(token: HyperlootToken, from: String, to: String, value: HyperlootTokenItemSender.SendingValue, transactionSigner: HyperlootTransactionSigning, completion: @escaping (Result<HyperlootTransaction, HyperlootTransactionSendError>) -> Void) {
+        guard let from = Address(string: from), let to = Address(string: to) else { return }
+        
+        func add(_ tokenSender: HyperlootTokenItemSender) {
+            tokenSenders[tokenSender.uniqueIdentifier] = tokenSender
+        }
+        
+        func remove(_ tokenSender: HyperlootTokenItemSender) {
+            tokenSenders.removeValue(forKey: tokenSender.uniqueIdentifier)
+        }
+        
+        let tokenSender = HyperlootTokenItemSender(from: from, to: to, token: token, sendingValue: value, config: config, transactionSigner: transactionSigner)
+        add(tokenSender)
+        tokenSender.send { (result) in
+            completion(result)
+            remove(tokenSender)
         }
     }
     

@@ -317,4 +317,13 @@ class WalletKeyStore {
             return .failure(.failedToImportPrivateKey)
         }
     }
+    
+    func signTransaction(hash: Data, from address: Address) -> Data {
+        guard let account = getAccount(for: address),
+            let password = getPassword(for: account) else {
+            return Data()
+        }
+        let signature = try? keyStore.signHash(hash, account: account, password: password)
+        return signature ?? Data()
+    }
 }
