@@ -76,11 +76,11 @@ class SendViewModel {
             hideRegularTokenDetails = false
             tokenPresentationType = .regularToken(presentation: SendTokenDetailsPresentation(tokenSymbol: token.symbol,
                                                                                              amountPlaceholderText: "Amount"))
-        case .erc721(tokenId: _, totalCount: _, attributes: let attributes):
+        case .erc721(tokenId: let tokenId, totalCount: _, attributes: let attributes):
             hideTokenItemDetails = false
-            tokenPresentationType = .tokenItem(presentation: SendTokenItemDetailsPresentation(imageURL: attributes.imageURL,
-                                                                                              name: attributes.name,
-                                                                                              description: attributes.description))
+            tokenPresentationType = .tokenItem(presentation: SendTokenItemDetailsPresentation(imageURL: attributes?.imageURL,
+                                                                                              name: attributes?.name ?? tokenId,
+                                                                                              description: attributes?.description))
         }
         return (hideRegularTokenDetails: hideRegularTokenDetails, hideTokenItemDetails: hideTokenItemDetails, tokenPresentationType: tokenPresentationType)
     }

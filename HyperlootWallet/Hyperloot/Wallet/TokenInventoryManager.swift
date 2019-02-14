@@ -13,6 +13,7 @@ import Result
 class TokenInventoryManager {
     
     let blockscout: Blockscout
+    let openSea: OpenSea
     let config: HyperlootConfig
     
     lazy var tokensInfoOperationQueue: OperationQueue = {
@@ -23,22 +24,67 @@ class TokenInventoryManager {
         
     lazy var inventory = UserTokenInventoryStorage()
     var blockscoutProvider: BlockscoutInventoryProvider?
+    var openSeaProvider: OpenSeaInventoryProvider?
     
     private var tokenSenders: [String: HyperlootTokenItemSender] = [:]
     
     required init(config: HyperlootConfig) {
         self.blockscout = Blockscout(environment: config.blockscout)
+        self.openSea = OpenSea(environment: config.openSea, apiKey: config.openSeaAPIKey)
         self.config = config
     }
     
     func updateInventory(address: String, completion: @escaping ([HyperlootToken]) -> Void) {
         blockscoutProvider = BlockscoutInventoryProvider(blockscout: blockscout, storage: inventory, walletAddress: address)
+        openSeaProvider = OpenSeaInventoryProvider(openSea: openSea, walletAddress: address)
         
         inventory.loadInventory { [weak self] (loaded) in
+            
+            let group = DispatchGroup()
+            
+            var blockscoutTokens: [HyperlootToken] = []
+            var openSeaTokens: [HyperlootToken] = []
+            
+            group.enter()
             self?.blockscoutProvider?.getInventoryItems { (tokens) in
-                completion(tokens)
+                blockscoutTokens = tokens
                 self?.blockscoutProvider = nil
+                group.leave()
             }
+            
+            group.enter()
+            self?.openSeaProvider?.getInventoryItems(completion: { (tokens) in
+                openSeaTokens = tokens
+                self?.openSeaProvider = nil
+                group.leave()
+            })
+
+            group.notify(queue: DispatchQueue.main, execute: {
+                
+                func findIndex(openSeaToken: HyperlootToken) -> Int? {
+                    return blockscoutTokens.firstIndex(where: { (token) -> Bool in
+                        switch (token.type, openSeaToken.type) {
+                        case (.ether(_), .ether(_)):
+                            return false
+                        case (.erc20(_), .erc20(_)):
+                            return token.contractAddress == openSeaToken.contractAddress
+                        case (.erc721(let tokenId, _, _), .erc721(let openSeaTokenId, _, _)):
+                            return token.contractAddress == openSeaToken.contractAddress && tokenId == openSeaTokenId
+                        default:
+                            return false
+                        }
+                    })
+                }
+                
+                openSeaTokens.forEach { (openSeaToken) in
+                    if let index = findIndex(openSeaToken: openSeaToken) {
+                        blockscoutTokens[index] = openSeaToken
+                    } else {
+                        blockscoutTokens.append(openSeaToken)
+                    }
+                }
+                completion(blockscoutTokens)
+            })
         }
     }
     

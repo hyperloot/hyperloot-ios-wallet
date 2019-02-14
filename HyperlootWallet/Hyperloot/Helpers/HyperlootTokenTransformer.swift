@@ -17,20 +17,20 @@ struct TokenConstants {
 }
 
 class HyperlootTokenTransformer {
-    
+        
     static func token(from contractable: TokenContractable, balance: String, blockchain: Blockchain) -> HyperlootToken? {
         guard let type = contractable.type else { return nil }
         
         var tokenType: HyperlootToken.TokenType? = nil
         
         switch type {
-        case "ERC-20":
+        case TokenContractableConstants.tokenERC20Type:
             if let amount = BigInt(balance) {
                 let amountString = EtherNumberFormatter.full.string(from: amount, decimals: contractable.decimals ?? 0)
                 tokenType = .erc20(amount: amountString)
             }
-        case "ERC-721":
-            tokenType = .erc721(tokenId: HyperlootToken.Constants.noTokenId, totalCount: Int(balance) ?? 0, attributes: HyperlootToken.Attributes(description: "", name: "", imageURL: ""))
+        case TokenContractableConstants.tokenERC721Type:
+            tokenType = .erc721(tokenId: HyperlootToken.Constants.noTokenId, totalCount: Int(balance) ?? 0, attributes: nil)
         default:
             break
         }
@@ -43,7 +43,11 @@ class HyperlootTokenTransformer {
                               decimals: contractable.decimals ?? 0,
                               totalSupply: contractable.totalSupply ?? "",
                               type: hyperlootTokenType,
-                              blockchain: blockchain)
+                              blockchain: blockchain,
+                              tokenImageURL: contractable.imageURL,
+                              description: contractable.description,
+                              shortDescription: contractable.shortDescription,
+                              externalLink: contractable.externalLink)
     }
     
     static func token(from token: HyperlootToken, balance: String, blockchain: Blockchain) -> HyperlootToken {
@@ -68,10 +72,14 @@ class HyperlootTokenTransformer {
                               decimals: token.decimals,
                               totalSupply: token.totalSupply,
                               type: type,
-                              blockchain: blockchain)
+                              blockchain: blockchain,
+                              tokenImageURL: token.tokenImageURL,
+                              description: token.description,
+                              shortDescription: token.shortDescription,
+                              externalLink: token.externalLink)
     }
     
-    static func tokenizedItem(from token: HyperlootToken, tokenId: String, attributes: HyperlootToken.Attributes) -> HyperlootToken? {
+    static func tokenizedItem(from token: HyperlootToken, tokenId: String, attributes: HyperlootToken.Attributes?) -> HyperlootToken? {
         guard token.isERC721(),
             case .erc721(tokenId: _, totalCount: let totalCount, attributes: _) = token.type else {
             return nil
@@ -83,6 +91,10 @@ class HyperlootTokenTransformer {
                               decimals: token.decimals,
                               totalSupply: token.totalSupply,
                               type: .erc721(tokenId: tokenId, totalCount: totalCount, attributes: attributes),
-                              blockchain: token.blockchain)
+                              blockchain: token.blockchain,
+                              tokenImageURL: token.tokenImageURL,
+                              description: token.description,
+                              shortDescription: token.shortDescription,
+                              externalLink: token.externalLink)
     }
 }

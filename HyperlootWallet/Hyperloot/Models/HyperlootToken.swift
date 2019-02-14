@@ -15,15 +15,21 @@ struct HyperlootToken {
     }
         
     struct Attributes: Codable {
+        struct Trait: Codable {
+            let type: String
+            let value: String
+        }
         let description: String
+        let shortDescription: String?
         let name: String
-        let imageURL: String
+        let imageURL: String?
+        let traits: [Trait]
     }
     
     enum TokenType {
         case ether(amount: String)
         case erc20(amount: String)
-        case erc721(tokenId: String, totalCount: Int, attributes: Attributes)
+        case erc721(tokenId: String, totalCount: Int, attributes: Attributes?)
     }
     
     let contractAddress: String
@@ -34,6 +40,12 @@ struct HyperlootToken {
     let type: TokenType
     let blockchain: Blockchain
     
+    // Optional attributes for contract
+    let tokenImageURL: String?
+    let description: String?
+    let shortDescription: String?
+    let externalLink: String?
+    
     static func ether(amount: String, blockchain: Blockchain) -> HyperlootToken {
         return HyperlootToken(contractAddress: TokenConstants.Ethereum.ethereumContract,
                               name: "Ethereum",
@@ -41,7 +53,11 @@ struct HyperlootToken {
                               decimals: TokenConstants.Ethereum.ethereumDecimals,
                               totalSupply: "0",
                               type: .ether(amount: amount),
-                              blockchain: blockchain)
+                              blockchain: blockchain,
+                              tokenImageURL: nil,
+                              description: nil,
+                              shortDescription: nil,
+                              externalLink: nil)
     }
     
     static func hlt(amount: String, blockchain: Blockchain) -> HyperlootToken {
@@ -52,6 +68,10 @@ struct HyperlootToken {
                               decimals: 18,
                               totalSupply: "0",
                               type: .erc20(amount: amount),
-                              blockchain: blockchain)
+                              blockchain: blockchain,
+                              tokenImageURL: nil,
+                              description: nil,
+                              shortDescription: nil,
+                              externalLink: nil)
     }
 }

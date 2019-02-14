@@ -68,6 +68,7 @@ class OpenSea: HTTPService {
         case descending = "desc"
     }
     
+    @discardableResult
     func assets(ownerAddress: String, orderBy: OrderBy = .listingDate, orderDirection: OrderDirection = .descending, completion: @escaping (OpenSeaAssetsResponse?, Error?) -> Void) -> Cancelable {
         let parameters: Parameters = [ "owner": ownerAddress,
                                        "order_by": orderBy.rawValue,

@@ -13,9 +13,9 @@ typealias SendTokenItemDetailsPresentation = SendTokenItemDetailsView.Presentati
 class SendTokenItemDetailsView: UIView {
     
     struct Presentation {
-        let imageURL: String
+        let imageURL: String?
         let name: String
-        let description: String
+        let description: String?
     }
 
     @IBOutlet weak var itemImageView: UIImageView!
@@ -23,10 +23,7 @@ class SendTokenItemDetailsView: UIView {
     @IBOutlet weak var itemDescriptionLabel: UILabel!
 
     func update(presentation: SendTokenItemDetailsPresentation) {
-        itemImageView.af_cancelImageRequest()
-        if let imageURL = URL(string: presentation.imageURL) {
-            itemImageView.af_setImage(withURL: imageURL)
-        }
+        itemImageView.setImage(withURL: presentation.imageURL, tag: tag)
         itemNameLabel.text = presentation.name
         itemDescriptionLabel.text = presentation.description
     }

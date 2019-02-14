@@ -14,7 +14,7 @@ class TokenInfoViewController: UIViewController {
     
     struct Input {
         let token: HyperlootToken
-        let attributes: HyperlootToken.Attributes
+        let attributes: HyperlootToken.Attributes?
     }
     
     var input: Input!
@@ -44,10 +44,7 @@ class TokenInfoViewController: UIViewController {
     func updateUI() {
         let presentation = viewModel.presentation
         
-        itemImageView.af_cancelImageRequest()
-        if let imageURL = URL(string: presentation.itemImageURL) {
-            itemImageView.af_setImage(withURL: imageURL)
-        }
+        itemImageView.setImage(withURL: presentation.itemImageURL, tag: view.tag)
         itemNameLabel.text = presentation.itemName
         itemShortDescriptionLabel.text = presentation.itemShortDescription
         itemPriceLabel.attributedText = presentation.itemPrice

@@ -18,6 +18,12 @@ struct BlockscoutGetTokenResponse: ImmutableMappable {
         let totalSupply: String?
         let type: String?
         
+        let imageURL: String?
+        let description: String?
+        let shortDescription: String?
+        let externalLink: String?
+
+        
         init(map: Map) throws {
             contractAddress = try? map.value("contractAddress")
             decimals = try? map.value("decimals", using: StringToIntTransformer())
@@ -25,6 +31,12 @@ struct BlockscoutGetTokenResponse: ImmutableMappable {
             symbol = try? map.value("symbol")
             totalSupply = try? map.value("totalSupply")
             type = try? map.value("type")
+            
+            // For now Blockscout doesn't return the following properties
+            imageURL = nil
+            description = nil
+            shortDescription = nil
+            externalLink = nil
         }
     }
     

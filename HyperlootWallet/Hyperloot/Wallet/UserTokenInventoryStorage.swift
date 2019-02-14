@@ -98,7 +98,7 @@ class UserTokenInventoryStorage {
                 return nil
             }
             
-            return HyperlootTokenTransformer.tokenizedItem(from: token, tokenId: tokenId, attributes: HyperlootToken.Attributes(description: "", name: "", imageURL: ""))
+            return HyperlootTokenTransformer.tokenizedItem(from: token, tokenId: tokenId, attributes: nil)
         }
         
         tokenizedItem.tokens.removeAll { (t) -> Bool in

@@ -101,6 +101,7 @@
 		F4B89E4D2213FA5600FE9BD5 /* OpenSeaContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B89E4C2213FA5600FE9BD5 /* OpenSeaContract.swift */; };
 		F4B89E4F2213FA6300FE9BD5 /* OpenSeaTokenOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B89E4E2213FA6300FE9BD5 /* OpenSeaTokenOwner.swift */; };
 		F4B89E512213FA6B00FE9BD5 /* OpenSeaAssetTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B89E502213FA6B00FE9BD5 /* OpenSeaAssetTrait.swift */; };
+		F4B89E532215438F00FE9BD5 /* UIImageView+AsyncLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B89E522215438F00FE9BD5 /* UIImageView+AsyncLoading.swift */; };
 		F4BA240D21C25920005F68A5 /* OperationQueue+Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA240C21C25920005F68A5 /* OperationQueue+Completion.swift */; };
 		F4BA241121C38F4B005F68A5 /* EtherNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA240F21C38F4B005F68A5 /* EtherNumberFormatter.swift */; };
 		F4BA241221C38F4B005F68A5 /* HyperlootOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA241021C38F4B005F68A5 /* HyperlootOperation.swift */; };
@@ -240,6 +241,7 @@
 		F4B89E4C2213FA5600FE9BD5 /* OpenSeaContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaContract.swift; sourceTree = "<group>"; };
 		F4B89E4E2213FA6300FE9BD5 /* OpenSeaTokenOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaTokenOwner.swift; sourceTree = "<group>"; };
 		F4B89E502213FA6B00FE9BD5 /* OpenSeaAssetTrait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaAssetTrait.swift; sourceTree = "<group>"; };
+		F4B89E522215438F00FE9BD5 /* UIImageView+AsyncLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+AsyncLoading.swift"; sourceTree = "<group>"; };
 		F4BA240C21C25920005F68A5 /* OperationQueue+Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+Completion.swift"; sourceTree = "<group>"; };
 		F4BA240F21C38F4B005F68A5 /* EtherNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtherNumberFormatter.swift; sourceTree = "<group>"; };
 		F4BA241021C38F4B005F68A5 /* HyperlootOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperlootOperation.swift; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 				F466FD012163497400092CC4 /* UIView+Extensions.swift */,
 				F434318721B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift */,
 				F4EEDD0E21B7AD0C00C80A79 /* Dictionary+Merge.swift */,
+				F4B89E522215438F00FE9BD5 /* UIImageView+AsyncLoading.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1018,6 +1021,7 @@
 				F4BF330C21FDBA1A0039B8B5 /* InfuraBaseResponse.swift in Sources */,
 				F4A011D5220431E400A19AF0 /* GasStation.swift in Sources */,
 				F466FD0721649EFE00092CC4 /* TokenTransactionsViewModel.swift in Sources */,
+				F4B89E532215438F00FE9BD5 /* UIImageView+AsyncLoading.swift in Sources */,
 				F4CB7CE92175ADA7006B6217 /* FormController.swift in Sources */,
 				F466FD1B2167346500092CC4 /* SendViewController.swift in Sources */,
 				F44B3310220AD93D005CEDE3 /* HyperlootTransactionSender.swift in Sources */,

@@ -12,6 +12,7 @@ struct OpenSeaAsset: ImmutableMappable {
     
     let tokenId: String?
     let imageURL: String?
+    let description: String?
     let backgroundColor: String?
     let name: String?
     let externalLink: String?
@@ -23,6 +24,7 @@ struct OpenSeaAsset: ImmutableMappable {
     init(map: Map) throws {
         tokenId = try? map.value("token_id")
         imageURL = try? map.value("image_url")
+        description = try? map.value("description")
         backgroundColor = try? map.value("background_color")
         name = try? map.value("name")
         externalLink = try? map.value("external_link")

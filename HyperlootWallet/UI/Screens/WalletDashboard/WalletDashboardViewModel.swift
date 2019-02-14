@@ -22,6 +22,10 @@ class WalletDashboardViewModel {
     
     public private(set) var selectedToken: HyperlootToken?
     
+    public var shouldShowActivityIndicator: Bool {
+        return tokens.isEmpty == true
+    }
+    
     func loadWallet(completion: @escaping () -> Void) {
 
         guard isLoadingWallet == false else { return }
@@ -126,9 +130,9 @@ class WalletDashboardViewModel {
             case .erc721(tokenId: let tokenId, totalCount: _, attributes: let attributes) = token.type else {
             return nil
         }
-        return DashboardTokenItemInfoPresentation(itemImageURL: attributes.imageURL,
-                                                  itemName: attributes.name,
-                                                  itemShortDescription: attributes.description,
+        return DashboardTokenItemInfoPresentation(itemImageURL: attributes?.imageURL,
+                                                  itemName: attributes?.name ?? token.name,
+                                                  itemShortDescription: attributes?.description,
                                                   itemPrice: NSAttributedString(string: TokenFormatter.erc721Value(tokenId: tokenId)))
     }
 }
