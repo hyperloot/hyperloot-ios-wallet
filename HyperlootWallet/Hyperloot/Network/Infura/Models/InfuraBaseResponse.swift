@@ -2,7 +2,6 @@
 //  InfuraBaseResponse.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 1/27/19.
 //  Copyright © 2019 Hyperloot DAO. All rights reserved.
 //
 

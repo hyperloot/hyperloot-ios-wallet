@@ -2,7 +2,6 @@
 //  UserTokenInventoryStorage.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 12/28/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
@@ -99,7 +98,7 @@ class UserTokenInventoryStorage {
                 return nil
             }
             
-            return HyperlootTokenTransformer.tokenizedItem(from: token, tokenId: tokenId, attributes: HyperlootToken.Attributes(description: "", name: "", imageURL: ""))
+            return HyperlootTokenTransformer.tokenizedItem(from: token, tokenId: tokenId, attributes: nil)
         }
         
         tokenizedItem.tokens.removeAll { (t) -> Bool in

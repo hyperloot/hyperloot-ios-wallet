@@ -2,7 +2,6 @@
 //  HyperlootToken+Codable.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 12/27/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
@@ -33,7 +32,7 @@ extension HyperlootToken.TokenType: Codable {
         case CodingConstants.erc721TokenType:
             let tokenId = try container.decode(String.self, forKey: .erc721TokenId)
             let totalCount = try container.decode(Int.self, forKey: .erc721TotalCount)
-            let attributes = try container.decode(HyperlootToken.Attributes.self, forKey: .erc721Attributes)
+            let attributes = try? container.decode(HyperlootToken.Attributes.self, forKey: .erc721Attributes)
             self = .erc721(tokenId: tokenId, totalCount: totalCount, attributes: attributes)
         case CodingConstants.erc20TokenType:
             fallthrough
@@ -55,7 +54,7 @@ extension HyperlootToken.TokenType: Codable {
             try container.encode(CodingConstants.erc721TokenType, forKey: .tokenType)
             try container.encode(tokenId, forKey: .erc721TokenId)
             try container.encode(totalCount, forKey: .erc721TotalCount)
-            try container.encode(attributes, forKey: .erc721Attributes)
+            try? container.encode(attributes, forKey: .erc721Attributes)
         }
     }
 }
@@ -70,6 +69,11 @@ extension HyperlootToken: Codable {
         case totalSupply
         case type
         case blockchain
+        
+        case tokenImageURL
+        case description
+        case shortDescription
+        case externalLink
     }
     
     init(from decoder: Decoder) throws {
@@ -82,6 +86,10 @@ extension HyperlootToken: Codable {
         totalSupply = try container.decode(String.self, forKey: .totalSupply)
         type = try container.decode(TokenType.self, forKey: .type)
         blockchain = try container.decode(Blockchain.self, forKey: .blockchain)
+        tokenImageURL = try? container.decode(String.self, forKey: .tokenImageURL)
+        description = try? container.decode(String.self, forKey: .description)
+        shortDescription = try? container.decode(String.self, forKey: .shortDescription)
+        externalLink = try? container.decode(String.self, forKey: .externalLink)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -94,5 +102,10 @@ extension HyperlootToken: Codable {
         try container.encode(decimals, forKey: .decimals)
         try container.encode(type, forKey: .type)
         try container.encode(blockchain, forKey: .blockchain)
+        
+        try? container.encode(tokenImageURL, forKey: .tokenImageURL)
+        try? container.encode(description, forKey: .description)
+        try? container.encode(shortDescription, forKey: .shortDescription)
+        try? container.encode(externalLink, forKey: .externalLink)
     }
 }

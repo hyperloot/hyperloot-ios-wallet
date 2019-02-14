@@ -2,7 +2,6 @@
 //  SignupResponse.swift
 //  HyperlootWallet
 //
-//  Created by Valery Vaskabovich on 12/1/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

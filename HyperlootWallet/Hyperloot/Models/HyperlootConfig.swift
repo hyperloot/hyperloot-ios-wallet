@@ -2,7 +2,6 @@
 //  HyperlootConfig.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 1/27/19.
 //  Copyright © 2019 Hyperloot DAO. All rights reserved.
 //
 
@@ -13,6 +12,8 @@ struct HyperlootConfig {
     let apiURL: String
     let blockscout: Blockscout.Environment
     let infuraAPIKey: String
+    let openSea: OpenSea.Environment
+    let openSeaAPIKey: String
 }
 
 // PLEASE UNCOMMENT, MOVE THIS EXTENSION TO "HyperlootConfig+App.swift" AND PUT YOUR KEYS

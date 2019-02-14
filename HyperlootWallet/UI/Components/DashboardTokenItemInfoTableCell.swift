@@ -2,7 +2,6 @@
 //  DashboardTokenItemInfoTableCell.swift
 //  HyperlootWallet
 //
-//  Created by Valery Vaskabovich on 9/30/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
@@ -14,9 +13,9 @@ typealias DashboardTokenItemInfoPresentation = DashboardTokenItemInfoTableCell.P
 class DashboardTokenItemInfoTableCell: UITableViewCell {
     
     struct Presentation {
-        let itemImageURL: String
+        let itemImageURL: String?
         let itemName: String
-        let itemShortDescription: String
+        let itemShortDescription: String?
         let itemPrice: NSAttributedString
     }
     
@@ -24,6 +23,12 @@ class DashboardTokenItemInfoTableCell: UITableViewCell {
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var itemDescriptionLabel: UILabel!
     @IBOutlet weak var itemPriceLabel: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        itemImageView.prepareForReuse()
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,10 +36,7 @@ class DashboardTokenItemInfoTableCell: UITableViewCell {
     }
 
     func update(presentation: DashboardTokenItemInfoPresentation) {
-        itemImageView.af_cancelImageRequest()
-        if let imageURL = URL(string: presentation.itemImageURL) {
-            itemImageView.af_setImage(withURL: imageURL)
-        }
+        itemImageView.setImage(withURL: presentation.itemImageURL, tag: self.tag)
         itemNameLabel.text = presentation.itemName
         itemDescriptionLabel.text = presentation.itemShortDescription
         itemPriceLabel.attributedText = presentation.itemPrice

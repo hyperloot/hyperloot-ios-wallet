@@ -2,7 +2,6 @@
 //  OperationQueue+Completion.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 12/13/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

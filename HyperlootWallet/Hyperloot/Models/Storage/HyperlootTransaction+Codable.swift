@@ -2,7 +2,6 @@
 //  HyperlootTransaction+Codable.swift
 //  HyperlootWallet
 //
-//  Created by valery_vaskabovich on 12/27/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 

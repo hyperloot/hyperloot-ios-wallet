@@ -2,7 +2,6 @@
 //  WalletDashboardViewController.swift
 //  HyperlootWallet
 //
-//  Created by Valery Vaskabovich on 10/1/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
@@ -25,9 +24,15 @@ class WalletDashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showActivityIndicator()
+        let shouldShowActivityIndicator = viewModel.shouldShowActivityIndicator
+        
+        if shouldShowActivityIndicator {
+            showActivityIndicator()
+        }
         viewModel.loadWallet { [weak self] in
-            self?.hideActivityIndicator()
+            if shouldShowActivityIndicator {
+                self?.hideActivityIndicator()
+            }
             self?.updateBalance()
             self?.tableView.reloadData()
         }
@@ -115,6 +120,7 @@ extension WalletDashboardViewController: UITableViewDataSource {
         }
         
         cell.update(presentation: presentation)
+        cell.tag = indexPath.row
         return cell
     }
 }

@@ -2,7 +2,6 @@
 //  EnterWalletKeysViewController.swift
 //  HyperlootWallet
 //
-//  Created by Valery Vaskabovich on 9/25/18.
 //  Copyright © 2018 Hyperloot DAO. All rights reserved.
 //
 
