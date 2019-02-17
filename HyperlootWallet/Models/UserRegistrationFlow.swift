@@ -9,10 +9,10 @@ import Foundation
 
 enum UserRegistrationFlow {
     
-    enum ImportType {
-        case mnemonicPhrase
-        case privateKey
-        case keystoreJSON
+    enum ImportType: Int {
+        case mnemonicPhrase = 100
+        case privateKey = 101
+        case keystoreJSON = 102
     }
     
     // Entry point

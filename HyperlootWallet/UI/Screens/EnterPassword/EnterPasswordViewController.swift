@@ -67,7 +67,12 @@ class EnterPasswordViewController: UIViewController {
             
             viewController.input = EnterWalletKeysViewController.Input(user: user)
         } else if segue.isEqualTo(route: .showImportOrCreateScreen) {
+            guard let viewController = segue.destination as? UnlockWalletViewController,
+                let user = viewModel.registeredUser else {
+                    return
+            }
             
+            viewController.input = UnlockWalletViewController.Input(user: user)
         }
     }
     
