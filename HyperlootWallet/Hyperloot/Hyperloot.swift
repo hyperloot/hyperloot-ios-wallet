@@ -95,7 +95,7 @@ extension Hyperloot: HyperlootWalletManaging {
         }
     }
     
-    func importWallet() {
-        
+    func importWallet(user: HyperlootUser, password: String, importType: HyperlootWalletImportType, completion: @escaping (HyperlootWallet?, Error?) -> Void) {
+        walletManager.importWallet(type: importType, password: password, completion: completion)
     }
 }

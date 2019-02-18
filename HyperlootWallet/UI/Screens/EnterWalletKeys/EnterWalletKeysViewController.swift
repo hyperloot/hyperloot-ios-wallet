@@ -52,11 +52,26 @@ class EnterWalletKeysViewController: UIViewController {
     
     @IBAction func actionButtonPressed() {
         showActivityIndicator()
-        viewModel.performAction { [weak self] (result) in
+        viewModel.performAction { [weak self] (result, error) in
             self?.hideActivityIndicator()
             if result {
                 self?.performSegue(route: .showWalletAfterLoginFlow)
+            } else {
+                let alertMessage: String
+                if let error = error, case .error(description: let errorMessage) = error {
+                    alertMessage = errorMessage
+                } else {
+                    alertMessage = "There was an error during adding your wallet. Please check your keys and try again"
+                }
+                self?.showError(title: "Import error", description: alertMessage, completion: nil)
             }
         }
+    }
+}
+
+extension EnterWalletKeysViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        viewModel.didChangeTextInput(text: textView.text)
+        updateUI()
     }
 }

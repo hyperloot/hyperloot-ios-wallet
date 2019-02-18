@@ -23,6 +23,10 @@ class EnterWalletKeysViewModel {
         case importWallet(importType: UserRegistrationFlow.ImportType)
     }
     
+    enum AddWalletError: Error {
+        case error(description: String)
+    }
+    
     let user: UserRegistrationFlow
     
     var walletKey: String?
@@ -53,12 +57,24 @@ class EnterWalletKeysViewModel {
                             actionButton: (title: actionButtonTitle, enabled: isActionButtonEnabled))
     }
     
-    public func performAction(completion: @escaping (Bool) -> Void) {
+    public func didChangeTextInput(text: String?) {
+        switch user {
+        case .importWallet(user: let user, password: let password, importType: let importType):
+            self.walletKey = text
+        case .createWallet, .enterEmail, .signUpEnterNickname,
+             .signUpConfirmPassword, .signInEnterPassword,
+             .chooseImportOptions:
+            // Unsupported
+            break
+        }
+    }
+    
+    public func performAction(completion: @escaping (Bool, AddWalletError?) -> Void) {
         switch user {
         case .createWallet(email: let email, password: let password, nickname: let nickname, address: let address, mnemonicPhrase: _):
             createWallet(email: email, password: password, nickname: nickname, walletAddress: address, completion: completion)
-        case .importWallet(user: _, password: _, importType: _):
-            break
+        case .importWallet(user: let user, password: let password, importType: let importType):
+            importWallet(user: user, password: password, importType: importType, completion: completion)
         case .enterEmail, .signUpEnterNickname,
              .signUpConfirmPassword, .signInEnterPassword,
              .chooseImportOptions:
@@ -68,12 +84,45 @@ class EnterWalletKeysViewModel {
     }
     
     // MARK: - API calls
-    public func createWallet(email: String, password: String, nickname: String, walletAddress: String, completion: @escaping (Bool) -> Void) {
+    func importWallet(user: HyperlootUser, password: String, importType: UserRegistrationFlow.ImportType, completion: @escaping (Bool, AddWalletError?) -> Void) {
+        guard let walletKey = walletKey else {
+            completion(false, .error(description: "Your wallet key is not valid. Please check and try again"))
+            return
+        }
+        
+        let type: HyperlootWalletImportType
+        switch importType {
+        case .privateKey:
+            type = .privateKey(privateKey: walletKey)
+        case .mnemonicPhrase:
+            let words = walletKey.components(separatedBy: " ")
+            type = .mnemonic(words: words, passphrase: "")
+        case .keystoreJSON:
+            type = .keystore(string: walletKey, password: password)
+        }
+        
+        Hyperloot.shared.login(email: user.email, password: password) { (user, error) in
+            guard let user = user, error == nil else {
+                completion(false, .error(description: "There was an error during logging into your account"))
+                return
+            }
+            
+            Hyperloot.shared.importWallet(user: user, password: password, importType: type, completion: { (wallet, error) in
+                guard wallet != nil, error == nil else {
+                    completion(false, .error(description: "There was an error during importing your wallet key. Please check your key and try again later"))
+                    return
+                }
+                completion(true, nil)
+            })
+        }
+    }
+    
+    public func createWallet(email: String, password: String, nickname: String, walletAddress: String, completion: @escaping (Bool, AddWalletError?) -> Void) {
         Hyperloot.shared.signup(email: email, password: password, nickname: nickname, walletAddress: walletAddress) { (user, error) in
             if user != nil, error == nil {
-                completion(true)
+                completion(true, nil)
             } else {
-                completion(false)
+                completion(false, .error(description: "There was an error during creating your account. Please try again later"))
             }
         }
     }

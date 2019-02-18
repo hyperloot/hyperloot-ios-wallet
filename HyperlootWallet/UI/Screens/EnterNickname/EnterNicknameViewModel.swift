@@ -13,7 +13,7 @@ class EnterNicknameViewModel {
         let nextButtonEnabled: Bool
     }
     
-    private var user: UserRegistrationFlow
+    private let user: UserRegistrationFlow
     public private(set) var registrationUser: UserRegistrationFlow?
     public private(set) var presentation: Presentation = Presentation(nextButtonEnabled: false)
     

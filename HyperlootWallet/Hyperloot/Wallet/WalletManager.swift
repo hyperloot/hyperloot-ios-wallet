@@ -39,6 +39,17 @@ class WalletManager {
             }
         }
     }
+    
+    func importWallet(type: HyperlootWalletImportType, password: String, completion: @escaping (HyperlootWallet?, Error?) -> Void) {
+        walletKeyStore.importWallet(type: type, walletPassword: password) { (result) in
+            switch result {
+            case .success(let wallet):
+                completion(wallet, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
+    }
 }
 
 extension WalletManager: HyperlootTransactionSigning {

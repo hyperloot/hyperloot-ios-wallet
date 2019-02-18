@@ -12,6 +12,12 @@ import TrustKeystore
 import KeychainSwift
 import CryptoSwift
 
+enum HyperlootWalletImportType {
+    case keystore(string: String, password: String)
+    case privateKey(privateKey: String)
+    case mnemonic(words: [String], passphrase: String)
+}
+
 class WalletKeyStore {
     
     enum KeyStoreError: Error {
@@ -29,12 +35,6 @@ class WalletKeyStore {
         case failedToSignTypedMessage
         case failedToExportPrivateKey
         case invalidMnemonicPhrase
-    }
-    
-    enum ImportType {
-        case keystore(string: String, password: String)
-        case privateKey(privateKey: String)
-        case mnemonic(words: [String], password: String)
     }
     
     struct Constants {
@@ -87,7 +87,7 @@ class WalletKeyStore {
         }
     }
     
-    func importWallet(type: ImportType, walletPassword: String, completion: @escaping (Result<HyperlootWallet, KeyStoreError>) -> Void) {
+    func importWallet(type: HyperlootWalletImportType, walletPassword: String, completion: @escaping (Result<HyperlootWallet, KeyStoreError>) -> Void) {
         switch type {
         case .keystore(let string, let password):
             importKeystore(value: string, password: password, newPassword: walletPassword) { result in
