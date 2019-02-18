@@ -41,7 +41,7 @@ class UnlockWalletViewModel {
         
         switch user {
         case .chooseImportOptions(user: let user, password: let password):
-            return UserRegistrationFlow.importWallet(user: user, password: password, importType: importType)
+            return .importWallet(user: user, password: password, importType: importType)
         case .enterEmail, .signUpEnterNickname, .signUpConfirmPassword,
              .createWallet, .signInEnterPassword, .importWallet:
             return nil
