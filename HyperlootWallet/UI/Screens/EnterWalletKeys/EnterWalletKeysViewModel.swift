@@ -180,7 +180,7 @@ class EnterWalletKeysViewModel {
         case .createWallet(mnemonicPhrase: let words):
             return words.joined(separator: " ")
         case .importWallet:
-            return ""
+            return walletKey ?? ""
         case .none:
             return ""
         }

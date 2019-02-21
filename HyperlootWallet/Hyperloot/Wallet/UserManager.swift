@@ -16,7 +16,7 @@ class UserManager {
     
     private lazy var userFilePath: URL = {
         let docsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        return URL(fileURLWithPath: docsDirectory + Constants.userFilename)
+        return URL(fileURLWithPath: docsDirectory).appendingPathComponent(Constants.userFilename)
     } ()
     
     public private(set) var user: HyperlootUser?
