@@ -123,7 +123,7 @@ class HyperlootTokenItemSender {
             return ERC20Encoder.encodeTransfer(to: self.to, tokens: tokens)
         case .erc721(tokenId: let tokenId):
             let tokenIdValue = BigInt(stringLiteral: tokenId).magnitude
-            return ERC721Encoder.encodeTransferFrom(from: self.from, to: self.to, tokenId: tokenIdValue)
+            return ERC721Encoder.encodeTransfer(to: self.to, tokenId: tokenIdValue)//ERC721Encoder.encodeTransferFrom(from: self.from, to: self.to, tokenId: tokenIdValue)
         }
     }
     

@@ -63,6 +63,17 @@ public final class ERC721Encoder {
         try! encoder.encode(function: function, arguments: [from, to, tokenId])
         return encoder.data
     }
+    
+    /// Encodes a function call to `transfer`. This is actually an old way to send ERC-721 before the standard approval.
+    ///
+    /// Solidity function: `function transfer(address _to, uint256 _tokenId)`
+    public static func encodeTransfer(to: Address, tokenId: BigUInt) -> Data {
+        let function = Function(name: "transfer", parameters: [.address, .uint(bits: 256)])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [to, tokenId])
+        return encoder.data
+    }
+
     /// Encodes a function call to `tokenOfOwnerByIndex`
     ///
     /// Solidity function: `function tokenOfOwnerByIndex(address _owner, uint256 _index) returns (uint256);`
