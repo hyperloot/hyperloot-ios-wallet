@@ -14,6 +14,7 @@ struct HyperlootConfig {
     let infuraAPIKey: String
     let openSea: OpenSea.Environment
     let openSeaAPIKey: String
+    let coinMarketCapAPIKey: String
 }
 
 // PLEASE UNCOMMENT, MOVE THIS EXTENSION TO "HyperlootConfig+App.swift" AND PUT YOUR KEYS
