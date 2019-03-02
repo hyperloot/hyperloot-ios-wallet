@@ -15,6 +15,7 @@ class TokenInventoryManager {
     let blockscout: Blockscout
     let openSea: OpenSea
     let config: HyperlootConfig
+    let priceDiscovery: TokenPriceDiscovery
     
     lazy var tokensInfoOperationQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -31,6 +32,7 @@ class TokenInventoryManager {
     required init(config: HyperlootConfig) {
         self.blockscout = Blockscout(environment: config.blockscout)
         self.openSea = OpenSea(environment: config.openSea, apiKey: config.openSeaAPIKey)
+        self.priceDiscovery = TokenPriceDiscovery(config: config)
         self.config = config
     }
     
@@ -44,7 +46,7 @@ class TokenInventoryManager {
             
             var blockscoutTokens: [HyperlootToken] = []
             var openSeaTokens: [HyperlootToken] = []
-            
+                        
             group.enter()
             self?.blockscoutProvider?.getInventoryItems { (tokens) in
                 blockscoutTokens = tokens

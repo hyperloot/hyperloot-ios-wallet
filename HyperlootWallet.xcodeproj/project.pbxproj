@@ -69,6 +69,13 @@
 		F468E71C21B660620031423F /* Blockscout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F468E71B21B660620031423F /* Blockscout.swift */; };
 		F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */; };
 		F475DB8D216C6A5900B157BC /* HyperlootNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */; };
+		F47EDA252225287000D6684E /* CoinMarketCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA242225287000D6684E /* CoinMarketCap.swift */; };
+		F47EDA2822252B2300D6684E /* CoinMarketCapListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA2722252B2300D6684E /* CoinMarketCapListResponse.swift */; };
+		F47EDA2A222606DF00D6684E /* CoinMarketCapBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA29222606DF00D6684E /* CoinMarketCapBaseResponse.swift */; };
+		F47EDA2C2226E05500D6684E /* TokenPriceDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA2B2226E05500D6684E /* TokenPriceDiscovery.swift */; };
+		F47EDA2E222718FB00D6684E /* HyperlootTokenPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA2D222718FB00D6684E /* HyperlootTokenPrice.swift */; };
+		F47EDA32222719DE00D6684E /* HyperlootDataSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA31222719DE00D6684E /* HyperlootDataSerializer.swift */; };
+		F47EDA35222915B100D6684E /* URL+DocumentsPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA34222915B100D6684E /* URL+DocumentsPath.swift */; };
 		F4828AD521D60077006CEDD0 /* HyperlootTransaction+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4828AD421D60077006CEDD0 /* HyperlootTransaction+Codable.swift */; };
 		F4828AD921D6009D006CEDD0 /* HyperlootToken+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4828AD821D6009D006CEDD0 /* HyperlootToken+Codable.swift */; };
 		F4828ADB21D67C95006CEDD0 /* UserTokenInventoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4828ADA21D67C95006CEDD0 /* UserTokenInventoryStorage.swift */; };
@@ -212,6 +219,13 @@
 		F468E71B21B660620031423F /* Blockscout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blockscout.swift; sourceTree = "<group>"; };
 		F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionSpeedView.swift; sourceTree = "<group>"; };
 		F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootNickname.swift; sourceTree = "<group>"; };
+		F47EDA242225287000D6684E /* CoinMarketCap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCap.swift; sourceTree = "<group>"; };
+		F47EDA2722252B2300D6684E /* CoinMarketCapListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCapListResponse.swift; sourceTree = "<group>"; };
+		F47EDA29222606DF00D6684E /* CoinMarketCapBaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCapBaseResponse.swift; sourceTree = "<group>"; };
+		F47EDA2B2226E05500D6684E /* TokenPriceDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPriceDiscovery.swift; sourceTree = "<group>"; };
+		F47EDA2D222718FB00D6684E /* HyperlootTokenPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTokenPrice.swift; sourceTree = "<group>"; };
+		F47EDA31222719DE00D6684E /* HyperlootDataSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootDataSerializer.swift; sourceTree = "<group>"; };
+		F47EDA34222915B100D6684E /* URL+DocumentsPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+DocumentsPath.swift"; sourceTree = "<group>"; };
 		F4828AD421D60077006CEDD0 /* HyperlootTransaction+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HyperlootTransaction+Codable.swift"; sourceTree = "<group>"; };
 		F4828AD821D6009D006CEDD0 /* HyperlootToken+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HyperlootToken+Codable.swift"; sourceTree = "<group>"; };
 		F4828ADA21D67C95006CEDD0 /* UserTokenInventoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenInventoryStorage.swift; sourceTree = "<group>"; };
@@ -333,6 +347,7 @@
 		F434317521B11E7F00FA9F6E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F47EDA232225286000D6684E /* CoinMarketCap */,
 				F42196222213F1B800036048 /* OpenSea */,
 				F459C34821FD90A7006A0D72 /* Infura */,
 				F468E71A21B65E880031423F /* Blockscout */,
@@ -478,6 +493,7 @@
 				F4CC392421BBB04000C00FE6 /* WalletGenerator.swift */,
 				F4CC392621BD83AC00C00FE6 /* TokenInventoryManager.swift */,
 				F4828ADA21D67C95006CEDD0 /* UserTokenInventoryStorage.swift */,
+				F47EDA2B2226E05500D6684E /* TokenPriceDiscovery.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -574,6 +590,24 @@
 			path = Blockscout;
 			sourceTree = "<group>";
 		};
+		F47EDA232225286000D6684E /* CoinMarketCap */ = {
+			isa = PBXGroup;
+			children = (
+				F47EDA2622252AEF00D6684E /* Responses */,
+				F47EDA242225287000D6684E /* CoinMarketCap.swift */,
+			);
+			path = CoinMarketCap;
+			sourceTree = "<group>";
+		};
+		F47EDA2622252AEF00D6684E /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				F47EDA2722252B2300D6684E /* CoinMarketCapListResponse.swift */,
+				F47EDA29222606DF00D6684E /* CoinMarketCapBaseResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		F4828AD321D60067006CEDD0 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,13 +656,11 @@
 		F48765F5215A196A003825FE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F414AC2B21F9B0D80022864B /* TrustCore */,
 				F48765F6215A1980003825FE /* UIViewController+ScreenRoutes.swift */,
 				F466FCDC215DFCDC00092CC4 /* ReplaceRootSegue.swift */,
 				F466FCFF216348BE00092CC4 /* Bundle+Nib.swift */,
 				F466FD012163497400092CC4 /* UIView+Extensions.swift */,
 				F434318721B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift */,
-				F4EEDD0E21B7AD0C00C80A79 /* Dictionary+Merge.swift */,
 				F4B89E522215438F00FE9BD5 /* UIImageView+AsyncLoading.swift */,
 				F4B887DC2219CD5E00CA0A03 /* UIViewController+ErrorHandling.swift */,
 			);
@@ -654,6 +686,7 @@
 				F466FD0A2164A68300092CC4 /* HyperlootTransaction.swift */,
 				F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */,
 				F4BF330321FDA98A0039B8B5 /* HyperlootConfig.swift */,
+				F47EDA2D222718FB00D6684E /* HyperlootTokenPrice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -661,10 +694,13 @@
 		F48CEC0D214DD2A800A43A47 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F414AC2B21F9B0D80022864B /* TrustCore */,
+				F4EEDD0E21B7AD0C00C80A79 /* Dictionary+Merge.swift */,
 				F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */,
 				F4BA240C21C25920005F68A5 /* OperationQueue+Completion.swift */,
 				F4828ADE21D87B47006CEDD0 /* HyperlootToken+Helpers.swift */,
 				F433F77822066ECD005FA276 /* HexFormatter.swift */,
+				F47EDA34222915B100D6684E /* URL+DocumentsPath.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -783,6 +819,7 @@
 				F4BA241521C39677005F68A5 /* HyperlootTokenTransformer.swift */,
 				F4F40D5C21CA9EEE00D3C290 /* HyperlootTransactionsTransformer.swift */,
 				F4F40D5E21CA9FA700D3C290 /* TransactionDefining.swift */,
+				F47EDA31222719DE00D6684E /* HyperlootDataSerializer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1038,6 +1075,7 @@
 				F4BF330C21FDBA1A0039B8B5 /* InfuraBaseResponse.swift in Sources */,
 				F4A011D5220431E400A19AF0 /* GasStation.swift in Sources */,
 				F466FD0721649EFE00092CC4 /* TokenTransactionsViewModel.swift in Sources */,
+				F47EDA2A222606DF00D6684E /* CoinMarketCapBaseResponse.swift in Sources */,
 				F4B89E532215438F00FE9BD5 /* UIImageView+AsyncLoading.swift in Sources */,
 				F4CB7CE92175ADA7006B6217 /* FormController.swift in Sources */,
 				F466FD1B2167346500092CC4 /* SendViewController.swift in Sources */,
@@ -1063,6 +1101,7 @@
 				F466FCDD215DFCDC00092CC4 /* ReplaceRootSegue.swift in Sources */,
 				F44D7263214A29A100C651C6 /* HyperlootWalletManaging.swift in Sources */,
 				F4B89E512213FA6B00FE9BD5 /* OpenSeaAssetTrait.swift in Sources */,
+				F47EDA252225287000D6684E /* CoinMarketCap.swift in Sources */,
 				F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */,
 				F48765EF215A027E003825FE /* EnterPasswordViewController.swift in Sources */,
 				F466FD0521649EF400092CC4 /* TokenTransactionsViewController.swift in Sources */,
@@ -1085,6 +1124,7 @@
 				F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */,
 				F434318A21B35AB700FA9F6E /* LoginResponse.swift in Sources */,
 				F4CC392521BBB04000C00FE6 /* WalletGenerator.swift in Sources */,
+				F47EDA35222915B100D6684E /* URL+DocumentsPath.swift in Sources */,
 				F466FD1321669DEB00092CC4 /* QRCodeImageGenerator.swift in Sources */,
 				F4B89E4F2213FA6300FE9BD5 /* OpenSeaTokenOwner.swift in Sources */,
 				F4828AE121D883F8006CEDD0 /* TokenItemBalanceOperation.swift in Sources */,
@@ -1094,11 +1134,13 @@
 				F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */,
 				F4F40D5F21CA9FA700D3C290 /* TransactionDefining.swift in Sources */,
 				F4BA241621C39677005F68A5 /* HyperlootTokenTransformer.swift in Sources */,
+				F47EDA32222719DE00D6684E /* HyperlootDataSerializer.swift in Sources */,
 				F4828ADB21D67C95006CEDD0 /* UserTokenInventoryStorage.swift in Sources */,
 				F48765FA215A1CB0003825FE /* EnterWalletKeysViewController.swift in Sources */,
 				F4CC392E21C1005800C00FE6 /* TokenInfoOperation.swift in Sources */,
 				F434318621B2E9C500FA9F6E /* CanRegisterEmailResponse.swift in Sources */,
 				F4828ADF21D87B47006CEDD0 /* HyperlootToken+Helpers.swift in Sources */,
+				F47EDA2E222718FB00D6684E /* HyperlootTokenPrice.swift in Sources */,
 				F466FD022163497400092CC4 /* UIView+Extensions.swift in Sources */,
 				F433F775220604A9005FA276 /* EthEstimateGasResponse.swift in Sources */,
 				F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */,
@@ -1112,7 +1154,9 @@
 				F43BB94A21C569B7005A97B3 /* BlockscoutTransactionResponse.swift in Sources */,
 				F46640C522170E2400E74999 /* UnlockWalletViewController.swift in Sources */,
 				F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */,
+				F47EDA2C2226E05500D6684E /* TokenPriceDiscovery.swift in Sources */,
 				F4F40D5D21CA9EEE00D3C290 /* HyperlootTransactionsTransformer.swift in Sources */,
+				F47EDA2822252B2300D6684E /* CoinMarketCapListResponse.swift in Sources */,
 				F4828AD921D6009D006CEDD0 /* HyperlootToken+Codable.swift in Sources */,
 				F44D7260214A292300C651C6 /* Hyperloot.swift in Sources */,
 				F414AC2D21F9B12C0022864B /* ERC721Encoder.swift in Sources */,
