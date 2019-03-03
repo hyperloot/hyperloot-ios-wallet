@@ -17,6 +17,7 @@ class EnterPasswordViewController: UIViewController {
     var input: Input!
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var screenTitleLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var confirmPasswordContainerView: UIView!
@@ -53,6 +54,7 @@ class EnterPasswordViewController: UIViewController {
     func updateUIState() {
         let presentation = viewModel.presentation
         
+        screenTitleLabel.text = presentation.screenTitle
         confirmPasswordContainerView.isHidden = presentation.isConfirmPasswordHidden
         errorView.isHidden = presentation.isErrorViewHidden
         nextButton.isEnabled = presentation.isNextButtonEnabled

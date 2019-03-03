@@ -12,6 +12,7 @@ class EnterPasswordViewModel {
     typealias NextStepCompletion = (ScreenRoute?) -> Void
     
     struct Presentation {
+        let screenTitle: String
         let isConfirmPasswordHidden: Bool
         let isErrorViewHidden: Bool
         let isNextButtonEnabled: Bool
@@ -50,12 +51,11 @@ class EnterPasswordViewModel {
         
         guard let isNewUser = isNewUser else {
             // Error state, not supported
-            return Presentation(isConfirmPasswordHidden: true,
-                                isErrorViewHidden: false,
-                                isNextButtonEnabled: false)
+            return Presentation(screenTitle: "Error", isConfirmPasswordHidden: true, isErrorViewHidden: false, isNextButtonEnabled: false)
         }
         
-        return Presentation(isConfirmPasswordHidden: isNewUser == false,
+        return Presentation(screenTitle: (isNewUser) ? "Create your password" : "Enter password",
+                            isConfirmPasswordHidden: isNewUser == false,
                             isErrorViewHidden: hideErrorView,
                             isNextButtonEnabled: isNextButtonEnabled(isNewUser: isNewUser))
     }

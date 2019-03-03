@@ -10,7 +10,7 @@ import UIKit
 class EnterEmailViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailTextInput: HyperlootTextInputContainer!
     @IBOutlet weak var errorView: RegistrationErrorView!
     @IBOutlet weak var nextButton: UIButton!
     
@@ -70,7 +70,7 @@ class EnterEmailViewController: UIViewController {
     
     @IBAction func nextButtonPressed() {
         showActivityIndicator()
-        viewModel.verify(email: emailTextField.text) { [weak self] (user, error) in
+        viewModel.verify(email: emailTextInput.textField.text) { [weak self] (user, error) in
             guard let strongSelf = self else {
                 return
             }

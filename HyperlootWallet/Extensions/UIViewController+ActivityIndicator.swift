@@ -11,7 +11,9 @@ import MBProgressHUD
 extension UIViewController {
     
     func showActivityIndicator(animated: Bool = true) {
-        MBProgressHUD.showAdded(to: self.view, animated: animated)
+        let hudView = MBProgressHUD.showAdded(to: self.view, animated: animated)
+        hudView.bezelView.backgroundColor = AppStyle.Colors.darkContainer
+        hudView.contentColor = AppStyle.Colors.defaultText
     }
     
     func hideActivityIndicator(animated: Bool = true) {

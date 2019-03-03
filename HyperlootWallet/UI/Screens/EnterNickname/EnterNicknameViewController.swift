@@ -16,7 +16,7 @@ class EnterNicknameViewController: UIViewController {
     var input: Input!
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var nicknameTextInput: HyperlootTextInputContainer!
     @IBOutlet weak var nextButton: UIButton!
     
     lazy var formController = FormController(scrollView: scrollView)
@@ -61,8 +61,8 @@ class EnterNicknameViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed() {
-        nicknameTextField.resignFirstResponder()
-        viewModel.textFieldDidReturn(nicknameTextField.text)
+        nicknameTextInput.textField.resignFirstResponder()
+        viewModel.textFieldDidReturn(nicknameTextInput.textField.text)
         if viewModel.registrationUser != nil {
             performSegue(route: .showEnterPasswordScreen)
         }

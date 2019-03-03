@@ -35,18 +35,27 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GD4-Yd-PZs">
                                 <rect key="frame" x="10" y="20" width="355" height="486"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hyperloot_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Xbx-An-uQ6">
-                                        <rect key="frame" x="40.5" y="126" width="274" height="234"/>
-                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="jkS-BB-vGh">
+                                        <rect key="frame" x="50" y="127" width="255" height="232"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="lootmart_logo" translatesAutoresizingMaskIntoConstraints="NO" id="JZC-LC-qPW">
+                                                <rect key="frame" x="0.0" y="0.0" width="255" height="140"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="lootmart_logo_text" translatesAutoresizingMaskIntoConstraints="NO" id="I6F-vL-D73">
+                                                <rect key="frame" x="0.0" y="190" width="255" height="42"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Xbx-An-uQ6" firstAttribute="centerX" secondItem="GD4-Yd-PZs" secondAttribute="centerX" id="ajc-xy-sTc"/>
-                                    <constraint firstItem="Xbx-An-uQ6" firstAttribute="centerY" secondItem="GD4-Yd-PZs" secondAttribute="centerY" id="e5h-ov-Hq2"/>
+                                    <constraint firstItem="jkS-BB-vGh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GD4-Yd-PZs" secondAttribute="leading" constant="10" id="30B-ZQ-6LD"/>
+                                    <constraint firstItem="jkS-BB-vGh" firstAttribute="centerY" secondItem="GD4-Yd-PZs" secondAttribute="centerY" id="5XI-4m-jvw"/>
+                                    <constraint firstItem="jkS-BB-vGh" firstAttribute="centerX" secondItem="GD4-Yd-PZs" secondAttribute="centerX" id="zXA-Za-wnf"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="GD4-Yd-PZs" firstAttribute="leading" secondItem="Fo7-E3-Av6" secondAttribute="leading" constant="10" id="7el-6N-pUp"/>
                             <constraint firstItem="Fo7-E3-Av6" firstAttribute="trailing" secondItem="frK-g4-aIg" secondAttribute="trailing" constant="10" id="8ew-ML-CXP"/>
@@ -71,9 +80,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="shI-yX-OSN">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.87058823529411766" green="0.13333333333333333" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -150,7 +161,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9n-IZ-Gtb">
                                                 <rect key="frame" x="42.5" y="40" width="290.5" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Please enter your mnemonic phrase and save it in a secure place" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2h-kI-odH">
@@ -188,7 +199,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uC0-vP-g61" firstAttribute="leading" secondItem="3iF-6a-jKq" secondAttribute="leading" id="7tZ-nK-ixS"/>
                             <constraint firstItem="uC0-vP-g61" firstAttribute="top" secondItem="3iF-6a-jKq" secondAttribute="top" id="IvG-ue-Vc1"/>
@@ -259,7 +270,7 @@
                                                     <outlet property="textLabel" destination="y8y-lV-lNi" id="Ffv-RK-hWr"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="sxn-zx-Q8t" userLabel="TextInputContainer">
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="sxn-zx-Q8t" userLabel="TextInputContainer" customClass="HyperlootTextInputContainer" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="166.5" width="355" height="81"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYv-Yl-1pn">
@@ -294,6 +305,10 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="textField" destination="fi5-Yz-1vI" id="Y5u-d4-GGz"/>
+                                                    <outlet property="titleLabel" destination="jYv-Yl-1pn" id="k9n-Rr-lP1"/>
+                                                </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puo-QR-9uc" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="526" width="355" height="57"/>
@@ -312,7 +327,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's start with your email" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aL-wc-A1f">
                                                 <rect key="frame" x="74" y="40" width="227" height="76.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -346,7 +361,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WSP-iD-RKY" firstAttribute="leading" secondItem="q9W-X8-ctz" secondAttribute="leading" id="0hY-Ec-qFn"/>
                             <constraint firstAttribute="trailing" secondItem="WSP-iD-RKY" secondAttribute="trailing" id="AWY-Ly-7M4"/>
@@ -357,7 +372,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qXj-jh-gtZ"/>
                     <connections>
-                        <outlet property="emailTextField" destination="fi5-Yz-1vI" id="rf6-zE-5ue"/>
+                        <outlet property="emailTextInput" destination="sxn-zx-Q8t" id="3iH-Zd-Fzg"/>
                         <outlet property="errorView" destination="n6k-zt-twK" id="xWT-ca-SSk"/>
                         <outlet property="nextButton" destination="puo-QR-9uc" id="Nmt-2q-Fha"/>
                         <outlet property="scrollView" destination="WSP-iD-RKY" id="FWy-CC-tGY"/>
@@ -433,6 +448,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="7f3-bX-T3o" firstAttribute="leading" secondItem="KUq-it-6yM" secondAttribute="leading" constant="10" id="06R-5u-Ojz"/>
+                                                    <constraint firstAttribute="height" constant="81" id="2Or-hR-yjo"/>
                                                     <constraint firstItem="9ed-UJ-vnH" firstAttribute="top" secondItem="7f3-bX-T3o" secondAttribute="bottom" constant="10" id="GmR-0w-cMR"/>
                                                     <constraint firstItem="9ed-UJ-vnH" firstAttribute="leading" secondItem="KUq-it-6yM" secondAttribute="leading" constant="10" id="To8-P5-GHg"/>
                                                     <constraint firstAttribute="bottom" secondItem="9ed-UJ-vnH" secondAttribute="bottom" constant="10" id="dU0-h4-V1V"/>
@@ -459,17 +475,17 @@
                                                     <action selector="nextButtonPressed" destination="feC-He-QRK" eventType="touchUpInside" id="Of4-HX-uG0"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4p-uc-TS8">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Create your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4p-uc-TS8">
                                                 <rect key="frame" x="24.5" y="40" width="326.5" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHG-zV-P5U">
                                                 <rect key="frame" x="20" y="100.5" width="335" height="81.5"/>
                                                 <string key="text">We do not store any passwords or related data. Make sure to keep a back-up and remember your password. We won't be able to restore it.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.95294117647058818" green="0.96470588235294119" blue="0.9882352941176471" alpha="1" colorSpace="deviceRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="V2R-vh-qjU" userLabel="TextInputContainer">
@@ -497,6 +513,7 @@
                                                 <constraints>
                                                     <constraint firstItem="70y-dd-gop" firstAttribute="top" secondItem="KED-3f-KvU" secondAttribute="bottom" constant="10" id="7UA-eG-5Bi"/>
                                                     <constraint firstItem="70y-dd-gop" firstAttribute="leading" secondItem="V2R-vh-qjU" secondAttribute="leading" constant="10" id="CIG-pF-dr4"/>
+                                                    <constraint firstAttribute="height" constant="81" id="O98-00-eJv"/>
                                                     <constraint firstAttribute="bottom" secondItem="70y-dd-gop" secondAttribute="bottom" constant="10" id="gAH-QG-qX4"/>
                                                     <constraint firstItem="KED-3f-KvU" firstAttribute="leading" secondItem="V2R-vh-qjU" secondAttribute="leading" constant="10" id="lCY-c9-8Tt"/>
                                                     <constraint firstItem="KED-3f-KvU" firstAttribute="top" secondItem="V2R-vh-qjU" secondAttribute="top" constant="10" id="rVe-lJ-0Ui"/>
@@ -540,12 +557,12 @@
                                     <constraint firstItem="GcQ-f3-k77" firstAttribute="leading" secondItem="7tz-sT-vVO" secondAttribute="leading" id="N0b-2G-Iil"/>
                                     <constraint firstAttribute="trailing" secondItem="GcQ-f3-k77" secondAttribute="trailing" id="WOA-7O-PXt"/>
                                     <constraint firstAttribute="bottom" secondItem="GcQ-f3-k77" secondAttribute="bottom" id="jVv-Wd-J7U"/>
-                                    <constraint firstItem="GcQ-f3-k77" firstAttribute="height" secondItem="7tz-sT-vVO" secondAttribute="height" id="pZx-sc-IMN"/>
+                                    <constraint firstItem="GcQ-f3-k77" firstAttribute="height" secondItem="7tz-sT-vVO" secondAttribute="height" priority="999" id="pZx-sc-IMN"/>
                                     <constraint firstItem="GcQ-f3-k77" firstAttribute="top" secondItem="7tz-sT-vVO" secondAttribute="top" id="yW7-vN-XV5"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7tz-sT-vVO" firstAttribute="leading" secondItem="dSd-oP-NmS" secondAttribute="leading" id="1A6-jc-AWp"/>
                             <constraint firstItem="7tz-sT-vVO" firstAttribute="top" secondItem="dSd-oP-NmS" secondAttribute="top" id="2AG-gv-x9O"/>
@@ -561,6 +578,7 @@
                         <outlet property="errorView" destination="EkC-qZ-SAm" id="CYX-iL-kWS"/>
                         <outlet property="nextButton" destination="Fo2-WW-13W" id="61Y-8g-PI0"/>
                         <outlet property="passwordTextField" destination="70y-dd-gop" id="lB5-2e-jXp"/>
+                        <outlet property="screenTitleLabel" destination="I4p-uc-TS8" id="tPZ-c3-27g"/>
                         <outlet property="scrollView" destination="7tz-sT-vVO" id="f1Q-2D-f8y"/>
                         <segue destination="rWD-b6-Lrj" kind="show" identifier="show_enter_wallet_keys_screen" id="b83-5I-vNC"/>
                         <segue destination="aCs-lA-9HQ" kind="show" identifier="show_import_or_create_screen" id="Dc2-Wg-1Rf"/>
@@ -584,7 +602,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggZ-Hy-7fS">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="JnN-u9-hwy" userLabel="TextInputContainer">
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="JnN-u9-hwy" customClass="HyperlootTextInputContainer" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="128.5" width="355" height="81"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0Z-9c-3o2">
@@ -619,6 +637,10 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="textField" destination="l6I-EF-eQC" id="d36-EE-Gh1"/>
+                                                    <outlet property="titleLabel" destination="m0Z-9c-3o2" id="Khw-k8-5cf"/>
+                                                </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRP-AW-zj9" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="526" width="355" height="57"/>
@@ -637,7 +659,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your nickname" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmB-FR-VYW">
                                                 <rect key="frame" x="35" y="40" width="305" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -667,7 +689,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BgU-Ce-3GB" firstAttribute="leading" secondItem="B2Z-eE-PBN" secondAttribute="leading" id="Srx-dD-5go"/>
                             <constraint firstItem="BgU-Ce-3GB" firstAttribute="top" secondItem="bsd-8R-grN" secondAttribute="top" id="aoW-vj-4Es"/>
@@ -679,7 +701,7 @@
                     <navigationItem key="navigationItem" id="1YJ-Qv-FVC"/>
                     <connections>
                         <outlet property="nextButton" destination="XRP-AW-zj9" id="Rq6-KP-6IV"/>
-                        <outlet property="nicknameTextField" destination="l6I-EF-eQC" id="86N-56-XIm"/>
+                        <outlet property="nicknameTextInput" destination="JnN-u9-hwy" id="QS5-xM-cC7"/>
                         <outlet property="scrollView" destination="BgU-Ce-3GB" id="7cy-Wq-zxi"/>
                         <segue destination="feC-He-QRK" kind="show" identifier="show_enter_password_screen" id="HPU-ap-zNa"/>
                     </connections>
@@ -705,13 +727,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock your wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaK-yF-cQG">
                                                 <rect key="frame" x="50.5" y="40" width="274" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x0123f234d6Ba" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUG-jh-wcI">
                                                 <rect key="frame" x="95" y="108.5" width="185.5" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-Bk-XOP">
@@ -786,7 +808,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FVJ-YE-uNg" firstAttribute="top" secondItem="7oA-EJ-6MJ" secondAttribute="top" id="Xko-y1-GWx"/>
                             <constraint firstItem="FVJ-YE-uNg" firstAttribute="leading" secondItem="7oA-EJ-6MJ" secondAttribute="leading" id="khz-O6-LPy"/>
@@ -808,10 +830,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hyperloot_logo" width="274" height="234"/>
+        <image name="lootmart_logo" width="106" height="140"/>
+        <image name="lootmart_logo_text" width="255" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="siX-wG-UGy"/>
-        <segue reference="kPa-VA-GMc"/>
+        <segue reference="HPU-ap-zNa"/>
+        <segue reference="b83-5I-vNC"/>
     </inferredMetricsTieBreakers>
 </document>
