@@ -44,6 +44,7 @@ class FormController: NSObject {
     }
     
     public func willHideForm() {
+        activeTextField?.resignFirstResponder()
         unsubscribeFromNotifications()
     }
     

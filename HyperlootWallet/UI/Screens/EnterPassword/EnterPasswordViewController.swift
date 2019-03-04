@@ -30,7 +30,7 @@ class EnterPasswordViewController: UIViewController {
     @IBOutlet var confirmPasswordStateConstraint: NSLayoutConstraint!
     
     lazy var viewModel = EnterPasswordViewModel(user: input.user)
-    lazy var formController = FormController(scrollView: self.scrollView)
+    lazy var formController = FormController(scrollView: self.scrollView, scrollViewTextFieldOffset: 100)
     
     override func viewDidLoad() {
         super.viewDidLoad()
