@@ -32,7 +32,7 @@ class RegistrationErrorView: UIView {
     }
     
     private func setupAppearance() {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.clear
         
         layer.addSublayer(self.gradientLayer)
         layer.masksToBounds = true

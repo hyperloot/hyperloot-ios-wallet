@@ -241,7 +241,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVO-FS-T74">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="364.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="439.5"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n6k-zt-twK" userLabel="ErrorView" customClass="RegistrationErrorView" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="227.5" width="355" height="95"/>
@@ -310,7 +310,7 @@
                                                 </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puo-QR-9uc" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="287.5" width="355" height="57"/>
+                                                <rect key="frame" x="10" y="362.5" width="355" height="57"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="57" id="5Le-wd-Sh5"/>
@@ -350,7 +350,7 @@
                                         <viewLayoutGuide key="safeArea" id="j8E-Tb-kJ5"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="AkL-7D-hlp"/>
+                                                <exclude reference="Lbp-6W-s3F"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -549,6 +549,7 @@
                                             <constraint firstItem="V2R-vh-qjU" firstAttribute="leading" secondItem="GcQ-f3-k77" secondAttribute="leading" constant="10" id="F2T-AF-6RH"/>
                                             <constraint firstItem="kHG-zV-P5U" firstAttribute="leading" secondItem="GcQ-f3-k77" secondAttribute="leading" constant="20" id="Hew-2n-PLE"/>
                                             <constraint firstItem="Fo2-WW-13W" firstAttribute="top" secondItem="EkC-qZ-SAm" secondAttribute="bottom" constant="40" id="J3Z-p7-fNf"/>
+                                            <constraint firstItem="Fo2-WW-13W" firstAttribute="top" secondItem="KUq-it-6yM" secondAttribute="bottom" constant="40" id="O03-VD-Ovs"/>
                                             <constraint firstItem="kHG-zV-P5U" firstAttribute="top" secondItem="I4p-uc-TS8" secondAttribute="bottom" constant="22" id="Q19-Iy-d84"/>
                                             <constraint firstItem="KUq-it-6yM" firstAttribute="top" secondItem="V2R-vh-qjU" secondAttribute="bottom" constant="10" id="WW7-ue-f6x"/>
                                             <constraint firstAttribute="trailing" secondItem="V2R-vh-qjU" secondAttribute="trailing" constant="10" id="ht9-1h-p1g"/>
@@ -556,12 +557,19 @@
                                             <constraint firstAttribute="trailing" secondItem="Fo2-WW-13W" secondAttribute="trailing" constant="10" id="okL-0j-zcB"/>
                                             <constraint firstAttribute="trailing" secondItem="EkC-qZ-SAm" secondAttribute="trailing" constant="10" id="peR-xO-l4E"/>
                                             <constraint firstItem="I4p-uc-TS8" firstAttribute="top" secondItem="GcQ-f3-k77" secondAttribute="top" constant="40" id="qUx-3q-efi"/>
+                                            <constraint firstItem="KUq-it-6yM" firstAttribute="bottom" secondItem="V2R-vh-qjU" secondAttribute="bottom" id="qjf-q3-fMs"/>
                                             <constraint firstItem="KUq-it-6yM" firstAttribute="leading" secondItem="GcQ-f3-k77" secondAttribute="leading" constant="10" id="qp4-8U-fRo"/>
                                             <constraint firstAttribute="trailing" secondItem="KUq-it-6yM" secondAttribute="trailing" constant="10" id="sdb-4U-sXB"/>
                                             <constraint firstItem="EkC-qZ-SAm" firstAttribute="top" secondItem="KUq-it-6yM" secondAttribute="bottom" constant="-20" id="v5b-WS-Jf6"/>
                                             <constraint firstAttribute="bottom" secondItem="Fo2-WW-13W" secondAttribute="bottom" constant="20" id="xxW-g5-oju"/>
                                             <constraint firstItem="EkC-qZ-SAm" firstAttribute="leading" secondItem="GcQ-f3-k77" secondAttribute="leading" constant="10" id="yju-38-zTS"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="qjf-q3-fMs"/>
+                                                <exclude reference="O03-VD-Ovs"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -584,9 +592,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="WFd-Fb-ab8"/>
                     <connections>
+                        <outlet property="confirmPasswordStateConstraint" destination="WW7-ue-f6x" id="9ht-eU-IFY"/>
                         <outlet property="confirmPasswordTextInput" destination="KUq-it-6yM" id="prD-1t-gxF"/>
+                        <outlet property="enterPasswordOnlyStateConstraint" destination="qjf-q3-fMs" id="X8A-yk-sc9"/>
                         <outlet property="errorView" destination="EkC-qZ-SAm" id="CYX-iL-kWS"/>
                         <outlet property="nextButton" destination="Fo2-WW-13W" id="61Y-8g-PI0"/>
+                        <outlet property="nextButtonErrorStateConstraint" destination="J3Z-p7-fNf" id="cTd-bn-IzZ"/>
+                        <outlet property="nextButtonNormalStateConstraint" destination="O03-VD-Ovs" id="468-WP-C3d"/>
                         <outlet property="passwordTextInput" destination="V2R-vh-qjU" id="vk0-nJ-3XZ"/>
                         <outlet property="screenTitleLabel" destination="I4p-uc-TS8" id="tPZ-c3-27g"/>
                         <outlet property="scrollView" destination="7tz-sT-vVO" id="f1Q-2D-f8y"/>
@@ -844,6 +856,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="siX-wG-UGy"/>
-        <segue reference="kPa-VA-GMc"/>
+        <segue reference="b83-5I-vNC"/>
     </inferredMetricsTieBreakers>
 </document>

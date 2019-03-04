@@ -24,14 +24,14 @@ class EnterEmailViewController: UIViewController {
         super.viewDidLoad()
         
         configureFormController()
-        updateInputBottomConstraints()
+        updateUIState(animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         formController.willShowForm()
-        updateUIState()
+        updateUIState(animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,18 +68,22 @@ class EnterEmailViewController: UIViewController {
     
     // MARK: - Updating UI state
     
-    func updateUIState() {
+    func updateUIState(animated: Bool = true) {
         let presentation = viewModel.presentation
         nextButton.isEnabled = presentation.nextButtonEnabled
         errorView.setVisible(presentation.errorViewVisible, animated: true)
         
-        updateInputBottomConstraints()
+        updateInputBottomConstraints(isErrorVisible: presentation.errorViewVisible, animated: animated)
     }
     
-    func updateInputBottomConstraints() {
-        let presentation = viewModel.presentation
-        errorViewBottomConstraint.isActive = presentation.errorViewVisible
-        textInputBottomConstraint.isActive = !presentation.errorViewVisible
+    func updateInputBottomConstraints(isErrorVisible: Bool, animated: Bool) {
+        errorViewBottomConstraint.isActive = isErrorVisible
+        textInputBottomConstraint.isActive = !isErrorVisible
+        
+        UIView.animateIfNeeded(animated, duration: 0.25) { [weak self] in
+            self?.view.setNeedsLayout()
+            self?.view.layoutIfNeeded()
+        }
     }
     
     // MARK: - Actions

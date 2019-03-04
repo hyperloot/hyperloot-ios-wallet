@@ -11,10 +11,16 @@ class EnterPasswordViewModel {
     
     typealias NextStepCompletion = (ScreenRoute?) -> Void
     
+    enum ValidationError: String, Error {
+        case passwordsDoNotMatch = "Passwords do not match"
+        case loginInvalidPassword = "Password is not correct. Please try again"
+        case canNotCreateWallet = "Your wallet was not created. Please try again"
+    }
+    
     struct Presentation {
         let screenTitle: String
         let isConfirmPasswordHidden: Bool
-        let isErrorViewHidden: Bool
+        let error: (isHidden: Bool, text: String?)
         let isNextButtonEnabled: Bool
     }
     
@@ -22,6 +28,7 @@ class EnterPasswordViewModel {
     
     private var password: String?
     private var confirmPassword: String?
+    private var errorToShow: ValidationError?
     
     public private(set) var registeredUser: UserRegistrationFlow?
     
@@ -47,16 +54,16 @@ class EnterPasswordViewModel {
         return newUser
     }
     
-    private func buildPresentation(hideErrorView: Bool = true) -> Presentation {
+    private func buildPresentation(validationError: ValidationError? = nil) -> Presentation {
         
         guard let isNewUser = isNewUser else {
             // Error state, not supported
-            return Presentation(screenTitle: "Error", isConfirmPasswordHidden: true, isErrorViewHidden: false, isNextButtonEnabled: false)
+            return Presentation(screenTitle: "Error", isConfirmPasswordHidden: true, error: (isHidden: true, text: nil), isNextButtonEnabled: false)
         }
         
         return Presentation(screenTitle: (isNewUser) ? "Create your password" : "Enter password",
                             isConfirmPasswordHidden: isNewUser == false,
-                            isErrorViewHidden: hideErrorView,
+                            error: (isHidden: validationError == nil, text: validationError?.rawValue),
                             isNextButtonEnabled: isNextButtonEnabled(isNewUser: isNewUser))
     }
     
@@ -89,10 +96,20 @@ class EnterPasswordViewModel {
         updatePresentation()
     }
     
-    public func updatePresentation() {
+    private func validate() -> ValidationError? {
         let isNewUser = self.isNewUser ?? false
-        let shouldHideErrorView = (isNewUser) ? doPasswordsMatch() : true
-        presentation = self.buildPresentation(hideErrorView: shouldHideErrorView)
+        if isNewUser && doPasswordsMatch() == false {
+            return .passwordsDoNotMatch
+        }
+        return nil
+    }
+    
+    public func updatePresentation() {
+        if errorToShow == nil {
+            errorToShow = validate()
+        }
+        presentation = self.buildPresentation(validationError: self.errorToShow)
+        errorToShow = nil
     }
     
     public func proceedToTheNextStep(completion: @escaping NextStepCompletion) {
@@ -112,18 +129,30 @@ class EnterPasswordViewModel {
         }
     }
     
+    private func clearUserData() {
+        password = nil
+        confirmPassword = nil
+    }
+    
+    private func reportFailure(error: ValidationError) {
+        clearUserData()
+        errorToShow = error
+        updatePresentation()
+    }
+    
     private func proceedWithExistingUser(email: String, completion: @escaping NextStepCompletion) {
         guard let password = password else {
             return
         }
         
         Hyperloot.shared.login(email: email, password: password) { [weak self] (user, error) in
-            var nextScreen: ScreenRoute? = nil
-            if let user = user {
-                self?.registeredUser = .chooseImportOptions(user: user, password: password)
-                nextScreen = .showImportOrCreateScreen
+            guard let user = user else {
+                self?.reportFailure(error: .loginInvalidPassword)
+                completion(nil)
+                return
             }
-            completion(nextScreen)
+            self?.registeredUser = .chooseImportOptions(user: user, password: password)
+            completion(.showImportOrCreateScreen)
         }
     }
     
@@ -134,6 +163,7 @@ class EnterPasswordViewModel {
         
         Hyperloot.shared.createWallet(password: password) { [weak self] (address, words, error) in
             guard let address = address, let words = words else {
+                self?.reportFailure(error: .canNotCreateWallet)
                 completion(nil)
                 return
             }
