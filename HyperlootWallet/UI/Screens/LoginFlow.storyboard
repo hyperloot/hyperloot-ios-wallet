@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="height" constant="57" id="wdD-fY-Udf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Dive in">
+                                <state key="normal" title="Get started!">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
