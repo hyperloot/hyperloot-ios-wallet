@@ -20,6 +20,7 @@ class HyperlootTextInputContainer: UIView {
         
         titleLabel.textColor = AppStyle.Colors.defaultText
         textField.textColor = AppStyle.Colors.defaultText
+        textField.keyboardAppearance = .dark
     }
     
 }

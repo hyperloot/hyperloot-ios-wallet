@@ -23,6 +23,13 @@ class EnterNicknameViewController: UIViewController {
     
     lazy var viewModel = EnterNicknameViewModel(user: self.input.user)
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        formController.textFieldDelegate = self
+        formController.register(textFields: [nicknameTextInput.textField])
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

@@ -13,10 +13,19 @@ class EnterEmailViewController: UIViewController {
     @IBOutlet weak var emailTextInput: HyperlootTextInputContainer!
     @IBOutlet weak var errorView: RegistrationErrorView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet var textInputBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var errorViewBottomConstraint: NSLayoutConstraint!
     
     lazy var formController = FormController(scrollView: scrollView)
     
     lazy var viewModel = EnterEmailViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureFormController()
+        updateInputBottomConstraints()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,14 +61,26 @@ class EnterEmailViewController: UIViewController {
         }
     }
     
+    func configureFormController() {
+        formController.textFieldDelegate = self
+        formController.register(textFields: [emailTextInput.textField])
+    }
+    
     // MARK: - Updating UI state
     
     func updateUIState() {
         let presentation = viewModel.presentation
         nextButton.isEnabled = presentation.nextButtonEnabled
         errorView.setVisible(presentation.errorViewVisible, animated: true)
+        
+        updateInputBottomConstraints()
     }
     
+    func updateInputBottomConstraints() {
+        let presentation = viewModel.presentation
+        errorViewBottomConstraint.isActive = presentation.errorViewVisible
+        textInputBottomConstraint.isActive = !presentation.errorViewVisible
+    }
     
     // MARK: - Actions
     

@@ -107,7 +107,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zc7-kZ-jLD">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="512.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Ivf-oM-Xsz">
                                                 <rect key="frame" x="16" y="159.5" width="343" height="236"/>
@@ -145,7 +145,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c73-2t-i4t" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="526" width="355" height="57"/>
+                                                <rect key="frame" x="10" y="435.5" width="355" height="57"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="57" id="zFf-Ac-dcX"/>
@@ -177,7 +177,7 @@
                                             <constraint firstItem="Y2h-kI-odH" firstAttribute="centerX" secondItem="Zc7-kZ-jLD" secondAttribute="centerX" id="3Nd-1O-EKf"/>
                                             <constraint firstItem="z9n-IZ-Gtb" firstAttribute="centerX" secondItem="Zc7-kZ-jLD" secondAttribute="centerX" id="4op-lf-1OU"/>
                                             <constraint firstItem="c73-2t-i4t" firstAttribute="leading" secondItem="Zc7-kZ-jLD" secondAttribute="leading" constant="10" id="C3c-7s-459"/>
-                                            <constraint firstItem="c73-2t-i4t" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ivf-oM-Xsz" secondAttribute="bottom" constant="15" id="JcJ-pg-2Xr"/>
+                                            <constraint firstItem="c73-2t-i4t" firstAttribute="top" secondItem="Ivf-oM-Xsz" secondAttribute="bottom" constant="40" id="JcJ-pg-2Xr"/>
                                             <constraint firstItem="Y2h-kI-odH" firstAttribute="top" secondItem="z9n-IZ-Gtb" secondAttribute="bottom" constant="20" id="QD6-y4-cOZ"/>
                                             <constraint firstAttribute="trailing" secondItem="c73-2t-i4t" secondAttribute="trailing" constant="10" id="WST-vQ-S4q"/>
                                             <constraint firstAttribute="bottom" secondItem="c73-2t-i4t" secondAttribute="bottom" constant="20" id="Zax-Sh-Pl8"/>
@@ -190,7 +190,6 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Zc7-kZ-jLD" firstAttribute="height" secondItem="uC0-vP-g61" secondAttribute="height" id="8oA-lP-xIs"/>
                                     <constraint firstItem="Zc7-kZ-jLD" firstAttribute="width" secondItem="uC0-vP-g61" secondAttribute="width" id="Iql-wI-6L4"/>
                                     <constraint firstItem="Zc7-kZ-jLD" firstAttribute="leading" secondItem="uC0-vP-g61" secondAttribute="leading" id="NOh-s0-9OQ"/>
                                     <constraint firstItem="Zc7-kZ-jLD" firstAttribute="top" secondItem="uC0-vP-g61" secondAttribute="top" id="RZa-AO-GER"/>
@@ -242,19 +241,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVO-FS-T74">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="364.5"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n6k-zt-twK" userLabel="ErrorView" customClass="RegistrationErrorView" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="227.5" width="355" height="95"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looks like email you've entered is not valid – please do it again" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8y-lV-lNi">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looks like email you've entered is not valid - please try again" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8y-lV-lNi">
                                                         <rect key="frame" x="10" y="30" width="335" height="55"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="deviceRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="y8y-lV-lNi" secondAttribute="bottom" constant="10" id="EwR-6W-qNR"/>
                                                     <constraint firstItem="y8y-lV-lNi" firstAttribute="top" secondItem="n6k-zt-twK" secondAttribute="top" constant="30" id="ONd-8m-0sj"/>
@@ -311,7 +310,7 @@
                                                 </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puo-QR-9uc" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="526" width="355" height="57"/>
+                                                <rect key="frame" x="10" y="287.5" width="355" height="57"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="57" id="5Le-wd-Sh5"/>
@@ -333,11 +332,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="puo-QR-9uc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="n6k-zt-twK" secondAttribute="bottom" constant="15" id="AkL-7D-hlp"/>
+                                            <constraint firstItem="puo-QR-9uc" firstAttribute="top" secondItem="n6k-zt-twK" secondAttribute="bottom" constant="40" id="AkL-7D-hlp"/>
                                             <constraint firstItem="4aL-wc-A1f" firstAttribute="top" secondItem="mVO-FS-T74" secondAttribute="top" constant="40" id="Amq-N1-z0u"/>
                                             <constraint firstItem="4aL-wc-A1f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mVO-FS-T74" secondAttribute="leading" constant="20" id="E28-fL-KOK"/>
                                             <constraint firstItem="n6k-zt-twK" firstAttribute="leading" secondItem="mVO-FS-T74" secondAttribute="leading" constant="10" id="ILJ-pi-AUo"/>
-                                            <constraint firstItem="puo-QR-9uc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sxn-zx-Q8t" secondAttribute="bottom" constant="15" id="MlI-ew-D37"/>
+                                            <constraint firstItem="puo-QR-9uc" firstAttribute="top" secondItem="sxn-zx-Q8t" secondAttribute="bottom" constant="40" id="Lbp-6W-s3F"/>
                                             <constraint firstItem="sxn-zx-Q8t" firstAttribute="top" secondItem="4aL-wc-A1f" secondAttribute="bottom" constant="50" id="NUs-MP-qAg"/>
                                             <constraint firstItem="4aL-wc-A1f" firstAttribute="centerX" secondItem="mVO-FS-T74" secondAttribute="centerX" id="QPQ-n4-OWn"/>
                                             <constraint firstAttribute="bottom" secondItem="puo-QR-9uc" secondAttribute="bottom" constant="20" id="Rnt-RO-4eq"/>
@@ -349,11 +348,15 @@
                                             <constraint firstAttribute="trailing" secondItem="sxn-zx-Q8t" secondAttribute="trailing" constant="10" id="xtp-3m-aKg"/>
                                         </constraints>
                                         <viewLayoutGuide key="safeArea" id="j8E-Tb-kJ5"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="AkL-7D-hlp"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="mVO-FS-T74" secondAttribute="bottom" id="83v-cf-5na"/>
-                                    <constraint firstItem="mVO-FS-T74" firstAttribute="height" secondItem="WSP-iD-RKY" secondAttribute="height" id="UNE-rh-FEA"/>
                                     <constraint firstItem="mVO-FS-T74" firstAttribute="width" secondItem="WSP-iD-RKY" secondAttribute="width" id="eSC-Ra-Xax"/>
                                     <constraint firstItem="mVO-FS-T74" firstAttribute="top" secondItem="WSP-iD-RKY" secondAttribute="top" id="hEN-ea-pSR"/>
                                     <constraint firstAttribute="trailing" secondItem="mVO-FS-T74" secondAttribute="trailing" id="hQR-jT-gGx"/>
@@ -374,8 +377,10 @@
                     <connections>
                         <outlet property="emailTextInput" destination="sxn-zx-Q8t" id="3iH-Zd-Fzg"/>
                         <outlet property="errorView" destination="n6k-zt-twK" id="xWT-ca-SSk"/>
+                        <outlet property="errorViewBottomConstraint" destination="AkL-7D-hlp" id="RF0-HM-Vfo"/>
                         <outlet property="nextButton" destination="puo-QR-9uc" id="Nmt-2q-Fha"/>
                         <outlet property="scrollView" destination="WSP-iD-RKY" id="FWy-CC-tGY"/>
+                        <outlet property="textInputBottomConstraint" destination="Lbp-6W-s3F" id="Zlp-4r-2I2"/>
                         <segue destination="feC-He-QRK" kind="show" identifier="show_enter_password_screen" id="siX-wG-UGy"/>
                         <segue destination="e9a-Nb-Zt7" kind="show" identifier="show_enter_nickname_screen" id="TOf-Lc-2a8"/>
                     </connections>
@@ -396,7 +401,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcQ-f3-k77">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="538.5"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EkC-qZ-SAm" userLabel="ErrorView" customClass="RegistrationErrorView" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="354" width="355" height="67.5"/>
@@ -424,7 +429,7 @@
                                                     <outlet property="textLabel" destination="7pw-O8-Wle" id="22a-vc-NjE"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="KUq-it-6yM" userLabel="TextInputContainer">
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="KUq-it-6yM" customClass="HyperlootTextInputContainer" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="293" width="355" height="81"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7f3-bX-T3o">
@@ -460,9 +465,13 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="textField" destination="9ed-UJ-vnH" id="kMs-7x-fwQ"/>
+                                                    <outlet property="titleLabel" destination="7f3-bX-T3o" id="ebG-HX-9cr"/>
+                                                </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fo2-WW-13W" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="526" width="355" height="57"/>
+                                                <rect key="frame" x="10" y="461.5" width="355" height="57"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="57" id="Qb5-Mr-QUu"/>
@@ -488,7 +497,7 @@
                                                 <color key="textColor" red="0.95294117647058818" green="0.96470588235294119" blue="0.9882352941176471" alpha="1" colorSpace="deviceRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="V2R-vh-qjU" userLabel="TextInputContainer">
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="V2R-vh-qjU" customClass="HyperlootTextInputContainer" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="202" width="355" height="81"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KED-3f-KvU">
@@ -525,6 +534,10 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="textField" destination="70y-dd-gop" id="OdT-uv-6Hg"/>
+                                                    <outlet property="titleLabel" destination="KED-3f-KvU" id="Ye2-1e-tIP"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -535,10 +548,9 @@
                                             <constraint firstItem="Fo2-WW-13W" firstAttribute="leading" secondItem="GcQ-f3-k77" secondAttribute="leading" constant="10" id="EwW-93-n6y"/>
                                             <constraint firstItem="V2R-vh-qjU" firstAttribute="leading" secondItem="GcQ-f3-k77" secondAttribute="leading" constant="10" id="F2T-AF-6RH"/>
                                             <constraint firstItem="kHG-zV-P5U" firstAttribute="leading" secondItem="GcQ-f3-k77" secondAttribute="leading" constant="20" id="Hew-2n-PLE"/>
-                                            <constraint firstItem="Fo2-WW-13W" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EkC-qZ-SAm" secondAttribute="bottom" constant="15" id="J3Z-p7-fNf"/>
+                                            <constraint firstItem="Fo2-WW-13W" firstAttribute="top" secondItem="EkC-qZ-SAm" secondAttribute="bottom" constant="40" id="J3Z-p7-fNf"/>
                                             <constraint firstItem="kHG-zV-P5U" firstAttribute="top" secondItem="I4p-uc-TS8" secondAttribute="bottom" constant="22" id="Q19-Iy-d84"/>
                                             <constraint firstItem="KUq-it-6yM" firstAttribute="top" secondItem="V2R-vh-qjU" secondAttribute="bottom" constant="10" id="WW7-ue-f6x"/>
-                                            <constraint firstItem="Fo2-WW-13W" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KUq-it-6yM" secondAttribute="bottom" constant="15" id="Xpe-jG-8hu"/>
                                             <constraint firstAttribute="trailing" secondItem="V2R-vh-qjU" secondAttribute="trailing" constant="10" id="ht9-1h-p1g"/>
                                             <constraint firstItem="V2R-vh-qjU" firstAttribute="top" secondItem="kHG-zV-P5U" secondAttribute="bottom" constant="20" id="jla-hY-eCG"/>
                                             <constraint firstAttribute="trailing" secondItem="Fo2-WW-13W" secondAttribute="trailing" constant="10" id="okL-0j-zcB"/>
@@ -557,7 +569,6 @@
                                     <constraint firstItem="GcQ-f3-k77" firstAttribute="leading" secondItem="7tz-sT-vVO" secondAttribute="leading" id="N0b-2G-Iil"/>
                                     <constraint firstAttribute="trailing" secondItem="GcQ-f3-k77" secondAttribute="trailing" id="WOA-7O-PXt"/>
                                     <constraint firstAttribute="bottom" secondItem="GcQ-f3-k77" secondAttribute="bottom" id="jVv-Wd-J7U"/>
-                                    <constraint firstItem="GcQ-f3-k77" firstAttribute="height" secondItem="7tz-sT-vVO" secondAttribute="height" priority="999" id="pZx-sc-IMN"/>
                                     <constraint firstItem="GcQ-f3-k77" firstAttribute="top" secondItem="7tz-sT-vVO" secondAttribute="top" id="yW7-vN-XV5"/>
                                 </constraints>
                             </scrollView>
@@ -573,11 +584,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="WFd-Fb-ab8"/>
                     <connections>
-                        <outlet property="confirmPasswordContainerView" destination="KUq-it-6yM" id="ioL-Rz-Qcz"/>
-                        <outlet property="confirmPasswordTextField" destination="9ed-UJ-vnH" id="Qlh-hN-BUC"/>
+                        <outlet property="confirmPasswordTextInput" destination="KUq-it-6yM" id="prD-1t-gxF"/>
                         <outlet property="errorView" destination="EkC-qZ-SAm" id="CYX-iL-kWS"/>
                         <outlet property="nextButton" destination="Fo2-WW-13W" id="61Y-8g-PI0"/>
-                        <outlet property="passwordTextField" destination="70y-dd-gop" id="lB5-2e-jXp"/>
+                        <outlet property="passwordTextInput" destination="V2R-vh-qjU" id="vk0-nJ-3XZ"/>
                         <outlet property="screenTitleLabel" destination="I4p-uc-TS8" id="tPZ-c3-27g"/>
                         <outlet property="scrollView" destination="7tz-sT-vVO" id="f1Q-2D-f8y"/>
                         <segue destination="rWD-b6-Lrj" kind="show" identifier="show_enter_wallet_keys_screen" id="b83-5I-vNC"/>
@@ -600,7 +610,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggZ-Hy-7fS">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="326.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="JnN-u9-hwy" customClass="HyperlootTextInputContainer" customModule="HyperlootWallet" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="128.5" width="355" height="81"/>
@@ -643,7 +653,7 @@
                                                 </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRP-AW-zj9" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="526" width="355" height="57"/>
+                                                <rect key="frame" x="10" y="249.5" width="355" height="57"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="57" id="bTy-nx-7ES"/>
@@ -670,7 +680,7 @@
                                             <constraint firstItem="tmB-FR-VYW" firstAttribute="centerX" secondItem="ggZ-Hy-7fS" secondAttribute="centerX" id="KdP-TS-HpK"/>
                                             <constraint firstItem="XRP-AW-zj9" firstAttribute="leading" secondItem="ggZ-Hy-7fS" secondAttribute="leading" constant="10" id="KyL-Xq-KpQ"/>
                                             <constraint firstAttribute="bottom" secondItem="XRP-AW-zj9" secondAttribute="bottom" constant="20" id="MkO-ez-WIF"/>
-                                            <constraint firstItem="XRP-AW-zj9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JnN-u9-hwy" secondAttribute="bottom" constant="15" id="P9Z-y4-tRO"/>
+                                            <constraint firstItem="XRP-AW-zj9" firstAttribute="top" secondItem="JnN-u9-hwy" secondAttribute="bottom" constant="40" id="P9Z-y4-tRO"/>
                                             <constraint firstItem="JnN-u9-hwy" firstAttribute="top" secondItem="tmB-FR-VYW" secondAttribute="bottom" constant="50" id="Xjp-vs-fUW"/>
                                             <constraint firstItem="tmB-FR-VYW" firstAttribute="top" secondItem="ggZ-Hy-7fS" secondAttribute="top" constant="40" id="iQJ-XA-VRs"/>
                                             <constraint firstAttribute="trailing" secondItem="JnN-u9-hwy" secondAttribute="trailing" constant="10" id="kTc-3G-MLs"/>
@@ -683,7 +693,6 @@
                                     <constraint firstItem="ggZ-Hy-7fS" firstAttribute="leading" secondItem="BgU-Ce-3GB" secondAttribute="leading" id="7BO-Pm-7jI"/>
                                     <constraint firstItem="ggZ-Hy-7fS" firstAttribute="width" secondItem="BgU-Ce-3GB" secondAttribute="width" id="AkS-tC-mgM"/>
                                     <constraint firstAttribute="trailing" secondItem="ggZ-Hy-7fS" secondAttribute="trailing" id="TFZ-dw-pel"/>
-                                    <constraint firstItem="ggZ-Hy-7fS" firstAttribute="height" secondItem="BgU-Ce-3GB" secondAttribute="height" id="b7F-FW-khm"/>
                                     <constraint firstItem="ggZ-Hy-7fS" firstAttribute="top" secondItem="BgU-Ce-3GB" secondAttribute="top" id="hnr-nj-fPT"/>
                                     <constraint firstAttribute="bottom" secondItem="ggZ-Hy-7fS" secondAttribute="bottom" id="nf1-90-Km0"/>
                                 </constraints>
@@ -834,7 +843,7 @@
         <image name="lootmart_logo_text" width="255" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HPU-ap-zNa"/>
-        <segue reference="b83-5I-vNC"/>
+        <segue reference="siX-wG-UGy"/>
+        <segue reference="kPa-VA-GMc"/>
     </inferredMetricsTieBreakers>
 </document>

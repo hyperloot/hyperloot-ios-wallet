@@ -22,15 +22,24 @@ class RegistrationErrorView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        textLabel.textColor = AppStyle.Colors.defaultText
-        layer.cornerRadius = 10
-        layer.addSublayer(self.gradientLayer)
+        setupAppearance()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         gradientLayer.frame = bounds
+    }
+    
+    private func setupAppearance() {
+        backgroundColor = UIColor.white
+        
+        layer.addSublayer(self.gradientLayer)
+        layer.masksToBounds = true
+        layer.cornerRadius = 10
+        
+        textLabel.textColor = AppStyle.Colors.defaultText
+        bringSubview(toFront: textLabel)
     }
     
     public func setVisible(_ value: Bool, animated: Bool) {

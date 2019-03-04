@@ -18,9 +18,8 @@ class EnterPasswordViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var screenTitleLabel: UILabel!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordContainerView: UIView!
+    @IBOutlet weak var passwordTextInput: HyperlootTextInputContainer!
+    @IBOutlet weak var confirmPasswordTextInput: HyperlootTextInputContainer!
     @IBOutlet weak var errorView: RegistrationErrorView!
     @IBOutlet weak var nextButton: HyperlootButton!
     
@@ -48,14 +47,14 @@ class EnterPasswordViewController: UIViewController {
     
     func configureFormController() {
         formController.textFieldDelegate = self
-        formController.register(textFields: [passwordTextField, confirmPasswordTextField])
+        formController.register(textFields: [passwordTextInput.textField, confirmPasswordTextInput.textField])
     }
     
     func updateUIState() {
         let presentation = viewModel.presentation
         
         screenTitleLabel.text = presentation.screenTitle
-        confirmPasswordContainerView.isHidden = presentation.isConfirmPasswordHidden
+        confirmPasswordTextInput.isHidden = presentation.isConfirmPasswordHidden
         errorView.isHidden = presentation.isErrorViewHidden
         nextButton.isEnabled = presentation.isNextButtonEnabled
     }
