@@ -11,7 +11,7 @@ class RegistrationErrorView: UIView {
     
     @IBOutlet weak var textLabel: UILabel!
     
-    private lazy var gradientLayer: CAGradientLayer = self.buildGradientLayer()
+    private lazy var gradientLayer = HyperlootGradientLayer()
     
     public var text: String? {
         didSet {
@@ -67,17 +67,5 @@ class RegistrationErrorView: UIView {
                 self?.isHidden = !value
             }
         }
-    }
-    
-    private func buildGradientLayer() -> CAGradientLayer {
-        let gradient = CAGradientLayer()
-        gradient.colors = [
-            UIColor(red: 0.87, green: 0.13, blue: 0.39, alpha: 1.0).cgColor,
-            UIColor(red: 0.81, green: 0.28, blue: 0.26, alpha: 1.0).cgColor
-        ]
-        gradient.locations = [0, 1]
-        gradient.startPoint = CGPoint(x: 0.25, y: 0.5)
-        gradient.endPoint = CGPoint(x: 0.75, y: 0.5)
-        return gradient
     }
 }
