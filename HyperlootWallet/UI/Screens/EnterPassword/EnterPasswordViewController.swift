@@ -17,25 +17,33 @@ class EnterPasswordViewController: UIViewController {
     var input: Input!
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordContainerView: UIView!
+    @IBOutlet weak var screenTitleLabel: UILabel!
+    @IBOutlet weak var passwordTextInput: HyperlootTextInputContainer!
+    @IBOutlet weak var confirmPasswordTextInput: HyperlootTextInputContainer!
     @IBOutlet weak var errorView: RegistrationErrorView!
     @IBOutlet weak var nextButton: HyperlootButton!
     
+    @IBOutlet var nextButtonNormalStateConstraint: NSLayoutConstraint!
+    @IBOutlet var nextButtonErrorStateConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var enterPasswordOnlyStateConstraint: NSLayoutConstraint!
+    @IBOutlet var confirmPasswordStateConstraint: NSLayoutConstraint!
+    
     lazy var viewModel = EnterPasswordViewModel(user: input.user)
-    lazy var formController = FormController(scrollView: self.scrollView)
+    lazy var formController = FormController(scrollView: self.scrollView, scrollViewTextFieldOffset: 100)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateUIState(animated: false)
         configureFormController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updateUIState()
+        resetState()
+        updateUIState(animated: false)
         formController.willShowForm()
     }
     
@@ -47,15 +55,41 @@ class EnterPasswordViewController: UIViewController {
     
     func configureFormController() {
         formController.textFieldDelegate = self
-        formController.register(textFields: [passwordTextField, confirmPasswordTextField])
+        formController.register(textFields: [passwordTextInput.textField, confirmPasswordTextInput.textField])
     }
     
-    func updateUIState() {
+    func resetState() {
+        passwordTextInput.textField.text = nil
+        confirmPasswordTextInput.textField.text = nil
+    }
+    
+    func updateUIState(animated: Bool = true) {
         let presentation = viewModel.presentation
         
-        confirmPasswordContainerView.isHidden = presentation.isConfirmPasswordHidden
-        errorView.isHidden = presentation.isErrorViewHidden
+        screenTitleLabel.text = presentation.screenTitle
         nextButton.isEnabled = presentation.isNextButtonEnabled
+        configurePasswordFields(confirmPasswordHidden: presentation.isConfirmPasswordHidden)
+        configureError(isHidden: presentation.error.isHidden, text: presentation.error.text)
+        
+        UIView.animateIfNeeded(animated, duration: 0.25) { [weak self] in
+            self?.view.setNeedsLayout()
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
+    func configureError(isHidden: Bool, text: String?) {
+        errorView.text = text
+        errorView.setVisible(!isHidden, animated: true)
+        
+        nextButtonErrorStateConstraint.isActive = !isHidden
+        nextButtonNormalStateConstraint.isActive = isHidden
+    }
+    
+    func configurePasswordFields(confirmPasswordHidden: Bool) {
+        confirmPasswordTextInput.isHidden = confirmPasswordHidden
+        
+        confirmPasswordStateConstraint.isActive = !confirmPasswordHidden
+        enterPasswordOnlyStateConstraint.isActive = confirmPasswordHidden
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -96,6 +130,8 @@ class EnterPasswordViewController: UIViewController {
             self?.hideActivityIndicator()
             
             guard let route = route else {
+                self?.resetState()
+                self?.updateUIState()
                 return
             }
             

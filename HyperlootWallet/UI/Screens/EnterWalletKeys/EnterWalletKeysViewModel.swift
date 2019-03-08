@@ -59,7 +59,7 @@ class EnterWalletKeysViewModel {
     
     public func didChangeTextInput(text: String?) {
         switch user {
-        case .importWallet(user: let user, password: let password, importType: let importType):
+        case .importWallet:
             self.walletKey = text
         case .createWallet, .enterEmail, .signUpEnterNickname,
              .signUpConfirmPassword, .signInEnterPassword,

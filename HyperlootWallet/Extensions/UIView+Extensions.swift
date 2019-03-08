@@ -19,3 +19,14 @@ extension UIView {
         return UINib(nibName: String(describing: self), bundle: Bundle.main)
     }
 }
+
+extension UIView {
+    static func animateIfNeeded(_ animated: Bool, duration: TimeInterval, block: @escaping () -> Void) {
+        if animated {
+            UIView.animate(withDuration: 0.25, animations: block)
+        } else {
+            block()
+        }
+
+    }
+}
