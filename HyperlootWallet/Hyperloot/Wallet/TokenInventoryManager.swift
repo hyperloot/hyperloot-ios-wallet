@@ -36,6 +36,20 @@ class TokenInventoryManager {
         self.config = config
     }
     
+    func getPrices(tokens: [HyperlootToken], cached: Bool = false, completion: @escaping ([HyperlootTokenPrice]) -> Void) {
+        if cached == false {
+            priceDiscovery.getPrices(tokens: tokens, completion: completion)
+        } else {
+            priceDiscovery.getCachedPrice(for: tokens, completion: completion)
+        }
+    }
+    
+    func getCachedInventory(address: String, completion: @escaping ([HyperlootToken]) -> Void) {
+        inventory.loadInventory { [weak self] (_) in
+            completion(self?.inventory.allTokens ?? [])
+        }
+    }
+    
     func updateInventory(address: String, completion: @escaping ([HyperlootToken]) -> Void) {
         blockscoutProvider = BlockscoutInventoryProvider(blockscout: blockscout, storage: inventory, walletAddress: address)
         openSeaProvider = OpenSeaInventoryProvider(openSea: openSea, walletAddress: address)

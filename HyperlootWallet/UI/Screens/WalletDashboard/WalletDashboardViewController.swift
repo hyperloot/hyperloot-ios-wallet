@@ -27,7 +27,13 @@ class WalletDashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updateUI()
+        activityIndicator.startAnimating()
+        viewModel.getAssets { [weak self] (cached: Bool) in
+            if cached == false {
+                self?.activityIndicator.stopAnimating()
+            }
+            self?.updateUI()
+        }
     }
     
     func setup() {

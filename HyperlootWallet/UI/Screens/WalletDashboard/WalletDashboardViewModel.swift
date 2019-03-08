@@ -9,6 +9,8 @@ import Foundation
 
 class WalletDashboardViewModel {
     
+    typealias Completion = (_ cached: Bool) -> Void
+    
     struct Presentation {
         let headerTitle: String
         let numberOfCurrencies: String
@@ -16,6 +18,11 @@ class WalletDashboardViewModel {
         let currenciesBalance: String
         let gameAssetsBalance: String
     }
+    
+    lazy var walletAssetManager: WalletAssetManager = WalletAssetManager()
+    
+    var currencies: [WalletAsset] = []
+    var gameAssets: [WalletAsset] = []
     
     private lazy var priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -32,6 +39,13 @@ class WalletDashboardViewModel {
                             gameAssetsBalance: gameAssetsBalance)
     }
     
+    var completion: Completion?
+    
+    public func getAssets(completion: @escaping Completion) {
+        self.completion = completion
+        walletAssetManager.getAssets(listener: self)
+    }
+    
     private var headerTitle: String {
         var greeting: String
         if let user = Hyperloot.shared.user {
@@ -43,18 +57,28 @@ class WalletDashboardViewModel {
     }
     
     private var numberOfCurrencies: String {
-        return "0 currencies"
+        return "\(currencies.count) currencies"
     }
     
     private var numberOfGameAssets: String {
-        return "0 items"
+        return "\(gameAssets.count) items"
     }
     
     private var currenciesBalance: String {
-        return priceFormatter.string(from: 0) ?? "0.00"
+        let total = currencies.map { $0.totalPrice }.reduce(0.0, +)
+        return priceFormatter.string(from: NSNumber(value: total)) ?? "0.00"
     }
     
     private var gameAssetsBalance: String {
-        return priceFormatter.string(from: 0) ?? "0.00"
+        let total = gameAssets.map { $0.totalPrice }.reduce(0.0, +)
+        return priceFormatter.string(from: NSNumber(value: total)) ?? "0.00"
+    }
+}
+
+extension WalletDashboardViewModel: WalletAssetsUpdating {
+    func didReceive(assets: [WalletAsset], cached: Bool) {
+        currencies = walletAssetManager.assets(by: .currency)
+        gameAssets = walletAssetManager.assets(by: .gameAsset)
+        completion?(cached)
     }
 }

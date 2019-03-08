@@ -43,10 +43,14 @@ class TokenPriceDiscovery {
         return Array(Set(symbols))
     }
     
-    func getLocalPrice(symbol: Symbol, completion: @escaping(HyperlootTokenPrice?) -> Void) {
+    func getCachedPrice(for tokens: [HyperlootToken], completion: @escaping([HyperlootTokenPrice]) -> Void) {
         loadPrices { [weak self] in
-            let price = self?.findPrice(forSymbol: symbol)
-            completion(price)
+            var prices: [HyperlootTokenPrice] = []
+            tokens.forEach { (token) in
+                guard let price = self?.findPrice(forSymbol: token.symbol) else { return }
+                prices.append(price)
+            }
+            completion(prices)
         }
     }
     
@@ -129,11 +133,10 @@ class TokenPriceDiscovery {
         }
         dataSerializer.loadObject { [weak self] (prices: [Symbol: HyperlootTokenPrice]?) in
             self?.isLocalStorageLoaded = true
-            guard let prices = prices else {
-                completion()
-                return
+            if let prices = prices {
+                self?.prices = prices
             }
-            self?.prices = prices
+            completion()
         }
     }
     
