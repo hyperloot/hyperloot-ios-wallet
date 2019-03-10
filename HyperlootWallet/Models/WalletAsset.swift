@@ -46,7 +46,7 @@ class WalletAsset {
         }
     }
     
-    var totalPrice: Double {
+    var tokensAmount: Double {
         let numberOfTokens: Double
         switch value {
         case .erc20(amount: let amount):
@@ -57,7 +57,11 @@ class WalletAsset {
             numberOfTokens = 1.0
         }
         
+        return numberOfTokens
+    }
+    
+    var totalPrice: Double {
         let pricePerOne = price?.price ?? 0.0
-        return numberOfTokens * pricePerOne
+        return tokensAmount * pricePerOne
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WalletTokensTableSectionHeaderView" customModule="HyperlootWallet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psX-jk-DbY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currencies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZp-V0-sUE">
+                            <rect key="frame" x="12" y="5" width="348" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Bdm-GL-4bW"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="CZp-V0-sUE" secondAttribute="trailing" constant="15" id="4N8-sf-d6c"/>
+                        <constraint firstItem="CZp-V0-sUE" firstAttribute="top" secondItem="psX-jk-DbY" secondAttribute="top" constant="5" id="DRp-ct-mau"/>
+                        <constraint firstAttribute="bottom" secondItem="CZp-V0-sUE" secondAttribute="bottom" constant="5" id="F9W-jx-Bsw"/>
+                        <constraint firstAttribute="height" constant="30" id="Y2S-Ze-990"/>
+                        <constraint firstItem="CZp-V0-sUE" firstAttribute="leading" secondItem="psX-jk-DbY" secondAttribute="leading" constant="12" id="it7-sx-Tzc"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="psX-jk-DbY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Fac-K6-QVj"/>
+                <constraint firstItem="psX-jk-DbY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bmn-m6-bWH"/>
+                <constraint firstAttribute="bottom" secondItem="psX-jk-DbY" secondAttribute="bottom" id="vhU-vq-dj0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="psX-jk-DbY" secondAttribute="trailing" id="ypT-lh-0SO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="sectionNameLabel" destination="CZp-V0-sUE" id="nrF-iP-pDt"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="96.251874062968525"/>
+        </view>
+    </objects>
+</document>

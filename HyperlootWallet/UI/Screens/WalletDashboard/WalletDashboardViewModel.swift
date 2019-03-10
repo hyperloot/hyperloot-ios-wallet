@@ -17,6 +17,7 @@ class WalletDashboardViewModel {
         let numberOfGameAssets: String
         let currenciesBalance: String
         let gameAssetsBalance: String
+        let showActivityIndicator: Bool
     }
     
     lazy var walletAssetManager: WalletAssetManager = WalletAssetManager()
@@ -30,22 +31,33 @@ class WalletDashboardViewModel {
         formatter.locale = NSLocale.current
         return formatter
     } ()
+    
+    private var showActivityIndicator: Bool = false
 
     var presentation: Presentation {
         return Presentation(headerTitle: headerTitle,
                             numberOfCurrencies: numberOfCurrencies,
                             numberOfGameAssets: numberOfGameAssets,
                             currenciesBalance: currenciesBalance,
-                            gameAssetsBalance: gameAssetsBalance)
+                            gameAssetsBalance: gameAssetsBalance,
+                            showActivityIndicator: showActivityIndicator)
     }
     
     var completion: Completion?
     
+    var tokensProviderForListScreen: WalletTokensProviding?
+    
     public func getAssets(completion: @escaping Completion) {
         self.completion = completion
+        showActivityIndicator = true
         walletAssetManager.getAssets(listener: self)
     }
     
+    public func didSelectCurrenciesToShow() {
+        tokensProviderForListScreen = WalletCurrencyTokenProvider(walletAssetManager: self.walletAssetManager)
+    }
+    
+    // MARK: - Private
     private var headerTitle: String {
         var greeting: String
         if let user = Hyperloot.shared.user {
@@ -79,6 +91,7 @@ extension WalletDashboardViewModel: WalletAssetsUpdating {
     func didReceive(assets: [WalletAsset], cached: Bool) {
         currencies = walletAssetManager.assets(by: .currency)
         gameAssets = walletAssetManager.assets(by: .gameAsset)
+        showActivityIndicator = cached != false
         completion?(cached)
     }
 }

@@ -19,8 +19,8 @@ class AppStyle {
     
     static func apply() {
         
-        UINavigationBar.appearance().backgroundColor = Colors.defaultBackground
-        UINavigationBar.appearance().barTintColor = Colors.defaultBackground
+        UINavigationBar.appearance().backgroundColor = Colors.darkContainer
+        UINavigationBar.appearance().barTintColor = Colors.darkContainer
         UINavigationBar.appearance().tintColor = Colors.orangeRedButton
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: Colors.defaultText]
     }
