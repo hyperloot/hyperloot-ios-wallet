@@ -11,7 +11,6 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
     
     struct Constants {
         static let currencyScreenTitle = "Currencies"
-        static let cellIdentifier = "wallet_token_currency_cell"
     }
     
     private var shouldShowActivityIndicator: Bool = false
@@ -51,7 +50,7 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
     }
     
     func cellRegistrationInformation() -> [WalletTokensCellsRegistration] {
-        return [WalletTokensCellsRegistration(cellIdentifier: Constants.cellIdentifier,
+        return [WalletTokensCellsRegistration(cellIdentifier: WalletTokenCurrencyTableCell.viewId(),
                                               nibName: String(describing: WalletTokenCurrencyTableCell.self))]
     }
     
@@ -66,7 +65,7 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
                                                            tokensAmount: "\(asset.tokensAmount)",
             amountInCurrency: priceFormatter.string(from: NSNumber(value: asset.totalPrice)) ?? "",
             index: index)
-        return WalletTokenCellConfiguration(cellIdentifier: Constants.cellIdentifier,
+        return WalletTokenCellConfiguration(cellIdentifier: WalletTokenCurrencyTableCell.viewId(),
                                             presentation: presentation)
     }
     

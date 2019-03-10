@@ -57,6 +57,10 @@ class WalletDashboardViewModel {
         tokensProviderForListScreen = WalletCurrencyTokenProvider(walletAssetManager: self.walletAssetManager)
     }
     
+    public func didSelectGameAssetsToShow() {
+        tokensProviderForListScreen = WalletGameAssetsTokenProvider(walletAssetManager: self.walletAssetManager)
+    }
+    
     // MARK: - Private
     private var headerTitle: String {
         var greeting: String

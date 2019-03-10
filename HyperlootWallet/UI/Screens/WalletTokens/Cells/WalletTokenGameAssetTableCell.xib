@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WalletTokenGameAssetTableCell" id="LGF-Ae-lHj" customClass="WalletTokenGameAssetTableCell" customModule="HyperlootWallet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LGF-Ae-lHj" id="ndt-KQ-dkh">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXI-Pl-GAt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="HLT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPE-De-e5r">
+                                <rect key="frame" x="16" y="12.5" width="30.5" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.67450980392156867" green="0.70980392156862748" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="$1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RK-RZ-wZS">
+                                <rect key="frame" x="305.5" y="12.5" width="53.5" height="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DiP-Xh-ZGZ" userLabel="Separator">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1.5"/>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="llM-yu-zeN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.090196078431372548" green="0.10588235294117647" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="1RK-RZ-wZS" firstAttribute="top" secondItem="RXI-Pl-GAt" secondAttribute="top" constant="12" id="1Hr-mf-7U3"/>
+                            <constraint firstItem="CPE-De-e5r" firstAttribute="centerY" secondItem="RXI-Pl-GAt" secondAttribute="centerY" id="4Y1-Xa-vz1"/>
+                            <constraint firstItem="CPE-De-e5r" firstAttribute="top" secondItem="RXI-Pl-GAt" secondAttribute="top" constant="12" id="5jL-JA-mQ8"/>
+                            <constraint firstItem="DiP-Xh-ZGZ" firstAttribute="leading" secondItem="RXI-Pl-GAt" secondAttribute="leading" id="6OE-q0-npY"/>
+                            <constraint firstItem="CPE-De-e5r" firstAttribute="leading" secondItem="RXI-Pl-GAt" secondAttribute="leading" constant="16" id="9lc-pb-6Nb"/>
+                            <constraint firstAttribute="trailing" secondItem="1RK-RZ-wZS" secondAttribute="trailing" constant="16" id="I6u-KT-3Gh"/>
+                            <constraint firstAttribute="height" constant="44" id="Q45-jI-KEy"/>
+                            <constraint firstItem="1RK-RZ-wZS" firstAttribute="centerY" secondItem="RXI-Pl-GAt" secondAttribute="centerY" id="RNe-XP-KBe"/>
+                            <constraint firstAttribute="trailing" secondItem="DiP-Xh-ZGZ" secondAttribute="trailing" id="ZcZ-1B-Wq4"/>
+                            <constraint firstItem="1RK-RZ-wZS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CPE-De-e5r" secondAttribute="trailing" constant="10" id="cEG-Jx-D1t"/>
+                            <constraint firstItem="DiP-Xh-ZGZ" firstAttribute="top" secondItem="GgF-Pu-zoR" secondAttribute="top" id="shb-aP-BZe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GgF-Pu-zoR"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RXI-Pl-GAt" firstAttribute="leading" secondItem="ndt-KQ-dkh" secondAttribute="leading" id="1OL-Fb-mda"/>
+                    <constraint firstItem="RXI-Pl-GAt" firstAttribute="top" secondItem="ndt-KQ-dkh" secondAttribute="top" id="BxN-ae-ifc"/>
+                    <constraint firstAttribute="trailing" secondItem="RXI-Pl-GAt" secondAttribute="trailing" id="DMm-yj-egg"/>
+                    <constraint firstAttribute="bottom" secondItem="RXI-Pl-GAt" secondAttribute="bottom" id="oPD-kD-Q4D"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.090196078431372548" green="0.10588235294117647" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="separatorView" destination="DiP-Xh-ZGZ" id="K53-PH-zqI"/>
+                <outlet property="tokenSymbolLabel" destination="CPE-De-e5r" id="2tU-zB-ucO"/>
+                <outlet property="tokenValueLabel" destination="1RK-RZ-wZS" id="zjW-4T-qNh"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

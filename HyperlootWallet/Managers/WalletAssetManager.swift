@@ -45,8 +45,26 @@ class WalletAssetManager {
 
     }
     
-    public func assets(by type: WalletAsset.AssetType) -> [WalletAsset] {
-        return allAssets.filter { $0.assetType == type }
+    public func assets(by type: WalletAsset.AssetType, removeZeroTokens: Bool = true) -> [WalletAsset] {
+        func isERC721(asset: WalletAsset) -> Bool {
+            return asset.token.isERC721()
+        }
+        
+        func hasTokenId(asset: WalletAsset) -> Bool {
+            if case .erc721(tokenId: let tokenId, totalCount: _, attributes: _) = asset.value {
+                return tokenId != HyperlootToken.Constants.noTokenId
+            }
+            
+            return false
+        }
+        
+        var filteredAssets = allAssets.filter { $0.assetType == type }
+        
+        if removeZeroTokens {
+            filteredAssets = filteredAssets.filter { !isERC721(asset: $0) || (isERC721(asset: $0) && hasTokenId(asset: $0)) }
+        }
+        
+        return filteredAssets
     }
     
     // MARK: - Private

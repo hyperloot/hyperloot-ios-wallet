@@ -68,4 +68,9 @@ class WalletDashboardViewController: UIViewController {
         viewModel.didSelectCurrenciesToShow()
         performSegue(route: .showWalletTokens)
     }
+    
+    @IBAction func showGameAssetsButtonTapped(_ sender: Any) {
+        viewModel.didSelectGameAssetsToShow()
+        performSegue(route: .showWalletTokens)
+    }
 }

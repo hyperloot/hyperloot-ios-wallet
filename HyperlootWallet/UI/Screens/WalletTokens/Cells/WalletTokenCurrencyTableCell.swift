@@ -33,6 +33,14 @@ class WalletTokenCurrencyTableCell: UITableViewCell {
         let index: Int
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let selectedView = UIView(frame: CGRect.zero)
+        selectedView.backgroundColor = UIColor(hex: 0x222730)
+        self.selectedBackgroundView = selectedView
+    }
+    
     func update(presentation: Presentation) {
         symbolLabel.text = presentation.symbol
         tokensAmountLabel.text = presentation.tokensAmount
