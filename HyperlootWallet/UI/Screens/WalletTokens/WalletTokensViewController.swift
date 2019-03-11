@@ -23,6 +23,8 @@ class WalletTokensViewController: UIViewController {
         return input.walletTokensProvider
     }
     
+    var selectedAction: WalletTokenCellAction? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,11 +70,28 @@ class WalletTokensViewController: UIViewController {
         
         tableView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.isEqualTo(route: .showTransactions) {
+            guard let action = selectedAction,
+                let viewController = segue.destination as? TokenTransactionsViewController else {
+                return
+            }
+
+            viewController.input = TokenTransactionsViewController.Input(asset: action.asset)
+        }
+    }
 }
 
 extension WalletTokensViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let action = walletTokenProvider.actionForItem(at: indexPath.row) else {
+            return
+        }
+        selectedAction = action
+        performSegue(route: action.screen)
     }
 }
 

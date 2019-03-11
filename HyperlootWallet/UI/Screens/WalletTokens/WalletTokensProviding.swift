@@ -29,12 +29,12 @@ class WalletTokenCellConfiguration<T> {
 }
 
 class WalletTokenCellAction {
-    let token: HyperlootToken
+    let asset: WalletAsset
     let screen: ScreenRoute
     
-    required init(screen: ScreenRoute, token: HyperlootToken) {
+    required init(screen: ScreenRoute, asset: WalletAsset) {
         self.screen = screen
-        self.token = token
+        self.asset = asset
     }
 }
 

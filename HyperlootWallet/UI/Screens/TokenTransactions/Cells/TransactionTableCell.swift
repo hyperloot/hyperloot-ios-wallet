@@ -15,17 +15,17 @@ class TransactionTableCell: UITableViewCell {
         let date: String
         let tokenValue: BalanceFormatter.TransactionAmount
         let showTransactionValueSign: Bool
-        let transactionHash: String
+        let details: String
     }
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var transactionHashLabel: UILabel!
+    @IBOutlet weak var detailsLabel: UILabel!
     
     public func update(presentation: TransactionCellPresentation) {
         dateLabel.text = presentation.date
         valueLabel.attributedText = presentation.tokenValue.toAttributedString(font: UIFont.boldSystemFont(ofSize: 20.0),
                                                                                showSign: presentation.showTransactionValueSign)
-        transactionHashLabel.text = presentation.transactionHash
+        detailsLabel.text = presentation.details
     }
 }

@@ -12,24 +12,29 @@ class TokenTransactionsViewModel {
     
     struct Presentation {
         let title: String
-        let balanceInCurrency: NSAttributedString
-        let balanceInCrypto: String
-        let walletAddress: String
+        let tableHeaderTitle: String
     }
     
-    let token: HyperlootToken
+    let asset: WalletAsset
     var transactions: [HyperlootTransaction] = []
     
     var transactionPresentations: [TransactionCellPresentation] = []
     
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/YYYY HH:mm"
+        dateFormatter.dateStyle = .medium
         return dateFormatter
     } ()
     
-    init(token: HyperlootToken) {
-        self.token = token
+    private lazy var priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = NSLocale.current
+        return formatter
+    } ()
+    
+    init(asset: WalletAsset) {
+        self.asset = asset
     }
     
     public func load(completion: @escaping () -> Void) {
@@ -41,9 +46,9 @@ class TokenTransactionsViewModel {
             transactions.forEach {
                 let date = strongSelf.dateFormatter.string(from: Date(timeIntervalSince1970: $0.timestamp))
                 let presentation = TransactionCellPresentation(date: date,
-                                                               tokenValue: strongSelf.value(from: $0),
+                                                               tokenValue: strongSelf.priceInCurrency(from: $0),
                                                                showTransactionValueSign: strongSelf.shouldShowTransactionSign(for: $0),
-                                                               transactionHash: $0.transactionHash)
+                                                               details: strongSelf.value(from: $0))
                 strongSelf.transactionPresentations.append(presentation)
             }
             completion()
@@ -51,7 +56,7 @@ class TokenTransactionsViewModel {
     }
     
     private var transactionsType: HyperlootTransactionType {
-        let contractAddress = token.contractAddress
+        let contractAddress = asset.token.contractAddress
         if contractAddress == TokenConstants.Ethereum.ethereumContract {
             return .transactions
         }
@@ -67,7 +72,29 @@ class TokenTransactionsViewModel {
         return true
     }
     
-    private func value(from transaction: HyperlootTransaction) -> BalanceFormatter.TransactionAmount {
+    private func priceInCurrency(from transaction: HyperlootTransaction) -> BalanceFormatter.TransactionAmount {
+        var transactionPrice: String = ""
+
+        var tokensAmount: Double = 0.0
+        switch transaction.value {
+        case .ether(value: let value):
+            tokensAmount = TokenFormatter.erc20BalanceToDouble(from: value, decimals: TokenConstants.Ethereum.ethereumDecimals)
+        case .token(value: let value, decimals: let decimals, _):
+            tokensAmount = TokenFormatter.erc20BalanceToDouble(from: value, decimals: decimals)
+        case .uniqueToken(_):
+            tokensAmount = 1.0
+        }
+        
+        let assetPrice = asset.price?.price ?? 0.0
+        let total = assetPrice * tokensAmount
+        transactionPrice = priceFormatter.string(from: NSNumber(value: total)) ?? "0.0"
+        
+        return TokenFormatter.isTo(walletAddress: walletAddress, transaction: transaction)
+            ? BalanceFormatter.TransactionAmount.positive(value: transactionPrice)
+            : BalanceFormatter.TransactionAmount.negative(value: transactionPrice)
+    }
+    
+    private func value(from transaction: HyperlootTransaction) -> String {
         var transactionValue: String = ""
         
         
@@ -82,9 +109,7 @@ class TokenTransactionsViewModel {
             transactionValue = TokenFormatter.erc721Value(tokenId: tokenId)
         }
         
-        return TokenFormatter.isTo(walletAddress: walletAddress, transaction: transaction)
-            ? BalanceFormatter.TransactionAmount.positive(value: transactionValue)
-            : BalanceFormatter.TransactionAmount.negative(value: transactionValue)
+        return transactionValue
     }
     
     private var walletAddress: String {
@@ -92,25 +117,27 @@ class TokenTransactionsViewModel {
     }
     
     private var balanceInCurrency: String {
-        switch token.type {
+        switch asset.value {
         case .ether(amount: let amount):
             fallthrough
         case .erc20(amount: let amount):
-            return TokenFormatter.erc20Value(formattedValue: amount, symbol: token.symbol)
+            return TokenFormatter.erc20Value(formattedValue: amount, symbol: asset.token.symbol)
         case .erc721(tokenId: _, totalCount: let totalCount, attributes: _):
-            return TokenFormatter.erc721NameAndTotal(count: totalCount, tokenName: token.name)
+            return TokenFormatter.erc721NameAndTotal(count: totalCount, tokenName: asset.token.name)
         }
     }
     
     private var title: String {
-        return "\(token.name) - \(token.symbol)"
+        return "\(asset.token.name) - \(asset.token.symbol)"
+    }
+    
+    private var tableHeaderTitle: String {
+        return (asset.assetType == .gameAsset) ? "Game asset" : "Currency"
     }
     
     var presentation: Presentation {
         return Presentation(title: title,
-                            balanceInCurrency: NSAttributedString(string: balanceInCurrency),//BalanceFormatter.format(balance: balanceInCurrency, fontHeight: 34.0, change: .up(value: "10.0"), changeFontHeight: 20.0),
-                            balanceInCrypto: "",//"Ξ 2.000 x $400",
-                            walletAddress: walletAddress)
+                            tableHeaderTitle: tableHeaderTitle)
     }
     
     // MARK: - Transactions history

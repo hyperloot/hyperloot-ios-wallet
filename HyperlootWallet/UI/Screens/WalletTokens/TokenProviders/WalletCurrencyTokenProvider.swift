@@ -17,6 +17,8 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
     var assets: [WalletAsset] = []
     var completion: (() -> Void)? = nil
     
+    var selectedAction: WalletTokenCellAction?
+    
     let walletAssetManager: WalletAssetManager
     
     required init(walletAssetManager: WalletAssetManager) {
@@ -70,7 +72,9 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
     }
     
     func actionForItem(at index: Int) -> WalletTokenCellAction? {
-        return nil
+        let asset = assets[index]
+        selectedAction = WalletTokenCellAction(screen: .showTransactions, asset: asset)
+        return selectedAction
     }
 }
 

@@ -466,14 +466,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		F449AEEF2234477C00EDEB51 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F466FD082164A4D200092CC4 /* TransactionTableCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		F449AEF822344B6A00EDEB51 /* WalletTokens */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +636,7 @@
 		F466FD0321649ED800092CC4 /* TokenTransactions */ = {
 			isa = PBXGroup;
 			children = (
+				F4DE196622357195000A002C /* Cells */,
 				F466FD0421649EF400092CC4 /* TokenTransactionsViewController.swift */,
 				F466FD0621649EFE00092CC4 /* TokenTransactionsViewModel.swift */,
 			);
@@ -878,7 +871,6 @@
 			isa = PBXGroup;
 			children = (
 				F48CEC292152C5F800A43A47 /* Components */,
-				F449AEEF2234477C00EDEB51 /* Views */,
 				F48CEC142150DD1100A43A47 /* Screens */,
 				F47EDA38222BADFB00D6684E /* AppStyle.swift */,
 			);
@@ -972,6 +964,14 @@
 				F4CB7CED21770C29006B6217 /* EnterNicknameViewModel.swift */,
 			);
 			path = EnterNickname;
+			sourceTree = "<group>";
+		};
+		F4DE196622357195000A002C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F466FD082164A4D200092CC4 /* TransactionTableCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F4EEDD1021B7B40700C80A79 /* Models */ = {
