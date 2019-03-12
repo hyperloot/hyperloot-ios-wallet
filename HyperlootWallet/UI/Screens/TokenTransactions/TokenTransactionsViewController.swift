@@ -25,7 +25,9 @@ class TokenTransactionsViewController: UIViewController {
         configureBackButtonWithNoText()
         configureUI()
         
+        showActivityIndicator()
         viewModel.load { [weak self] in
+            self?.hideActivityIndicator()
             self?.tableView.reloadData()
         }
     }
