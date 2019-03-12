@@ -73,6 +73,11 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
         let asset = assets[index]
         return WalletTokenCellAction(screen: .showTransactions, asset: asset)
     }
+    
+    func sendItemAction(at index: Int) -> WalletTokenCellAction? {
+        let asset = assets[index]
+        return WalletTokenCellAction(screen: .sendToken, asset: asset)
+    }
 }
 
 extension WalletCurrencyTokenProvider: WalletAssetsUpdating {

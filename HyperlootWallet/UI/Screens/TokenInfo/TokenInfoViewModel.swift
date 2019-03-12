@@ -13,27 +13,37 @@ class TokenInfoViewModel {
         let itemImageURL: String?
         let itemName: String
         let itemShortDescription: String?
-        let itemPrice: NSAttributedString
+        let itemPrice: String
         let itemDescription: String?
     }
     
-    let token: HyperlootToken
-    let attributes: HyperlootToken.Attributes?
+    let asset: WalletAsset
+    
+    var attributes: HyperlootToken.Attributes? {
+        guard case .erc721(tokenId: _, totalCount: _, attributes: let attributes) = asset.value else {
+            return nil
+        }
+        
+        return attributes
+    }
+    
+    private lazy var priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = NSLocale.current
+        return formatter
+    } ()
     
     var presentation: Presentation {
         return Presentation(itemImageURL: attributes?.imageURL,
-                            itemName: attributes?.name ?? token.name,
+                            itemName: attributes?.name ?? asset.token.name,
                             itemShortDescription: attributes?.shortDescription,
-                            itemPrice: BalanceFormatter.format(balance: "$10",
-                                                               fontHeight: 20.0,
-                                                               change: .up(value: "2.0"),
-                                                               changeFontHeight: 15.0),
+                            itemPrice: priceFormatter.string(from: NSNumber(value: asset.totalPrice)) ?? "0.00",
                             itemDescription: attributes?.description)
     }
     
-    required init(token: HyperlootToken, attributes: HyperlootToken.Attributes?) {
-        self.token = token
-        self.attributes = attributes
+    required init(asset: WalletAsset) {
+        self.asset = asset
     }
     
 }

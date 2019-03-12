@@ -25,7 +25,12 @@ class HyperlootButton: UIButton {
         backgroundColor = AppStyle.Colors.darkContainer
         setTitleColor(AppStyle.Colors.defaultText, for: .normal)
         setTitleColor(AppStyle.Colors.disabledText, for: .disabled)
-        titleLabel?.font = UIFont.systemFont(ofSize: 20.0)
+        
+        if let titleLabel = titleLabel {
+            if titleLabel.font.pointSize > 20.0 {
+                titleLabel.font = UIFont.systemFont(ofSize: 20.0)
+            }
+        }
     }
     
     override var isEnabled: Bool {

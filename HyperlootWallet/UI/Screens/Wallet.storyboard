@@ -488,12 +488,12 @@ Manage your assets</string>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="295" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="HiC-TK-DpG">
                                                                 <rect key="frame" x="40" y="40" width="295" height="128"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" priority="250" constant="128" id="Tsl-TU-ru4"/>
+                                                                    <constraint firstAttribute="height" constant="128" id="Tsl-TU-ru4"/>
                                                                     <constraint firstAttribute="width" priority="250" constant="295" id="qE0-FX-xFT"/>
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="HiC-TK-DpG" secondAttribute="bottom" constant="40" id="2G4-Cc-ChJ"/>
                                                             <constraint firstItem="HiC-TK-DpG" firstAttribute="top" secondItem="XEW-0L-9aH" secondAttribute="top" constant="40" id="88q-ay-Eks"/>
@@ -507,19 +507,19 @@ Manage your assets</string>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Item name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzZ-2g-8dZ">
                                                                 <rect key="frame" x="20" y="0.0" width="335" height="36"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.95294117647058818" green="0.96470588235294119" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Brief description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUH-h2-8La">
                                                                 <rect key="frame" x="20" y="36" width="335" height="21.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="deviceRGB"/>
+                                                                <color key="textColor" red="0.67450980392156867" green="0.70980392156862748" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="$1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhP-fy-Ggc">
-                                                                <rect key="frame" x="20" y="67.5" width="335" height="39"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhP-fy-Ggc">
+                                                                <rect key="frame" x="20" y="67.5" width="225" height="39"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.95294117647058818" green="0.96470588235294119" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2M-i3-qEg">
@@ -529,22 +529,39 @@ Manage your assets</string>
                                                                     <constraint firstAttribute="height" constant="1" id="rSt-W8-L8g"/>
                                                                 </constraints>
                                                             </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3i-2C-sPY" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
+                                                                <rect key="frame" x="255" y="72" width="100" height="30"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="Hzl-qF-7UG"/>
+                                                                    <constraint firstAttribute="width" constant="100" id="P2W-WE-VL1"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="Send item">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="sendButtonPressed" destination="F4c-Rm-gHG" eventType="touchUpInside" id="t3m-PP-gax"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="yUH-h2-8La" firstAttribute="top" secondItem="xzZ-2g-8dZ" secondAttribute="bottom" id="4zH-hp-PbC"/>
                                                             <constraint firstAttribute="trailing" secondItem="yUH-h2-8La" secondAttribute="trailing" constant="20" id="AIn-e8-8TN"/>
+                                                            <constraint firstItem="G3i-2C-sPY" firstAttribute="centerY" secondItem="yhP-fy-Ggc" secondAttribute="centerY" id="KUG-Tj-A98"/>
                                                             <constraint firstItem="yUH-h2-8La" firstAttribute="leading" secondItem="gJm-sf-JM2" secondAttribute="leading" constant="20" id="L8G-YM-UTX"/>
                                                             <constraint firstAttribute="bottom" secondItem="yhP-fy-Ggc" secondAttribute="bottom" constant="30" id="Lkm-gL-I15"/>
                                                             <constraint firstItem="xzZ-2g-8dZ" firstAttribute="top" secondItem="gJm-sf-JM2" secondAttribute="top" id="PLV-7s-uCo"/>
+                                                            <constraint firstAttribute="trailing" secondItem="G3i-2C-sPY" secondAttribute="trailing" constant="20" id="SQt-WO-cSV"/>
                                                             <constraint firstItem="yhP-fy-Ggc" firstAttribute="top" secondItem="yUH-h2-8La" secondAttribute="bottom" constant="10" id="Z12-LH-5bI"/>
                                                             <constraint firstAttribute="trailing" secondItem="xzZ-2g-8dZ" secondAttribute="trailing" constant="20" id="b7b-NL-bYP"/>
                                                             <constraint firstAttribute="trailing" secondItem="D2M-i3-qEg" secondAttribute="trailing" constant="20" id="e1P-Wd-8N9"/>
                                                             <constraint firstItem="D2M-i3-qEg" firstAttribute="leading" secondItem="gJm-sf-JM2" secondAttribute="leading" constant="20" id="gcr-kC-gp1"/>
+                                                            <constraint firstItem="G3i-2C-sPY" firstAttribute="leading" secondItem="yhP-fy-Ggc" secondAttribute="trailing" constant="10" id="mVI-4B-jCM"/>
                                                             <constraint firstItem="yhP-fy-Ggc" firstAttribute="leading" secondItem="gJm-sf-JM2" secondAttribute="leading" constant="20" id="puI-bk-7H1"/>
                                                             <constraint firstItem="xzZ-2g-8dZ" firstAttribute="leading" secondItem="gJm-sf-JM2" secondAttribute="leading" constant="20" id="uKa-oP-G5i"/>
                                                             <constraint firstAttribute="bottom" secondItem="D2M-i3-qEg" secondAttribute="bottom" id="wIM-gI-Two"/>
-                                                            <constraint firstAttribute="trailing" secondItem="yhP-fy-Ggc" secondAttribute="trailing" constant="20" id="yIT-s4-kyL"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wB-ZG-z2H" userLabel="Traits (inactive)">
@@ -560,18 +577,18 @@ Manage your assets</string>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cj-jM-dxp">
                                                                 <rect key="frame" x="20" y="30" width="100" height="21.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.95294117647058818" green="0.96470588235294119" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcS-Sz-Eyj">
                                                                 <rect key="frame" x="20" y="61.5" width="335" height="122"/>
                                                                 <string key="text">High risk and high reward, the infamous AWP is recognizable by its signature report and one-shot, one-kill policy. It has been custom painted with a knotwork dragon.200 keys could never unlock its secrets</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.95294117647058818" green="0.96470588235294119" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="OcS-Sz-Eyj" secondAttribute="bottom" constant="40" id="5ZM-X1-KEU"/>
                                                             <constraint firstItem="1cj-jM-dxp" firstAttribute="leading" secondItem="RIC-60-YXW" secondAttribute="leading" constant="20" id="C3F-LI-jif"/>
@@ -584,7 +601,7 @@ Manage your assets</string>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Hrv-FT-NV1" secondAttribute="bottom" id="CHK-SV-MpG"/>
                                             <constraint firstItem="Hrv-FT-NV1" firstAttribute="top" secondItem="fGu-BV-tNe" secondAttribute="top" id="JtG-wi-zh0"/>
@@ -602,7 +619,7 @@ Manage your assets</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="irH-pC-m8c" firstAttribute="bottom" secondItem="75f-tW-NYL" secondAttribute="bottom" id="XS2-Fz-U5n"/>
                             <constraint firstItem="irH-pC-m8c" firstAttribute="trailing" secondItem="75f-tW-NYL" secondAttribute="trailing" id="cvD-kD-Sws"/>
@@ -622,7 +639,7 @@ Manage your assets</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5C-X1-mUY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1910" y="956"/>
+            <point key="canvasLocation" x="1909.5999999999999" y="955.77211394302856"/>
         </scene>
         <!--Receive assets-->
         <scene sceneID="4dl-jW-Gt3">

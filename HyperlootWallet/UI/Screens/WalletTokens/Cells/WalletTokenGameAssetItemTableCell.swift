@@ -24,6 +24,8 @@ class WalletTokenGameAssetItemTableCell: UITableViewCell {
     @IBOutlet weak var itemDescriptionLabel: UILabel!
     @IBOutlet weak var itemPriceLabel: UILabel!
     
+    var sendButtonCallback: WalletTokenSendButtonCallback?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -44,14 +46,19 @@ class WalletTokenGameAssetItemTableCell: UITableViewCell {
         itemDescriptionLabel.text = presentation.itemShortDescription
         itemPriceLabel.text = presentation.itemPrice
     }
+    
+    @IBAction func sendItemButtonTapped(_ sender: Any) {
+        sendButtonCallback?()
+    }
 }
 
 extension WalletTokenGameAssetItemTableCell: WalletTokenCellConfigurable {
-    func update(configuration: WalletTokenCellConfiguration<Any>) {
+    func update(configuration: WalletTokenCellConfiguration<Any>, sendButtonTapAction: WalletTokenSendButtonCallback?) {
+        self.sendButtonCallback = sendButtonTapAction
+        
         guard let presentation = configuration.presentation as? WalletTokenGameAssetItemPresentation else {
             return
         }
-        
         update(presentation: presentation)
     }
 }

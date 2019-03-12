@@ -38,8 +38,9 @@ class WalletTokenCellAction {
     }
 }
 
+typealias WalletTokenSendButtonCallback = () -> Void
 protocol WalletTokenCellConfigurable {
-    func update(configuration: WalletTokenCellConfiguration<Any>)
+    func update(configuration: WalletTokenCellConfiguration<Any>, sendButtonTapAction: WalletTokenSendButtonCallback?)
 }
 
 protocol WalletTokensProviding {
@@ -51,4 +52,5 @@ protocol WalletTokensProviding {
     func numberOfItems() -> Int
     func cellConfiguration(at index: Int) -> WalletTokenCellConfiguration<Any>
     func actionForItem(at index: Int) -> WalletTokenCellAction?
+    func sendItemAction(at index: Int) -> WalletTokenCellAction?
 }

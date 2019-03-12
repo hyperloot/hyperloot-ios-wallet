@@ -13,13 +13,12 @@ import UIKit
 class TokenInfoViewController: UIViewController {
     
     struct Input {
-        let token: HyperlootToken
-        let attributes: HyperlootToken.Attributes?
+        let asset: WalletAsset
     }
     
     var input: Input!
 
-    lazy var viewModel = TokenInfoViewModel(token: self.input.token, attributes: self.input.attributes)
+    lazy var viewModel = TokenInfoViewModel(asset: self.input.asset)
     
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
@@ -36,18 +35,16 @@ class TokenInfoViewController: UIViewController {
     
     func configureNavigationItem() {
         self.title = "Item Details"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send item", style: .plain, target: self, action: #selector(sendButtonPressed))
-        
         configureBackButtonWithNoText()
     }
 
     func updateUI() {
         let presentation = viewModel.presentation
         
-        itemImageView.setImage(withURL: presentation.itemImageURL, tag: view.tag)
+        itemImageView.setImage(withURL: presentation.itemImageURL, placeholderImage: UIImage(named: "item_info_placeholder"), tag: view.tag)
         itemNameLabel.text = presentation.itemName
         itemShortDescriptionLabel.text = presentation.itemShortDescription
-        itemPriceLabel.attributedText = presentation.itemPrice
+        itemPriceLabel.text = presentation.itemPrice
         itemDescriptionLabel.text = presentation.itemDescription
     }
     
@@ -56,7 +53,7 @@ class TokenInfoViewController: UIViewController {
             guard let viewController = segue.destination as? SendViewController else {
                 return
             }
-            viewController.input = SendViewController.Input(token: viewModel.token)
+            viewController.input = SendViewController.Input(token: viewModel.asset.token)
         }
     }
     @IBAction func sendButtonPressed() {

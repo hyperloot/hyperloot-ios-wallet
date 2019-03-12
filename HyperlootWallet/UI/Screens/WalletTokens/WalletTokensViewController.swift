@@ -81,13 +81,23 @@ class WalletTokensViewController: UIViewController {
             viewController.input = TokenTransactionsViewController.Input(asset: action.asset)
         } else if segue.isEqualTo(route: .showItemDetails) {
             guard let viewController = segue.destination as? TokenInfoViewController,
-                let token = selectedAction?.asset.token,
-                case .erc721(tokenId: _, totalCount: _, attributes: let attributes) = token.type else {
+                let asset = selectedAction?.asset, asset.token.isERC721() else {
                     return
             }
             
-            viewController.input = TokenInfoViewController.Input(token: token, attributes: attributes)
+            viewController.input = TokenInfoViewController.Input(asset: asset)
+        } else if segue.isEqualTo(route: .sendToken) {
+            guard let viewController = segue.destination as? SendViewController,
+                let asset = selectedAction?.asset else {
+                    return
+            }
+            viewController.input = SendViewController.Input(token: asset.token)
         }
+    }
+    
+    func perform(action: WalletTokenCellAction) {
+        selectedAction = action
+        performSegue(route: action.screen)
     }
 }
 
@@ -98,8 +108,7 @@ extension WalletTokensViewController: UITableViewDelegate {
         guard let action = walletTokenProvider.actionForItem(at: indexPath.row) else {
             return
         }
-        selectedAction = action
-        performSegue(route: action.screen)
+        perform(action: action)
     }
 }
 
@@ -120,7 +129,13 @@ extension WalletTokensViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        configurableCell.update(configuration: configuration)
+        configurableCell.update(configuration: configuration, sendButtonTapAction: { [weak self] in
+            guard let action = self?.walletTokenProvider.sendItemAction(at: indexPath.row) else {
+                return
+            }
+            
+            self?.perform(action: action)
+        })
         return cell
     }
     

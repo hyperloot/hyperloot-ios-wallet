@@ -77,6 +77,14 @@ class WalletGameAssetsTokenProvider: WalletTokensProviding {
         
         return WalletTokenCellAction(screen: .showTransactions, asset: asset)
     }
+    
+    func sendItemAction(at index: Int) -> WalletTokenCellAction? {
+        let asset = dataSourceAssets[index]
+        guard asset.token.isERC721(), asset.token.hasTokenId() else {
+            return nil
+        }
+        return WalletTokenCellAction(screen: .sendToken, asset: asset)
+    }
 }
 
 extension WalletGameAssetsTokenProvider: WalletAssetsUpdating {
