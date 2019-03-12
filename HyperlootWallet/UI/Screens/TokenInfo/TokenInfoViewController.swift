@@ -53,7 +53,7 @@ class TokenInfoViewController: UIViewController {
             guard let viewController = segue.destination as? SendViewController else {
                 return
             }
-            viewController.input = SendViewController.Input(token: viewModel.asset.token)
+            viewController.input = SendViewController.Input(asset: viewModel.asset)
         }
     }
     @IBAction func sendButtonPressed() {

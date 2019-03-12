@@ -37,22 +37,22 @@ class SendViewModel {
         var speed: Speed = .regular
     }
  
-    let token: HyperlootToken
+    let asset: WalletAsset
     var transactionInput: TransactionInput
     
-    required init(token: HyperlootToken) {
-        self.token = token
+    required init(asset: WalletAsset) {
+        self.asset = asset
         self.transactionInput = TransactionInput(tokenInfo: nil, nickname: nil, addressTo: nil, speed: .regular)
     }
     
     public func send(to: String, amount: String?, completion: @escaping () -> Void) {
         let amountToSend: HyperlootSendAmount
-        if token.isERC721() {
+        if asset.token.isERC721() {
             amountToSend = .uniqueToken
         } else {
             amountToSend = .amount(amount ?? "")
         }
-        Hyperloot.shared.send(token: token, to: to, amount: amountToSend) { (result) in
+        Hyperloot.shared.send(token: asset.token, to: to, amount: amountToSend) { (result) in
             switch result {
             case .success(let transaction):
                 print(transaction)
@@ -69,12 +69,12 @@ class SendViewModel {
         var hideTokenItemDetails = true
         var tokenPresentationType: Presentation.TokenPresentationType
         
-        switch token.type {
+        switch asset.value {
         case .ether:
             fallthrough
         case .erc20:
             hideRegularTokenDetails = false
-            tokenPresentationType = .regularToken(presentation: SendTokenDetailsPresentation(tokenSymbol: token.symbol,
+            tokenPresentationType = .regularToken(presentation: SendTokenDetailsPresentation(tokenSymbol: asset.token.symbol,
                                                                                              amountPlaceholderText: "Amount"))
         case .erc721(tokenId: let tokenId, totalCount: _, attributes: let attributes):
             hideTokenItemDetails = false

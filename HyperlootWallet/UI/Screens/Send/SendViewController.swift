@@ -11,12 +11,12 @@ import QRCodeReaderViewController
 class SendViewController: UIViewController {
     
     struct Input {
-        let token: HyperlootToken
+        let asset: WalletAsset
     }
     
     var input: Input!
     
-    lazy var viewModel = SendViewModel(token: self.input.token)
+    lazy var viewModel = SendViewModel(asset: self.input.asset)
     
     lazy var formController = FormController(scrollView: self.scrollView)
     

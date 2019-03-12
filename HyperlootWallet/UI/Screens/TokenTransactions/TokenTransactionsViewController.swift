@@ -37,15 +37,6 @@ class TokenTransactionsViewController: UIViewController {
         
         self.title = presentation.title
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.isEqualTo(route: .sendToken) {
-            guard let viewController = segue.destination as? SendViewController else {
-                return
-            }
-            viewController.input = SendViewController.Input(token: viewModel.asset.token)
-        }
-    }
 }
 
 extension TokenTransactionsViewController: UITableViewDelegate {

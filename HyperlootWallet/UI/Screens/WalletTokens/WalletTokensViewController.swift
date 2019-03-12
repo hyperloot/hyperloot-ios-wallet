@@ -91,7 +91,7 @@ class WalletTokensViewController: UIViewController {
                 let asset = selectedAction?.asset else {
                     return
             }
-            viewController.input = SendViewController.Input(token: asset.token)
+            viewController.input = SendViewController.Input(asset: asset)
         }
     }
     
