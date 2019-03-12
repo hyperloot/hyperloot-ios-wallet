@@ -70,7 +70,13 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
     }
     
     func actionForItem(at index: Int) -> WalletTokenCellAction? {
-        return nil
+        let asset = assets[index]
+        return WalletTokenCellAction(screen: .showTransactions, asset: asset)
+    }
+    
+    func sendItemAction(at index: Int) -> WalletTokenCellAction? {
+        let asset = assets[index]
+        return WalletTokenCellAction(screen: .sendToken, asset: asset)
     }
 }
 

@@ -35,7 +35,7 @@ class WalletTokenGameAssetTableCell: UITableViewCell {
 }
 
 extension WalletTokenGameAssetTableCell: WalletTokenCellConfigurable {
-    func update(configuration: WalletTokenCellConfiguration<Any>) {
+    func update(configuration: WalletTokenCellConfiguration<Any>, sendButtonTapAction: WalletTokenSendButtonCallback?) {
         guard let presentation = configuration.presentation as? WalletTokenGameAssetPresentation else {
             return
         }

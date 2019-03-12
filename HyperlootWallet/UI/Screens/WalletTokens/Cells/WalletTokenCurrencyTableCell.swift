@@ -33,6 +33,8 @@ class WalletTokenCurrencyTableCell: UITableViewCell {
         let index: Int
     }
     
+    var sendButtonCallback: WalletTokenSendButtonCallback?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -59,12 +61,14 @@ class WalletTokenCurrencyTableCell: UITableViewCell {
     }
     
     @IBAction func sendMoneyButtonTapped(_ sender: Any) {
-        
+        sendButtonCallback?()
     }
 }
 
 extension WalletTokenCurrencyTableCell: WalletTokenCellConfigurable {
-    func update(configuration: WalletTokenCellConfiguration<Any>) {
+    func update(configuration: WalletTokenCellConfiguration<Any>, sendButtonTapAction: WalletTokenSendButtonCallback?) {
+        self.sendButtonCallback = sendButtonTapAction
+        
         guard let presentation = configuration.presentation as? WalletTokenCurrencyPresentation else {
             return
         }

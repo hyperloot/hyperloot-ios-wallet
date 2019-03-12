@@ -230,8 +230,6 @@
 		F466FCE821617FA000092CC4 /* WalletTokenGameAssetItemTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTokenGameAssetItemTableCell.swift; sourceTree = "<group>"; };
 		F466FCEC2163349C00092CC4 /* WalletTokenGameAssetTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTokenGameAssetTableCell.swift; sourceTree = "<group>"; };
 		F466FCF02163354200092CC4 /* WalletTokenGameAssetTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTokenGameAssetTableCell.xib; sourceTree = "<group>"; };
-		F466FCF321633CDF00092CC4 /* GameAssetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAssetsViewController.swift; sourceTree = "<group>"; };
-		F466FCF521633D1900092CC4 /* GameAssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAssetsViewModel.swift; sourceTree = "<group>"; };
 		F466FCF721633E2300092CC4 /* HyperlootToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootToken.swift; sourceTree = "<group>"; };
 		F466FCFF216348BE00092CC4 /* Bundle+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Nib.swift"; sourceTree = "<group>"; };
 		F466FD012163497400092CC4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -466,14 +464,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		F449AEEF2234477C00EDEB51 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F466FD082164A4D200092CC4 /* TransactionTableCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		F449AEF822344B6A00EDEB51 /* WalletTokens */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,18 +622,10 @@
 			path = UnlockWallet;
 			sourceTree = "<group>";
 		};
-		F466FCF221633CC800092CC4 /* GameAssets */ = {
-			isa = PBXGroup;
-			children = (
-				F466FCF321633CDF00092CC4 /* GameAssetsViewController.swift */,
-				F466FCF521633D1900092CC4 /* GameAssetsViewModel.swift */,
-			);
-			path = GameAssets;
-			sourceTree = "<group>";
-		};
 		F466FD0321649ED800092CC4 /* TokenTransactions */ = {
 			isa = PBXGroup;
 			children = (
+				F4DE196622357195000A002C /* Cells */,
 				F466FD0421649EF400092CC4 /* TokenTransactionsViewController.swift */,
 				F466FD0621649EFE00092CC4 /* TokenTransactionsViewModel.swift */,
 			);
@@ -833,7 +815,6 @@
 				F466FD1421669E9F00092CC4 /* Receive */,
 				F466FD0C2165EE5600092CC4 /* TokenInfo */,
 				F466FD0321649ED800092CC4 /* TokenTransactions */,
-				F466FCF221633CC800092CC4 /* GameAssets */,
 				F48765F8215A1C9D003825FE /* EnterWalletKeys */,
 				F48765ED215A026F003825FE /* EnterPassword */,
 				F4CB7CEA21770BDC006B6217 /* EnterNickname */,
@@ -878,7 +859,6 @@
 			isa = PBXGroup;
 			children = (
 				F48CEC292152C5F800A43A47 /* Components */,
-				F449AEEF2234477C00EDEB51 /* Views */,
 				F48CEC142150DD1100A43A47 /* Screens */,
 				F47EDA38222BADFB00D6684E /* AppStyle.swift */,
 			);
@@ -972,6 +952,14 @@
 				F4CB7CED21770C29006B6217 /* EnterNicknameViewModel.swift */,
 			);
 			path = EnterNickname;
+			sourceTree = "<group>";
+		};
+		F4DE196622357195000A002C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F466FD082164A4D200092CC4 /* TransactionTableCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F4EEDD1021B7B40700C80A79 /* Models */ = {

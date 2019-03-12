@@ -29,17 +29,18 @@ class WalletTokenCellConfiguration<T> {
 }
 
 class WalletTokenCellAction {
-    let token: HyperlootToken
+    let asset: WalletAsset
     let screen: ScreenRoute
     
-    required init(screen: ScreenRoute, token: HyperlootToken) {
+    required init(screen: ScreenRoute, asset: WalletAsset) {
         self.screen = screen
-        self.token = token
+        self.asset = asset
     }
 }
 
+typealias WalletTokenSendButtonCallback = () -> Void
 protocol WalletTokenCellConfigurable {
-    func update(configuration: WalletTokenCellConfiguration<Any>)
+    func update(configuration: WalletTokenCellConfiguration<Any>, sendButtonTapAction: WalletTokenSendButtonCallback?)
 }
 
 protocol WalletTokensProviding {
@@ -51,4 +52,5 @@ protocol WalletTokensProviding {
     func numberOfItems() -> Int
     func cellConfiguration(at index: Int) -> WalletTokenCellConfiguration<Any>
     func actionForItem(at index: Int) -> WalletTokenCellAction?
+    func sendItemAction(at index: Int) -> WalletTokenCellAction?
 }

@@ -23,6 +23,8 @@ class WalletTokensViewController: UIViewController {
         return input.walletTokensProvider
     }
     
+    var selectedAction: WalletTokenCellAction? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,11 +70,45 @@ class WalletTokensViewController: UIViewController {
         
         tableView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.isEqualTo(route: .showTransactions) {
+            guard let action = selectedAction,
+                let viewController = segue.destination as? TokenTransactionsViewController else {
+                return
+            }
+
+            viewController.input = TokenTransactionsViewController.Input(asset: action.asset)
+        } else if segue.isEqualTo(route: .showItemDetails) {
+            guard let viewController = segue.destination as? TokenInfoViewController,
+                let asset = selectedAction?.asset, asset.token.isERC721() else {
+                    return
+            }
+            
+            viewController.input = TokenInfoViewController.Input(asset: asset)
+        } else if segue.isEqualTo(route: .sendToken) {
+            guard let viewController = segue.destination as? SendViewController,
+                let asset = selectedAction?.asset else {
+                    return
+            }
+            viewController.input = SendViewController.Input(token: asset.token)
+        }
+    }
+    
+    func perform(action: WalletTokenCellAction) {
+        selectedAction = action
+        performSegue(route: action.screen)
+    }
 }
 
 extension WalletTokensViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let action = walletTokenProvider.actionForItem(at: indexPath.row) else {
+            return
+        }
+        perform(action: action)
     }
 }
 
@@ -93,7 +129,13 @@ extension WalletTokensViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        configurableCell.update(configuration: configuration)
+        configurableCell.update(configuration: configuration, sendButtonTapAction: { [weak self] in
+            guard let action = self?.walletTokenProvider.sendItemAction(at: indexPath.row) else {
+                return
+            }
+            
+            self?.perform(action: action)
+        })
         return cell
     }
     

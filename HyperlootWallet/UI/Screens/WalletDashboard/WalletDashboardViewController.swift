@@ -35,6 +35,7 @@ class WalletDashboardViewController: UIViewController {
     func setup() {
         configureBackButtonWithNoText()
         showQRCodeButton.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
+        updateUI()
     }
     
     func updateUI() {
