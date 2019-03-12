@@ -27,18 +27,39 @@ class Hyperloot {
 
 extension Hyperloot: HyperlootTokensManaging {
     
+    func getPrices(for tokens: [HyperlootToken], cached: Bool, completion: @escaping ([HyperlootTokenPrice]) -> Void) {
+        tokenManager.getPrices(tokens: tokens, cached: cached, completion: completion)
+    }
+    
+    func getCachedInventory(completion: @escaping ([HyperlootToken]) -> Void) {
+        guard let address = currentWallet()?.addressString else {
+            completion([])
+            return
+        }
+        tokenManager.getCachedInventory(address: address, completion: completion)
+    }
+    
     func updateInventory(completion: @escaping ([HyperlootToken]) -> Void) {
-        guard let address = currentWallet()?.addressString else { return }
+        guard let address = currentWallet()?.addressString else {
+            completion([])
+            return
+        }
         tokenManager.updateInventory(address: address, completion: completion)
     }
     
     func getTransactions(type: HyperlootTransactionType, page: Int, completion: @escaping ([HyperlootTransaction]) -> Void) {
-        guard let address = currentWallet()?.addressString else { return }
+        guard let address = currentWallet()?.addressString else {
+            completion([])
+            return
+        }
         tokenManager.getTransactions(address: address, page: page, transactionType: type, completion: completion)
     }
     
     func send(token: HyperlootToken, to: String, amount: HyperlootSendAmount, completion: @escaping (Result<HyperlootTransaction, HyperlootTransactionSendError>) -> Void) {
-        guard let address = currentWallet()?.addressString else { return }
+        guard let address = currentWallet()?.addressString else {
+            completion(.failure(.validationFailed))
+            return
+        }
 
         let sendingValue: HyperlootTokenItemSender.SendingValue
         switch token.type {

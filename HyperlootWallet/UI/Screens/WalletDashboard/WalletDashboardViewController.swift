@@ -27,10 +27,13 @@ class WalletDashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updateUI()
+        viewModel.getAssets { [weak self] (cached: Bool) in
+            self?.updateUI()
+        }
     }
     
     func setup() {
+        configureBackButtonWithNoText()
         showQRCodeButton.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
     }
     
@@ -42,5 +45,32 @@ class WalletDashboardViewController: UIViewController {
         numberOfGameAssetsLabel.text = presentation.numberOfGameAssets
         currenciesBalanceLabel.text = presentation.currenciesBalance
         gameAssetsBalanceLabel.text = presentation.gameAssetsBalance
+        if presentation.showActivityIndicator {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+    }
+    
+    // MARK: - Actions
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.isEqualTo(route: .showWalletTokens) {
+            guard let viewController = segue.destination as? WalletTokensViewController,
+                let tokensProvider = viewModel.tokensProviderForListScreen else {
+                return
+            }
+            viewController.input = WalletTokensViewController.Input(walletTokensProvider: tokensProvider)
+        }
+    }
+    
+    @IBAction func showCurrenciesButtonTapped(_ sender: Any) {
+        viewModel.didSelectCurrenciesToShow()
+        performSegue(route: .showWalletTokens)
+    }
+    
+    @IBAction func showGameAssetsButtonTapped(_ sender: Any) {
+        viewModel.didSelectGameAssetsToShow()
+        performSegue(route: .showWalletTokens)
     }
 }

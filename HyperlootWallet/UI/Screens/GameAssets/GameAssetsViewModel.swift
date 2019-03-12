@@ -106,7 +106,7 @@ class GameAssetsViewModel {
         return tokensTree[index].tokens.count
     }
 
-    public func presentationForToken(at index: Int) -> DashboardTokenInfoSectionPresentation {
+    public func presentationForToken(at index: Int) -> WalletTokenGameAssetPresentation {
         let currentTokensTree = tokensTree[index]
         let token = currentTokensTree.rootToken
         var value: String = ""
@@ -119,18 +119,18 @@ class GameAssetsViewModel {
             value = TokenFormatter.erc721Total(count: totalCount)
         }
         let shouldHideSeparator = token.isERC721() && currentTokensTree.tokens.isEmpty == false
-        return DashboardTokenInfoSectionPresentation(tokenSymbol: TokenFormatter.tokenDisplay(name: token.name, symbol: token.symbol),
+        return WalletTokenGameAssetPresentation(tokenSymbol: TokenFormatter.tokenDisplay(name: token.name, symbol: token.symbol),
                                                      tokenValue: value,
                                                      hideSeparator: shouldHideSeparator)
     }
     
-    public func presentationForItem(at index: Int, section: Int) -> DashboardTokenItemInfoPresentation? {
+    public func presentationForItem(at index: Int, section: Int) -> WalletTokenAssetHeaderPresentation? {
         let token = tokensTree[section].tokens[index]
         guard token.isERC721(), hasTokenID(token: token),
             case .erc721(tokenId: let tokenId, totalCount: _, attributes: let attributes) = token.type else {
             return nil
         }
-        return DashboardTokenItemInfoPresentation(itemImageURL: attributes?.imageURL,
+        return WalletTokenAssetHeaderPresentation(itemImageURL: attributes?.imageURL,
                                                   itemName: attributes?.name ?? token.name,
                                                   itemShortDescription: attributes?.description,
                                                   itemPrice: NSAttributedString(string: TokenFormatter.erc721Value(tokenId: tokenId)))

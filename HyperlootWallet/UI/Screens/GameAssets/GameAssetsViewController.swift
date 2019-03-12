@@ -46,8 +46,8 @@ class GameAssetsViewController: UIViewController {
         tableView.sectionHeaderHeight = CGFloat(44.0)
         tableView.separatorStyle = .none
         
-        tableView.register(DashboardTokenInfoSectionView.loadNib(), forHeaderFooterViewReuseIdentifier: DashboardTokenInfoSectionView.viewId())
-        tableView.register(DashboardTokenItemInfoTableCell.loadNib(), forCellReuseIdentifier: DashboardTokenItemInfoTableCell.viewId())
+        tableView.register(WalletTokenGameAssetTableCell.loadNib(), forHeaderFooterViewReuseIdentifier: WalletTokenGameAssetTableCell.viewId())
+        tableView.register(WalletTokenAssetHeaderTableCell.loadNib(), forCellReuseIdentifier: WalletTokenAssetHeaderTableCell.viewId())
     }
     
     private func updateBalance() {
@@ -75,7 +75,7 @@ class GameAssetsViewController: UIViewController {
 }
 
 extension GameAssetsViewController: DashboardTokenInfoSectionDelegate {
-    func didTapOnTokenInfoSection(view: DashboardTokenInfoSectionView) {
+    func didTapOnTokenInfoSection(view: WalletTokenGameAssetTableCell) {
         let section = view.tag
         viewModel.didSelectTokenToShowTransactions(at: section)
         performSegue(route: .showTransactions)
@@ -103,7 +103,7 @@ extension GameAssetsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: DashboardTokenInfoSectionView.viewId()) as? DashboardTokenInfoSectionView else {
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: WalletTokenGameAssetTableCell.viewId()) as? WalletTokenGameAssetTableCell else {
             return nil
         }
         
@@ -114,7 +114,7 @@ extension GameAssetsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DashboardTokenItemInfoTableCell.viewId(), for: indexPath) as? DashboardTokenItemInfoTableCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WalletTokenAssetHeaderTableCell.viewId(), for: indexPath) as? WalletTokenAssetHeaderTableCell,
             let presentation = viewModel.presentationForItem(at: indexPath.row, section: indexPath.section) else {
             return UITableViewCell()
         }

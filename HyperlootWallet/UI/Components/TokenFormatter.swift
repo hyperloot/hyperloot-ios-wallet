@@ -25,6 +25,11 @@ class TokenFormatter {
         return "\(EtherNumberFormatter.full.string(from: amount, decimals: decimals)) \(symbol)"
     }
     
+    static func erc20BalanceToDouble(from value: String, decimals: Int) -> Double {
+        guard let amount = BigInt(value) else { return 0 }
+        return Double(EtherNumberFormatter.full.string(from: amount, decimals: decimals)) ?? 0
+    }
+    
     static func tokenDisplay(name: String, symbol: String) -> String {
         return "\(name) (\(symbol))"
     }
