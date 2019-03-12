@@ -51,11 +51,7 @@ class WalletAssetManager {
         }
         
         func hasTokenId(asset: WalletAsset) -> Bool {
-            if case .erc721(tokenId: let tokenId, totalCount: _, attributes: _) = asset.value {
-                return tokenId != HyperlootToken.Constants.noTokenId
-            }
-            
-            return false
+            return asset.token.hasTokenId()
         }
         
         var filteredAssets = allAssets.filter { $0.assetType == type }

@@ -25,7 +25,7 @@ extension UIImageView {
                 }
             }
         } else {
-            image = nil
+            image = placeholderImage
         }
     }
     

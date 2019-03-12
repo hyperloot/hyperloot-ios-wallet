@@ -17,11 +17,12 @@ class WalletGameAssetsTokenProvider: WalletTokensProviding {
     private var shouldShowActivityIndicator: Bool = false
     var assets: [WalletAsset] = []
     var gameAssetsDataSource: [WalletTokenCellConfiguration<Any>] = []
+    var dataSourceAssets: [WalletAsset] = []
     
     var completion: (() -> Void)? = nil
     
     let walletAssetManager: WalletAssetManager
-    
+        
     required init(walletAssetManager: WalletAssetManager) {
         self.walletAssetManager = walletAssetManager
     }
@@ -68,7 +69,13 @@ class WalletGameAssetsTokenProvider: WalletTokensProviding {
     }
     
     func actionForItem(at index: Int) -> WalletTokenCellAction? {
-        return nil
+        let asset = dataSourceAssets[index]
+        
+        if asset.token.isERC721() && asset.token.hasTokenId() {
+            return WalletTokenCellAction(screen: .showItemDetails, asset: asset)
+        }
+        
+        return WalletTokenCellAction(screen: .showTransactions, asset: asset)
     }
 }
 
@@ -91,6 +98,7 @@ extension WalletGameAssetsTokenProvider: WalletAssetsUpdating {
         }
         
         var dataSource: [WalletTokenCellConfiguration<Any>] = []
+        dataSourceAssets.removeAll()
         
         let assetIds = assets.map { $0.token.contractAddress }.reduce(into: Array<String>()) { (ids, assetId) in
             if ids.contains(assetId) == false {
@@ -106,6 +114,18 @@ extension WalletGameAssetsTokenProvider: WalletAssetsUpdating {
             var totalPrice: Double
             var items: [WalletTokenCellConfiguration<Any>] = []
             if isERC721(asset: firstAsset) {
+                
+                // Need to transform first asset no Token with no ID to make it clickable
+                func transformFirstAssetToNoID() -> WalletAsset {
+                    guard let noIDMainItem = HyperlootTokenTransformer.tokenizedItem(from: firstAsset.token, tokenId: HyperlootToken.Constants.noTokenId, attributes: nil) else {
+                        return firstAsset
+                    }
+                    return WalletAsset(token: noIDMainItem,
+                                       price: firstAsset.price)
+                }
+                
+                dataSourceAssets.append(transformFirstAssetToNoID())
+                
                 totalPrice = assetsForId.map { $0.totalPrice }.reduce(0.0, +)
                 assetsForId.forEach { (asset) in
                     guard let presentation = gameAssetItemPresentation(asset: asset) else {
@@ -116,9 +136,11 @@ extension WalletGameAssetsTokenProvider: WalletAssetsUpdating {
                     let configuration = WalletTokenCellConfiguration<Any>(cellIdentifier: WalletTokenGameAssetItemTableCell.viewId(),
                                                                           presentation: presentation)
                     items.append(configuration)
+                    dataSourceAssets.append(asset)
                 }
             } else {
                 totalPrice = firstAsset.totalPrice
+                dataSourceAssets.append(firstAsset)
             }
 
             let headerPresentation = WalletTokenGameAssetPresentation(tokenSymbol: TokenFormatter.tokenDisplay(name: firstAsset.token.name, symbol: firstAsset.token.symbol),

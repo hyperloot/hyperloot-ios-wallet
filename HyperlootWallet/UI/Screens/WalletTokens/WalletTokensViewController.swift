@@ -79,6 +79,14 @@ class WalletTokensViewController: UIViewController {
             }
 
             viewController.input = TokenTransactionsViewController.Input(asset: action.asset)
+        } else if segue.isEqualTo(route: .showItemDetails) {
+            guard let viewController = segue.destination as? TokenInfoViewController,
+                let token = selectedAction?.asset.token,
+                case .erc721(tokenId: _, totalCount: _, attributes: let attributes) = token.type else {
+                    return
+            }
+            
+            viewController.input = TokenInfoViewController.Input(token: token, attributes: attributes)
         }
     }
 }

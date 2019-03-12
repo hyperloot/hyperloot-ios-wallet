@@ -17,6 +17,7 @@ class TokenTransactionsViewModel {
     
     let asset: WalletAsset
     var transactions: [HyperlootTransaction] = []
+    var inventory: [HyperlootToken] = []
     
     var transactionPresentations: [TransactionCellPresentation] = []
     
@@ -38,7 +39,16 @@ class TokenTransactionsViewModel {
     }
     
     public func load(completion: @escaping () -> Void) {
+
+        let dispatchGroup = DispatchGroup()
         
+        dispatchGroup.enter()
+        Hyperloot.shared.getCachedInventory { [weak self] (tokens) in
+            self?.inventory = tokens
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
         Hyperloot.shared.getTransactions(type: transactionsType, page: 0) { [weak self] (transactions) in
             guard let strongSelf = self else { return }
             strongSelf.transactionPresentations.removeAll()
@@ -47,11 +57,38 @@ class TokenTransactionsViewModel {
                 let date = strongSelf.dateFormatter.string(from: Date(timeIntervalSince1970: $0.timestamp))
                 let presentation = TransactionCellPresentation(date: date,
                                                                tokenValue: strongSelf.priceInCurrency(from: $0),
-                                                               showTransactionValueSign: strongSelf.shouldShowTransactionSign(for: $0),
-                                                               details: strongSelf.value(from: $0))
+                                                               details: strongSelf.value(from: $0),
+                                                               image: strongSelf.image)
                 strongSelf.transactionPresentations.append(presentation)
             }
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
             completion()
+        }
+    }
+    
+    private func attributes(tokenId: String) -> HyperlootToken.Attributes? {
+        return inventory
+            .map { (token) -> HyperlootToken.Attributes? in
+                guard case .erc721(tokenId: let foundTokenId, totalCount: _, attributes: let attributes) = token.type,
+                    tokenId == foundTokenId else {
+                        return nil
+                }
+                return attributes
+            }
+            .compactMap { $0 }
+            .first
+    }
+    
+    private var image: TransactionCellPresentation.Image {
+        switch asset.value {
+        case .erc20, .ether:
+            return .none
+        case .erc721(tokenId: let tokenId, totalCount: _, attributes: _):
+            let imageURL = attributes(tokenId: tokenId)?.imageURL
+            return .imageURL(imageURL)
         }
     }
     
@@ -62,14 +99,6 @@ class TokenTransactionsViewModel {
         }
         
         return .tokens(contractAddress: contractAddress)
-    }
-    
-    private func shouldShowTransactionSign(for transaction: HyperlootTransaction) -> Bool {
-        if case .uniqueToken = transaction.value {
-            return false
-        }
-        
-        return true
     }
     
     private func priceInCurrency(from transaction: HyperlootTransaction) -> BalanceFormatter.TransactionAmount {
@@ -106,7 +135,8 @@ class TokenTransactionsViewModel {
         case .token(value: let value, decimals: let decimals, let symbol):
             transactionValue = TokenFormatter.erc20Value(from: value, decimals: decimals, symbol: symbol)
         case .uniqueToken(tokenId: let tokenId):
-            transactionValue = TokenFormatter.erc721Value(tokenId: tokenId)
+            let tokenName = attributes(tokenId: tokenId)?.name
+            transactionValue = tokenName ?? "\(asset.token.name) #\(tokenId)"
         }
         
         return transactionValue
@@ -114,17 +144,6 @@ class TokenTransactionsViewModel {
     
     private var walletAddress: String {
         return Hyperloot.shared.currentWallet()?.addressString ?? ""
-    }
-    
-    private var balanceInCurrency: String {
-        switch asset.value {
-        case .ether(amount: let amount):
-            fallthrough
-        case .erc20(amount: let amount):
-            return TokenFormatter.erc20Value(formattedValue: amount, symbol: asset.token.symbol)
-        case .erc721(tokenId: _, totalCount: let totalCount, attributes: _):
-            return TokenFormatter.erc721NameAndTotal(count: totalCount, tokenName: asset.token.name)
-        }
     }
     
     private var title: String {

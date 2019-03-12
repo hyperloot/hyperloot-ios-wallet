@@ -39,7 +39,7 @@ class WalletTokenGameAssetItemTableCell: UITableViewCell {
     }
 
     func update(presentation: WalletTokenGameAssetItemPresentation) {
-        itemImageView.setImage(withURL: presentation.itemImageURL, tag: self.tag)
+        itemImageView.setImage(withURL: presentation.itemImageURL, placeholderImage: UIImage(named: "item_placeholder"), tag: self.tag)
         itemNameLabel.text = presentation.itemName
         itemDescriptionLabel.text = presentation.itemShortDescription
         itemPriceLabel.text = presentation.itemPrice

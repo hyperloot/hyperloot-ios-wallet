@@ -16,4 +16,12 @@ extension HyperlootToken {
         
         return isERC721
     }
+        
+    func hasTokenId() -> Bool {
+        if case .erc721(tokenId: let tokenId, totalCount: _, attributes: _) = self.type {
+            return tokenId != HyperlootToken.Constants.noTokenId
+        }
+        
+        return false
+    }
 }
