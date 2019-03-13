@@ -57,6 +57,10 @@ class SendViewController: UIViewController {
         }
     }
     
+    func updateUI() {
+        
+    }
+    
     @IBAction func scanQRCodeButtonPressed() {
         let controller = QRCodeReaderViewController(cancelButtonTitle: "Cancel")
         controller.delegate = self
@@ -74,6 +78,24 @@ class SendViewController: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         }
     }
+    
+    @IBAction func pasteButtonPressed() {
+        guard let value = UIPasteboard.general.string else {
+            return
+        }
+        
+        enter(address: value)
+    }
+    
+    func enter(address: String) {
+        let result = viewModel.didPasteOrScan(address: address)
+        switch result {
+        case .dontUpdate: break // do nothing with text field
+        case .update(value: let value):
+            toAddressTextField.text = value
+        }
+        updateUI()
+    }
 }
 
 extension SendViewController: QRCodeReaderDelegate {
@@ -88,7 +110,7 @@ extension SendViewController: QRCodeReaderDelegate {
     }
     
     func reader(_ reader: QRCodeReaderViewController!, didScanResult result: String!) {
-        // TODO: pass value to view model and update text field
+        enter(address: result)
         dismissQRCode(reader: reader)
     }
 }

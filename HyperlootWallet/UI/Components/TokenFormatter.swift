@@ -10,6 +10,13 @@ import BigInt
 
 class TokenFormatter {
     
+    static var priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = NSLocale.current
+        return formatter
+    } ()
+    
     static func isTo(walletAddress: String, transaction: HyperlootTransaction) -> Bool {
         if transaction.to.lowercased() == walletAddress.lowercased() {
             return true
@@ -50,7 +57,11 @@ class TokenFormatter {
         return "\(tokenName), \(total)"
     }
     
-    static func erc721Value(tokenId: String) -> String {
-        return "#ID [\(tokenId)]"
+    static func erc721Token(itemName: String?, tokenName: String, tokenId: String) -> String {
+        return itemName ?? "\(tokenName) #\(tokenId)"
+    }
+    
+    static func formattedPrice(doubleValue: Double) -> String {
+        return priceFormatter.string(from: NSNumber(value: doubleValue)) ?? "0.00"
     }
 }

@@ -27,18 +27,11 @@ class TokenInfoViewModel {
         return attributes
     }
     
-    private lazy var priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = NSLocale.current
-        return formatter
-    } ()
-    
     var presentation: Presentation {
         return Presentation(itemImageURL: attributes?.imageURL,
                             itemName: attributes?.name ?? asset.token.name,
                             itemShortDescription: attributes?.shortDescription,
-                            itemPrice: priceFormatter.string(from: NSNumber(value: asset.totalPrice)) ?? "0.00",
+                            itemPrice: TokenFormatter.formattedPrice(doubleValue: asset.totalPrice),
                             itemDescription: attributes?.description)
     }
     
