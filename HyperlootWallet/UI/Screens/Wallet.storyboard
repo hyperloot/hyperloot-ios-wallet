@@ -884,7 +884,7 @@ Manage your assets</string>
                                                                 <color key="tintColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" keyboardAppearance="alert"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_list_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1WT-xp-6PZ">
                                                                 <rect key="frame" x="10" y="14" width="16" height="16"/>
@@ -1054,7 +1054,7 @@ Manage your assets</string>
                                                                 <color key="tintColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" textContentType="email"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFS-X1-xNl">
                                                                 <rect key="frame" x="255" y="41.5" width="50" height="30"/>
@@ -1322,59 +1322,101 @@ Manage your assets</string>
         <!--Find a user-->
         <scene sceneID="cpX-t5-Cfj">
             <objects>
-                <viewController id="Dl5-5X-jwd" sceneMemberID="viewController">
+                <viewController id="Dl5-5X-jwd" customClass="FindAUserViewController" customModule="HyperlootWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3cV-ns-QnP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vvp-yn-2VW">
-                                <rect key="frame" x="20" y="84" width="335" height="29"/>
+                                <rect key="frame" x="10" y="74" width="355" height="29"/>
                                 <color key="tintColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert"/>
+                                <connections>
+                                    <action selector="didChangeText" destination="Dl5-5X-jwd" eventType="editingChanged" id="BKZ-He-BDl"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbg-c1-2Gz">
-                                <rect key="frame" x="0.0" y="132" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="112" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="0.096532534246575347" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="rrg-lh-S6b"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nsg-TN-duv">
-                                <rect key="frame" x="0.0" y="133" width="375" height="534"/>
+                                <rect key="frame" x="0.0" y="113" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.1333333333" green="0.1529411765" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZcF-0i-yFG">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="user_search_cell" rowHeight="66" id="ZcF-0i-yFG" customClass="FindUserTableCell" customModule="HyperlootWallet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZcF-0i-yFG" id="0eF-dG-Rml">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username#identifier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bu-hA-k3P">
+                                                    <rect key="frame" x="10" y="10" width="355" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTQ-Fh-Lwa">
+                                                    <rect key="frame" x="10" y="35.5" width="355" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="0.79422624143835618" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ZTQ-Fh-Lwa" secondAttribute="bottom" constant="10" id="asF-rF-zDP"/>
+                                                <constraint firstAttribute="trailing" secondItem="0Bu-hA-k3P" secondAttribute="trailing" constant="10" id="dPy-PX-6Eh"/>
+                                                <constraint firstItem="ZTQ-Fh-Lwa" firstAttribute="top" secondItem="0Bu-hA-k3P" secondAttribute="bottom" constant="5" id="fma-wv-iqj"/>
+                                                <constraint firstItem="0Bu-hA-k3P" firstAttribute="top" secondItem="0eF-dG-Rml" secondAttribute="top" constant="10" id="ljD-9S-ad8"/>
+                                                <constraint firstItem="ZTQ-Fh-Lwa" firstAttribute="leading" secondItem="0eF-dG-Rml" secondAttribute="leading" constant="10" id="mFh-6z-lNL"/>
+                                                <constraint firstItem="0Bu-hA-k3P" firstAttribute="leading" secondItem="0eF-dG-Rml" secondAttribute="leading" constant="10" id="yBz-Zf-Xeh"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZTQ-Fh-Lwa" secondAttribute="trailing" constant="10" id="ynz-4U-6VZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1058823529" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="userNameLabel" destination="0Bu-hA-k3P" id="LnQ-P8-O35"/>
+                                            <outlet property="walletAddressLabel" destination="ZTQ-Fh-Lwa" id="icB-aw-LMJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Dl5-5X-jwd" id="yDQ-DZ-joN"/>
+                                    <outlet property="delegate" destination="Dl5-5X-jwd" id="w5U-kO-Qz8"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vvp-yn-2VW" firstAttribute="top" secondItem="PIn-So-CoF" secondAttribute="top" constant="20" id="9lA-lh-bvG"/>
+                            <constraint firstItem="vvp-yn-2VW" firstAttribute="top" secondItem="PIn-So-CoF" secondAttribute="top" constant="10" id="9lA-lh-bvG"/>
                             <constraint firstItem="Kbg-c1-2Gz" firstAttribute="leading" secondItem="PIn-So-CoF" secondAttribute="leading" id="Sgf-L0-QxZ"/>
-                            <constraint firstItem="PIn-So-CoF" firstAttribute="trailing" secondItem="vvp-yn-2VW" secondAttribute="trailing" constant="20" id="Uz7-nq-ACa"/>
+                            <constraint firstItem="PIn-So-CoF" firstAttribute="trailing" secondItem="vvp-yn-2VW" secondAttribute="trailing" constant="10" id="Uz7-nq-ACa"/>
                             <constraint firstItem="Kbg-c1-2Gz" firstAttribute="trailing" secondItem="PIn-So-CoF" secondAttribute="trailing" id="WKf-r9-Kdv"/>
                             <constraint firstItem="PIn-So-CoF" firstAttribute="bottom" secondItem="nsg-TN-duv" secondAttribute="bottom" id="YQr-Ma-JHB"/>
                             <constraint firstItem="nsg-TN-duv" firstAttribute="top" secondItem="Kbg-c1-2Gz" secondAttribute="bottom" id="aQp-on-9Rv"/>
-                            <constraint firstItem="vvp-yn-2VW" firstAttribute="leading" secondItem="PIn-So-CoF" secondAttribute="leading" constant="20" id="eOn-IV-RRi"/>
+                            <constraint firstItem="vvp-yn-2VW" firstAttribute="leading" secondItem="PIn-So-CoF" secondAttribute="leading" constant="10" id="eOn-IV-RRi"/>
                             <constraint firstItem="nsg-TN-duv" firstAttribute="leading" secondItem="PIn-So-CoF" secondAttribute="leading" id="jhw-8e-1IC"/>
                             <constraint firstItem="PIn-So-CoF" firstAttribute="trailing" secondItem="nsg-TN-duv" secondAttribute="trailing" id="l67-pQ-bxO"/>
-                            <constraint firstItem="nsg-TN-duv" firstAttribute="top" secondItem="vvp-yn-2VW" secondAttribute="bottom" constant="20" id="luN-kQ-9hY"/>
+                            <constraint firstItem="nsg-TN-duv" firstAttribute="top" secondItem="vvp-yn-2VW" secondAttribute="bottom" constant="10" id="luN-kQ-9hY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PIn-So-CoF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Find a user" id="Vtx-0r-tFQ">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="pPD-6C-DmN"/>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="pPD-6C-DmN">
+                            <connections>
+                                <action selector="cancelButtonPressed" destination="Dl5-5X-jwd" id="M9r-ZX-XcE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nicknameTextField" destination="vvp-yn-2VW" id="snl-rq-dUV"/>
+                        <outlet property="tableView" destination="nsg-TN-duv" id="02D-4R-OtD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKT-1Z-Efb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
