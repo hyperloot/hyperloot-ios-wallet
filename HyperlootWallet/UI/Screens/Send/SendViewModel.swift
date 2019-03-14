@@ -54,7 +54,7 @@ class SendViewModel {
         var tokenInfo: TokenInfo?
         var nickname: String?
         var addressTo: String?
-        var speed: Speed = .regular
+        var speed: Speed = .fast
     }
  
     let asset: WalletAsset
