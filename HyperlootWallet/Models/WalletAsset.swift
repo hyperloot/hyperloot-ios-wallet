@@ -40,7 +40,7 @@ class WalletAsset {
     var assetType: AssetType {
         switch value {
         case .erc20, .ether:
-            return (price != nil) ? .currency : .gameAsset
+            return .currency
         case .erc721:
             return .gameAsset
         }

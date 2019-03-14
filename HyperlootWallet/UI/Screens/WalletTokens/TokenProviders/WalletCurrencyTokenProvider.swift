@@ -29,16 +29,9 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
                                         shouldShowActivityIndicator: shouldShowActivityIndicator)
     }
     
-    private lazy var priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = NSLocale.current
-        return formatter
-    } ()
-    
     var totalAmount: String {
         let total = assets.map { $0.totalPrice }.reduce(0.0, +)
-        return priceFormatter.string(from: NSNumber(value: total)) ?? "0.00"
+        return TokenFormatter.formattedPrice(doubleValue: total)
     }
     
     // MARK: - Token Providing
@@ -63,7 +56,7 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
         let presentation = WalletTokenCurrencyPresentation(icon: .none,
                                                            symbol: asset.token.symbol,
                                                            tokensAmount: "\(asset.tokensAmount)",
-            amountInCurrency: priceFormatter.string(from: NSNumber(value: asset.totalPrice)) ?? "",
+            amountInCurrency: TokenFormatter.formattedPrice(doubleValue: asset.totalPrice),
             index: index)
         return WalletTokenCellConfiguration(cellIdentifier: WalletTokenCurrencyTableCell.viewId(),
                                             presentation: presentation)
@@ -82,7 +75,9 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
 
 extension WalletCurrencyTokenProvider: WalletAssetsUpdating {
     func didReceive(assets: [WalletAsset], cached: Bool) {
-        self.assets = walletAssetManager.assets(by: .currency)
+        self.assets = walletAssetManager.assets(by: .currency).sorted(by: { (a1, a2) -> Bool in
+            return a1.totalPrice > a2.totalPrice
+        })
         shouldShowActivityIndicator = (cached != false)
         completion?()
     }

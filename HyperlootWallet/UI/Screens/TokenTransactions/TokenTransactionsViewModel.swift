@@ -27,13 +27,6 @@ class TokenTransactionsViewModel {
         return dateFormatter
     } ()
     
-    private lazy var priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = NSLocale.current
-        return formatter
-    } ()
-    
     init(asset: WalletAsset) {
         self.asset = asset
     }
@@ -116,7 +109,7 @@ class TokenTransactionsViewModel {
         
         let assetPrice = asset.price?.price ?? 0.0
         let total = assetPrice * tokensAmount
-        transactionPrice = priceFormatter.string(from: NSNumber(value: total)) ?? "0.0"
+        transactionPrice = TokenFormatter.formattedPrice(doubleValue: total)
         
         return TokenFormatter.isTo(walletAddress: walletAddress, transaction: transaction)
             ? BalanceFormatter.TransactionAmount.positive(value: transactionPrice)
@@ -135,8 +128,8 @@ class TokenTransactionsViewModel {
         case .token(value: let value, decimals: let decimals, let symbol):
             transactionValue = TokenFormatter.erc20Value(from: value, decimals: decimals, symbol: symbol)
         case .uniqueToken(tokenId: let tokenId):
-            let tokenName = attributes(tokenId: tokenId)?.name
-            transactionValue = tokenName ?? "\(asset.token.name) #\(tokenId)"
+            let itemName = attributes(tokenId: tokenId)?.name
+            transactionValue = TokenFormatter.erc721Token(itemName: itemName, tokenName: asset.token.name, tokenId: tokenId)
         }
         
         return transactionValue

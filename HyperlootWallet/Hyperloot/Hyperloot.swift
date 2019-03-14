@@ -119,4 +119,8 @@ extension Hyperloot: HyperlootWalletManaging {
     func importWallet(user: HyperlootUser, password: String, importType: HyperlootWalletImportType, completion: @escaping (HyperlootWallet?, Error?) -> Void) {
         walletManager.importWallet(type: importType, password: password, completion: completion)
     }
+    
+    func findUsers(nickname: String, page: Int = 0, completion: @escaping ([HyperlootUserSuggestion]?, Error?) -> Void) -> Cancelable {
+        return api.findUsers(nickname: nickname, page: page, completion: completion)
+    }
 }

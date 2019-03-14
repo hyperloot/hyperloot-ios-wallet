@@ -33,16 +33,9 @@ class WalletGameAssetsTokenProvider: WalletTokensProviding {
                                         shouldShowActivityIndicator: shouldShowActivityIndicator)
     }
     
-    private lazy var priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = NSLocale.current
-        return formatter
-    } ()
-    
     var totalAmount: String {
         let total = assets.map { $0.totalPrice }.reduce(0.0, +)
-        return priceFormatter.string(from: NSNumber(value: total)) ?? "0.00"
+        return TokenFormatter.formattedPrice(doubleValue: total)
     }
     
     // MARK: - Token Providing
@@ -90,13 +83,17 @@ class WalletGameAssetsTokenProvider: WalletTokensProviding {
 extension WalletGameAssetsTokenProvider: WalletAssetsUpdating {
     
     private func gameAssetItemPresentation(asset: WalletAsset) -> WalletTokenGameAssetItemPresentation? {
-        guard case .erc721(tokenId: _, totalCount: _, attributes: let attributes) = asset.value else {
+        guard case .erc721(tokenId: let tokenId, totalCount: _, attributes: let attributes) = asset.value else {
             return nil
         }
+
+        var name = attributes?.name ?? ""
+        if name.isEmpty { name = asset.token.name }
+        
         return WalletTokenGameAssetItemPresentation(itemImageURL: attributes?.imageURL,
-                                                    itemName: attributes?.name ?? asset.token.name,
-                                                    itemShortDescription: attributes?.description,
-                                                    itemPrice: priceFormatter.string(from: NSNumber(value: asset.totalPrice)) ?? "0.00")
+                                                    itemName: name,
+                                                    itemShortDescription: TokenFormatter.erc721Token(itemDescription: attributes?.description, tokenId: tokenId),
+                                                    itemPrice: TokenFormatter.formattedPrice(doubleValue: asset.totalPrice))
     }
     
     func buildDataSource() {
@@ -152,7 +149,7 @@ extension WalletGameAssetsTokenProvider: WalletAssetsUpdating {
             }
 
             let headerPresentation = WalletTokenGameAssetPresentation(tokenSymbol: TokenFormatter.tokenDisplay(name: firstAsset.token.name, symbol: firstAsset.token.symbol),
-                                                                           tokenValue: priceFormatter.string(from: NSNumber(value: totalPrice)) ?? "0.00")
+                                                                           tokenValue: TokenFormatter.formattedPrice(doubleValue: totalPrice))
 
             let headerCellConfiguration = WalletTokenCellConfiguration<Any>(cellIdentifier: WalletTokenGameAssetTableCell.viewId(),
                                                                             presentation: headerPresentation)

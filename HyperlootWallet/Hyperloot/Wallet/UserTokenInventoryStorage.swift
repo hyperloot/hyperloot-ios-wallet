@@ -123,6 +123,7 @@ class UserTokenInventoryStorage {
                 return
             }
             self?.inventory = inventory
+            self?.isInventoryLoaded = true
             completion(true)
         }
     }

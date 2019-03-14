@@ -24,7 +24,7 @@ class WalletTokenGameAssetTableCell: UITableViewCell {
         super.awakeFromNib()
         
         let selectedView = UIView(frame: CGRect.zero)
-        selectedView.backgroundColor = UIColor(hex: 0x222730)
+        selectedView.backgroundColor = AppStyle.Colors.defaultBackground
         self.selectedBackgroundView = selectedView
     }
     

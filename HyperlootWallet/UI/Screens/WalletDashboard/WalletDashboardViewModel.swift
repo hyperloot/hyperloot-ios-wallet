@@ -25,13 +25,6 @@ class WalletDashboardViewModel {
     var currencies: [WalletAsset] = []
     var gameAssets: [WalletAsset] = []
     
-    private lazy var priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = NSLocale.current
-        return formatter
-    } ()
-    
     private var showActivityIndicator: Bool = false
 
     var presentation: Presentation {
@@ -81,13 +74,21 @@ class WalletDashboardViewModel {
     }
     
     private var currenciesBalance: String {
-        let total = currencies.map { $0.totalPrice }.reduce(0.0, +)
-        return priceFormatter.string(from: NSNumber(value: total)) ?? "0.00"
+        return formattedBalanceOf(assetType: .currency)
     }
     
     private var gameAssetsBalance: String {
-        let total = gameAssets.map { $0.totalPrice }.reduce(0.0, +)
-        return priceFormatter.string(from: NSNumber(value: total)) ?? "0.00"
+        return formattedBalanceOf(assetType: .gameAsset)
+    }
+    
+    private func formattedBalanceOf(assetType: WalletAsset.AssetType) -> String {
+        let assetsToCalculate: [WalletAsset]
+        switch assetType {
+            case .gameAsset: assetsToCalculate = gameAssets
+            case .currency: assetsToCalculate = currencies
+        }
+        let total = assetsToCalculate.map { $0.totalPrice }.reduce(0.0, +)
+        return TokenFormatter.formattedPrice(doubleValue: total)
     }
 }
 
