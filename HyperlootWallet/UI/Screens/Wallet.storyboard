@@ -767,7 +767,7 @@ Manage your assets</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1136"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="VRk-Pa-uAr">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYk-oU-JVT" userLabel="Header">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -885,6 +885,9 @@ Manage your assets</string>
                                                                 <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" keyboardAppearance="alert"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="Mug-vy-teu" id="AYH-Ws-3s5"/>
+                                                                </connections>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_list_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1WT-xp-6PZ">
                                                                 <rect key="frame" x="10" y="14" width="16" height="16"/>
@@ -982,63 +985,8 @@ Manage your assets</string>
                                                     <constraint firstItem="KKp-G2-8Qv" firstAttribute="centerY" secondItem="Ixu-7V-2ZK" secondAttribute="centerY" id="wtG-Ik-QrB"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bwk-k4-kBl" userLabel="Nickname">
-                                                <rect key="frame" x="0.0" y="352" width="375" height="91"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="T1n-UJ-QBL" userLabel="TextInputContainer">
-                                                        <rect key="frame" x="10" y="0.0" width="355" height="81"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V88-MM-Zb0">
-                                                                <rect key="frame" x="10" y="10" width="81" height="21.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="&lt;unknown user&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zl8-Z1-mKf">
-                                                                <rect key="frame" x="10" y="41.5" width="335" height="29.5"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                                                <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qJ-LX-2JV">
-                                                                <rect key="frame" x="0.0" y="0.0" width="355" height="81"/>
-                                                                <connections>
-                                                                    <segue destination="76C-Eg-akv" kind="presentation" id="vkR-7q-nrp"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.090196078430000007" green="0.1058823529" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="2qJ-LX-2JV" secondAttribute="trailing" id="2J9-KF-Js9"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Zl8-Z1-mKf" secondAttribute="trailing" constant="10" id="3aM-xK-7Ui"/>
-                                                            <constraint firstItem="Zl8-Z1-mKf" firstAttribute="leading" secondItem="T1n-UJ-QBL" secondAttribute="leading" constant="10" id="7kU-Hr-f3D"/>
-                                                            <constraint firstItem="2qJ-LX-2JV" firstAttribute="top" secondItem="T1n-UJ-QBL" secondAttribute="top" id="7uV-B0-qW0"/>
-                                                            <constraint firstItem="2qJ-LX-2JV" firstAttribute="leading" secondItem="T1n-UJ-QBL" secondAttribute="leading" id="UpV-3A-aGd"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Zl8-Z1-mKf" secondAttribute="bottom" constant="10" id="VNq-py-uOU"/>
-                                                            <constraint firstItem="Zl8-Z1-mKf" firstAttribute="top" secondItem="V88-MM-Zb0" secondAttribute="bottom" constant="10" id="Y02-pn-TTc"/>
-                                                            <constraint firstItem="V88-MM-Zb0" firstAttribute="leading" secondItem="T1n-UJ-QBL" secondAttribute="leading" constant="10" id="nnx-df-eYT"/>
-                                                            <constraint firstAttribute="bottom" secondItem="2qJ-LX-2JV" secondAttribute="bottom" id="p49-JA-BdB"/>
-                                                            <constraint firstAttribute="height" constant="81" id="vd3-FI-Qob"/>
-                                                            <constraint firstItem="V88-MM-Zb0" firstAttribute="top" secondItem="T1n-UJ-QBL" secondAttribute="top" constant="10" id="vef-eF-u7Q"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="T1n-UJ-QBL" firstAttribute="top" secondItem="Bwk-k4-kBl" secondAttribute="top" id="CVI-dv-4m8"/>
-                                                    <constraint firstItem="T1n-UJ-QBL" firstAttribute="leading" secondItem="Bwk-k4-kBl" secondAttribute="leading" constant="10" id="CmA-vo-Jn1"/>
-                                                    <constraint firstAttribute="height" priority="999" constant="91" id="Jmj-Bt-jBs"/>
-                                                    <constraint firstAttribute="trailing" secondItem="T1n-UJ-QBL" secondAttribute="trailing" constant="10" id="dIN-9b-atT"/>
-                                                    <constraint firstAttribute="bottom" secondItem="T1n-UJ-QBL" secondAttribute="bottom" constant="10" id="eS5-me-Hij"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Us9-fW-DEx" userLabel="Address">
-                                                <rect key="frame" x="0.0" y="443" width="375" height="91"/>
+                                                <rect key="frame" x="0.0" y="352" width="375" height="91"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="KZY-bB-PRy" userLabel="TextInputContainer">
                                                         <rect key="frame" x="10" y="0.0" width="355" height="81"/>
@@ -1055,6 +1003,9 @@ Manage your assets</string>
                                                                 <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" textContentType="email"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="Mug-vy-teu" id="qbd-8m-u5w"/>
+                                                                </connections>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFS-X1-xNl">
                                                                 <rect key="frame" x="255" y="41.5" width="50" height="30"/>
@@ -1115,7 +1066,7 @@ Manage your assets</string>
                                                 <viewLayoutGuide key="safeArea" id="ULK-G9-ihm"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Trs-Ge-4bz" userLabel="Transaction Speed" customClass="SendTransactionSpeedView" customModule="HyperlootWallet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="534" width="375" height="120"/>
+                                                <rect key="frame" x="0.0" y="443" width="375" height="120"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asg-sA-G3n" userLabel="Regular speed">
                                                         <rect key="frame" x="10" y="10" width="355" height="40"/>
@@ -1227,7 +1178,7 @@ Manage your assets</string>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fij-bq-FE1" userLabel="Action Button">
-                                                <rect key="frame" x="0.0" y="654" width="375" height="77"/>
+                                                <rect key="frame" x="0.0" y="563" width="375" height="77"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgE-bo-DwV" customClass="HyperlootButton" customModule="HyperlootWallet" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="5" width="355" height="57"/>

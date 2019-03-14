@@ -21,6 +21,11 @@ class SendViewModel {
         let tokenPresentationType: TokenPresentationType
     }
     
+    enum ValidationError: String {
+        case amount = "Amount"
+        case address = "Address"
+    }
+    
     enum UpdateTextFieldResult {
         case dontUpdate
         case update(value: String)
@@ -63,22 +68,30 @@ class SendViewModel {
                                                  speed: .regular)
     }
     
-    public func send(to: String, amount: String?, completion: @escaping () -> Void) {
-        let amountToSend: HyperlootSendAmount
-        if asset.token.isERC721() {
-            amountToSend = .uniqueToken
-        } else {
-            amountToSend = .amount(amount ?? "")
+    enum SendResult {
+        case success(transactionHash: String)
+        case error(HyperlootTransactionSendError)
+    }
+    
+    public func send(completion: @escaping (SendResult) -> Void) {
+        guard let tokenInfo = transactionInput.tokenInfo, let addressTo = transactionInput.addressTo else {
+            completion(.error(.validationFailed))
+            return
         }
-        Hyperloot.shared.send(token: asset.token, to: to, amount: amountToSend) { (result) in
+        
+        let amountToSend: HyperlootSendAmount
+        switch tokenInfo {
+        case .erc20(amount: let amount): amountToSend = .amount(amount)
+        case .erc721: amountToSend = .uniqueToken
+        }
+        
+        Hyperloot.shared.send(token: asset.token, to: addressTo, amount: amountToSend) { (result) in
             switch result {
             case .success(let transaction):
-                print(transaction)
+                completion(.success(transactionHash: transaction.transactionHash))
             case .failure(let error):
-                print(error)
+                completion(.error(error))
             }
-            
-            completion()
         }
     }
     
@@ -115,16 +128,43 @@ class SendViewModel {
                             tokenPresentationType: tokenPresentationInfo.tokenPresentationType)
     }
     
-    // MARK: - Actions
-    
-    private func validate(enteredAmount: String?) -> String {
-        guard let amount = enteredAmount else {
-            return ""
+    public func validate() -> [ValidationError] {
+        var errors: [ValidationError] = []
+        
+        guard let tokenInfo = transactionInput.tokenInfo else {
+            return [.amount]
         }
-        // TODO: check if value is above limit
-        return amount
+        switch tokenInfo {
+        case .erc20(amount: let amount):
+            if isValid(amount: amount) == false {
+                errors.append(.amount)
+            }
+        case .erc721: break
+        }
+        
+        if Address(string: transactionInput.addressTo ?? "") == nil {
+            errors.append(.address)
+        }
+        
+        return errors
     }
     
+    public func errorMessage(sendError: HyperlootTransactionSendError) -> String {
+        switch sendError {
+        case .failedToSend:
+            return "There was a problem during sending your assets. Please try again later."
+        case .failedToSignTransaction:
+            return "Unfortunately we weren't be able to sign your transaction. Please try again later."
+        case .insufficientBalance:
+            return "Unfortunately you don't have enough balance to send this transaction. Please check the amount you've entered and try again later."
+        case .invalidNonceOrGasInfo:
+            return "There was an issue with the gas station. Please try again."
+        case .validationFailed:
+            return "Transaction is not valid. Please fill the required information and try again later."
+        }
+    }
+    
+    // MARK: - Actions
     func didChangeAmount(value: String?) -> UpdateTextFieldResult {
         guard asset.token.isERC721() == false else {
             return .dontUpdate
@@ -136,14 +176,65 @@ class SendViewModel {
         return (validatedValue != value) ? .update(value: validatedValue) : .dontUpdate
     }
     
-    func didPasteOrScan(address: String) -> UpdateTextFieldResult {
-        guard let addressTo = Address(string: address)?.description else {
-            return .dontUpdate
+    enum AddressSource {
+        case manual
+        case paste
+        case scan
+    }
+    
+    func update(address: String, source: AddressSource) -> UpdateTextFieldResult {
+        let addressTo = Address(string: address)?.description
+        if addressTo != nil || source == .manual {
+            transactionInput.nickname = nil
+            transactionInput.addressTo = addressTo
+            
+            return .update(value: addressTo ?? address)
         }
         
-        transactionInput.nickname = nil
-        transactionInput.addressTo = addressTo
+        return .dontUpdate
+    }
+    
+    func canChange(amount: String?, in range: NSRange, with string: String) -> Bool {
+        guard string.isEmpty == false else {
+            return true
+        }
+        let newAmount = (amount ?? "") as NSString
+        let newString = newAmount.replacingCharacters(in: range, with: string)
+        return newString.range(of: "^[0-9]+[.]?[0-9]*$", options: .regularExpression) != nil
+    }
+    
+    // MARK: - Private
+    
+    private func isValid(amount: String) -> Bool {
+        return amount.range(of: "^[0-9]+([.][0-9]+)?$", options: .regularExpression) != nil
+    }
+    
+    private func validate(enteredAmount: String?) -> String {
+        guard let amount = enteredAmount, isValid(amount: amount) else {
+            return ""
+        }
         
-        return .update(value: addressTo)
+        let maxTokenAmount: String
+        switch asset.value {
+        case .erc20(amount: let availableAmount):
+            maxTokenAmount = availableAmount
+        case .ether(amount: let availableAmount):
+            maxTokenAmount = availableAmount
+        case .erc721:
+            maxTokenAmount = "0"
+        }
+        
+        let formatter = EtherNumberFormatter.full
+        
+        guard let enteredAmount = formatter.number(from: amount, decimals: asset.token.decimals),
+            let maxAmount = formatter.number(from: maxTokenAmount, decimals: asset.token.decimals) else {
+                return amount
+        }
+        
+        if enteredAmount > maxAmount {
+            return formatter.string(from: maxAmount, decimals: asset.token.decimals)
+        }
+        
+        return amount
     }
 }

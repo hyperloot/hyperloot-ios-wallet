@@ -44,8 +44,12 @@ class FormController: NSObject {
     }
     
     public func willHideForm() {
-        activeTextField?.resignFirstResponder()
+        activeTextFieldResignFirstResponder()
         unsubscribeFromNotifications()
+    }
+    
+    public func activeTextFieldResignFirstResponder() {
+        activeTextField?.resignFirstResponder()
     }
     
     private func subscribeToNotifications() {
@@ -109,6 +113,16 @@ extension FormController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         scrollToActiveTextField()
+        textFieldDelegate?.textFieldDidBeginEditing?(textField)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let result = textFieldDelegate?.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        return result
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        textFieldDelegate?.textFieldDidEndEditing?(textField, reason: reason)
     }
         
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
