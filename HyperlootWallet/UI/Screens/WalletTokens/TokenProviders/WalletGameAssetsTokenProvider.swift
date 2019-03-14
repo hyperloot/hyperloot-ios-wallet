@@ -83,12 +83,16 @@ class WalletGameAssetsTokenProvider: WalletTokensProviding {
 extension WalletGameAssetsTokenProvider: WalletAssetsUpdating {
     
     private func gameAssetItemPresentation(asset: WalletAsset) -> WalletTokenGameAssetItemPresentation? {
-        guard case .erc721(tokenId: _, totalCount: _, attributes: let attributes) = asset.value else {
+        guard case .erc721(tokenId: let tokenId, totalCount: _, attributes: let attributes) = asset.value else {
             return nil
         }
+
+        var name = attributes?.name ?? ""
+        if name.isEmpty { name = asset.token.name }
+        
         return WalletTokenGameAssetItemPresentation(itemImageURL: attributes?.imageURL,
-                                                    itemName: attributes?.name ?? asset.token.name,
-                                                    itemShortDescription: attributes?.description,
+                                                    itemName: name,
+                                                    itemShortDescription: TokenFormatter.erc721Token(itemDescription: attributes?.description, tokenId: tokenId),
                                                     itemPrice: TokenFormatter.formattedPrice(doubleValue: asset.totalPrice))
     }
     

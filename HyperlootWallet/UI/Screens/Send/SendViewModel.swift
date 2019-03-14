@@ -114,7 +114,7 @@ class SendViewModel {
             hideTokenItemDetails = false
             let presentation = SendTokenItemDetailsPresentation(imageURL: attributes?.imageURL,
                                                                 name: TokenFormatter.erc721Token(itemName: attributes?.name, tokenName: asset.token.name, tokenId: tokenId),
-                                                                description: attributes?.description ?? "#\(tokenId)",
+                                                                description: TokenFormatter.erc721Token(itemDescription: attributes?.description, tokenId: tokenId),
                                                                 price: TokenFormatter.formattedPrice(doubleValue: asset.totalPrice))
             tokenPresentationType = .tokenItem(presentation: presentation)
         }

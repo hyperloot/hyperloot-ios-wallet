@@ -58,7 +58,15 @@ class TokenFormatter {
     }
     
     static func erc721Token(itemName: String?, tokenName: String, tokenId: String) -> String {
-        return itemName ?? "\(tokenName) #\(tokenId)"
+        var name = itemName ?? ""
+        if name.isEmpty { name = "\(tokenName) #\(tokenId)" }
+        return name
+    }
+    
+    static func erc721Token(itemDescription: String?, tokenId: String) -> String {
+        var description = itemDescription ?? ""
+        if description.isEmpty { description = "#\(tokenId)" }
+        return description
     }
     
     static func formattedPrice(doubleValue: Double) -> String {
