@@ -90,7 +90,10 @@ class SendViewController: UIViewController {
     private func showAlertForSend(success transactionHash: String) {
         let message = "You've just sent your assets! Transaction confirmation: \(transactionHash)"
         let controller = UIAlertController(title: "Congratulations!", message: message, preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let action = UIAlertAction(title: "OK", style: .default) { [weak self] (_) in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }
+        controller.addAction(action)
         present(controller, animated: true, completion: nil)
     }
     
@@ -110,7 +113,6 @@ class SendViewController: UIViewController {
             switch result {
             case .success(transactionHash: let hash):
                 self?.showAlertForSend(success: hash)
-                self?.navigationController?.popViewController(animated: true)
             case .error(let error):
                 self?.showAlertForSend(error: error)
             }
