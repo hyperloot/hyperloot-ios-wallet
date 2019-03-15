@@ -25,6 +25,7 @@ class CoinMarketCap: HTTPService {
     }
     
     enum CoinMarketCapRequest: String {
+        case metadata = "/v1/cryptocurrency/info"
         case quotes = "/v1/cryptocurrency/quotes/latest"
         case map = "/v1/cryptocurrency/map"
     }
@@ -89,5 +90,11 @@ class CoinMarketCap: HTTPService {
         let parameters: Parameters = [ "symbol": getSymbols(from: symbols),
                                        "convert": convertToCurrency]
         return coinMarketCapRequest(requestModel: .quotes, parameters: parameters, completion: completion)
+    }
+    
+    @discardableResult
+    func metadata(symbols: [String], completion: @escaping (CoinMarketCapListResponse?, CoinMarketCapError?) -> Void) -> Cancelable {
+        let parameters: Parameters = [ "symbol": getSymbols(from: symbols)]
+        return coinMarketCapRequest(requestModel: .metadata, parameters: parameters, completion: completion)
     }
 }

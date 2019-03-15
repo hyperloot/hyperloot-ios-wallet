@@ -52,7 +52,7 @@ class WalletTokenCurrencyTableCell: UITableViewCell {
         case .none:
             iconImageView.image = UIImage(named: Constants.placeholderIconImageName)
         case .imageName(let name):
-            iconImageView.image = UIImage(named: name)
+            iconImageView.image = UIImage(named: name) ?? UIImage(named: Constants.placeholderIconImageName)
         case .imageURL(let imageURL):
             iconImageView.setImage(withURL: imageURL,
                                    placeholderImage: UIImage(named: Constants.placeholderIconImageName),

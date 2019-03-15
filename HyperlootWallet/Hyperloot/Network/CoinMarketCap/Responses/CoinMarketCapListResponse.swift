@@ -34,12 +34,14 @@ struct CoinMarketCapListResponse: ImmutableMappable {
         var id: String?
         var name: String?
         var symbol: String?
+        var logo: String?
         var quote: [String: Price]?
         
         init(map: Map) throws {
             id <- map["id"]
             name <- map["name"]
             symbol <- map["symbol"]
+            logo <- map["logo"]
             quote <- map["quote"]
         }
     }

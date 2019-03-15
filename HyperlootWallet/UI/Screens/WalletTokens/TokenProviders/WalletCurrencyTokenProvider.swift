@@ -53,7 +53,7 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
     
     func cellConfiguration(at index: Int) -> WalletTokenCellConfiguration<Any> {
         let asset = assets[index]
-        let presentation = WalletTokenCurrencyPresentation(icon: .none,
+        let presentation = WalletTokenCurrencyPresentation(icon: .imageName(asset.token.symbol.lowercased()),
                                                            symbol: asset.token.symbol,
                                                            tokensAmount: "\(asset.tokensAmount)",
             amountInCurrency: TokenFormatter.formattedPrice(doubleValue: asset.totalPrice),
