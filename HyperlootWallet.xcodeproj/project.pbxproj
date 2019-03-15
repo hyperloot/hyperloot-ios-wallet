@@ -79,6 +79,7 @@
 		F466FD20216734C600092CC4 /* SendTokenItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD1F216734C600092CC4 /* SendTokenItemDetailsView.swift */; };
 		F466FD222167357400092CC4 /* SendTokenDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD212167357400092CC4 /* SendTokenDetailsView.swift */; };
 		F468E71C21B660620031423F /* Blockscout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F468E71B21B660620031423F /* Blockscout.swift */; };
+		F46A9CAB223B6BDD008FA84A /* HyperlootERC721DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46A9CAA223B6BDD008FA84A /* HyperlootERC721DataHelper.swift */; };
 		F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */; };
 		F475DB8D216C6A5900B157BC /* HyperlootNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */; };
 		F47EDA252225287000D6684E /* CoinMarketCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA242225287000D6684E /* CoinMarketCap.swift */; };
@@ -251,6 +252,7 @@
 		F466FD1F216734C600092CC4 /* SendTokenItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenItemDetailsView.swift; sourceTree = "<group>"; };
 		F466FD212167357400092CC4 /* SendTokenDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenDetailsView.swift; sourceTree = "<group>"; };
 		F468E71B21B660620031423F /* Blockscout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blockscout.swift; sourceTree = "<group>"; };
+		F46A9CAA223B6BDD008FA84A /* HyperlootERC721DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootERC721DataHelper.swift; sourceTree = "<group>"; };
 		F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionSpeedView.swift; sourceTree = "<group>"; };
 		F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootNickname.swift; sourceTree = "<group>"; };
 		F47EDA242225287000D6684E /* CoinMarketCap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCap.swift; sourceTree = "<group>"; };
@@ -891,11 +893,12 @@
 		F4A011D1220431B200A19AF0 /* Send */ = {
 			isa = PBXGroup;
 			children = (
+				F44B3311220ADB69005CEDE3 /* HyperlootTransactionSendError.swift */,
 				F4A011D4220431E400A19AF0 /* GasStation.swift */,
 				F4A011D62204321C00A19AF0 /* NonceProvider.swift */,
 				F4A011D2220431D200A19AF0 /* HyperlootTokenItemSender.swift */,
 				F44B330F220AD93D005CEDE3 /* HyperlootTransactionSender.swift */,
-				F44B3311220ADB69005CEDE3 /* HyperlootTransactionSendError.swift */,
+				F46A9CAA223B6BDD008FA84A /* HyperlootERC721DataHelper.swift */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -1323,6 +1326,7 @@
 				F4BA241121C38F4B005F68A5 /* EtherNumberFormatter.swift in Sources */,
 				F466FD20216734C600092CC4 /* SendTokenItemDetailsView.swift in Sources */,
 				F48765E62158B4F3003825FE /* EnterEmailViewController.swift in Sources */,
+				F46A9CAB223B6BDD008FA84A /* HyperlootERC721DataHelper.swift in Sources */,
 				F4CC392B21C0EBCE00C00FE6 /* BlockscoutGetTokenResponse.swift in Sources */,
 				F48CEC132150CF2D00A43A47 /* UserManager.swift in Sources */,
 				F44B3312220ADB69005CEDE3 /* HyperlootTransactionSendError.swift in Sources */,
