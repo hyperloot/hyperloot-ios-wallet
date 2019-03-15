@@ -17,10 +17,13 @@ class FormController: NSObject {
     
     public weak var textFieldDelegate: UITextFieldDelegate?
     
-    init(scrollView: UIScrollView) {
+    var scrollViewTextFieldOffset: CGFloat = 120.0
+    
+    init(scrollView: UIScrollView, scrollViewTextFieldOffset: CGFloat = 120.0) {
         super.init()
         
         self.scrollView = scrollView
+        self.scrollViewTextFieldOffset = scrollViewTextFieldOffset
         configureScrollView()
     }
     
@@ -41,7 +44,12 @@ class FormController: NSObject {
     }
     
     public func willHideForm() {
+        activeTextFieldResignFirstResponder()
         unsubscribeFromNotifications()
+    }
+    
+    public func activeTextFieldResignFirstResponder() {
+        activeTextField?.resignFirstResponder()
     }
     
     private func subscribeToNotifications() {
@@ -92,8 +100,10 @@ extension FormController: UITextFieldDelegate {
         }
         
         var frame = textField.convert(textField.bounds, to: scrollView)
-        frame.origin.y -= 180.0
-        scrollView.setContentOffset(CGPoint(x: 0.0, y: frame.origin.y), animated: true)
+        frame.origin.y -= scrollViewTextFieldOffset
+        UIView.animate(withDuration: 0.25) {
+            scrollView.setContentOffset(CGPoint(x: 0.0, y: frame.origin.y), animated: false)
+        }
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -103,6 +113,16 @@ extension FormController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         scrollToActiveTextField()
+        textFieldDelegate?.textFieldDidBeginEditing?(textField)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let result = textFieldDelegate?.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        return result
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        textFieldDelegate?.textFieldDidEndEditing?(textField, reason: reason)
     }
         
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

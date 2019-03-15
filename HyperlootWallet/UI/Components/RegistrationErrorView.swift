@@ -11,6 +11,8 @@ class RegistrationErrorView: UIView {
     
     @IBOutlet weak var textLabel: UILabel!
     
+    private lazy var gradientLayer = HyperlootGradientLayer()
+    
     public var text: String? {
         didSet {
             textLabel.text = text
@@ -20,7 +22,24 @@ class RegistrationErrorView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setupAppearance()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer.frame = bounds
+    }
+    
+    private func setupAppearance() {
+        backgroundColor = UIColor.clear
+        
+        layer.addSublayer(self.gradientLayer)
+        layer.masksToBounds = true
         layer.cornerRadius = 10
+        
+        textLabel.textColor = AppStyle.Colors.defaultText
+        bringSubview(toFront: textLabel)
     }
     
     public func setVisible(_ value: Bool, animated: Bool) {

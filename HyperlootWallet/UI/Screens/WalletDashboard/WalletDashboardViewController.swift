@@ -2,125 +2,76 @@
 //  WalletDashboardViewController.swift
 //  HyperlootWallet
 //
-//  Copyright © 2018 Hyperloot DAO. All rights reserved.
+//  Copyright © 2019 Hyperloot DAO. All rights reserved.
 //
 
 import UIKit
 
 class WalletDashboardViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var showQRCodeButton: HyperlootButton!
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var numberOfCurrenciesLabel: UILabel!
+    @IBOutlet weak var currenciesBalanceLabel: UILabel!
+    @IBOutlet weak var numberOfGameAssetsLabel: UILabel!
+    @IBOutlet weak var gameAssetsBalanceLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     lazy var viewModel = WalletDashboardViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureBackButtonWithNoText()
-        configureTableView()
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let shouldShowActivityIndicator = viewModel.shouldShowActivityIndicator
-        
-        if shouldShowActivityIndicator {
-            showActivityIndicator()
-        }
-        viewModel.loadWallet { [weak self] in
-            if shouldShowActivityIndicator {
-                self?.hideActivityIndicator()
-            }
-            self?.updateBalance()
-            self?.tableView.reloadData()
+        viewModel.getAssets { [weak self] (cached: Bool) in
+            self?.updateUI()
         }
     }
     
-
-    private func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.sectionHeaderHeight = CGFloat(44.0)
-        tableView.separatorStyle = .none
-        
-        tableView.register(DashboardTokenInfoSectionView.loadNib(), forHeaderFooterViewReuseIdentifier: DashboardTokenInfoSectionView.viewId())
-        tableView.register(DashboardTokenItemInfoTableCell.loadNib(), forCellReuseIdentifier: DashboardTokenItemInfoTableCell.viewId())
+    func setup() {
+        configureBackButtonWithNoText()
+        showQRCodeButton.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
+        updateUI()
     }
     
-    private func updateBalance() {
-        balanceLabel.attributedText = viewModel.balance
+    func updateUI() {
+        let presentation = viewModel.presentation
+        
+        headerLabel.text = presentation.headerTitle
+        numberOfCurrenciesLabel.text = presentation.numberOfCurrencies
+        numberOfGameAssetsLabel.text = presentation.numberOfGameAssets
+        currenciesBalanceLabel.text = presentation.currenciesBalance
+        gameAssetsBalanceLabel.text = presentation.gameAssetsBalance
+        if presentation.showActivityIndicator {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
     }
+    
+    // MARK: - Actions
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.isEqualTo(route: .showTransactions) {
-            guard let viewController = segue.destination as? TokenTransactionsViewController,
-                let token = viewModel.selectedToken else {
+        if segue.isEqualTo(route: .showWalletTokens) {
+            guard let viewController = segue.destination as? WalletTokensViewController,
+                let tokensProvider = viewModel.tokensProviderForListScreen else {
                 return
             }
-            
-            viewController.input = TokenTransactionsViewController.Input(token: token)
-        } else if segue.isEqualTo(route: .showItemDetails) {
-            guard let viewController = segue.destination as? TokenInfoViewController,
-                let token = viewModel.selectedToken,
-            case .erc721(tokenId: _, totalCount: _, attributes: let attributes) = token.type else {
-                return
-            }
-            
-            viewController.input = TokenInfoViewController.Input(token: token, attributes: attributes)
+            viewController.input = WalletTokensViewController.Input(walletTokensProvider: tokensProvider)
         }
     }
-}
-
-extension WalletDashboardViewController: DashboardTokenInfoSectionDelegate {
-    func didTapOnTokenInfoSection(view: DashboardTokenInfoSectionView) {
-        let section = view.tag
-        viewModel.didSelectTokenToShowTransactions(at: section)
-        performSegue(route: .showTransactions)
-    }
-}
-
-extension WalletDashboardViewController: UITableViewDelegate {
- 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        viewModel.didSelectTokenToShowDetails(at: indexPath.row, section: indexPath.section)
-        performSegue(route: .showItemDetails)
-    }
-}
-
-extension WalletDashboardViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections()
+    @IBAction func showCurrenciesButtonTapped(_ sender: Any) {
+        viewModel.didSelectCurrenciesToShow()
+        performSegue(route: .showWalletTokens)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfTokensInSection(at: section)
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: DashboardTokenInfoSectionView.viewId()) as? DashboardTokenInfoSectionView else {
-            return nil
-        }
-        
-        view.update(presentation: viewModel.presentationForToken(at: section))
-        view.tag = section
-        view.delegate = self
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DashboardTokenItemInfoTableCell.viewId(), for: indexPath) as? DashboardTokenItemInfoTableCell,
-            let presentation = viewModel.presentationForItem(at: indexPath.row, section: indexPath.section) else {
-            return UITableViewCell()
-        }
-        
-        cell.update(presentation: presentation)
-        cell.tag = indexPath.row
-        return cell
+    @IBAction func showGameAssetsButtonTapped(_ sender: Any) {
+        viewModel.didSelectGameAssetsToShow()
+        performSegue(route: .showWalletTokens)
     }
 }

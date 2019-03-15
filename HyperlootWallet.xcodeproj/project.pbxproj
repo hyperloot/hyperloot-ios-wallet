@@ -25,6 +25,21 @@
 		F434D62421EC672B00572288 /* BlockscoutInventoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434D62321EC672B00572288 /* BlockscoutInventoryProvider.swift */; };
 		F434D62621EC674600572288 /* OpenSeaInventoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434D62521EC674600572288 /* OpenSeaInventoryProvider.swift */; };
 		F43BB94A21C569B7005A97B3 /* BlockscoutTransactionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43BB94921C569B7005A97B3 /* BlockscoutTransactionResponse.swift */; };
+		F449AEDE2230DD8200EDEB51 /* HyperlootGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEDD2230DD8200EDEB51 /* HyperlootGradientLayer.swift */; };
+		F449AEE12230F14500EDEB51 /* WalletDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEE02230F14500EDEB51 /* WalletDashboardViewController.swift */; };
+		F449AEE32230F16100EDEB51 /* WalletDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEE22230F16100EDEB51 /* WalletDashboardViewModel.swift */; };
+		F449AEE52230F1DD00EDEB51 /* HyperlootDashboardCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEE42230F1DD00EDEB51 /* HyperlootDashboardCategoryView.swift */; };
+		F449AEEB22310B0600EDEB51 /* WalletAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEEA22310B0600EDEB51 /* WalletAsset.swift */; };
+		F449AEEE22310BA400EDEB51 /* WalletAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEED22310BA400EDEB51 /* WalletAssetManager.swift */; };
+		F449AEF1223447CC00EDEB51 /* WalletTokensAmountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEF0223447CC00EDEB51 /* WalletTokensAmountHeaderView.swift */; };
+		F449AEF52234486A00EDEB51 /* WalletTokensTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEF42234486A00EDEB51 /* WalletTokensTableSectionHeaderView.swift */; };
+		F449AEFA22344B8F00EDEB51 /* WalletTokensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEF922344B8F00EDEB51 /* WalletTokensViewController.swift */; };
+		F449AEFE22345C0800EDEB51 /* WalletTokenCurrencyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AEFD22345C0800EDEB51 /* WalletTokenCurrencyTableCell.swift */; };
+		F449AF002234637600EDEB51 /* WalletTokensAmountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F449AEFF2234637500EDEB51 /* WalletTokensAmountHeaderView.xib */; };
+		F449AF022234641500EDEB51 /* WalletTokensTableSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F449AF012234641500EDEB51 /* WalletTokensTableSectionHeaderView.xib */; };
+		F449AF062234647E00EDEB51 /* WalletTokensProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AF052234647E00EDEB51 /* WalletTokensProviding.swift */; };
+		F449AF092234993000EDEB51 /* WalletTokenCurrencyTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F449AF082234993000EDEB51 /* WalletTokenCurrencyTableCell.xib */; };
+		F449AF0C22349A7A00EDEB51 /* WalletCurrencyTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AF0B22349A7A00EDEB51 /* WalletCurrencyTokenProvider.swift */; };
 		F44B3310220AD93D005CEDE3 /* HyperlootTransactionSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44B330F220AD93D005CEDE3 /* HyperlootTransactionSender.swift */; };
 		F44B3312220ADB69005CEDE3 /* HyperlootTransactionSendError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44B3311220ADB69005CEDE3 /* HyperlootTransactionSendError.swift */; };
 		F44B3316220AE109005CEDE3 /* EthGetBalanceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44B3315220AE109005CEDE3 /* EthGetBalanceResponse.swift */; };
@@ -44,12 +59,9 @@
 		F466FCDD215DFCDC00092CC4 /* ReplaceRootSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCDC215DFCDC00092CC4 /* ReplaceRootSegue.swift */; };
 		F466FCDF215DFE6B00092CC4 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F466FCDE215DFE6B00092CC4 /* Wallet.storyboard */; };
 		F466FCE1215DFFE900092CC4 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCE0215DFFE900092CC4 /* SplashViewModel.swift */; };
-		F466FCE921617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCE821617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift */; };
-		F466FCED2163349C00092CC4 /* DashboardTokenInfoSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCEC2163349C00092CC4 /* DashboardTokenInfoSectionView.swift */; };
-		F466FCEF216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F466FCEE216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib */; };
-		F466FCF12163354200092CC4 /* DashboardTokenInfoSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F466FCF02163354200092CC4 /* DashboardTokenInfoSectionView.xib */; };
-		F466FCF421633CDF00092CC4 /* WalletDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCF321633CDF00092CC4 /* WalletDashboardViewController.swift */; };
-		F466FCF621633D1900092CC4 /* WalletDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCF521633D1900092CC4 /* WalletDashboardViewModel.swift */; };
+		F466FCE921617FA000092CC4 /* WalletTokenGameAssetItemTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCE821617FA000092CC4 /* WalletTokenGameAssetItemTableCell.swift */; };
+		F466FCED2163349C00092CC4 /* WalletTokenGameAssetTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCEC2163349C00092CC4 /* WalletTokenGameAssetTableCell.swift */; };
+		F466FCF12163354200092CC4 /* WalletTokenGameAssetTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F466FCF02163354200092CC4 /* WalletTokenGameAssetTableCell.xib */; };
 		F466FCF821633E2300092CC4 /* HyperlootToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCF721633E2300092CC4 /* HyperlootToken.swift */; };
 		F466FD00216348BE00092CC4 /* Bundle+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FCFF216348BE00092CC4 /* Bundle+Nib.swift */; };
 		F466FD022163497400092CC4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466FD012163497400092CC4 /* UIView+Extensions.swift */; };
@@ -69,6 +81,16 @@
 		F468E71C21B660620031423F /* Blockscout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F468E71B21B660620031423F /* Blockscout.swift */; };
 		F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */; };
 		F475DB8D216C6A5900B157BC /* HyperlootNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */; };
+		F47EDA252225287000D6684E /* CoinMarketCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA242225287000D6684E /* CoinMarketCap.swift */; };
+		F47EDA2822252B2300D6684E /* CoinMarketCapListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA2722252B2300D6684E /* CoinMarketCapListResponse.swift */; };
+		F47EDA2A222606DF00D6684E /* CoinMarketCapBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA29222606DF00D6684E /* CoinMarketCapBaseResponse.swift */; };
+		F47EDA2C2226E05500D6684E /* TokenPriceDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA2B2226E05500D6684E /* TokenPriceDiscovery.swift */; };
+		F47EDA2E222718FB00D6684E /* HyperlootTokenPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA2D222718FB00D6684E /* HyperlootTokenPrice.swift */; };
+		F47EDA32222719DE00D6684E /* HyperlootDataSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA31222719DE00D6684E /* HyperlootDataSerializer.swift */; };
+		F47EDA35222915B100D6684E /* URL+DocumentsPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA34222915B100D6684E /* URL+DocumentsPath.swift */; };
+		F47EDA39222BADFB00D6684E /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA38222BADFB00D6684E /* AppStyle.swift */; };
+		F47EDA3B222BAF7000D6684E /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA3A222BAF7000D6684E /* UIColor+Hex.swift */; };
+		F47EDA3D222BB51000D6684E /* HyperlootTextInputContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EDA3C222BB50F00D6684E /* HyperlootTextInputContainer.swift */; };
 		F4828AD521D60077006CEDD0 /* HyperlootTransaction+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4828AD421D60077006CEDD0 /* HyperlootTransaction+Codable.swift */; };
 		F4828AD921D6009D006CEDD0 /* HyperlootToken+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4828AD821D6009D006CEDD0 /* HyperlootToken+Codable.swift */; };
 		F4828ADB21D67C95006CEDD0 /* UserTokenInventoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4828ADA21D67C95006CEDD0 /* UserTokenInventoryStorage.swift */; };
@@ -123,6 +145,12 @@
 		F4CC392721BD83AC00C00FE6 /* TokenInventoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC392621BD83AC00C00FE6 /* TokenInventoryManager.swift */; };
 		F4CC392B21C0EBCE00C00FE6 /* BlockscoutGetTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC392A21C0EBCE00C00FE6 /* BlockscoutGetTokenResponse.swift */; };
 		F4CC392E21C1005800C00FE6 /* TokenInfoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC392D21C1005800C00FE6 /* TokenInfoOperation.swift */; };
+		F4DE19622234C796000A002C /* WalletGameAssetsTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449AF0D2234BBD200EDEB51 /* WalletGameAssetsTokenProvider.swift */; };
+		F4DE19642234CA10000A002C /* WalletTokenGameAssetItemTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4DE19632234CA10000A002C /* WalletTokenGameAssetItemTableCell.xib */; };
+		F4E085892238DC5700B7F53D /* FindAUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E085882238DC5600B7F53D /* FindAUserViewController.swift */; };
+		F4E0858B2238DC7300B7F53D /* FindAUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E0858A2238DC7300B7F53D /* FindAUserViewModel.swift */; };
+		F4E0858E2238DECA00B7F53D /* FindUserTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E0858D2238DECA00B7F53D /* FindUserTableCell.swift */; };
+		F4E0859222394B1800B7F53D /* HyperlootUserSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E0859122394B1800B7F53D /* HyperlootUserSuggestion.swift */; };
 		F4EEDD0F21B7AD0C00C80A79 /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EEDD0E21B7AD0C00C80A79 /* Dictionary+Merge.swift */; };
 		F4EEDD1421B7B5B200C80A79 /* BlockscoutBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EEDD1321B7B5B200C80A79 /* BlockscoutBaseResponse.swift */; };
 		F4EEDD1621B7C07400C80A79 /* BlockscoutTokenListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EEDD1521B7C07400C80A79 /* BlockscoutTokenListResponse.swift */; };
@@ -164,6 +192,22 @@
 		F434D62321EC672B00572288 /* BlockscoutInventoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockscoutInventoryProvider.swift; sourceTree = "<group>"; };
 		F434D62521EC674600572288 /* OpenSeaInventoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaInventoryProvider.swift; sourceTree = "<group>"; };
 		F43BB94921C569B7005A97B3 /* BlockscoutTransactionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockscoutTransactionResponse.swift; sourceTree = "<group>"; };
+		F449AEDD2230DD8200EDEB51 /* HyperlootGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootGradientLayer.swift; sourceTree = "<group>"; };
+		F449AEE02230F14500EDEB51 /* WalletDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDashboardViewController.swift; sourceTree = "<group>"; };
+		F449AEE22230F16100EDEB51 /* WalletDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDashboardViewModel.swift; sourceTree = "<group>"; };
+		F449AEE42230F1DD00EDEB51 /* HyperlootDashboardCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootDashboardCategoryView.swift; sourceTree = "<group>"; };
+		F449AEEA22310B0600EDEB51 /* WalletAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAsset.swift; sourceTree = "<group>"; };
+		F449AEED22310BA400EDEB51 /* WalletAssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAssetManager.swift; sourceTree = "<group>"; };
+		F449AEF0223447CC00EDEB51 /* WalletTokensAmountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTokensAmountHeaderView.swift; sourceTree = "<group>"; };
+		F449AEF42234486A00EDEB51 /* WalletTokensTableSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTokensTableSectionHeaderView.swift; sourceTree = "<group>"; };
+		F449AEF922344B8F00EDEB51 /* WalletTokensViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTokensViewController.swift; sourceTree = "<group>"; };
+		F449AEFD22345C0800EDEB51 /* WalletTokenCurrencyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTokenCurrencyTableCell.swift; sourceTree = "<group>"; };
+		F449AEFF2234637500EDEB51 /* WalletTokensAmountHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletTokensAmountHeaderView.xib; sourceTree = "<group>"; };
+		F449AF012234641500EDEB51 /* WalletTokensTableSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletTokensTableSectionHeaderView.xib; sourceTree = "<group>"; };
+		F449AF052234647E00EDEB51 /* WalletTokensProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTokensProviding.swift; sourceTree = "<group>"; };
+		F449AF082234993000EDEB51 /* WalletTokenCurrencyTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTokenCurrencyTableCell.xib; sourceTree = "<group>"; };
+		F449AF0B22349A7A00EDEB51 /* WalletCurrencyTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCurrencyTokenProvider.swift; sourceTree = "<group>"; };
+		F449AF0D2234BBD200EDEB51 /* WalletGameAssetsTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletGameAssetsTokenProvider.swift; sourceTree = "<group>"; };
 		F44B330F220AD93D005CEDE3 /* HyperlootTransactionSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTransactionSender.swift; sourceTree = "<group>"; };
 		F44B3311220ADB69005CEDE3 /* HyperlootTransactionSendError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTransactionSendError.swift; sourceTree = "<group>"; };
 		F44B3315220AE109005CEDE3 /* EthGetBalanceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthGetBalanceResponse.swift; sourceTree = "<group>"; };
@@ -187,12 +231,9 @@
 		F466FCDC215DFCDC00092CC4 /* ReplaceRootSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceRootSegue.swift; sourceTree = "<group>"; };
 		F466FCDE215DFE6B00092CC4 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		F466FCE0215DFFE900092CC4 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
-		F466FCE821617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTokenItemInfoTableCell.swift; sourceTree = "<group>"; };
-		F466FCEC2163349C00092CC4 /* DashboardTokenInfoSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTokenInfoSectionView.swift; sourceTree = "<group>"; };
-		F466FCEE216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTokenItemInfoTableCell.xib; sourceTree = "<group>"; };
-		F466FCF02163354200092CC4 /* DashboardTokenInfoSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTokenInfoSectionView.xib; sourceTree = "<group>"; };
-		F466FCF321633CDF00092CC4 /* WalletDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDashboardViewController.swift; sourceTree = "<group>"; };
-		F466FCF521633D1900092CC4 /* WalletDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDashboardViewModel.swift; sourceTree = "<group>"; };
+		F466FCE821617FA000092CC4 /* WalletTokenGameAssetItemTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTokenGameAssetItemTableCell.swift; sourceTree = "<group>"; };
+		F466FCEC2163349C00092CC4 /* WalletTokenGameAssetTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTokenGameAssetTableCell.swift; sourceTree = "<group>"; };
+		F466FCF02163354200092CC4 /* WalletTokenGameAssetTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTokenGameAssetTableCell.xib; sourceTree = "<group>"; };
 		F466FCF721633E2300092CC4 /* HyperlootToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootToken.swift; sourceTree = "<group>"; };
 		F466FCFF216348BE00092CC4 /* Bundle+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Nib.swift"; sourceTree = "<group>"; };
 		F466FD012163497400092CC4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -212,6 +253,16 @@
 		F468E71B21B660620031423F /* Blockscout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blockscout.swift; sourceTree = "<group>"; };
 		F475DB8A216B368E00B157BC /* SendTransactionSpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionSpeedView.swift; sourceTree = "<group>"; };
 		F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootNickname.swift; sourceTree = "<group>"; };
+		F47EDA242225287000D6684E /* CoinMarketCap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCap.swift; sourceTree = "<group>"; };
+		F47EDA2722252B2300D6684E /* CoinMarketCapListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCapListResponse.swift; sourceTree = "<group>"; };
+		F47EDA29222606DF00D6684E /* CoinMarketCapBaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCapBaseResponse.swift; sourceTree = "<group>"; };
+		F47EDA2B2226E05500D6684E /* TokenPriceDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPriceDiscovery.swift; sourceTree = "<group>"; };
+		F47EDA2D222718FB00D6684E /* HyperlootTokenPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTokenPrice.swift; sourceTree = "<group>"; };
+		F47EDA31222719DE00D6684E /* HyperlootDataSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootDataSerializer.swift; sourceTree = "<group>"; };
+		F47EDA34222915B100D6684E /* URL+DocumentsPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+DocumentsPath.swift"; sourceTree = "<group>"; };
+		F47EDA38222BADFB00D6684E /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
+		F47EDA3A222BAF7000D6684E /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		F47EDA3C222BB50F00D6684E /* HyperlootTextInputContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTextInputContainer.swift; sourceTree = "<group>"; };
 		F4828AD421D60077006CEDD0 /* HyperlootTransaction+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HyperlootTransaction+Codable.swift"; sourceTree = "<group>"; };
 		F4828AD821D6009D006CEDD0 /* HyperlootToken+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HyperlootToken+Codable.swift"; sourceTree = "<group>"; };
 		F4828ADA21D67C95006CEDD0 /* UserTokenInventoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenInventoryStorage.swift; sourceTree = "<group>"; };
@@ -266,6 +317,11 @@
 		F4CC392621BD83AC00C00FE6 /* TokenInventoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInventoryManager.swift; sourceTree = "<group>"; };
 		F4CC392A21C0EBCE00C00FE6 /* BlockscoutGetTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockscoutGetTokenResponse.swift; sourceTree = "<group>"; };
 		F4CC392D21C1005800C00FE6 /* TokenInfoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfoOperation.swift; sourceTree = "<group>"; };
+		F4DE19632234CA10000A002C /* WalletTokenGameAssetItemTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletTokenGameAssetItemTableCell.xib; sourceTree = "<group>"; };
+		F4E085882238DC5600B7F53D /* FindAUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAUserViewController.swift; sourceTree = "<group>"; };
+		F4E0858A2238DC7300B7F53D /* FindAUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAUserViewModel.swift; sourceTree = "<group>"; };
+		F4E0858D2238DECA00B7F53D /* FindUserTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserTableCell.swift; sourceTree = "<group>"; };
+		F4E0859122394B1800B7F53D /* HyperlootUserSuggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperlootUserSuggestion.swift; sourceTree = "<group>"; };
 		F4EEDD0E21B7AD0C00C80A79 /* Dictionary+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
 		F4EEDD1321B7B5B200C80A79 /* BlockscoutBaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockscoutBaseResponse.swift; sourceTree = "<group>"; };
 		F4EEDD1521B7C07400C80A79 /* BlockscoutTokenListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockscoutTokenListResponse.swift; sourceTree = "<group>"; };
@@ -333,6 +389,7 @@
 		F434317521B11E7F00FA9F6E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F47EDA232225286000D6684E /* CoinMarketCap */,
 				F42196222213F1B800036048 /* OpenSea */,
 				F459C34821FD90A7006A0D72 /* Infura */,
 				F468E71A21B65E880031423F /* Blockscout */,
@@ -397,6 +454,77 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
+		F449AEDF2230F13800EDEB51 /* WalletDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				F449AF042234642F00EDEB51 /* Views */,
+				F449AEE02230F14500EDEB51 /* WalletDashboardViewController.swift */,
+				F449AEE22230F16100EDEB51 /* WalletDashboardViewModel.swift */,
+			);
+			path = WalletDashboard;
+			sourceTree = "<group>";
+		};
+		F449AEEC22310B9900EDEB51 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F449AEED22310BA400EDEB51 /* WalletAssetManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F449AEF822344B6A00EDEB51 /* WalletTokens */ = {
+			isa = PBXGroup;
+			children = (
+				F449AF0A22349A6600EDEB51 /* TokenProviders */,
+				F449AF072234990700EDEB51 /* Cells */,
+				F449AF032234641E00EDEB51 /* Views */,
+				F449AEF922344B8F00EDEB51 /* WalletTokensViewController.swift */,
+				F449AF052234647E00EDEB51 /* WalletTokensProviding.swift */,
+			);
+			path = WalletTokens;
+			sourceTree = "<group>";
+		};
+		F449AF032234641E00EDEB51 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F449AEF0223447CC00EDEB51 /* WalletTokensAmountHeaderView.swift */,
+				F449AEFF2234637500EDEB51 /* WalletTokensAmountHeaderView.xib */,
+				F449AEF42234486A00EDEB51 /* WalletTokensTableSectionHeaderView.swift */,
+				F449AF012234641500EDEB51 /* WalletTokensTableSectionHeaderView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F449AF042234642F00EDEB51 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F449AEE42230F1DD00EDEB51 /* HyperlootDashboardCategoryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F449AF072234990700EDEB51 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F449AEFD22345C0800EDEB51 /* WalletTokenCurrencyTableCell.swift */,
+				F449AF082234993000EDEB51 /* WalletTokenCurrencyTableCell.xib */,
+				F466FCEC2163349C00092CC4 /* WalletTokenGameAssetTableCell.swift */,
+				F466FCF02163354200092CC4 /* WalletTokenGameAssetTableCell.xib */,
+				F466FCE821617FA000092CC4 /* WalletTokenGameAssetItemTableCell.swift */,
+				F4DE19632234CA10000A002C /* WalletTokenGameAssetItemTableCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F449AF0A22349A6600EDEB51 /* TokenProviders */ = {
+			isa = PBXGroup;
+			children = (
+				F449AF0B22349A7A00EDEB51 /* WalletCurrencyTokenProvider.swift */,
+				F449AF0D2234BBD200EDEB51 /* WalletGameAssetsTokenProvider.swift */,
+			);
+			path = TokenProviders;
+			sourceTree = "<group>";
+		};
 		F44D72322146EC4000C651C6 = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +548,7 @@
 		F44D723D2146EC4000C651C6 /* HyperlootWallet */ = {
 			isa = PBXGroup;
 			children = (
+				F449AEEC22310B9900EDEB51 /* Managers */,
 				F48765F5215A196A003825FE /* Extensions */,
 				F48765F2215A06E2003825FE /* Helpers */,
 				F48765E12158AE90003825FE /* Models */,
@@ -478,6 +607,7 @@
 				F4CC392421BBB04000C00FE6 /* WalletGenerator.swift */,
 				F4CC392621BD83AC00C00FE6 /* TokenInventoryManager.swift */,
 				F4828ADA21D67C95006CEDD0 /* UserTokenInventoryStorage.swift */,
+				F47EDA2B2226E05500D6684E /* TokenPriceDiscovery.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -500,18 +630,10 @@
 			path = UnlockWallet;
 			sourceTree = "<group>";
 		};
-		F466FCF221633CC800092CC4 /* WalletDashboard */ = {
-			isa = PBXGroup;
-			children = (
-				F466FCF321633CDF00092CC4 /* WalletDashboardViewController.swift */,
-				F466FCF521633D1900092CC4 /* WalletDashboardViewModel.swift */,
-			);
-			path = WalletDashboard;
-			sourceTree = "<group>";
-		};
 		F466FD0321649ED800092CC4 /* TokenTransactions */ = {
 			isa = PBXGroup;
 			children = (
+				F4DE196622357195000A002C /* Cells */,
 				F466FD0421649EF400092CC4 /* TokenTransactionsViewController.swift */,
 				F466FD0621649EFE00092CC4 /* TokenTransactionsViewModel.swift */,
 			);
@@ -574,6 +696,24 @@
 			path = Blockscout;
 			sourceTree = "<group>";
 		};
+		F47EDA232225286000D6684E /* CoinMarketCap */ = {
+			isa = PBXGroup;
+			children = (
+				F47EDA2622252AEF00D6684E /* Responses */,
+				F47EDA242225287000D6684E /* CoinMarketCap.swift */,
+			);
+			path = CoinMarketCap;
+			sourceTree = "<group>";
+		};
+		F47EDA2622252AEF00D6684E /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				F47EDA2722252B2300D6684E /* CoinMarketCapListResponse.swift */,
+				F47EDA29222606DF00D6684E /* CoinMarketCapBaseResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		F4828AD321D60067006CEDD0 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +727,7 @@
 			isa = PBXGroup;
 			children = (
 				F48765E22158AE9F003825FE /* UserRegistrationFlow.swift */,
+				F449AEEA22310B0600EDEB51 /* WalletAsset.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -622,15 +763,14 @@
 		F48765F5215A196A003825FE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F414AC2B21F9B0D80022864B /* TrustCore */,
 				F48765F6215A1980003825FE /* UIViewController+ScreenRoutes.swift */,
 				F466FCDC215DFCDC00092CC4 /* ReplaceRootSegue.swift */,
 				F466FCFF216348BE00092CC4 /* Bundle+Nib.swift */,
 				F466FD012163497400092CC4 /* UIView+Extensions.swift */,
 				F434318721B3057C00FA9F6E /* UIViewController+ActivityIndicator.swift */,
-				F4EEDD0E21B7AD0C00C80A79 /* Dictionary+Merge.swift */,
 				F4B89E522215438F00FE9BD5 /* UIImageView+AsyncLoading.swift */,
 				F4B887DC2219CD5E00CA0A03 /* UIViewController+ErrorHandling.swift */,
+				F47EDA3A222BAF7000D6684E /* UIColor+Hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -654,6 +794,8 @@
 				F466FD0A2164A68300092CC4 /* HyperlootTransaction.swift */,
 				F475DB8C216C6A5900B157BC /* HyperlootNickname.swift */,
 				F4BF330321FDA98A0039B8B5 /* HyperlootConfig.swift */,
+				F47EDA2D222718FB00D6684E /* HyperlootTokenPrice.swift */,
+				F4E0859122394B1800B7F53D /* HyperlootUserSuggestion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -661,10 +803,13 @@
 		F48CEC0D214DD2A800A43A47 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F414AC2B21F9B0D80022864B /* TrustCore */,
+				F4EEDD0E21B7AD0C00C80A79 /* Dictionary+Merge.swift */,
 				F48CEC0E214DD2B400A43A47 /* Dictionary+JSON.swift */,
 				F4BA240C21C25920005F68A5 /* OperationQueue+Completion.swift */,
 				F4828ADE21D87B47006CEDD0 /* HyperlootToken+Helpers.swift */,
 				F433F77822066ECD005FA276 /* HexFormatter.swift */,
+				F47EDA34222915B100D6684E /* URL+DocumentsPath.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -672,17 +817,19 @@
 		F48CEC142150DD1100A43A47 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F48CEC212150DFB000A43A47 /* Common */,
+				F4E085872238DC2A00B7F53D /* FindAUser */,
+				F449AEDF2230F13800EDEB51 /* WalletDashboard */,
+				F449AEF822344B6A00EDEB51 /* WalletTokens */,
 				F466FD192167345600092CC4 /* Send */,
 				F466FD1421669E9F00092CC4 /* Receive */,
 				F466FD0C2165EE5600092CC4 /* TokenInfo */,
 				F466FD0321649ED800092CC4 /* TokenTransactions */,
-				F466FCF221633CC800092CC4 /* WalletDashboard */,
 				F48765F8215A1C9D003825FE /* EnterWalletKeys */,
 				F48765ED215A026F003825FE /* EnterPassword */,
 				F4CB7CEA21770BDC006B6217 /* EnterNickname */,
 				F48765E42158B4E2003825FE /* EnterEmail */,
 				F46640C322170E1200E74999 /* UnlockWallet */,
-				F48CEC212150DFB000A43A47 /* Common */,
 				F48CEC1E2150DE5300A43A47 /* LoginFlowMain */,
 				F48CEC172150DD2F00A43A47 /* Splash */,
 				F44D72422146EC4000C651C6 /* Main.storyboard */,
@@ -723,6 +870,7 @@
 			children = (
 				F48CEC292152C5F800A43A47 /* Components */,
 				F48CEC142150DD1100A43A47 /* Screens */,
+				F47EDA38222BADFB00D6684E /* AppStyle.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -730,13 +878,10 @@
 		F48CEC292152C5F800A43A47 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F449AEDD2230DD8200EDEB51 /* HyperlootGradientLayer.swift */,
 				F48CEC2A2152C60800A43A47 /* HyperlootButton.swift */,
+				F47EDA3C222BB50F00D6684E /* HyperlootTextInputContainer.swift */,
 				F48765E9215952B3003825FE /* RegistrationErrorView.swift */,
-				F466FCEC2163349C00092CC4 /* DashboardTokenInfoSectionView.swift */,
-				F466FCF02163354200092CC4 /* DashboardTokenInfoSectionView.xib */,
-				F466FCE821617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift */,
-				F466FCEE216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib */,
-				F466FD082164A4D200092CC4 /* TransactionTableCell.swift */,
 				F4CB7CE82175ADA7006B6217 /* FormController.swift */,
 				F499FDB821CDA08400AEBE9E /* TokenFormatter.swift */,
 			);
@@ -783,6 +928,7 @@
 				F4BA241521C39677005F68A5 /* HyperlootTokenTransformer.swift */,
 				F4F40D5C21CA9EEE00D3C290 /* HyperlootTransactionsTransformer.swift */,
 				F4F40D5E21CA9FA700D3C290 /* TransactionDefining.swift */,
+				F47EDA31222719DE00D6684E /* HyperlootDataSerializer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -816,6 +962,32 @@
 				F4CB7CED21770C29006B6217 /* EnterNicknameViewModel.swift */,
 			);
 			path = EnterNickname;
+			sourceTree = "<group>";
+		};
+		F4DE196622357195000A002C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F466FD082164A4D200092CC4 /* TransactionTableCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F4E085872238DC2A00B7F53D /* FindAUser */ = {
+			isa = PBXGroup;
+			children = (
+				F4E0858C2238DEB700B7F53D /* Cells */,
+				F4E085882238DC5600B7F53D /* FindAUserViewController.swift */,
+				F4E0858A2238DC7300B7F53D /* FindAUserViewModel.swift */,
+			);
+			path = FindAUser;
+			sourceTree = "<group>";
+		};
+		F4E0858C2238DEB700B7F53D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F4E0858D2238DECA00B7F53D /* FindUserTableCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F4EEDD1021B7B40700C80A79 /* Models */ = {
@@ -921,12 +1093,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F466FCEF216334A800092CC4 /* DashboardTokenItemInfoTableCell.xib in Resources */,
+				F449AF022234641500EDEB51 /* WalletTokensTableSectionHeaderView.xib in Resources */,
 				F48CEC1A2150DD5D00A43A47 /* LoginFlow.storyboard in Resources */,
 				F466FCDF215DFE6B00092CC4 /* Wallet.storyboard in Resources */,
-				F466FCF12163354200092CC4 /* DashboardTokenInfoSectionView.xib in Resources */,
+				F449AF092234993000EDEB51 /* WalletTokenCurrencyTableCell.xib in Resources */,
+				F466FCF12163354200092CC4 /* WalletTokenGameAssetTableCell.xib in Resources */,
+				F4DE19642234CA10000A002C /* WalletTokenGameAssetItemTableCell.xib in Resources */,
 				F44D72492146EC4200C651C6 /* LaunchScreen.storyboard in Resources */,
 				F44D72462146EC4200C651C6 /* Assets.xcassets in Resources */,
+				F449AF002234637600EDEB51 /* WalletTokensAmountHeaderView.xib in Resources */,
 				F44D72442146EC4000C651C6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1014,11 +1189,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47EDA3B222BAF7000D6684E /* UIColor+Hex.swift in Sources */,
 				F4BA241421C3964B005F68A5 /* TokenContractable.swift in Sources */,
+				F4DE19622234C796000A002C /* WalletGameAssetsTokenProvider.swift in Sources */,
 				F4B89E4D2213FA5600FE9BD5 /* OpenSeaContract.swift in Sources */,
 				F434D62421EC672B00572288 /* BlockscoutInventoryProvider.swift in Sources */,
 				F4B89E4B2213FA2500FE9BD5 /* OpenSeaAsset.swift in Sources */,
 				F48765E32158AE9F003825FE /* UserRegistrationFlow.swift in Sources */,
+				F449AEE52230F1DD00EDEB51 /* HyperlootDashboardCategoryView.swift in Sources */,
 				F48CEC0F214DD2B400A43A47 /* Dictionary+JSON.swift in Sources */,
 				F48765F4215A06EC003825FE /* StringHelper.swift in Sources */,
 				F4EEDD1621B7C07400C80A79 /* BlockscoutTokenListResponse.swift in Sources */,
@@ -1032,20 +1210,24 @@
 				F4EEDD1821B82C9400C80A79 /* BlockscoutBalanceResponse.swift in Sources */,
 				F434D62621EC674600572288 /* OpenSeaInventoryProvider.swift in Sources */,
 				F4CB7CEC21770BFC006B6217 /* EnterNicknameViewController.swift in Sources */,
+				F449AF0C22349A7A00EDEB51 /* WalletCurrencyTokenProvider.swift in Sources */,
 				F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */,
+				F449AF062234647E00EDEB51 /* WalletTokensProviding.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
+				F449AEDE2230DD8200EDEB51 /* HyperlootGradientLayer.swift in Sources */,
 				F48CEC2B2152C60800A43A47 /* HyperlootButton.swift in Sources */,
 				F4BF330C21FDBA1A0039B8B5 /* InfuraBaseResponse.swift in Sources */,
 				F4A011D5220431E400A19AF0 /* GasStation.swift in Sources */,
 				F466FD0721649EFE00092CC4 /* TokenTransactionsViewModel.swift in Sources */,
+				F47EDA2A222606DF00D6684E /* CoinMarketCapBaseResponse.swift in Sources */,
 				F4B89E532215438F00FE9BD5 /* UIImageView+AsyncLoading.swift in Sources */,
+				F4E085892238DC5700B7F53D /* FindAUserViewController.swift in Sources */,
 				F4CB7CE92175ADA7006B6217 /* FormController.swift in Sources */,
 				F466FD1B2167346500092CC4 /* SendViewController.swift in Sources */,
 				F46640C722170FD300E74999 /* UnlockWalletViewModel.swift in Sources */,
 				F44B3310220AD93D005CEDE3 /* HyperlootTransactionSender.swift in Sources */,
 				F466FD0B2164A68300092CC4 /* HyperlootTransaction.swift in Sources */,
 				F466FD1821669EBB00092CC4 /* ReceiveViewModel.swift in Sources */,
-				F466FCF621633D1900092CC4 /* WalletDashboardViewModel.swift in Sources */,
 				F466FD092164A4D200092CC4 /* TransactionTableCell.swift in Sources */,
 				F434D62021EC668500572288 /* TokenInventoryProviding.swift in Sources */,
 				F42196242213F1C500036048 /* OpenSea.swift in Sources */,
@@ -1057,18 +1239,22 @@
 				F466FD00216348BE00092CC4 /* Bundle+Nib.swift in Sources */,
 				F433F77B22081A02005FA276 /* HyperlootTransactionSigning.swift in Sources */,
 				F4BA240D21C25920005F68A5 /* OperationQueue+Completion.swift in Sources */,
-				F466FCF421633CDF00092CC4 /* WalletDashboardViewController.swift in Sources */,
+				F449AEF1223447CC00EDEB51 /* WalletTokensAmountHeaderView.swift in Sources */,
 				F434318C21B3608700FA9F6E /* SignupResponse.swift in Sources */,
 				F468E71C21B660620031423F /* Blockscout.swift in Sources */,
 				F466FCDD215DFCDC00092CC4 /* ReplaceRootSegue.swift in Sources */,
 				F44D7263214A29A100C651C6 /* HyperlootWalletManaging.swift in Sources */,
+				F47EDA39222BADFB00D6684E /* AppStyle.swift in Sources */,
 				F4B89E512213FA6B00FE9BD5 /* OpenSeaAssetTrait.swift in Sources */,
+				F47EDA252225287000D6684E /* CoinMarketCap.swift in Sources */,
 				F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */,
 				F48765EF215A027E003825FE /* EnterPasswordViewController.swift in Sources */,
 				F466FD0521649EF400092CC4 /* TokenTransactionsViewController.swift in Sources */,
 				F466FCE1215DFFE900092CC4 /* SplashViewModel.swift in Sources */,
 				F4A011D3220431D200A19AF0 /* HyperlootTokenItemSender.swift in Sources */,
 				F466FD0E2165EE6A00092CC4 /* TokenInfoViewController.swift in Sources */,
+				F449AEF52234486A00EDEB51 /* WalletTokensTableSectionHeaderView.swift in Sources */,
+				F449AEEE22310BA400EDEB51 /* WalletAssetManager.swift in Sources */,
 				F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */,
 				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
 				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
@@ -1076,15 +1262,18 @@
 				F4BF330221FDA1F00039B8B5 /* Environments.swift in Sources */,
 				F459C34A21FD90D5006A0D72 /* Infura.swift in Sources */,
 				F4EEDD1421B7B5B200C80A79 /* BlockscoutBaseResponse.swift in Sources */,
-				F466FCED2163349C00092CC4 /* DashboardTokenInfoSectionView.swift in Sources */,
+				F466FCED2163349C00092CC4 /* WalletTokenGameAssetTableCell.swift in Sources */,
 				F4EEDD1B21B8B85600C80A79 /* StringToIntTransformer.swift in Sources */,
 				F433F77922066ECD005FA276 /* HexFormatter.swift in Sources */,
+				F4E0858E2238DECA00B7F53D /* FindUserTableCell.swift in Sources */,
 				F433F77D22081DBD005FA276 /* EthSendRawTransactionResponse.swift in Sources */,
 				F4828AD521D60077006CEDD0 /* HyperlootTransaction+Codable.swift in Sources */,
 				F4BF330621FDB0630039B8B5 /* HyperlootConfig+App.swift in Sources */,
 				F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */,
+				F4E0858B2238DC7300B7F53D /* FindAUserViewModel.swift in Sources */,
 				F434318A21B35AB700FA9F6E /* LoginResponse.swift in Sources */,
 				F4CC392521BBB04000C00FE6 /* WalletGenerator.swift in Sources */,
+				F47EDA35222915B100D6684E /* URL+DocumentsPath.swift in Sources */,
 				F466FD1321669DEB00092CC4 /* QRCodeImageGenerator.swift in Sources */,
 				F4B89E4F2213FA6300FE9BD5 /* OpenSeaTokenOwner.swift in Sources */,
 				F4828AE121D883F8006CEDD0 /* TokenItemBalanceOperation.swift in Sources */,
@@ -1094,27 +1283,38 @@
 				F48765E8215951FF003825FE /* EnterEmailViewModel.swift in Sources */,
 				F4F40D5F21CA9FA700D3C290 /* TransactionDefining.swift in Sources */,
 				F4BA241621C39677005F68A5 /* HyperlootTokenTransformer.swift in Sources */,
+				F449AEFE22345C0800EDEB51 /* WalletTokenCurrencyTableCell.swift in Sources */,
+				F47EDA32222719DE00D6684E /* HyperlootDataSerializer.swift in Sources */,
 				F4828ADB21D67C95006CEDD0 /* UserTokenInventoryStorage.swift in Sources */,
 				F48765FA215A1CB0003825FE /* EnterWalletKeysViewController.swift in Sources */,
 				F4CC392E21C1005800C00FE6 /* TokenInfoOperation.swift in Sources */,
 				F434318621B2E9C500FA9F6E /* CanRegisterEmailResponse.swift in Sources */,
 				F4828ADF21D87B47006CEDD0 /* HyperlootToken+Helpers.swift in Sources */,
+				F47EDA2E222718FB00D6684E /* HyperlootTokenPrice.swift in Sources */,
 				F466FD022163497400092CC4 /* UIView+Extensions.swift in Sources */,
 				F433F775220604A9005FA276 /* EthEstimateGasResponse.swift in Sources */,
 				F48CEC202150DE6400A43A47 /* LoginFlowMainViewController.swift in Sources */,
 				F475DB8D216C6A5900B157BC /* HyperlootNickname.swift in Sources */,
 				F434317A21B11EAC00FA9F6E /* HyperlootAPI.swift in Sources */,
+				F449AEFA22344B8F00EDEB51 /* WalletTokensViewController.swift in Sources */,
+				F449AEE12230F14500EDEB51 /* WalletDashboardViewController.swift in Sources */,
 				F466FCF821633E2300092CC4 /* HyperlootToken.swift in Sources */,
+				F47EDA3D222BB51000D6684E /* HyperlootTextInputContainer.swift in Sources */,
 				F4A011D72204321C00A19AF0 /* NonceProvider.swift in Sources */,
-				F466FCE921617FA000092CC4 /* DashboardTokenItemInfoTableCell.swift in Sources */,
+				F466FCE921617FA000092CC4 /* WalletTokenGameAssetItemTableCell.swift in Sources */,
+				F4E0859222394B1800B7F53D /* HyperlootUserSuggestion.swift in Sources */,
 				F44B3316220AE109005CEDE3 /* EthGetBalanceResponse.swift in Sources */,
 				F4BA241221C38F4B005F68A5 /* HyperlootOperation.swift in Sources */,
+				F449AEEB22310B0600EDEB51 /* WalletAsset.swift in Sources */,
 				F43BB94A21C569B7005A97B3 /* BlockscoutTransactionResponse.swift in Sources */,
 				F46640C522170E2400E74999 /* UnlockWalletViewController.swift in Sources */,
 				F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */,
+				F47EDA2C2226E05500D6684E /* TokenPriceDiscovery.swift in Sources */,
 				F4F40D5D21CA9EEE00D3C290 /* HyperlootTransactionsTransformer.swift in Sources */,
+				F47EDA2822252B2300D6684E /* CoinMarketCapListResponse.swift in Sources */,
 				F4828AD921D6009D006CEDD0 /* HyperlootToken+Codable.swift in Sources */,
 				F44D7260214A292300C651C6 /* Hyperloot.swift in Sources */,
+				F449AEE32230F16100EDEB51 /* WalletDashboardViewModel.swift in Sources */,
 				F414AC2D21F9B12C0022864B /* ERC721Encoder.swift in Sources */,
 				F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */,
 				F466FD222167357400092CC4 /* SendTokenDetailsView.swift in Sources */,

@@ -10,17 +10,14 @@ import UIKit
 class TokenTransactionsViewController: UIViewController {
     
     struct Input {
-        let token: HyperlootToken
+        let asset: WalletAsset
     }
     
     var input: Input!
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var balanceInCurrencyLabel: UILabel!
-    @IBOutlet weak var balanceInCryptoLabel: UILabel!
-    @IBOutlet weak var walletAddressLabel: UILabel!
     
-    lazy var viewModel = TokenTransactionsViewModel(token: self.input.token)
+    lazy var viewModel = TokenTransactionsViewModel(asset: self.input.asset)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +25,9 @@ class TokenTransactionsViewController: UIViewController {
         configureBackButtonWithNoText()
         configureUI()
         
+        showActivityIndicator()
         viewModel.load { [weak self] in
+            self?.hideActivityIndicator()
             self?.tableView.reloadData()
         }
     }
@@ -37,18 +36,6 @@ class TokenTransactionsViewController: UIViewController {
         let presentation = viewModel.presentation
         
         self.title = presentation.title
-        self.balanceInCurrencyLabel.attributedText = presentation.balanceInCurrency
-        self.balanceInCryptoLabel.text = presentation.balanceInCrypto
-        self.walletAddressLabel.text = presentation.walletAddress
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.isEqualTo(route: .sendToken) {
-            guard let viewController = segue.destination as? SendViewController else {
-                return
-            }
-            viewController.input = SendViewController.Input(token: viewModel.token)
-        }
     }
 }
 
@@ -75,4 +62,23 @@ extension TokenTransactionsViewController: UITableViewDataSource {
         cell.update(presentation: viewModel.transaction(at: indexPath.row))
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = Bundle.view(type: WalletTokensTableSectionHeaderView.self)
+        let presentation = viewModel.presentation
+        headerView.update(sectionName: presentation.tableHeaderTitle)
+        
+        let size = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        let frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: size.height)
+        headerView.frame = frame
+        
+        let view = UIView(frame: frame)
+        view.addSubview(headerView)
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30.0
+    }
+
 }

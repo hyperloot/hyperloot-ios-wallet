@@ -40,4 +40,8 @@ class WeakRefArray<T> {
         compact()
         return values.compactMap { $0.value }
     }
+    
+    public func removeAll() {
+        values.removeAll()
+    }
 }

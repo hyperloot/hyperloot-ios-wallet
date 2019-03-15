@@ -13,11 +13,7 @@ class UserTokenInventoryStorage {
         static let inventoryFilename = "inventory.hl"
     }
     
-    private lazy var inventoryFilePath: URL = {
-        let docsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let docsDirectoryURL = URL(fileURLWithPath: docsDirectory)
-        return docsDirectoryURL.appendingPathComponent(Constants.inventoryFilename)
-    } ()
+    private lazy var inventoryFilePath = URL.documentsPath(filename: Constants.inventoryFilename)
     
     private struct Model: Codable {
         typealias TokenContractAddress = String
@@ -33,6 +29,7 @@ class UserTokenInventoryStorage {
     
     private var inventory: Model = Model(tokens: [], tokenizedItems: [:])
     private var isInventoryLoaded: Bool = false
+    private lazy var dataSerializer = HyperlootDataSerializer(path: self.inventoryFilePath)
     
     var allTokens: [HyperlootToken] {
         var allTokens: [HyperlootToken] = []
@@ -120,26 +117,14 @@ class UserTokenInventoryStorage {
             return
         }
         
-        DispatchQueue.global(qos: .default).async { [weak self] in
-            guard let strongSelf = self else { return }
-            
-            strongSelf.isInventoryLoaded = true
-            
-            guard let data = try? Data(contentsOf: strongSelf.inventoryFilePath) else {
+        dataSerializer.loadObject { [weak self] (inventory: Model?) in
+            guard let inventory = inventory else {
                 completion(false)
                 return
             }
-            
-            do {
-                let inventory = try JSONDecoder().decode(UserTokenInventoryStorage.Model.self, from: data)
-                DispatchQueue.main.async {
-                    strongSelf.inventory = inventory
-                    completion(true)
-                }
-            } catch {
-                print(error)
-                completion(false)
-            }
+            self?.inventory = inventory
+            self?.isInventoryLoaded = true
+            completion(true)
         }
     }
     
@@ -149,23 +134,6 @@ class UserTokenInventoryStorage {
             return
         }
         
-        DispatchQueue.global(qos: .default).async { [weak self] in
-            guard let strongSelf = self else { return }
-            
-            guard let json = try? JSONEncoder().encode(strongSelf.inventory) else {
-                completion(false)
-                return
-            }
-            
-            do {
-                try json.write(to: strongSelf.inventoryFilePath, options: [.atomicWrite])
-                DispatchQueue.main.async {
-                    completion(true)
-                }
-            } catch {
-                print(error)
-                completion(false)
-            }
-        }
+        dataSerializer.save(object: self.inventory, completion: completion)
     }
 }

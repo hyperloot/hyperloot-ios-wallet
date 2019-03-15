@@ -10,19 +10,28 @@ import UIKit
 class EnterEmailViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailTextInput: HyperlootTextInputContainer!
     @IBOutlet weak var errorView: RegistrationErrorView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet var textInputBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var errorViewBottomConstraint: NSLayoutConstraint!
     
     lazy var formController = FormController(scrollView: scrollView)
     
     lazy var viewModel = EnterEmailViewModel()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureFormController()
+        updateUIState(animated: false)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         formController.willShowForm()
-        updateUIState()
+        updateUIState(animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,14 +61,30 @@ class EnterEmailViewController: UIViewController {
         }
     }
     
+    func configureFormController() {
+        formController.textFieldDelegate = self
+        formController.register(textFields: [emailTextInput.textField])
+    }
+    
     // MARK: - Updating UI state
     
-    func updateUIState() {
+    func updateUIState(animated: Bool = true) {
         let presentation = viewModel.presentation
         nextButton.isEnabled = presentation.nextButtonEnabled
         errorView.setVisible(presentation.errorViewVisible, animated: true)
+        
+        updateInputBottomConstraints(isErrorVisible: presentation.errorViewVisible, animated: animated)
     }
     
+    func updateInputBottomConstraints(isErrorVisible: Bool, animated: Bool) {
+        errorViewBottomConstraint.isActive = isErrorVisible
+        textInputBottomConstraint.isActive = !isErrorVisible
+        
+        UIView.animateIfNeeded(animated, duration: 0.25) { [weak self] in
+            self?.view.setNeedsLayout()
+            self?.view.layoutIfNeeded()
+        }
+    }
     
     // MARK: - Actions
     
@@ -70,7 +95,7 @@ class EnterEmailViewController: UIViewController {
     
     @IBAction func nextButtonPressed() {
         showActivityIndicator()
-        viewModel.verify(email: emailTextField.text) { [weak self] (user, error) in
+        viewModel.verify(email: emailTextInput.textField.text) { [weak self] (user, error) in
             guard let strongSelf = self else {
                 return
             }

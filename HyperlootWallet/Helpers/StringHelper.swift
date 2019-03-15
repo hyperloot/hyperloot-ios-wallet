@@ -38,11 +38,11 @@ class BalanceFormatter {
             case .negative(value: let value):
                 sign = (showSign) ? "- " : ""
                 stringValue = value
-                color = UIColor(red: 174.0 / 255.0, green: 53.0 / 255.0, blue: 53.0 / 255.0, alpha: 1.0)
+                color = UIColor(hex: 0xef3a45)
             case .positive(value: let value):
                 sign = (showSign) ? "+ " : ""
                 stringValue = value
-                color = UIColor(red: 31.0 / 255.0, green: 157.0 / 255.0, blue: 57.0 / 255.0, alpha: 1.0)
+                color = UIColor(hex: 0x80eaeb)
             }
             
             return NSAttributedString(string: "\(sign)\(stringValue)", attributes: [

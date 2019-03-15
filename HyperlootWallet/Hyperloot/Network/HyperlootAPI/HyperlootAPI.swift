@@ -48,4 +48,16 @@ class HyperlootAPI: HTTPService {
             }
         })
     }
+    
+    @discardableResult
+    func findUsers(nickname: String, page: Int = 0, completion: @escaping ([HyperlootUserSuggestion]?, Error?) -> Void) -> Cancelable {
+        let parameters: Parameters = ["nickname": nickname, "page": page]
+        return request("/api/nicknameSearchSuggestions", keyPath: "result", method: .get, parameters: parameters, encoding: URLEncoding.default, arrayCompletion: { (response: [HyperlootUserSuggestion]?, error) in
+            if let response = response {
+                completion(response, nil)
+            } else {
+                completion(nil, error)
+            }
+        })
+    }
 }

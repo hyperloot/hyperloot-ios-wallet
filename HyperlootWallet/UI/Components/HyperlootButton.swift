@@ -9,6 +9,8 @@ import UIKit
 
 class HyperlootButton: UIButton {
     
+    private lazy var gradientLayer = HyperlootGradientLayer()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -16,11 +18,30 @@ class HyperlootButton: UIButton {
     }
     
     private func setupAppearance() {
+        layer.addSublayer(self.gradientLayer)
         layer.cornerRadius = 10.0
         layer.masksToBounds = true
         
-        setTitleColor(UIColor.black, for: .normal)
-        setTitleColor(UIColor.lightGray, for: .disabled)
-        titleLabel?.font = UIFont.systemFont(ofSize: 24.0)
+        backgroundColor = AppStyle.Colors.darkContainer
+        setTitleColor(AppStyle.Colors.defaultText, for: .normal)
+        setTitleColor(AppStyle.Colors.disabledText, for: .disabled)
+        
+        if let titleLabel = titleLabel {
+            if titleLabel.font.pointSize > 20.0 {
+                titleLabel.font = UIFont.systemFont(ofSize: 20.0)
+            }
+        }
+    }
+    
+    override var isEnabled: Bool {
+        didSet {
+            gradientLayer.isEnabled = isEnabled
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer.frame = bounds
     }
 }
