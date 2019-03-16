@@ -8,14 +8,6 @@
 import Foundation
 import BigInt
 
-struct TokenConstants {
-    struct Ethereum {
-        static let ethereumDecimals = 18
-        static let ethereumContract = "0x0"
-        static let ethereumSymbol = "ETH"
-    }
-}
-
 class HyperlootTokenTransformer {
         
     static func token(from contractable: TokenContractable, balance: String, blockchain: Blockchain) -> HyperlootToken? {

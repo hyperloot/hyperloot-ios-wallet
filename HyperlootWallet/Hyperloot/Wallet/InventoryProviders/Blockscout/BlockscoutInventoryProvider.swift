@@ -28,6 +28,8 @@ class BlockscoutInventoryProvider: TokenInventoryProviding {
     let storage: UserTokenInventoryStorage
     let walletAddress: String
     
+    lazy var mainNetBlockscout: Blockscout = Blockscout(environment: .mainnet)
+    
     init(blockscout: Blockscout, storage: UserTokenInventoryStorage, walletAddress: String) {
         self.blockscout = blockscout
         self.storage = storage
@@ -53,7 +55,7 @@ class BlockscoutInventoryProvider: TokenInventoryProviding {
         blockscout.balance(address: address) { [weak self] (response, error) in
             guard let balance = response?.balance,
                 let amount = BigInt(balance),
-                let stringValue = self?.formatter.string(from: amount, decimals: TokenConstants.Ethereum.ethereumDecimals) else {
+                let stringValue = self?.formatter.string(from: amount, decimals: TokenContracts.ethereum.decimals) else {
                     completion(HyperlootToken.ether(amount: "0", blockchain: blockscout.blockchain))
                     return
             }
@@ -79,6 +81,7 @@ class BlockscoutInventoryProvider: TokenInventoryProviding {
     
     private func process(tokens: [BlockscoutTokenListResponse.Token], completion: @escaping Completion) {
         var operations: [Operation] = []
+        
         tokens.forEach { (token) in
             guard let address = token.contractAddress, let balance = token.balance, let blockscout = blockscout else { return }
             let tokenInfoOperation = TokenInfoOperation(contractAddress: address, balance: balance, blockscout: blockscout, storage: storage)
@@ -87,6 +90,7 @@ class BlockscoutInventoryProvider: TokenInventoryProviding {
             operations.append(contentsOf: [tokenInfoOperation, tokenItemBalanceOperation])
         }
         
+        operations.append(contentsOf: defaultTokenOperations(userTokens: tokens))
         print("*** OPERATIONS: \(operations.count)")
         
         let completionOperation = BlockOperation { [weak self] in
@@ -98,5 +102,20 @@ class BlockscoutInventoryProvider: TokenInventoryProviding {
         operations.append(completionOperation)
         
         operationQueue.addOperations(operations, waitUntilFinished: false)
+    }
+    
+    private func defaultTokenOperations(userTokens: [BlockscoutTokenListResponse.Token]) -> [Operation] {
+        var defaultTokens = HyperlootToken.defaultTokens(blockchain: .mainnet)
+        defaultTokens.removeAll { (token) -> Bool in
+            return userTokens.contains(where: { (response) -> Bool in
+                response.contractAddress == token.contractAddress
+            })
+        }
+        
+        return defaultTokens.map { TokenInfoOperation(contractAddress: $0.contractAddress,
+                                                      balance: "0",
+                                                      blockscout: mainNetBlockscout,
+                                                      storage: storage) }
+        
     }
 }

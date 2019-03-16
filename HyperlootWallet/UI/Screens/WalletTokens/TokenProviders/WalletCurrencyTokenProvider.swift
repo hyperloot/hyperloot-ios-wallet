@@ -75,7 +75,19 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
 
 extension WalletCurrencyTokenProvider: WalletAssetsUpdating {
     func didReceive(assets: [WalletAsset], cached: Bool) {
+        var tokensSortPriority: [String: Int] = [:]
+        var defaultTokens = HyperlootToken.defaultTokens(blockchain: .mainnet)
+        defaultTokens.insert(HyperlootToken.ether(amount: "0", blockchain: .mainnet), at: 0)
+        defaultTokens.enumerated().forEach { (index, token) in
+            tokensSortPriority[token.contractAddress.lowercased()] = defaultTokens.count - index
+        }
+        
         self.assets = walletAssetManager.assets(by: .currency).sorted(by: { (a1, a2) -> Bool in
+            let a1Index = tokensSortPriority[a1.assetId.lowercased()]
+            let a2Index = tokensSortPriority[a2.assetId.lowercased()]
+            if a1Index != nil || a2Index != nil {
+                return (a1Index ?? -1) > (a2Index ?? -1)
+            }
             return a1.totalPrice > a2.totalPrice
         })
         shouldShowActivityIndicator = (cached != false)

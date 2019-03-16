@@ -87,7 +87,7 @@ class TokenTransactionsViewModel {
     
     private var transactionsType: HyperlootTransactionType {
         let contractAddress = asset.token.contractAddress
-        if contractAddress == TokenConstants.Ethereum.ethereumContract {
+        if contractAddress == TokenContracts.ethereum.mainnetAddress() {
             return .transactions
         }
         
@@ -100,7 +100,7 @@ class TokenTransactionsViewModel {
         var tokensAmount: Double = 0.0
         switch transaction.value {
         case .ether(value: let value):
-            tokensAmount = TokenFormatter.erc20BalanceToDouble(from: value, decimals: TokenConstants.Ethereum.ethereumDecimals)
+            tokensAmount = TokenFormatter.erc20BalanceToDouble(from: value, decimals: TokenContracts.ethereum.decimals)
         case .token(value: let value, decimals: let decimals, _):
             tokensAmount = TokenFormatter.erc20BalanceToDouble(from: value, decimals: decimals)
         case .uniqueToken(_):
@@ -123,8 +123,8 @@ class TokenTransactionsViewModel {
         switch transaction.value {
         case .ether(value: let value):
             transactionValue = TokenFormatter.erc20Value(from: value,
-                                                         decimals: TokenConstants.Ethereum.ethereumDecimals,
-                                                         symbol: TokenConstants.Ethereum.ethereumSymbol)
+                                                         decimals: TokenContracts.ethereum.decimals,
+                                                         symbol: TokenContracts.ethereum.symbol)
         case .token(value: let value, decimals: let decimals, let symbol):
             transactionValue = TokenFormatter.erc20Value(from: value, decimals: decimals, symbol: symbol)
         case .uniqueToken(tokenId: let tokenId):

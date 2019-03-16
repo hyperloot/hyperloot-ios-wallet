@@ -45,33 +45,53 @@ struct HyperlootToken {
     let description: String?
     let shortDescription: String?
     let externalLink: String?
+}
+
+extension HyperlootToken {
     
-    static func ether(amount: String, blockchain: Blockchain) -> HyperlootToken {
-        return HyperlootToken(contractAddress: TokenConstants.Ethereum.ethereumContract,
-                              name: "Ethereum",
-                              symbol: TokenConstants.Ethereum.ethereumSymbol,
-                              decimals: TokenConstants.Ethereum.ethereumDecimals,
-                              totalSupply: "0",
-                              type: .ether(amount: amount),
-                              blockchain: blockchain,
-                              tokenImageURL: nil,
-                              description: nil,
-                              shortDescription: nil,
-                              externalLink: nil)
+    init(amount: String, contract: HyperlootTokenContract, blockchain: Blockchain) {
+        
+        let type: TokenType
+        switch contract.type {
+        case .ether:
+            type = .ether(amount: amount)
+        case .erc20:
+            type = .erc20(amount: amount)
+        case .erc721:
+            type = .erc721(tokenId: Constants.noTokenId, totalCount: 0, attributes: nil)
+        }
+        
+        self.init(contractAddress: contract.addressOrMainnetAddress(blockchain: blockchain),
+                  name: contract.name,
+                  symbol: contract.symbol,
+                  decimals: contract.decimals,
+                  totalSupply: "0",
+                  type: type,
+                  blockchain: blockchain,
+                  tokenImageURL: nil,
+                  description: nil,
+                  shortDescription: nil,
+                  externalLink: nil)
     }
     
-    static func hlt(amount: String, blockchain: Blockchain) -> HyperlootToken {
-        // TODO: fill the information
-        return HyperlootToken(contractAddress: "0x0",
-                              name: "Hyperloot",
-                              symbol: "HLT",
-                              decimals: 18,
-                              totalSupply: "0",
-                              type: .erc20(amount: amount),
-                              blockchain: blockchain,
-                              tokenImageURL: nil,
-                              description: nil,
-                              shortDescription: nil,
-                              externalLink: nil)
+    static func ether(amount: String, blockchain: Blockchain) -> HyperlootToken {
+        return HyperlootToken(amount: amount, contract: TokenContracts.ethereum, blockchain: blockchain)
+    }
+    
+    static func defaultTokens(blockchain: Blockchain) -> [HyperlootToken] {
+        let amount: String = "0"
+        
+        let defaultContracts = [
+            TokenContracts.hyperloot,
+            TokenContracts.poa,
+            TokenContracts.byteball,
+            TokenContracts.flip,
+            TokenContracts.dmarket,
+            TokenContracts.wax,
+            TokenContracts.enjinCoin,
+            TokenContracts.eGold
+        ]
+        
+        return defaultContracts.map { HyperlootToken(amount: amount, contract: $0, blockchain: blockchain) }
     }
 }
