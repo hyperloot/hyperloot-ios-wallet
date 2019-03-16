@@ -53,6 +53,7 @@
 		F44D7263214A29A100C651C6 /* HyperlootWalletManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7262214A29A100C651C6 /* HyperlootWalletManaging.swift */; };
 		F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */; };
 		F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7267214A2C6D00C651C6 /* WalletManager.swift */; };
+		F4567DE3223CA2C500ED03FB /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4567DE2223CA2C500ED03FB /* AppManager.swift */; };
 		F459C34A21FD90D5006A0D72 /* Infura.swift in Sources */ = {isa = PBXBuildFile; fileRef = F459C34921FD90D5006A0D72 /* Infura.swift */; };
 		F463378F223C6EF10093949C /* HyperlootTokenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463378E223C6EF10093949C /* HyperlootTokenContract.swift */; };
 		F4633791223C6F730093949C /* TokenContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633790223C6F730093949C /* TokenContracts.swift */; };
@@ -228,6 +229,7 @@
 		F44D7262214A29A100C651C6 /* HyperlootWalletManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootWalletManaging.swift; sourceTree = "<group>"; };
 		F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTokensManaging.swift; sourceTree = "<group>"; };
 		F44D7267214A2C6D00C651C6 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
+		F4567DE2223CA2C500ED03FB /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		F459C34921FD90D5006A0D72 /* Infura.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Infura.swift; sourceTree = "<group>"; };
 		F463378E223C6EF10093949C /* HyperlootTokenContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTokenContract.swift; sourceTree = "<group>"; };
 		F4633790223C6F730093949C /* TokenContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenContracts.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				F449AEED22310BA400EDEB51 /* WalletAssetManager.swift */,
+				F4567DE2223CA2C500ED03FB /* AppManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1031,6 +1034,7 @@
 				F44D72382146EC4000C651C6 /* Frameworks */,
 				F44D72392146EC4000C651C6 /* Resources */,
 				B37E7215859A5D2B725DA4D7 /* [CP] Embed Pods Frameworks */,
+				F4633792223CA1350093949C /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -1191,6 +1195,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F4633792223CA1350093949C /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.sh\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1282,6 +1304,7 @@
 				F466FD1D2167347300092CC4 /* SendViewModel.swift in Sources */,
 				F4E0858B2238DC7300B7F53D /* FindAUserViewModel.swift in Sources */,
 				F434318A21B35AB700FA9F6E /* LoginResponse.swift in Sources */,
+				F4567DE3223CA2C500ED03FB /* AppManager.swift in Sources */,
 				F4CC392521BBB04000C00FE6 /* WalletGenerator.swift in Sources */,
 				F47EDA35222915B100D6684E /* URL+DocumentsPath.swift in Sources */,
 				F466FD1321669DEB00092CC4 /* QRCodeImageGenerator.swift in Sources */,
@@ -1501,6 +1524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = T2K4Q7V76Y;
 				INFOPLIST_FILE = HyperlootWallet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
