@@ -70,12 +70,7 @@ class BlockscoutInventoryProvider: TokenInventoryProviding {
     private func getTokens(address: String, completion: @escaping Completion) {
         guard let blockscout = blockscout else { return }
         blockscout.getTokenList(address: address) { [weak self] (response, error) in
-            guard let tokens = response?.tokens else {
-                completion([])
-                return
-            }
-            
-            self?.process(tokens: tokens, completion: completion)
+            self?.process(tokens: response?.tokens ?? [], completion: completion)
         }
     }
     
