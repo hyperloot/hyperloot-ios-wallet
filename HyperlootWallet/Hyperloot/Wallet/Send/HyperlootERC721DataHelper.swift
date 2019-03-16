@@ -11,35 +11,29 @@ import BigInt
 
 class HyperlootERC721DataHelper {
     
-    struct ERC721Contract {
-        enum Function {
-            case transferFrom
-            case transfer
-        }
-        let name: String
-        let addresses: [Blockchain: String]
-        let function: Function
-    }
-    
     // Hardcoded contracts which have custom transfer function (not transferFrom)
-    var contracts: [ERC721Contract] {
+    var contracts: [HyperlootTokenContract] {
         return [
-            ERC721Contract(name: "CryptoKitties",
-                           addresses: [.mainnet : "0x06012c8cf97bead5deae237070f9587f8e7a266d", .rinkeby: "0x16baf0de678e52367adc69fd067e5edd1d33e3bf"],
-                           function: .transfer)
+            HyperlootTokenContract(name: "CryptoKitties",
+                                   symbol: "CK",
+                                   decimals: 0,
+                                   addresses: HyperlootTokenContract.Address(addresses: [.mainnet: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
+                                                                                         .rinkeby: "0x16baf0de678e52367adc69fd067e5edd1d33e3bf"]),
+                                   type: .erc721,
+                                   transferFunction: .transfer)
         ]
     }
     
-    func findContract(address: String, blockchain: Blockchain) -> ERC721Contract? {
+    func findContract(address: String, blockchain: Blockchain) -> HyperlootTokenContract? {
         return contracts.first { (contract) -> Bool in
-            return contract.addresses[blockchain] == address
+            return contract.addressOrMainnetAddress(blockchain: blockchain) == address
         }
     }
     
     func data(token: HyperlootToken, from: Address, to: Address, tokenId: BigUInt) -> Data {
-        var function: ERC721Contract.Function = .transferFrom
+        var function: HyperlootTokenContract.TransferFunction = .transferFrom
         if let contract = findContract(address: token.contractAddress, blockchain: token.blockchain) {
-            function = contract.function
+            function = contract.transferFunction
         }
         switch function {
         case .transferFrom:

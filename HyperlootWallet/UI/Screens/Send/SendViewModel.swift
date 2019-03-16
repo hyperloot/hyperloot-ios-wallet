@@ -105,7 +105,7 @@ class SendViewModel {
             fallthrough
         case .erc20(amount: let amount):
             hideRegularTokenDetails = false
-            let presentation = SendTokenDetailsPresentation(icon: .none,
+            let presentation = SendTokenDetailsPresentation(icon: .imageName(asset.token.symbol.lowercased()),
                                                             tokenSymbol: asset.token.symbol,
                                                             amountPlaceholderText: "Amount to send",
                                                             totalAvailableAmount: amount)

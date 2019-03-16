@@ -890,13 +890,14 @@ Manage your assets</string>
                                                                 </connections>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_list_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1WT-xp-6PZ">
-                                                                <rect key="frame" x="10" y="14" width="16" height="16"/>
+                                                                <rect key="frame" x="10" y="12" width="20" height="20"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="1WT-xp-6PZ" secondAttribute="height" multiplier="1:1" id="P5O-sn-B73"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="Eby-ZU-8bV"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="vE4-dw-101"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="HLT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9uT-ec-4lp">
-                                                                <rect key="frame" x="31" y="10" width="35.5" height="24"/>
+                                                                <rect key="frame" x="35" y="10" width="35.5" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                 <color key="textColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -914,7 +915,6 @@ Manage your assets</string>
                                                             <constraint firstItem="cn3-2z-BJ3" firstAttribute="top" secondItem="9uT-ec-4lp" secondAttribute="bottom" constant="10" id="FQo-c6-rAl"/>
                                                             <constraint firstItem="cn3-2z-BJ3" firstAttribute="leading" secondItem="roZ-vI-cz4" secondAttribute="leading" constant="10" id="FfI-kn-3mg"/>
                                                             <constraint firstAttribute="trailing" secondItem="aYc-LD-TdD" secondAttribute="trailing" constant="10" id="NAB-ak-KZg"/>
-                                                            <constraint firstItem="1WT-xp-6PZ" firstAttribute="width" secondItem="1WT-xp-6PZ" secondAttribute="height" multiplier="1:1" id="NWs-k3-l9d"/>
                                                             <constraint firstItem="aYc-LD-TdD" firstAttribute="centerY" secondItem="9uT-ec-4lp" secondAttribute="centerY" id="fKg-5J-LCu"/>
                                                             <constraint firstItem="9uT-ec-4lp" firstAttribute="top" secondItem="roZ-vI-cz4" secondAttribute="top" constant="10" id="frU-UJ-YMf"/>
                                                             <constraint firstItem="9uT-ec-4lp" firstAttribute="leading" secondItem="1WT-xp-6PZ" secondAttribute="trailing" constant="5" id="qKG-U4-Wlu"/>

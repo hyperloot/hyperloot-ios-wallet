@@ -42,7 +42,7 @@ class SendTokenDetailsView: UIView {
         case .none:
             tokenIconImageView.image = UIImage(named: Constants.placeholderIconImageName)
         case .imageName(let name):
-            tokenIconImageView.image = UIImage(named: name)
+            tokenIconImageView.image = UIImage(named: name) ?? UIImage(named: Constants.placeholderIconImageName)
         case .imageURL(let imageURL):
             tokenIconImageView.setImage(withURL: imageURL,
                                         placeholderImage: UIImage(named: Constants.placeholderIconImageName),
