@@ -22,6 +22,8 @@ class TokenTransactionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        AppAnalytics.logScreenVisit(type: .transactions)
+        
         configureBackButtonWithNoText()
         configureUI()
         

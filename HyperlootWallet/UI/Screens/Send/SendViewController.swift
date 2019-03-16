@@ -39,6 +39,8 @@ class SendViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        AppAnalytics.logScreenVisit(type: .send)
+        
         formController.willShowForm()
     }
     
@@ -82,12 +84,15 @@ class SendViewController: UIViewController {
     
     private func showAlertForSend(error: HyperlootTransactionSendError) {
         let message = viewModel.errorMessage(sendError: error)
+        
+        AppAnalytics.logItemSend(error: message, asset: viewModel.asset)        
         let controller = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(controller, animated: true, completion: nil)
     }
     
     private func showAlertForSend(success transactionHash: String) {
+        AppAnalytics.logItemSend(asset: viewModel.asset)
         let message = "You've just sent your assets! Transaction confirmation: \(transactionHash)"
         let controller = UIAlertController(title: "Congratulations!", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { [weak self] (_) in

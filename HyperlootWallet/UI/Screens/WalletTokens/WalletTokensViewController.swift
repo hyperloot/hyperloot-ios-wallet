@@ -36,6 +36,8 @@ class WalletTokensViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        AppAnalytics.logScreenVisit(type: (walletTokenProvider.assetsType == .currency) ? .currency : .gameAssets)
+        
         walletTokenProvider.load { [weak self] in
             self?.updateUI()
         }

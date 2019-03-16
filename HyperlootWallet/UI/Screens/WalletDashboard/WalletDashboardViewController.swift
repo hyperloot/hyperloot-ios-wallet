@@ -27,6 +27,8 @@ class WalletDashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        AppAnalytics.logScreenVisit(type: .dashboard)
+        
         viewModel.getAssets { [weak self] (cached: Bool) in
             self?.updateUI()
         }

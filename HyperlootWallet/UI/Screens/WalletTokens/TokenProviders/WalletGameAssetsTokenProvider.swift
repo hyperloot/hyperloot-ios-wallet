@@ -39,6 +39,9 @@ class WalletGameAssetsTokenProvider: WalletTokensProviding {
     }
     
     // MARK: - Token Providing
+    var assetsType: WalletAsset.AssetType {
+        return .gameAsset
+    }
     
     func load(completion: @escaping () -> Void) {
         self.completion = completion

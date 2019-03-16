@@ -35,6 +35,9 @@ class WalletCurrencyTokenProvider: WalletTokensProviding {
     }
     
     // MARK: - Token Providing
+    var assetsType: WalletAsset.AssetType {
+        return .currency
+    }
     
     func load(completion: @escaping () -> Void) {
         self.completion = completion
