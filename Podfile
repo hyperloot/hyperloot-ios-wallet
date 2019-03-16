@@ -26,6 +26,8 @@ abstract_target 'CommonPods' do
     pod 'AlamofireImage', '3.4'
     pod 'MBProgressHUD', '1.1.0'
     pod 'QRCodeReaderViewController', '~> 4.0.2'
+    pod 'Fabric'
+    pod 'Crashlytics'
 
   end
 
