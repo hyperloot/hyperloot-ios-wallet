@@ -86,6 +86,7 @@ class EnterWalletKeysViewModel {
     // MARK: - API calls
     func importWallet(user: HyperlootUser, password: String, importType: UserRegistrationFlow.ImportType, completion: @escaping (Bool, AddWalletError?) -> Void) {
         guard let walletKey = walletKey else {
+            AppAnalytics.logImportWalletError(importType: importType)
             completion(false, .error(description: "Your wallet key is not valid. Please check and try again"))
             return
         }
@@ -102,6 +103,8 @@ class EnterWalletKeysViewModel {
         }
         
         Hyperloot.shared.login(email: user.email, password: password) { (user, error) in
+            AppAnalytics.login(success: error == nil)
+            
             guard let user = user, error == nil else {
                 completion(false, .error(description: "There was an error during logging into your account"))
                 return
@@ -119,6 +122,7 @@ class EnterWalletKeysViewModel {
     
     public func createWallet(email: String, password: String, nickname: String, walletAddress: String, completion: @escaping (Bool, AddWalletError?) -> Void) {
         Hyperloot.shared.signup(email: email, password: password, nickname: nickname, walletAddress: walletAddress) { (user, error) in
+            AppAnalytics.signup(success: error == nil)
             if user != nil, error == nil {
                 completion(true, nil)
             } else {

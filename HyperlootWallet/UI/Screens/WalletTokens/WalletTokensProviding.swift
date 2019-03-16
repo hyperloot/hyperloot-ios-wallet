@@ -46,6 +46,8 @@ protocol WalletTokenCellConfigurable {
 protocol WalletTokensProviding {
     var presentation: WalletTokensPresentation { get }
     
+    var assetsType: WalletAsset.AssetType { get }
+    
     func load(completion: @escaping () -> Void)
     
     func cellRegistrationInformation() -> [WalletTokensCellsRegistration]

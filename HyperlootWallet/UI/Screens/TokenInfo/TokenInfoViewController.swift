@@ -33,6 +33,12 @@ class TokenInfoViewController: UIViewController {
         updateUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        AppAnalytics.logScreenVisit(type: .tokenDetails)
+    }
+    
     func configureNavigationItem() {
         self.title = "Item Details"
         configureBackButtonWithNoText()

@@ -54,6 +54,7 @@
 		F44D7265214A29AB00C651C6 /* HyperlootTokensManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */; };
 		F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D7267214A2C6D00C651C6 /* WalletManager.swift */; };
 		F4567DE3223CA2C500ED03FB /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4567DE2223CA2C500ED03FB /* AppManager.swift */; };
+		F4567DE5223CC76100ED03FB /* AppAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4567DE4223CC76100ED03FB /* AppAnalytics.swift */; };
 		F459C34A21FD90D5006A0D72 /* Infura.swift in Sources */ = {isa = PBXBuildFile; fileRef = F459C34921FD90D5006A0D72 /* Infura.swift */; };
 		F463378F223C6EF10093949C /* HyperlootTokenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463378E223C6EF10093949C /* HyperlootTokenContract.swift */; };
 		F4633791223C6F730093949C /* TokenContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633790223C6F730093949C /* TokenContracts.swift */; };
@@ -230,6 +231,7 @@
 		F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTokensManaging.swift; sourceTree = "<group>"; };
 		F44D7267214A2C6D00C651C6 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		F4567DE2223CA2C500ED03FB /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		F4567DE4223CC76100ED03FB /* AppAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAnalytics.swift; sourceTree = "<group>"; };
 		F459C34921FD90D5006A0D72 /* Infura.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Infura.swift; sourceTree = "<group>"; };
 		F463378E223C6EF10093949C /* HyperlootTokenContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTokenContract.swift; sourceTree = "<group>"; };
 		F4633790223C6F730093949C /* TokenContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenContracts.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 			children = (
 				F449AEED22310BA400EDEB51 /* WalletAssetManager.swift */,
 				F4567DE2223CA2C500ED03FB /* AppManager.swift */,
+				F4567DE4223CC76100ED03FB /* AppAnalytics.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1290,6 +1293,7 @@
 				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
 				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
 				F4633791223C6F730093949C /* TokenContracts.swift in Sources */,
+				F4567DE5223CC76100ED03FB /* AppAnalytics.swift in Sources */,
 				F4CB7CEE21770C2A006B6217 /* EnterNicknameViewModel.swift in Sources */,
 				F4BF330221FDA1F00039B8B5 /* Environments.swift in Sources */,
 				F459C34A21FD90D5006A0D72 /* Infura.swift in Sources */,
