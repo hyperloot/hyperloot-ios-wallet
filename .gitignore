@@ -70,3 +70,4 @@ fastlane/test_output
 # App
 HyperlootConfig+App.swift
 HyperlootWallet/Info.plist
+*AppAnalytics*
