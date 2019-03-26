@@ -68,6 +68,7 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 
 # App
+config/*
 HyperlootConfig+App.swift
 HyperlootWallet/Info.plist
 *AppAnalytics*
