@@ -30,6 +30,10 @@ class BlockscoutInventoryProvider: TokenInventoryProviding {
     
     lazy var mainNetBlockscout: Blockscout = Blockscout(environment: .mainnet)
     
+    deinit {
+        operationQueue.cancelAllOperations()
+    }
+    
     init(blockscout: Blockscout, storage: UserTokenInventoryStorage, walletAddress: String) {
         self.blockscout = blockscout
         self.storage = storage
