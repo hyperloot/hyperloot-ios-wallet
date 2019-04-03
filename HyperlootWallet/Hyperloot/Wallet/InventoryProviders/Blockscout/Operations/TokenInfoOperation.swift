@@ -36,6 +36,9 @@ class TokenInfoOperation: HyperlootOperation {
         }
         
         run()
+        
+        guard isCancelled == false else { return }
+        
         if let storedToken = storage.findToken(byAddress: contractAddress) {
             let token = HyperlootTokenTransformer.token(from: storedToken, balance: balance, blockchain: blockscout.blockchain)
             storage.replace(token: token) { [weak self] in

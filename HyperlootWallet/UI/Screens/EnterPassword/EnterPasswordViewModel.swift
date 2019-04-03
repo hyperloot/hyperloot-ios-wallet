@@ -99,7 +99,8 @@ class EnterPasswordViewModel {
     private func validate() -> ValidationError? {
         let isNewUser = self.isNewUser ?? false
         if isNewUser && doPasswordsMatch() == false {
-            return .passwordsDoNotMatch
+            let isConfirmPasswordEmpty = confirmPassword?.isEmpty ?? true
+            return (isConfirmPasswordEmpty == false) ? .passwordsDoNotMatch : nil
         }
         return nil
     }

@@ -183,7 +183,8 @@ class SendViewModel {
     }
     
     func update(address: String, source: AddressSource) -> UpdateTextFieldResult {
-        let addressTo = Address(string: address)?.description
+        let trimmedAddress = address.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let addressTo = Address(string: trimmedAddress)?.description
         if addressTo != nil || source == .manual {
             transactionInput.nickname = nil
             transactionInput.addressTo = addressTo
