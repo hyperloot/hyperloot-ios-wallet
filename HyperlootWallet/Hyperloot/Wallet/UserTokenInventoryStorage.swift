@@ -38,7 +38,14 @@ class UserTokenInventoryStorage {
         return allTokens
     }
     
-    func findToken(byAddress contractAddress: String) -> HyperlootToken? {
+    func findToken(byAddress contractAddress: String, completion: @escaping (HyperlootToken?) -> Void) {
+        DispatchQueue.main.async { [weak self] in
+            let token = self?.findToken(byAddress: contractAddress)
+            completion(token)
+        }
+    }
+    
+    private func findToken(byAddress contractAddress: String) -> HyperlootToken? {
         return inventory.tokens.filter { $0.contractAddress == contractAddress }.first
     }
     

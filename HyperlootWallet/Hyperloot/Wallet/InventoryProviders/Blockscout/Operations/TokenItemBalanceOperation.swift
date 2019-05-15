@@ -17,8 +17,8 @@ class TokenItemBalanceOperation: HyperlootOperation {
     
     let contractAddress: String
     let walletAddress: String
-    let storage: UserTokenInventoryStorage
     
+    weak var storage: UserTokenInventoryStorage?
     weak var blockscout: Blockscout?
     
     var lastProcessedTimestamp: TimeInterval
@@ -33,26 +33,27 @@ class TokenItemBalanceOperation: HyperlootOperation {
     }
     
     override func main() {
-        guard let blockscout = blockscout else { return }
+        guard let blockscout = blockscout, let storage = storage else { return }
         
         run()
         
-        guard let token = storage.findToken(byAddress: contractAddress),
-            token.isERC721() else {
-                done()
-                return
-        }
-        
-        getTransfers(page: 0, transactions: [], blockscout: blockscout) { [weak self] (transactions) in
-            guard let strongSelf = self, strongSelf.isCancelled == false else {
+        storage.findToken(byAddress: contractAddress) { [weak self] (token) in
+            guard let token = token, token.isERC721() else {
+                self?.done()
                 return
             }
             
-            DispatchQueue.main.async {
-                strongSelf.storage.updateTokenizedItems(contractAddress: strongSelf.contractAddress,
-                                                        walletAddress: strongSelf.walletAddress,
-                                                        transactions: transactions)
-                strongSelf.done()
+            self?.getTransfers(page: 0, transactions: [], blockscout: blockscout) { [weak self] (transactions) in
+                guard let strongSelf = self, strongSelf.isCancelled == false else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    storage.updateTokenizedItems(contractAddress: strongSelf.contractAddress,
+                                                            walletAddress: strongSelf.walletAddress,
+                                                            transactions: transactions)
+                    strongSelf.done()
+                }
             }
         }
     }
