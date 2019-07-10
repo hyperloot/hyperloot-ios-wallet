@@ -19,4 +19,5 @@ struct TokenContracts {
     static let wax = HyperlootTokenContract(name: "WAX Token", symbol: "WAX", decimals: 8, addresses: ContractAddress(addresses: [.mainnet : "0x39Bb259F66E1C59d5ABEF88375979b4D20D98022"]), type: .erc20, transferFunction: .transferFrom)
     static let enjinCoin = HyperlootTokenContract(name: "EnjinCoin", symbol: "ENJ", decimals: 18, addresses: ContractAddress(addresses: [.mainnet : "0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c"]), type: .erc20, transferFunction: .transferFrom)
     static let eGold = HyperlootTokenContract(name: "eGold", symbol: "EGL", decimals: 4, addresses: ContractAddress(addresses: [.mainnet : "0x8F00458479ea850f584ed82881421F9D9EaC6cB1"]), type: .erc20, transferFunction: .transferFrom)
+    static let refereum = HyperlootTokenContract(name: "Refereum", symbol: "RFR", decimals: 4, addresses: ContractAddress(addresses: [.mainnet : "0xd0929d411954c47438dc1d871dd6081f5c5e149c"]), type: .erc20, transferFunction: .transferFrom)
 }

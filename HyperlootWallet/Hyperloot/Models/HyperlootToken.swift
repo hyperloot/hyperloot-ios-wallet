@@ -89,7 +89,8 @@ extension HyperlootToken {
             TokenContracts.dmarket,
             TokenContracts.wax,
             TokenContracts.enjinCoin,
-            TokenContracts.eGold
+            TokenContracts.eGold,
+            TokenContracts.refereum
         ]
         
         return defaultContracts.map { HyperlootToken(amount: amount, contract: $0, blockchain: blockchain) }
