@@ -10,7 +10,7 @@ import Foundation
 class WalletGameAssetsTokenProvider: WalletTokensProviding {
     
     struct Constants {
-        static let currencyScreenTitle = "Game assets"
+        static let currencyScreenTitle = "Collectibles"
         static let cellIdentifier = "wallet_token_currency_cell"
     }
 
