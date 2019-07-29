@@ -30,11 +30,6 @@ class ReceiveViewController: UIViewController {
     }
     
     @IBAction func copyWalletAddressButtonPressed() {
-        UIPasteboard.general.string = viewModel.walletAddress
-        
-        let hudView = MBProgressHUD.showAdded(to: view, animated: true)
-        hudView.mode = .text
-        hudView.label.text = "Copied!"
-        hudView.hide(animated: true, afterDelay: 1.2)
+        UIPasteboard.general.copy(string: viewModel.walletAddress, withHUDAddedTo: view)
     }
 }

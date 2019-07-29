@@ -124,3 +124,22 @@ extension Hyperloot: HyperlootWalletManaging {
         return api.findUsers(nickname: nickname, page: page, completion: completion)
     }
 }
+
+extension Hyperloot: HyperlootWalletExporting {
+    
+    func exportPrivateKey(user: HyperlootUser, completion: @escaping (String?) -> Void) {
+        guard let wallet = walletManager.wallet(byAddress: user.walletAddress) else {
+            completion(nil)
+            return
+        }
+        walletManager.exportPrivateKey(wallet: wallet, completion: completion)
+    }
+    
+    func exportMnemonicPhrase(user: HyperlootUser, completion: @escaping (String?) -> Void) {
+        guard let wallet = walletManager.wallet(byAddress: user.walletAddress) else {
+            completion(nil)
+            return
+        }
+        walletManager.exportMnemonicPhrase(wallet: wallet, completion: completion)
+    }
+}

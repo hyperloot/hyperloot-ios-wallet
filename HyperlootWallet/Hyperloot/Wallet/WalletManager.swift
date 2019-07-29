@@ -50,6 +50,36 @@ class WalletManager {
             }
         }
     }
+    
+    func exportPrivateKey(wallet: HyperlootWallet, completion: @escaping (String?) -> Void) {
+        guard let account = walletKeyStore.getAccount(for: wallet.address) else {
+            completion(nil)
+            return
+        }
+        walletKeyStore.exportPrivateKey(account: account) { (result) in
+            switch result {
+            case .success(let data):
+                completion(data.hexString)
+            case .failure(_):
+                completion(nil)
+            }
+        }
+    }
+    
+    func exportMnemonicPhrase(wallet: HyperlootWallet, completion: @escaping (String?) -> Void) {
+        guard let account = walletKeyStore.getAccount(for: wallet.address) else {
+            completion(nil)
+            return
+        }
+        walletKeyStore.exportMnemonic(account: account) { (result) in
+            switch result {
+            case .success(let words):
+                completion(words.joined(separator: " "))
+            case .failure(_):
+                completion(nil)
+            }
+        }
+    }
 }
 
 extension WalletManager: HyperlootTransactionSigning {
