@@ -10,7 +10,7 @@ import Result
 
 class Hyperloot {
     
-    private let currentConfig: HyperlootConfig = HyperlootConfig.current(for: .testnet)
+    private let currentConfig: HyperlootConfig = HyperlootConfig.current(for: .mainnet)
     
     fileprivate lazy var walletManager = WalletManager()
     

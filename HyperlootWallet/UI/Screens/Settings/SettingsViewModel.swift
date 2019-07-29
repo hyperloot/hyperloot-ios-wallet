@@ -59,9 +59,9 @@ class SettingsViewModel {
     
     private func canBeSelected(entry: Settings) -> Bool {
         switch entry {
-        case .email, .address:
+        case .email, .address, .network:
             return false
-        case .network, .exportSeed, .exportPrivateKey:
+        case .exportSeed, .exportPrivateKey:
             return true
         }
     }
