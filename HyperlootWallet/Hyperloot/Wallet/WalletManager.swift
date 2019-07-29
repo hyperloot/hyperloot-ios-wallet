@@ -59,7 +59,7 @@ class WalletManager {
         walletKeyStore.exportPrivateKey(account: account) { (result) in
             switch result {
             case .success(let data):
-                completion(data.hexString)
+                completion(data.hexString.remove0x())
             case .failure(_):
                 completion(nil)
             }
