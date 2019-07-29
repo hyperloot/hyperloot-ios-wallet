@@ -163,6 +163,13 @@
 		F4EEDD1B21B8B85600C80A79 /* StringToIntTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EEDD1A21B8B85600C80A79 /* StringToIntTransformer.swift */; };
 		F4F40D5D21CA9EEE00D3C290 /* HyperlootTransactionsTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F40D5C21CA9EEE00D3C290 /* HyperlootTransactionsTransformer.swift */; };
 		F4F40D5F21CA9FA700D3C290 /* TransactionDefining.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F40D5E21CA9FA700D3C290 /* TransactionDefining.swift */; };
+		F4F6879D22EE046400984770 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6879C22EE046400984770 /* SettingsViewController.swift */; };
+		F4F687A022EE049E00984770 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6879F22EE049E00984770 /* SettingsCell.swift */; };
+		F4F687A222EE05DD00984770 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F687A122EE05DD00984770 /* SettingsViewModel.swift */; };
+		F4F687A522EECBC200984770 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F687A422EECBC200984770 /* ExportViewController.swift */; };
+		F4F687A722EECCD800984770 /* UIPasteboard+Hyperloot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F687A622EECCD800984770 /* UIPasteboard+Hyperloot.swift */; };
+		F4F687A922EECD2C00984770 /* ExportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F687A822EECD2C00984770 /* ExportViewModel.swift */; };
+		F4F687AB22EED29300984770 /* HyperlootWalletExporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F687AA22EED29300984770 /* HyperlootWalletExporting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -339,6 +346,13 @@
 		F4EEDD1A21B8B85600C80A79 /* StringToIntTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringToIntTransformer.swift; sourceTree = "<group>"; };
 		F4F40D5C21CA9EEE00D3C290 /* HyperlootTransactionsTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootTransactionsTransformer.swift; sourceTree = "<group>"; };
 		F4F40D5E21CA9FA700D3C290 /* TransactionDefining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDefining.swift; sourceTree = "<group>"; };
+		F4F6879C22EE046400984770 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F4F6879F22EE049E00984770 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		F4F687A122EE05DD00984770 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		F4F687A422EECBC200984770 /* ExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
+		F4F687A622EECCD800984770 /* UIPasteboard+Hyperloot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Hyperloot.swift"; sourceTree = "<group>"; };
+		F4F687A822EECD2C00984770 /* ExportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewModel.swift; sourceTree = "<group>"; };
+		F4F687AA22EED29300984770 /* HyperlootWalletExporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlootWalletExporting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -604,6 +618,7 @@
 				F44D7262214A29A100C651C6 /* HyperlootWalletManaging.swift */,
 				F44D7264214A29AB00C651C6 /* HyperlootTokensManaging.swift */,
 				F433F77A22081A02005FA276 /* HyperlootTransactionSigning.swift */,
+				F4F687AA22EED29300984770 /* HyperlootWalletExporting.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -783,6 +798,7 @@
 				F4B89E522215438F00FE9BD5 /* UIImageView+AsyncLoading.swift */,
 				F4B887DC2219CD5E00CA0A03 /* UIViewController+ErrorHandling.swift */,
 				F47EDA3A222BAF7000D6684E /* UIColor+Hex.swift */,
+				F4F687A622EECCD800984770 /* UIPasteboard+Hyperloot.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -830,6 +846,7 @@
 		F48CEC142150DD1100A43A47 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F4F687A322EECBB500984770 /* Export */,
 				F48CEC212150DFB000A43A47 /* Common */,
 				F4E085872238DC2A00B7F53D /* FindAUser */,
 				F449AEDF2230F13800EDEB51 /* WalletDashboard */,
@@ -845,6 +862,7 @@
 				F46640C322170E1200E74999 /* UnlockWallet */,
 				F48CEC1E2150DE5300A43A47 /* LoginFlowMain */,
 				F48CEC172150DD2F00A43A47 /* Splash */,
+				F4F6879B22EE045000984770 /* Settings */,
 				F44D72422146EC4000C651C6 /* Main.storyboard */,
 				F48CEC192150DD5D00A43A47 /* LoginFlow.storyboard */,
 				F466FCDE215DFE6B00092CC4 /* Wallet.storyboard */,
@@ -1023,6 +1041,33 @@
 				F4EEDD1A21B8B85600C80A79 /* StringToIntTransformer.swift */,
 			);
 			path = Transformers;
+			sourceTree = "<group>";
+		};
+		F4F6879B22EE045000984770 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F4F6879E22EE048A00984770 /* Cells */,
+				F4F6879C22EE046400984770 /* SettingsViewController.swift */,
+				F4F687A122EE05DD00984770 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F4F6879E22EE048A00984770 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F4F6879F22EE049E00984770 /* SettingsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F4F687A322EECBB500984770 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				F4F687A422EECBC200984770 /* ExportViewController.swift */,
+				F4F687A822EECD2C00984770 /* ExportViewModel.swift */,
+			);
+			path = Export;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1234,6 +1279,7 @@
 				F4EEDD1621B7C07400C80A79 /* BlockscoutTokenListResponse.swift in Sources */,
 				F4BF330421FDA98A0039B8B5 /* HyperlootConfig.swift in Sources */,
 				F48765F7215A1980003825FE /* UIViewController+ScreenRoutes.swift in Sources */,
+				F4F687A722EECCD800984770 /* UIPasteboard+Hyperloot.swift in Sources */,
 				F466FD1621669EB100092CC4 /* ReceiveViewController.swift in Sources */,
 				F4B89E482213F90E00FE9BD5 /* OpenSeaAssetsResponse.swift in Sources */,
 				F4EEDD0F21B7AD0C00C80A79 /* Dictionary+Merge.swift in Sources */,
@@ -1244,6 +1290,7 @@
 				F4CB7CEC21770BFC006B6217 /* EnterNicknameViewController.swift in Sources */,
 				F449AF0C22349A7A00EDEB51 /* WalletCurrencyTokenProvider.swift in Sources */,
 				F475DB8B216B368E00B157BC /* SendTransactionSpeedView.swift in Sources */,
+				F4F6879D22EE046400984770 /* SettingsViewController.swift in Sources */,
 				F449AF062234647E00EDEB51 /* WalletTokensProviding.swift in Sources */,
 				F44D7268214A2C6D00C651C6 /* WalletManager.swift in Sources */,
 				F449AEDE2230DD8200EDEB51 /* HyperlootGradientLayer.swift in Sources */,
@@ -1269,6 +1316,7 @@
 				F48765EA215952B3003825FE /* RegistrationErrorView.swift in Sources */,
 				F466FD102165EE7400092CC4 /* TokenInfoViewModel.swift in Sources */,
 				F466FD00216348BE00092CC4 /* Bundle+Nib.swift in Sources */,
+				F4F687AB22EED29300984770 /* HyperlootWalletExporting.swift in Sources */,
 				F433F77B22081A02005FA276 /* HyperlootTransactionSigning.swift in Sources */,
 				F4BA240D21C25920005F68A5 /* OperationQueue+Completion.swift in Sources */,
 				F449AEF1223447CC00EDEB51 /* WalletTokensAmountHeaderView.swift in Sources */,
@@ -1289,6 +1337,7 @@
 				F449AEEE22310BA400EDEB51 /* WalletAssetManager.swift in Sources */,
 				F48CEC232150DFBF00A43A47 /* ScreenRoutes.swift in Sources */,
 				F48CEC262150E02B00A43A47 /* Screens.swift in Sources */,
+				F4F687A922EECD2C00984770 /* ExportViewModel.swift in Sources */,
 				F48CEC112150C7D100A43A47 /* HyperlootUser.swift in Sources */,
 				F4633791223C6F730093949C /* TokenContracts.swift in Sources */,
 				F4567DE5223CC76100ED03FB /* AppAnalytics.swift in Sources */,
@@ -1345,6 +1394,8 @@
 				F43BB94A21C569B7005A97B3 /* BlockscoutTransactionResponse.swift in Sources */,
 				F46640C522170E2400E74999 /* UnlockWalletViewController.swift in Sources */,
 				F48CEC0C214B931F00A43A47 /* HyperlootWallet.swift in Sources */,
+				F4F687A222EE05DD00984770 /* SettingsViewModel.swift in Sources */,
+				F4F687A522EECBC200984770 /* ExportViewController.swift in Sources */,
 				F47EDA2C2226E05500D6684E /* TokenPriceDiscovery.swift in Sources */,
 				F4F40D5D21CA9EEE00D3C290 /* HyperlootTransactionsTransformer.swift in Sources */,
 				F47EDA2822252B2300D6684E /* CoinMarketCapListResponse.swift in Sources */,
@@ -1352,6 +1403,7 @@
 				F44D7260214A292300C651C6 /* Hyperloot.swift in Sources */,
 				F449AEE32230F16100EDEB51 /* WalletDashboardViewModel.swift in Sources */,
 				F414AC2D21F9B12C0022864B /* ERC721Encoder.swift in Sources */,
+				F4F687A022EE049E00984770 /* SettingsCell.swift in Sources */,
 				F48CEC09214B8D8600A43A47 /* WalletKeyStore.swift in Sources */,
 				F466FD222167357400092CC4 /* SendTokenDetailsView.swift in Sources */,
 				F48765FC215A1CBA003825FE /* EnterWalletKeysViewModel.swift in Sources */,

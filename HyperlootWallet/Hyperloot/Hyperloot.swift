@@ -10,7 +10,7 @@ import Result
 
 class Hyperloot {
     
-    private let currentConfig: HyperlootConfig = HyperlootConfig.current(for: .testnet)
+    private let currentConfig: HyperlootConfig = HyperlootConfig.current(for: .mainnet)
     
     fileprivate lazy var walletManager = WalletManager()
     
@@ -122,5 +122,24 @@ extension Hyperloot: HyperlootWalletManaging {
     
     func findUsers(nickname: String, page: Int = 0, completion: @escaping ([HyperlootUserSuggestion]?, Error?) -> Void) -> Cancelable {
         return api.findUsers(nickname: nickname, page: page, completion: completion)
+    }
+}
+
+extension Hyperloot: HyperlootWalletExporting {
+    
+    func exportPrivateKey(user: HyperlootUser, completion: @escaping (String?) -> Void) {
+        guard let wallet = walletManager.wallet(byAddress: user.walletAddress) else {
+            completion(nil)
+            return
+        }
+        walletManager.exportPrivateKey(wallet: wallet, completion: completion)
+    }
+    
+    func exportMnemonicPhrase(user: HyperlootUser, completion: @escaping (String?) -> Void) {
+        guard let wallet = walletManager.wallet(byAddress: user.walletAddress) else {
+            completion(nil)
+            return
+        }
+        walletManager.exportMnemonicPhrase(wallet: wallet, completion: completion)
     }
 }
